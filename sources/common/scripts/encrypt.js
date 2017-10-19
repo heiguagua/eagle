@@ -1,4 +1,5 @@
 import SHA from 'sha.js';
+import MD5 from 'md5';
 
 export default {
   token: {
@@ -16,5 +17,8 @@ export default {
   },
   sha(string) {
     return SHA('sha256').update(string, 'utf8').digest('hex');
+  },
+  md5(string) {
+    return MD5(string);
   }
 }

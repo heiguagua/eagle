@@ -15,8 +15,8 @@ export default {
           method: 'post',
           url: Http.url.master + '/login',
           data: {
-            loginName: Encrypt.sha(vm.loginName),
-            password: Encrypt.sha(vm.password)
+            loginName: vm.loginName,
+            password: Encrypt.md5(vm.password)
           }
         })
         .then(function (result) {
