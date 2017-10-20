@@ -1,6 +1,6 @@
 @import '../common/styles/color';
 #cases {
-  .search {
+  aside.search {
     width: 300px; // 相对宽度
     height: 100%;
     float: left;
@@ -19,9 +19,21 @@
       }
     }
   }
-  .list {
+  article.list {
     height: 100%;
     margin-left: 300px;
     background: $color-white;
+    h1 {
+      margin: 15px 0;
+      .button {
+        display: inline-block;
+        margin-left: 20px;
+      }
+      .pagination {
+        float: right;
+        display: inline-block;
+        margin-right: 20px;
+      }
+    }
   }
 }
