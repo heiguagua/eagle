@@ -38,6 +38,15 @@
     section.tables {
       table {
         width: 100%;
+        td:nth-child(1) {
+          width: 35%;
+        }
+        td:nth-child(2) {
+          width: 35%;
+        }
+        td:nth-child(3) {
+          width: 30%;
+        }
       }
     }
   }

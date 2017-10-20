@@ -33,14 +33,26 @@
           </template>
           <table>
             <tr>
-              <td>原告：{{item.accuser}}</td>
-              <td>被告：{{item.defendant}}</td>
-              <td>案由：{{item.case_brief}}</td>
+              <td>原告：
+                <em>{{item.accuser}}</em>
+              </td>
+              <td>被告：
+                <em>{{item.defendant}}</em>
+              </td>
+              <td>案由：
+                <em>{{item.case_brief}}</em>
+              </td>
             </tr>
             <tr>
-              <td>案号：{{item.case_no}}</td>
-              <td>开庭：{{item.court_open_date}}</td>
-              <td>审限：{{item.judge_interval}}</td>
+              <td>案号：
+                <em>{{item.case_no}}</em>
+              </td>
+              <td>开庭：
+                <em>{{item.court_open_date}}</em>
+              </td>
+              <td>审限：
+                <em>{{item.judge_interval}}</em>
+              </td>
             </tr>
           </table>
         </el-collapse-item>
