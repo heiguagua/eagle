@@ -1,16 +1,15 @@
 <div id='cases'>
   <aside class='search'>
     <form>
-      <el-select v-model='value' placeholder='案件状态'>
+      <el-select v-model='search.status' placeholder='案件状态'>
         <el-option v-for='item in options' :key='item.value' :label='item.label' :value='item.value'>
         </el-option>
       </el-select>
-      <el-input placeholder='请输入案由'></el-input>
-      <el-input placeholder='请输入案号'></el-input>
-      <el-input placeholder='当事人名称'></el-input>
+      <el-input v-model='search.reason' placeholder='请输入案由'></el-input>
+      <el-input v-model='search.number' placeholder='请输入案号'></el-input>
+      <el-input v-model='search.name' placeholder='当事人名称'></el-input>
       <div class='operation'>
-
-        <el-button type='primary' icon='search'>查询案件</el-button>
+        <el-button @click='httpGet' type='primary' icon='search'>查询案件</el-button>
       </div>
     </form>
   </aside>
@@ -20,14 +19,14 @@
         <el-button type='info' :plain="true" icon='upload'>录入案件</el-button>
       </div>
       <div class="pagination">
-        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]"
-          :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
+        <el-pagination @size-change="changePageSize" @current-change="changeCurrentPage" :current-page="search.current" :page-sizes="[5, 10, 20, 30, 40, 50]"
+          :page-size="search.size" layout="total, sizes, prev, pager, next, jumper" :total="search.total">
         </el-pagination>
       </div>
     </h1>
     <section class='tables'>
-      <el-collapse v-for='item in list'>
-        <el-collapse-item :title="item.title" name="1">
+      <el-collapse v-for='(item, index) in list' :key="index">
+        <el-collapse-item :title="item.title">
           <table>
             <tr>
               <td>原告：{{item.accuser}}</td>
