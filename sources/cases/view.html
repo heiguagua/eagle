@@ -25,8 +25,12 @@
       </div>
     </h1>
     <section class='tables'>
-      <el-collapse v-for='(item, index) in list' :key="index">
-        <el-collapse-item :title="item.title">
+      <el-collapse v-for='(item, index) in list' :key="index" :value="index">
+        <el-collapse-item :name='index'>
+          <template slot="title">
+            <i class="fa fa-briefcase"></i>
+            {{item.title}}
+          </template>
           <table>
             <tr>
               <td>原告：{{item.accuser}}</td>
