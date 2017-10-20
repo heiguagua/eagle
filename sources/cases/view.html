@@ -26,18 +26,18 @@
       </div>
     </h1>
     <section class='tables'>
-      <el-collapse>
-        <el-collapse-item title="四川省成都市武侯区人民法院test诉test民间借贷纠纷一案test" name="1">
+      <el-collapse v-for='item in list'>
+        <el-collapse-item :title="item.title" name="1">
           <table>
             <tr>
-              <td>原告：test</td>
-              <td>被告：test</td>
-              <td>案由：民间借贷纠纷</td>
+              <td>原告：{{item.accuser}}</td>
+              <td>被告：{{item.defendant}}</td>
+              <td>案由：{{item.case_brief}}</td>
             </tr>
             <tr>
-              <td>案号：test</td>
-              <td>开庭：2017-09-25</td>
-              <td>审限：7</td>
+              <td>案号：{{item.case_no}}</td>
+              <td>开庭：{{item.court_open_date}}</td>
+              <td>审限：{{item.judge_interval}}</td>
             </tr>
           </table>
         </el-collapse-item>
