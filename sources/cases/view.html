@@ -1,3 +1,20 @@
 <div id='cases'>
-  <h1>cases</h1>
+  <aside class='search'>
+    <form>
+      <el-select v-model='value' placeholder='案件状态'>
+        <el-option v-for='item in options' :key='item.value' :label='item.label' :value='item.value'>
+        </el-option>
+      </el-select>
+      <el-input placeholder='请输入案由'></el-input>
+      <el-input placeholder='请输入案号'></el-input>
+      <el-input placeholder='当事人名称'></el-input>
+      <div class='operation'>
+        <el-button type='default' icon='plus'>录入案件</el-button>
+        <el-button type='primary' icon='search'>查询案件</el-button>
+      </div>
+    </form>
+  </aside>
+  <article class='list'>
+    ddd
+  </article>
 </div>

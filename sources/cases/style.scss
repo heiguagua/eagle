@@ -1,2 +1,27 @@
 @import '../common/styles/color';
-#cases {}
+#cases {
+  .search {
+    width: 300px; // 相对宽度
+    height: 100%;
+    float: left;
+    background: $color-gray;
+    position: fixed;
+    form {
+      padding: 20px;
+      >* {
+        margin-bottom: 25px;
+        &:first-child {
+          width: 100%;
+        }
+        &:last-child {
+          float: right;
+        }
+      }
+    }
+  }
+  .list {
+    height: 100%;
+    margin-left: 300px;
+    background: $color-white;
+  }
+}

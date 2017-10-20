@@ -13,11 +13,11 @@ export default {
     path: '/layout',
     component: Layout,
     children: [{
-      path: 'dashboard',
+      path: 'template',
       meta: {
         auth: true
       },
-      component: resolve => require(['./dashboard/index.vue'], resolve)
+      component: resolve => require(['./template/index.vue'], resolve)
     }, {
       path: 'trial',
       meta: {

@@ -5,26 +5,42 @@
     </div>
     <nav class='navigator'>
       <el-menu theme='dark' mode='horizontal' :router='true'>
-        <el-menu-item index='cases'>案件信息</el-menu-item>
-        <el-menu-item index='judge'>OCR识别</el-menu-item>
-        <el-submenu index='helper'>
-          <template slot='title'>模板管理</template>
-          <el-menu-item index='demo'>Calculator </el-menu-item>
-          <el-menu-item index='demo'>COR </el-menu-item>
-          <el-menu-item index='demo'>Demo</el-menu-item>
+        <el-menu-item index='cases'>
+          <i class="fa fa-database">&nbsp;案件信息</i>
+        </el-menu-item>
+        <el-menu-item index=''>
+          <i class="fa fa-opera">&nbsp;OCR识别</i>
+        </el-menu-item>
+        <el-submenu index='template'>
+          <template slot='title'>
+            <i class="fa fa-book">&nbsp;模板管理</i>
+          </template>
+          <el-menu-item index='demo'>
+            裁判规则
+          </el-menu-item>
+          <el-menu-item index='demo'>
+            裁判文书
+          </el-menu-item>
+          <el-menu-item index='demo'>
+            庭审笔录
+          </el-menu-item>
         </el-submenu>
-        <el-menu-item index='trial'>费用计算</el-menu-item>
-        <el-menu-item index='trial'>案例参照</el-menu-item>
+        <el-menu-item index='calculator'>
+          <i class="fa fa-calculator">&nbsp;费用计算</i>
+        </el-menu-item>
+        <el-menu-item index='repository'>
+          <i class="fa fa-paste">&nbsp;案例参照</i>
+        </el-menu-item>
       </el-menu>
     </nav>
     <div class='tool'>
-      <el-select placeholder='Select' v-model='type'>
+      <el-select placeholder='选择' v-model='type'>
       </el-select>
-      <el-input placeholder='Search' icon='search' v-model='search' :on-icon-click='onSearch'>
+      <el-input placeholder='查询相似案例' icon='search' v-model='search' :on-icon-click='onSearch'>
       </el-input>
       <el-dropdown>
         <span class='el-dropdown-link'>
-          User
+          用户
           <i class='el-icon-caret-bottom el-icon--right'></i>
         </span>
         <el-dropdown-menu slot='dropdown'>

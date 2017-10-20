@@ -36,7 +36,7 @@ export default {
           return data;
         })
         .then(function (data) {
-          vm.$router.push('/layout/dashboard');
+          vm.$router.push('/layout/cases');
         });
     }
   }
