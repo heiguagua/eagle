@@ -116,8 +116,12 @@
       </el-form>
     </div>
     <span slot='footer' class='dialog-footer'>
-      <el-button @click='dialog.show = false'>取 消</el-button>
-      <el-button @click='httpSave' type='primary'>保 存</el-button>
+      <el-button @click='dialog.show = false'>
+          <i class="fa fa-reply">&nbsp;&nbsp;取&nbsp;消</i>
+      </el-button>
+      <el-button @click='httpSave' type='primary'>
+        <i class="fa fa-floppy-o">&nbsp;&nbsp;保&nbsp;存</i>
+      </el-button>
     </span>
   </el-dialog>
   <!-- # Dialog show -->
