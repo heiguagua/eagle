@@ -39,7 +39,7 @@
       <ul class='case-list'>
         <li v-for='(item, index) in list' :key='index'>
           <hsc-menu-style-white>
-            <hsc-menu-context-menu>
+            <hsc-menu-context-menu class='context-menu'>
               <table>
                 <caption>
                   <i class='fa fa-briefcase'>&nbsp;&nbsp;{{item.title}}</i>
@@ -63,16 +63,22 @@
               </table>
               <template slot="contextmenu">
                 <hsc-menu-item label="案件操作">
-                  <hsc-menu-item label="修改" />
-                  <hsc-menu-item label="删除" />
+                  <hsc-menu-item label="修改"></hsc-menu-item>
+                  <hsc-menu-item label="删除"></hsc-menu-item>
                 </hsc-menu-item>
-                <hsc-menu-item label="庭审笔录" @click="test(item.case_no)" />
+                <router-link to="judge">
+                  <hsc-menu-item label="庭审笔录"></hsc-menu-item>
+                </router-link>
                 <hsc-menu-item label="裁判文书">
-                  <router-link to="judge">
+                  <router-link to="trial">
                     <hsc-menu-item label="查看"></hsc-menu-item>
                   </router-link>
-                  <hsc-menu-item label="修改" />
-                  <hsc-menu-item label="重做" />
+                  <router-link to="trial">
+                    <hsc-menu-item label="修改"></hsc-menu-item>
+                  </router-link>
+                  <router-link to="trial">
+                    <hsc-menu-item label="重做"></hsc-menu-item>
+                  </router-link>
                 </hsc-menu-item>
               </template>
             </hsc-menu-context-menu>

@@ -23,6 +23,7 @@
     height: 100%;
     margin-left: 299px;
     background: $color-white;
+    @import 'style.context.menu';
     >header {
       margin: 0;
       z-index: 99;
@@ -99,12 +100,5 @@
       }
     }
   }
-  .dialog-add-case {
-    .dialog-form {
-      margin: 0 50px 0 20px;
-      * {
-        width: 100%;
-      }
-    }
-  }
+  @import 'style.dialog';
 }
