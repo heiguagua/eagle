@@ -10,6 +10,7 @@
   "author": "Hank",
   "license": "MIT",
   "dependencies": {
+    "@hscmap/vue-menu": "^1.2.1",
     "axios": "^0.16.2",
     "element-ui": "^1.4.7",
     "font-awesome": "^4.7.0",

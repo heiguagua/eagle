@@ -11,6 +11,7 @@ import 'font-awesome/css/font-awesome.css';
 // ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
+import * as VueMenu from '@hscmap/vue-menu';
 // util
 import Http from './common/scripts/http.js';
 import Auth from './common/scripts/auth.js';
@@ -21,6 +22,7 @@ import Routers from './router.js';
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.use(ElementUI);
+Vue.use(VueMenu);
 
 /** Routers */
 const router = new VueRouter(Routers)
