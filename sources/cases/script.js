@@ -59,32 +59,32 @@ export default {
           accuser: [{
             required: true,
             message: '请输入原告信息',
-            trigger: 'blur'
+            trigger: 'change'
           }],
           accused: [{
             required: true,
             message: '请输入被告信息',
-            trigger: 'blur'
+            trigger: 'change'
           }],
           code: [{
             required: true,
             message: '请输入案号信息',
-            trigger: 'blur'
+            trigger: 'change'
           }],
           reason: [{
             required: true,
             message: '请输入案由信息',
-            trigger: 'blur'
+            trigger: 'change'
           }],
           process: [{
             required: true,
             message: '请选择适用程序',
-            trigger: 'blur'
+            trigger: 'change'
           }],
           date: [{
             required: true,
             message: '请选择受理日期',
-            trigger: 'blur'
+            trigger: 'change'
           }]
         }
       }

@@ -34,6 +34,8 @@
       .button {
         display: inline-block;
         margin-left: 20px;
+        position: relative;
+        bottom: -2px;
       }
       .pagination {
         float: right;
@@ -99,7 +101,7 @@
   }
   .dialog-add-case {
     .dialog-form {
-      margin-right: 40px;
+      margin: 0 50px 0 20px;
       * {
         width: 100%;
       }
