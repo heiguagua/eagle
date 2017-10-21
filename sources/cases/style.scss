@@ -30,7 +30,7 @@
       width: 100%;
       line-height: 55px;
       background: $color-white;
-      border: 1px solid $color-gray;
+      border-bottom: 1px solid $color-gray;
       .button {
         display: inline-block;
         margin-left: 20px;
@@ -56,7 +56,7 @@
       ul.case-list {
         width: 100%;
         margin: 0;
-        padding-left: 1px;
+        padding: 0;
         list-style-type: none;
         font-size: 13px;
         color: #48576a;
@@ -74,13 +74,13 @@
               background: $color-white;
               width: 100%;
               i {
-                text-indent: 18px;
+                text-indent: 20px;
               }
             }
             tr {
               td {
                 line-height: 23px;
-                padding-left: 15px;
+                padding-left: 18px;
               }
               td:nth-child(1) {
                 width: 35%;
