@@ -40,29 +40,27 @@
         <li v-for='(item, index) in list' :key='index'>
           <hsc-menu-style-white>
             <hsc-menu-context-menu>
-              <div class="box">
-                <table>
-                  <caption>
-                    <i class='fa fa-briefcase'>&nbsp;{{item.title}}</i>
-                  </caption>
-                  <tr>
-                    <td>原告：{{item.accuser}}
-                    </td>
-                    <td>被告：{{item.defendant}}
-                    </td>
-                    <td>案由：{{item.case_brief}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>案号： {{item.case_no}}
-                    </td>
-                    <td>开庭：{{item.court_open_date}}
-                    </td>
-                    <td>审限：{{item.judge_interval}}
-                    </td>
-                  </tr>
-                </table>
-              </div>
+              <table>
+                <caption>
+                  <i class='fa fa-briefcase'>&nbsp;&nbsp;{{item.title}}</i>
+                </caption>
+                <tr>
+                  <td>原告：{{item.accuser}}
+                  </td>
+                  <td>被告：{{item.defendant}}
+                  </td>
+                  <td>案由：{{item.case_brief}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>案号： {{item.case_no}}
+                  </td>
+                  <td>开庭：{{item.court_open_date}}
+                  </td>
+                  <td>审限：{{item.judge_interval}}
+                  </td>
+                </tr>
+              </table>
               <template slot="contextmenu">
                 <hsc-menu-item label="案件操作">
                   <hsc-menu-item label="修改" />
@@ -117,7 +115,7 @@
     </div>
     <span slot='footer' class='dialog-footer'>
       <el-button @click='dialog.show = false'>
-          <i class="fa fa-reply">&nbsp;&nbsp;取&nbsp;消</i>
+        <i class="fa fa-reply">&nbsp;&nbsp;取&nbsp;消</i>
       </el-button>
       <el-button @click='httpSave' type='primary'>
         <i class="fa fa-floppy-o">&nbsp;&nbsp;保&nbsp;存</i>
