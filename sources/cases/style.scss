@@ -19,11 +19,11 @@
       }
     }
   }
-  article.list {
+  article.cases {
     height: 100%;
-    margin-left: 300px;
+    margin-left: 299px;
     background: $color-white;
-    h1 {
+    >header {
       margin: 0;
       z-index: 999;
       position: fixed;
@@ -36,30 +36,52 @@
         margin-left: 20px;
       }
       .pagination {
+        float: right;
         display: inline-block;
         position: relative;
-        float: right;
         top: 18px;
         margin-right: 320px;
       }
     }
-    section.tables {
+    >section {
       position: relative;
-      top: 68px;
+      top: 90px;
       z-index: 0;
       .el-collapse {
         border-bottom: 0 !important;
       }
-      table {
+      * {
         width: 100%;
-        td:nth-child(1) {
-          width: 35%;
-        }
-        td:nth-child(2) {
-          width: 35%;
-        }
-        td:nth-child(3) {
-          width: 30%;
+      }
+      ul.case-list {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 13px;
+        color: #48576a;
+        li {
+          &:hover {
+            background: $color-gray;
+          }
+          table {
+            border-bottom: 1px solid $color-gray-light;
+            caption {
+              text-align: left;
+              border-bottom: 1px solid $color-gray-light;
+            }
+            tr {
+              td:nth-child(1) {
+                width: 35%;
+              }
+              td:nth-child(2) {
+                width: 35%;
+              }
+              td:nth-child(3) {
+                width: 30%;
+              }
+            }
+          }
         }
       }
     }

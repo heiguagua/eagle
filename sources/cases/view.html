@@ -21,8 +21,8 @@
       </div>
     </el-form>
   </aside>
-  <article class='list'>
-    <h1>
+  <article class='cases'>
+    <header>
       <div class='button'>
         <el-button @click='dialog.show = true' type='primary'>
           <i class='fa fa-briefcase'>&nbsp;录入案件</i>
@@ -33,33 +33,55 @@
           :page-size='search.size' layout='total, sizes, prev, pager, next, jumper' :total='search.total'>
         </el-pagination>
       </div>
-    </h1>
-    <section class='tables'>
-      <el-collapse v-for='(item, index) in list' :key='index' :value='index'>
-        <el-collapse-item :name='index'>
-          <template slot='title'>
-            <b>{{item.title}}</b>
-          </template>
-          <table>
-            <tr>
-              <td>原告：{{item.accuser}}
-              </td>
-              <td>被告：{{item.defendant}}
-              </td>
-              <td>案由：{{item.case_brief}}
-              </td>
-            </tr>
-            <tr>
-              <td>案号： {{item.case_no}}
-              </td>
-              <td>开庭：{{item.court_open_date}}
-              </td>
-              <td>审限：{{item.judge_interval}}
-              </td>
-            </tr>
-          </table>
-        </el-collapse-item>
-      </el-collapse>
+    </header>
+    <section>
+      <!-- list case -->
+      <ul class='case-list'>
+        <li v-for='(item, index) in list' :key='index'>
+          <hsc-menu-style-white>
+            <hsc-menu-context-menu>
+              <div class="box">
+                <table>
+                  <caption>
+                    <i class='fa fa-briefcase'>&nbsp;{{item.title}}</i>
+                  </caption>
+                  <tr>
+                    <td>原告：{{item.accuser}}
+                    </td>
+                    <td>被告：{{item.defendant}}
+                    </td>
+                    <td>案由：{{item.case_brief}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>案号： {{item.case_no}}
+                    </td>
+                    <td>开庭：{{item.court_open_date}}
+                    </td>
+                    <td>审限：{{item.judge_interval}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <template slot="contextmenu">
+                <hsc-menu-item label="案件操作">
+                  <hsc-menu-item label="修改" />
+                  <hsc-menu-item label="删除" />
+                </hsc-menu-item>
+                <hsc-menu-item label="庭审笔录" @click="test(item.case_no)" />
+                <hsc-menu-item label="裁判文书">
+                  <router-link to="judge">
+                    <hsc-menu-item label="查看"></hsc-menu-item>
+                  </router-link>
+                  <hsc-menu-item label="修改" />
+                  <hsc-menu-item label="重做" />
+                </hsc-menu-item>
+              </template>
+            </hsc-menu-context-menu>
+          </hsc-menu-style-white>
+        </li>
+      </ul>
+      <!-- # list case -->
     </section>
   </article>
   <!-- Dialog show -->
