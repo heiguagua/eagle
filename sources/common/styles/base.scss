@@ -1,3 +1,4 @@
+@import 'color';
 // global
 .fill {
   width: 100%;
@@ -25,23 +26,6 @@
 
 .border-clean {
   border: none;
-}
-
-// font-size
-.font-size-xs {
-  font-size: 16px;
-}
-
-.font-size-sm {
-  font-size: 16px;
-}
-
-.font-size-md {
-  font-size: 16px;
-}
-
-.font-size-lg {
-  font-size: 16px;
 }
 
 // font-weight
@@ -108,4 +92,114 @@
 
 .overflow-scroll {
   overflow: scroll;
+}
+
+// font-size
+.font-size-larger {
+  font-size: 20px;
+}
+
+.font-size-large {
+  font-size: 18px;
+}
+
+.font-size-medium {
+  font-size: 16px;
+}
+
+.font-size-small {
+  font-size: 14px;
+}
+
+.font-size-smaller {
+  font-size: 13px;
+}
+
+.font-size-tiny {
+  font-size: 12px;
+}
+
+// color
+.color-blue {
+  color: $color-blue;
+}
+
+.color-blue-light {
+  color: $color-blue-light;
+}
+
+.color-blue-dark {
+  color: $color-blue-dark;
+}
+
+.color-pink {
+  color: $color-pink;
+}
+
+.color-cyan {
+  color: $color-cyan;
+}
+
+.color-black {
+  color: $color-black;
+}
+
+.color-black-light {
+  color: $color-black-light;
+}
+
+.color-black-light-extra {
+  color: $color-black-light-extra;
+}
+
+.color-silver {
+  color: $color-silver;
+}
+
+.color-silver-light {
+  color: $color-silver-light;
+}
+
+.color-silver-light-extra {
+  color: $color-silver-light-extra;
+}
+
+.color-gray {
+  color: $color-gray;
+}
+
+.color-gray-light {
+  color: $color-gray-light;
+}
+
+.color-gray-light-extra {
+  color: $color-gray-light-extra;
+}
+
+.color-white {
+  color: $color-white;
+}
+
+.color-white-dark {
+  color: $color-white-dark;
+}
+
+.color-red {
+  color: $color-red;
+}
+
+.color-primary {
+  color: $color-primary;
+}
+
+.color-success {
+  color: $color-success;
+}
+
+.color-warning {
+  color: $color-warning;
+}
+
+.color-danger {
+  color: $color-danger;
 }
