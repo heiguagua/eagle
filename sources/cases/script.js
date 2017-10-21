@@ -54,6 +54,38 @@ export default {
               picker.$emit('pick', date);
             }
           }]
+        },
+        validator: {
+          accuser: [{
+            required: true,
+            message: '请输入原告信息',
+            trigger: 'blur'
+          }],
+          accused: [{
+            required: true,
+            message: '请输入被告信息',
+            trigger: 'blur'
+          }],
+          code: [{
+            required: true,
+            message: '请输入案号信息',
+            trigger: 'blur'
+          }],
+          reason: [{
+            required: true,
+            message: '请输入案由信息',
+            trigger: 'blur'
+          }],
+          process: [{
+            required: true,
+            message: '请选择适用程序',
+            trigger: 'blur'
+          }],
+          date: [{
+            required: true,
+            message: '请选择受理日期',
+            trigger: 'blur'
+          }]
         }
       }
     }
@@ -64,18 +96,18 @@ export default {
       const vm = this;
       if (currentPage && typeof currentPage === 'number') {
         vm.search.current = currentPage;
-        vm.httpGet();
+        vm.httpSearch();
       }
     },
     changePageSize(size) {
       const vm = this;
       if (size && typeof size === 'number') {
         vm.search.size = size;
-        vm.httpGet();
+        vm.httpSearch();
       }
     },
     // http
-    httpGet() {
+    httpSearch() {
       const vm = this;
       Http.fetch({
           method: 'GET',
@@ -95,7 +127,7 @@ export default {
             vm.list = data.body;
             vm.search.total = data.head.total;
             vm.$message({
-              message: data.head.message || 'search!'
+              message: data.head.message || '查询完成！'
             });
           }
         })
@@ -122,9 +154,9 @@ export default {
         .then(function (result) {
           const data = result.data;
           if (Http.protocol(data, 200)) {
-            vm.httpGet();
+            vm.httpSearch();
             vm.$message({
-              message: data.head.message
+              message: data.head.message || '保存完成！'
             });
           }
         })
@@ -132,6 +164,6 @@ export default {
   },
   mounted() {
     const vm = this;
-    vm.httpGet();
+    vm.httpSearch();
   }
 };
