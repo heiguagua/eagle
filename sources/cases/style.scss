@@ -7,9 +7,9 @@
     background: $color-gray;
     position: fixed;
     form {
-      padding: 20px;
-      >* {
-        margin-bottom: 25px;
+      margin-top: 20px;
+      padding: 0 20px;
+      * {
         &:first-child {
           width: 100%;
         }
@@ -61,6 +61,14 @@
         td:nth-child(3) {
           width: 30%;
         }
+      }
+    }
+  }
+  .dialog-add-case {
+    .dialog-form {
+      margin-right: 40px;
+      * {
+        width: 100%;
       }
     }
   }

@@ -1,57 +1,61 @@
 <div id='cases'>
   <aside class='search'>
-    <form>
-      <el-select v-model='search.status' placeholder='案件状态'>
-        <el-option v-for='item in options' :key='item.value' :label='item.label' :value='item.value'>
-        </el-option>
-      </el-select>
-      <el-input v-model='search.reason' placeholder='请输入案由'></el-input>
-      <el-input v-model='search.number' placeholder='请输入案号'></el-input>
-      <el-input v-model='search.name' placeholder='当事人名称'></el-input>
+    <el-form label-position='top' label-width='80px' :model='dialog.case'>
+      <el-form-item label='案件状态'>
+        <el-select v-model='search.status' placeholder='请选择案件状态'>
+          <el-option v-for='item in options' :key='item.value' :label='item.label' :value='item.value'>
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label='案件理由'>
+        <el-input v-model='search.reason' placeholder='请输入案由'></el-input>
+      </el-form-item>
+      <el-form-item label='案件号码'>
+        <el-input v-model='search.code' placeholder='请输入案号'></el-input>
+      </el-form-item>
+      <el-form-item label='案件名称'>
+        <el-input v-model='search.name' placeholder='当事人名称'></el-input>
+      </el-form-item>
       <div class='operation'>
-        <el-button @click='httpGet' type='primary' icon='search'>查询案件</el-button>
+        <el-button @click='httpGet' type='info' :plain='true' icon='search'>查询案件</el-button>
       </div>
-    </form>
+    </el-form>
   </aside>
   <article class='list'>
     <h1>
-      <div class="button">
-        <el-button type='info' :plain="true" icon='upload'>录入案件</el-button>
+      <div class='button'>
+        <el-button @click='dialog.show = true' type='primary'>
+          <i class='fa fa-briefcase'>&nbsp;录入案件</i>
+        </el-button>
       </div>
-      <div class="pagination">
-        <el-pagination @size-change="changePageSize" @current-change="changeCurrentPage" :current-page="search.current" :page-sizes="[5, 10, 20, 30, 40, 50]"
-          :page-size="search.size" layout="total, sizes, prev, pager, next, jumper" :total="search.total">
+      <div class='pagination'>
+        <el-pagination @size-change='changePageSize' @current-change='changeCurrentPage' :current-page='search.current' :page-sizes='[5, 10, 20, 30, 40, 50]'
+          :page-size='search.size' layout='total, sizes, prev, pager, next, jumper' :total='search.total'>
         </el-pagination>
       </div>
     </h1>
     <section class='tables'>
-      <el-collapse v-for='(item, index) in list' :key="index" :value="index">
+      <el-collapse v-for='(item, index) in list' :key='index' :value='index'>
         <el-collapse-item :name='index'>
-          <template slot="title">
-            <i class="fa fa-briefcase"></i>
-            {{item.title}}
+          <template slot='title'>
+            <!-- <i class='fa fa-briefcase'></i> -->
+            <b>{{item.title}}</b>
           </template>
           <table>
             <tr>
-              <td>原告：
-                <em>{{item.accuser}}</em>
+              <td>原告：{{item.accuser}}
               </td>
-              <td>被告：
-                <em>{{item.defendant}}</em>
+              <td>被告：{{item.defendant}}
               </td>
-              <td>案由：
-                <em>{{item.case_brief}}</em>
+              <td>案由：{{item.case_brief}}
               </td>
             </tr>
             <tr>
-              <td>案号：
-                <em>{{item.case_no}}</em>
+              <td>案号： {{item.case_no}}
               </td>
-              <td>开庭：
-                <em>{{item.court_open_date}}</em>
+              <td>开庭：{{item.court_open_date}}
               </td>
-              <td>审限：
-                <em>{{item.judge_interval}}</em>
+              <td>审限：{{item.judge_interval}}
               </td>
             </tr>
           </table>
@@ -59,4 +63,41 @@
       </el-collapse>
     </section>
   </article>
+  <!-- Dialog show -->
+  <el-dialog class='dialog-add-case' :visible.sync='dialog.show' size='tiny'>
+    <span slot='title' class='dialog-footer'>
+      <i class='fa fa-briefcase'>&nbsp;录入案件</i>
+    </span>
+    <div class='dialog-form'>
+      <el-form label-position='right' label-width='80px' :model='dialog.case'>
+        <el-form-item label='原告'>
+          <el-input placeholder='请输入原告信息' v-model='dialog.case.accuser'></el-input>
+        </el-form-item>
+        <el-form-item label='被告'>
+          <el-input placeholder='请输入被告信息' v-model='dialog.case.accused'></el-input>
+        </el-form-item>
+        <el-form-item label='案号'>
+          <el-input placeholder='请输入案号信息' v-model='dialog.case.code'></el-input>
+        </el-form-item>
+        <el-form-item label='案由'>
+          <el-input placeholder='请输入案由信息' v-model='dialog.case.reason'></el-input>
+        </el-form-item>
+        <el-form-item label='适用程序'>
+          <el-select placeholder='请选择适用程序' v-model='dialog.case.process'>
+            <el-option v-for='option in dialog.options' :key='option.value' :label='option.label' :value='option.value'>
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label='受理日期'>
+          <el-date-picker placeholder='请选择受理日期' v-model='dialog.case.date' align='left' type='date' :picker-options='dialog.dataPickder'>
+          </el-date-picker>
+        </el-form-item>
+      </el-form>
+    </div>
+    <span slot='footer' class='dialog-footer'>
+      <el-button @click='dialog.show = false'>取 消</el-button>
+      <el-button @click='httpSave' type='primary'>保 存</el-button>
+    </span>
+  </el-dialog>
+  <!-- # Dialog show -->
 </div>
