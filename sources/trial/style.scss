@@ -1,8 +1,35 @@
 @import '../common/styles/color';
 #trial {
+  display: flex !important;
+  flex-direction: row;
   nav.menu {
-    width: 298px;
+    flex: 0 0 300px;
+    height: 100%;
+    background: $color-gray-light-extra;
   }
-  article.main {}
-  aside.helper {}
+  article.main {
+    height: 100%;
+    flex: 0 0 900px;
+    border-right: 1px solid $color-gray-light;
+    border-left: 1px solid $color-gray-light;
+    overflow-y: auto;
+    header.tools {
+      border-bottom: 1px solid $color-gray-light;
+      line-height: 60px;
+      position: fixed;
+      background: $color-white-dark;
+      text-indent: 30px;
+      width: 900px;
+    }
+    [contenteditable] {
+      outline: none;
+    }
+    article.document {
+      padding: 60px 50px;
+    }
+  }
+  aside.helper {
+    flex: 100%;
+    height: 100%;
+  }
 }
