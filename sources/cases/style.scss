@@ -1,14 +1,13 @@
 @import '../common/styles/color';
 #cases {
+  display: flex !important;
+  flex-direction: row;
   aside.search {
-    width: 300px; // 相对宽度
+    flex: 350px;
     height: 100%;
-    float: left;
     background: $color-gray;
-    position: fixed;
     form {
-      margin-top: 20px;
-      padding: 0 20px;
+      padding: 20px;
       * {
         &:first-child {
           width: 100%;
@@ -20,36 +19,34 @@
     }
   }
   article.cases {
+    flex: 100%;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    margin-left: 299px;
     background: $color-white;
     @import 'style.context.menu';
     >header {
       margin: 0;
-      z-index: 99;
-      position: fixed;
       width: 100%;
-      line-height: 55px;
+      line-height: 60px;
       background: $color-white;
       border-bottom: 1px solid $color-gray;
       .button {
         display: inline-block;
         margin-left: 20px;
-        position: relative;
-        bottom: -2px;
       }
       .pagination {
         float: right;
         display: inline-block;
         position: relative;
         top: 13px;
-        margin-right: 320px;
+        margin-right: 20px;
       }
     }
     >section {
-      position: relative;
-      top: 61px;
-      z-index: 0;
+      flex: 100%;
+      margin-top: 3px;
+      overflow-y: auto;
       .el-collapse {
         border-bottom: 0 !important;
       }
