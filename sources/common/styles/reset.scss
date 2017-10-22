@@ -18,10 +18,6 @@ html {
     background: $color-white-dark;
     #app {
       @extend .reset;
-      .router {
-        margin-top: 60px;
-        @extend .reset;
-      }
     }
   }
 }
