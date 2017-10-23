@@ -1,5 +1,9 @@
 import Http from '../common/scripts/http.js';
 import Encrypt from '../common/scripts/encrypt.js';
+import {
+  message
+} from '../common/scripts/helper';
+
 export default {
   data() {
     return {
@@ -21,19 +25,11 @@ export default {
         .then(function (result) {
           const data = result.data;
           if (Http.protocol(data, 200)) {
+            message(vm, 'info', data.head.message);
             return data
           } else {
-            vm.$message({
-              type: 'warning',
-              message: data.head.message
-            });
+            message(vm, 'warning', data.head.message);
           }
-        })
-        .then(function (data) {
-          vm.$message({
-            message: data.head.message
-          });
-          return data;
         })
         .then(function (data) {
           Encrypt.token.set(data.head.token);
