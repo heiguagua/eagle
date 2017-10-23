@@ -4,14 +4,14 @@
       法官智能助理
     </div>
     <nav class='navigator'>
-      <el-menu theme='dark' mode='horizontal' :router='true'>
+      <el-menu theme='dark' mode='horizontal' :router='false'>
         <el-menu-item index='cases'>
           <i class="fa fa-database">&nbsp;案件信息</i>
         </el-menu-item>
-        <el-menu-item>
+        <el-menu-item index='ocr'>
           <i class="fa fa-camera">&nbsp;OCR识别</i>
         </el-menu-item>
-        <el-submenu>
+        <el-submenu index='template'>
           <template slot='title'>
             <i class="fa fa-book">&nbsp;模板管理</i>
           </template>
@@ -25,10 +25,10 @@
             庭审笔录
           </el-menu-item>
         </el-submenu>
-        <el-menu-item>
+        <el-menu-item index='calculator'>
           <i class="fa fa-calculator">&nbsp;费用计算</i>
         </el-menu-item>
-        <el-menu-item index='repository'>
+        <el-menu-item index='repository' :route="{path: 'repository'}">
           <i class="fa fa-paste">&nbsp;案例参照</i>
         </el-menu-item>
       </el-menu>
