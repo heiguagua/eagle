@@ -3,15 +3,15 @@ import Encrypt from '../common/scripts/encrypt';
 export default {
   data() {
     return {
-      search: ''
+      keyword: ''
     }
   },
   methods: {
-    onSearch() {
-      console.log('on Search!');
+    search() {
+      console.log('search!');
     },
     logout() {
-      console.log('test');
+      console.log('logout');
     }
   }
 };
