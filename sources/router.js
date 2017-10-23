@@ -42,6 +42,12 @@ export default {
         auth: true
       },
       component: resolve => require(['./demo/index.vue'], resolve)
+    }, {
+      path: 'repository',
+      meta: {
+        auth: true
+      },
+      component: resolve => require(['./repository/index.vue'], resolve)
     }]
   }]
 }
