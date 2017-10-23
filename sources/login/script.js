@@ -12,7 +12,7 @@ export default {
     }
   },
   methods: {
-    onLogin() {
+    login() {
       const vm = this;
       Http.fetch({
           method: 'post',
@@ -25,6 +25,7 @@ export default {
         .then(function (result) {
           const data = result.data;
           if (Http.protocol(data, 200)) {
+            Encrypt.token.set(data.head.token); // Set token
             message(vm, 'info', data.head.message);
             return data
           } else {
@@ -32,15 +33,11 @@ export default {
           }
         })
         .then(function (data) {
-          Encrypt.token.set(data.head.token);
-          return data;
-        })
-        .then(function (data) {
           vm.$router.push('/layout/cases');
         });
     },
     onEnter() {
-      this.onLogin();
+      this.login();
     }
   }
 };

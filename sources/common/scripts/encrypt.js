@@ -11,7 +11,7 @@ export default {
       const token = sessionStorage.getItem('token')
       return token ? token : undefined;
     },
-    empty() {
+    remove() {
       sessionStorage.removeItem('token');
     }
   },

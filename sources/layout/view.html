@@ -34,24 +34,24 @@
       </el-menu>
     </nav>
     <div class='tool'>
-      <el-input placeholder='similar' icon='search' v-model='keyword' :on-icon-click='search'>
+      <el-input placeholder='查询相似案例' icon='search' v-model='keyword' :on-icon-click='search'>
       </el-input>
-      <el-dropdown>
+      <el-dropdown @command='logout'>
         <span class='el-dropdown-link'>
           <i class="fa fa-user-o"></i>
           用户
           <i class='el-icon-caret-bottom el-icon--right'></i>
         </span>
         <el-dropdown-menu slot='dropdown'>
-          <el-dropdown-item class='font-size-small color-black'>
+          <el-dropdown-item command='update' class='font-size-small color-black'>
             <i class="fa fa-key"></i>
             修改密码
           </el-dropdown-item>
-          <el-dropdown-item class='font-size-small color-black' divided>
+          <el-dropdown-item command='feedback' class='font-size-small color-black' divided>
             <i class="fa fa-comment"></i>
             提交反馈
           </el-dropdown-item>
-          <el-dropdown-item @click='logout()' class='font-size-small color-black' divided>
+          <el-dropdown-item command='quit' class='font-size-small color-black' divided>
             <i class="fa fa-sign-out"></i>
             退出
           </el-dropdown-item>

@@ -10,8 +10,21 @@ export default {
     search() {
       console.log('search!');
     },
-    logout() {
-      console.log('logout');
+    logout(command) {
+      const vm = this;
+      if (command)
+        switch (command) {
+          case 'update':
+            // 修改密码
+            break;
+          case 'feedback':
+            // 提交反馈
+            break;
+          case 'quit':
+            Encrypt.token.remove(); // Remove token
+            vm.$router.push('/login');
+            break;
+        }
     }
   }
 };
