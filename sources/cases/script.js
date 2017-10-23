@@ -1,5 +1,10 @@
 import Http from '../common/scripts/http.js';
-import Encrypt from '../common/scripts/encrypt.js';
+import Encrypt from '../common/scripts/encrypt';
+import UtilCases from './script.util';
+import {
+  message
+} from '../common/scripts/helper';
+
 export default {
   data() {
     return {
@@ -90,6 +95,9 @@ export default {
       }
     }
   },
+  computed: {
+
+  },
   methods: {
     // pagination
     changeCurrentPage(currentPage) {
@@ -109,61 +117,55 @@ export default {
     // http
     httpSearch() {
       const vm = this;
-      Http.fetch({
-          method: 'GET',
-          url: Http.url.master + '/legal_case/list',
-          params: {
-            current: vm.search.current,
-            pageSize: vm.search.size,
-            closure_flag: vm.search.status,
-            case_brief: vm.search.reason,
-            case_no: vm.search.code,
-            parties: vm.search.name,
-          }
+      UtilCases.query({
+          current: vm.search.current,
+          pageSize: vm.search.size,
+          closure_flag: vm.search.status,
+          case_brief: vm.search.reason,
+          case_no: vm.search.code,
+          parties: vm.search.name,
         })
-        .then(function (result) {
+        .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200)) {
             vm.list = data.body;
             vm.search.total = data.head.total;
-            vm.$message({
-              message: data.head.message || '查询完成！'
-            });
+            message(vm, 'info', data.head.message);
+          } else {
+            message(vm, 'warning', data.head.message);
           }
         })
     },
     httpSave() {
       const vm = this;
       vm.dialog.show = false;
-      Http.fetch({
-          method: 'POST',
-          url: Http.url.master + '/legal_case/store',
-          data: {
-            accuser: vm.dialog.case.accuser,
-            defendant: vm.dialog.case.accused,
-            case_no: vm.dialog.case.code,
-            case_brief: vm.dialog.case.reason,
-            trial_term: vm.dialog.case.test,
-            hearing_procedure: vm.dialog.process,
-            accepted_date: vm.dialog.case.date,
-            category: '民事一审',
-            doc_type: '民事判决书',
-            court_name: '四川省成都市武侯区人民法院',
-          }
+      UtilCases.create({
+          accuser: vm.dialog.case.accuser,
+          defendant: vm.dialog.case.accused,
+          case_no: vm.dialog.case.code,
+          case_brief: vm.dialog.case.reason,
+          hearing_procedure: vm.dialog.process,
+          accepted_date: vm.dialog.case.date,
+          category: '民事一审',
+          doc_type: '民事判决书',
+          court_name: '四川省成都市武侯区人民法院',
         })
-        .then(function (result) {
+        .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200)) {
             vm.httpSearch();
-            vm.$message({
-              message: data.head.message || '保存完成！'
-            });
           }
         })
     }
   },
   mounted() {
     const vm = this;
-    vm.httpSearch();
+    // init cases list
+    UtilCases.query()
+      .then((result) => {
+        const data = result.data;
+        vm.list = data.body;
+        vm.search.total = data.head.total;
+      })
   }
 };
