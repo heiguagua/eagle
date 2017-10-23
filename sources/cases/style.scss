@@ -28,12 +28,14 @@
     >header {
       margin: 0;
       width: 100%;
-      line-height: 60px;
+      line-height: 50px;
       background: $color-white;
       border-bottom: 1px solid $color-gray;
       .button {
         display: inline-block;
         margin-left: 20px;
+        position: relative;
+        top: 2px;
       }
       .pagination {
         float: right;

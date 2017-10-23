@@ -4,10 +4,10 @@
       <h1>法官智能助理</h1>
     </header>
     <section>
-      <form>
-        <input v-model='loginName' type='text' autofocus autocomplete placeholder='请输入用户名'>
+      <form @keyup.enter="onEnter">
+        <input v-model='username' type='text' autofocus autocomplete placeholder='请输入用户名'>
         <input v-model='password' type='password' placeholder='请输入密码'>
-        <button @click='onSubmit()' type='button'>
+        <button @click='onLogin()' type='button'>
           登&nbsp;录&nbsp;
           <i class="fa fa-gavel"></i>
         </button>

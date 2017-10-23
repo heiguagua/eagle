@@ -3,19 +3,18 @@ import Encrypt from '../common/scripts/encrypt.js';
 export default {
   data() {
     return {
-      loginName: '',
+      username: '',
       password: ''
     }
   },
   methods: {
-    onSubmit() {
+    onLogin() {
       const vm = this;
-      console.info(Http.url.master)
       Http.fetch({
           method: 'post',
           url: Http.url.master + '/login',
           data: {
-            loginName: vm.loginName,
+            loginName: vm.username,
             password: Encrypt.md5(vm.password)
           }
         })
@@ -23,6 +22,11 @@ export default {
           const data = result.data;
           if (Http.protocol(data, 200)) {
             return data
+          } else {
+            vm.$message({
+              type: 'warning',
+              message: data.head.message
+            });
           }
         })
         .then(function (data) {
@@ -38,6 +42,9 @@ export default {
         .then(function (data) {
           vm.$router.push('/layout/cases');
         });
+    },
+    onEnter() {
+      this.onLogin();
     }
   }
 };

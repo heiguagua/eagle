@@ -7,7 +7,7 @@
   header {
     display: block;
     width: 100%;
-    flex: 60px;
+    flex: 40px;
     background-color: $color-black-light;
     .logo {
       float: left;
@@ -33,7 +33,7 @@
       right: 0;
       top: 12px;
       height: 36px;
-      min-width: 325px;
+      min-width: 335px;
       .el-select {
         width: 100px;
       }
@@ -41,7 +41,7 @@
         max-width: 13rem;
       }
       .el-dropdown {
-        margin-left: 20px;
+        margin-left: 30px;
         color: $color-gray;
       }
     }
