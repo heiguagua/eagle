@@ -15,8 +15,8 @@ import * as VueMenu from '@hscmap/vue-menu';
 // util
 import Http from './common/scripts/http.js';
 import Auth from './common/scripts/auth.js';
-import States from './common/scripts/store.js';
 import Routers from './router.js';
+import States from './store.js';
 
 /** Plugins */
 Vue.use(Vuex);
