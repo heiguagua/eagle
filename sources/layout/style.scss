@@ -7,7 +7,8 @@
   header {
     display: block;
     width: 100%;
-    flex: 40px;
+    flex: auto;
+    height: 60px;
     background-color: $color-black-light;
     .logo {
       float: left;
@@ -33,7 +34,7 @@
       right: 0;
       top: 12px;
       height: 36px;
-      min-width: 335px;
+      min-width: 330px;
       .el-select {
         width: 100px;
       }
