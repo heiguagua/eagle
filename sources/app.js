@@ -13,10 +13,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 import * as VueMenu from '@hscmap/vue-menu';
 // util
-import Http from './common/scripts/http.js';
-import Auth from './common/scripts/auth.js';
-import Routers from './router.js';
-import States from './store.js';
+import Http from './common/scripts/http';
+import Auth from './common/scripts/auth';
+import Routers from './router';
+import States from './store';
 
 /** Plugins */
 Vue.use(Vuex);

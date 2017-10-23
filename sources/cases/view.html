@@ -3,7 +3,7 @@
     <el-form label-position='top' label-width='80px' :model='dialog.case'>
       <el-form-item label='案件状态'>
         <el-select v-model='search.status' placeholder='请选择案件状态'>
-          <el-option v-for='item in options' :key='item.value' :label='item.label' :value='item.value'>
+          <el-option v-for='option in search.options' :key='option.value' :label='option.label' :value='option.value'>
           </el-option>
         </el-select>
       </el-form-item>
@@ -29,35 +29,35 @@
         </el-button>
       </div>
       <div class='pagination'>
-        <el-pagination @size-change='changePageSize' @current-change='changeCurrentPage' :current-page='search.current' :page-sizes='[5, 10, 20, 30, 40, 50]'
-          :page-size='search.size' layout='total, sizes, prev, pager, next, jumper' :total='search.total'>
+        <el-pagination @size-change='changePageSize' @current-change='changeCurrentPage' :current-page='pagination.current' :page-sizes='[5, 10, 20, 30, 40, 50]'
+          :page-size='pagination.size' layout='total, sizes, prev, pager, next, jumper' :total='pagination.total'>
         </el-pagination>
       </div>
     </header>
     <section>
       <!-- list case -->
       <ul class='case-list'>
-        <li v-for='(item, index) in list' :key='index'>
+        <li v-for='(table, index) in cases' :key='index'>
           <hsc-menu-style-white>
             <hsc-menu-context-menu class='context-menu'>
               <table>
                 <caption>
-                  <i class='fa fa-briefcase'>&nbsp;&nbsp;{{item.title}}</i>
+                  <i class='fa fa-briefcase'>&nbsp;&nbsp;{{table.title}}</i>
                 </caption>
                 <tr>
-                  <td>原告：{{item.accuser}}
+                  <td>原告：{{table.accuser}}
                   </td>
-                  <td>被告：{{item.defendant}}
+                  <td>被告：{{table.defendant}}
                   </td>
-                  <td>案由：{{item.case_brief}}
+                  <td>案由：{{table.case_brief}}
                   </td>
                 </tr>
                 <tr>
-                  <td>案号： {{item.case_no}}
+                  <td>案号： {{table.case_no}}
                   </td>
-                  <td>开庭：{{item.court_open_date}}
+                  <td>开庭：{{table.court_open_date}}
                   </td>
-                  <td>审限：{{item.judge_interval}}
+                  <td>审限：{{table.judge_interval}}
                   </td>
                 </tr>
               </table>

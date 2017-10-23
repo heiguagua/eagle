@@ -18,7 +18,7 @@ export default {
       .then(result => {
         const data = result.data;
         if (Http.protocol(data, 200)) {
-          vm.list = data.body;
+          vm.cases = data.body;
           vm.search.total = data.head.total;
         } else {
           message(vm, 'warning', data.head.message);

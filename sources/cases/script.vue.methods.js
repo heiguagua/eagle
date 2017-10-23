@@ -10,14 +10,14 @@ export default {
   changePageSize(size) {
     const vm = this;
     if (size && typeof size === 'number') {
-      vm.search.size = size;
+      vm.pagination.size = size;
       vm.httpSearch();
     }
   },
   changeCurrentPage(currentPage) {
     const vm = this;
     if (currentPage && typeof currentPage === 'number') {
-      vm.search.current = currentPage;
+      vm.pagination.current = currentPage;
       vm.httpSearch();
     }
   },
@@ -25,8 +25,10 @@ export default {
   httpSearch() {
     const vm = this;
     UtilCases.query({
-        current: vm.search.current,
-        pageSize: vm.search.size,
+        // pagination
+        pageSize: vm.pagination.size,
+        current: vm.pagination.current,
+        // search
         closure_flag: vm.search.status,
         case_brief: vm.search.reason,
         case_no: vm.search.code,
@@ -35,8 +37,8 @@ export default {
       .then(result => {
         const data = result.data;
         if (Http.protocol(data, 200)) {
-          vm.list = data.body;
-          vm.search.total = data.head.total;
+          vm.cases = data.body;
+          vm.pagination.total = data.head.total;
           message(vm, 'info', data.head.message);
         } else {
           message(vm, 'warning', data.head.message);
@@ -64,4 +66,4 @@ export default {
         }
       })
   }
-}
+};

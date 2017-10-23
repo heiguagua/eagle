@@ -1,21 +1,23 @@
 export default {
-  list: [],
+  cases: [],
+  pagination: {
+    current: 1,
+    size: 10,
+    total: 0,
+  },
   search: {
     name: '',
     status: '',
     reason: '',
     code: '',
-    current: 1,
-    size: 10,
-    total: 0,
+    options: [{
+      key: 1,
+      value: '已结案',
+    }, {
+      key: 0,
+      value: '未结案',
+    }],
   },
-  options: [{
-    key: 1,
-    value: '已结案',
-  }, {
-    key: 0,
-    value: '未结案',
-  }],
   dialog: {
     show: false,
     case: {
@@ -84,4 +86,4 @@ export default {
       }]
     }
   }
-}
+};
