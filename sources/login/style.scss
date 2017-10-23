@@ -39,17 +39,20 @@
           border: none;
           background-color: $color-gray-light-extra;
           outline: none;
+          border-radius: 5px;
+          color: $color-black;
         }
         button {
           height: 55px;
-          width: 80px;
-          margin: 11px 16px;
+          width: 85px;
+          margin: 11px 0 11px 16px;
           font-weight: bold;
           color: $color-white;
           font-size: 15px;
           background: $color-red;
           cursor: pointer;
           border-radius: 0 5px 5px 0;
+          padding: 0;
           outline: none;
           border: none;
           &:hover {
