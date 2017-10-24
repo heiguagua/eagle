@@ -22,6 +22,16 @@ html {
   }
 }
 
-.el-collapse {
-  border-left: none !important;
+// patch for right tools of trial
+#trial {
+  .el-collapse {
+    border-left: none !important;
+    .el-collapse-item__content {
+      padding: 0 !important;
+    }
+    .el-table {
+      border: none !important;
+      padding: 0 !important;
+    }
+  }
 }
