@@ -15,21 +15,32 @@
     overflow-y: auto;
     header.tools {
       border-bottom: 1px solid $color-gray-light;
-      line-height: 60px;
+      line-height: 50px;
       position: fixed;
       background: $color-white-dark;
-      text-indent: 30px;
       width: 900px;
+      .left {
+        display: inline-block;
+        position: relative;
+        left: 40px;
+      }
+      .right {
+        float: right;
+        display: inline-block;
+        position: relative;
+        right: 30px;
+      }
     }
     [contenteditable] {
       outline: none;
     }
     article.document {
-      padding: 60px 50px;
+      padding: 40px 50px;
     }
   }
   aside.helper {
     flex: 100%;
     height: 100%;
+    overflow-y: hidden;
   }
 }
