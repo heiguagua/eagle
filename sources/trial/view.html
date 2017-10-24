@@ -81,31 +81,42 @@
     </section>
   </article>
   <aside class='helper'>
-    <div class='trials'>
-      <el-table :data="tableData" border>
-        <el-table-column fixed prop="date" label="日期" width="150">
-        </el-table-column>
-        <el-table-column prop="name" label="姓名" width="120">
-        </el-table-column>
-        <el-table-column prop="province" label="省份" width="120">
-        </el-table-column>
-        <el-table-column prop="city" label="市区" width="120">
-        </el-table-column>
-        <el-table-column prop="address" label="地址" width="300">
-        </el-table-column>
-        <el-table-column prop="zip" label="邮编" width="120">
-        </el-table-column>
-        <el-table-column fixed="right" label="操作" width="137">
-          <template scope="scope">
-            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">编辑</el-button>
-            <el-button type="text" size="small">删除</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
-    <div class="ocr">
-
-    </div>
+    <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse-item name="trials">
+        <template slot="title">
+          庭审笔录列表
+          <i class="header-icon el-icon-information"></i>
+        </template>
+        <el-table :data="tableData" stripe>
+          <el-table-column fixed prop="date" label="日期" width="150">
+          </el-table-column>
+          <el-table-column prop="name" label="姓名" width="120">
+          </el-table-column>
+          <el-table-column prop="province" label="省份" width="120">
+          </el-table-column>
+          <el-table-column prop="city" label="市区" width="120">
+          </el-table-column>
+          <el-table-column prop="address" label="地址" width="300">
+          </el-table-column>
+          <el-table-column prop="zip" label="邮编" width="120">
+          </el-table-column>
+          <el-table-column fixed="right" label="操作" width="137">
+            <template scope="scope">
+              <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+              <el-button type="text" size="small">编辑</el-button>
+              <el-button type="text" size="small">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-collapse-item>
+      <el-collapse-item name="ocr">
+        <template slot="title">
+          OCR材料识别
+          <i class="header-icon el-icon-information"></i>
+        </template>
+        <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+        <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+      </el-collapse-item>
+    </el-collapse>
   </aside>
 </div>

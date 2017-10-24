@@ -14,8 +14,8 @@
     border-left: 1px solid $color-gray-light;
     overflow-y: auto;
     header.tools {
-      border-bottom: 1px solid $color-gray-light;
-      line-height: 50px;
+      border-bottom: 1px solid $color-gray;
+      line-height: 44px;
       position: fixed;
       background: $color-white-dark;
       width: 900px;
@@ -23,6 +23,10 @@
         display: inline-block;
         position: relative;
         left: 40px;
+        button {
+          position: relative;
+          top: -1px;
+        }
       }
       .right {
         float: right;
@@ -30,6 +34,9 @@
         position: relative;
         right: 30px;
       }
+    }
+    article.document {
+      background: url(../assets/editor/paper.png);
     }
     [contenteditable] {
       outline: none;
