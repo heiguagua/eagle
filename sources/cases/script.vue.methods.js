@@ -52,7 +52,7 @@ export default {
         defendant: vm.dialog.case.accused,
         case_no: vm.dialog.case.code,
         case_brief: vm.dialog.case.reason,
-        hearing_procedure: vm.dialog.process,
+        hearing_procedure: vm.dialog.case.process,
         accepted_date: vm.dialog.case.date,
         category: '民事一审',
         doc_type: '民事判决书',
@@ -63,6 +63,9 @@ export default {
         if (Http.protocol(data, 200)) {
           vm.httpSearch();
           vm.dialog.show = false;
+          message(vm, 'info', data.head.message);
+        } else {
+          message(vm, 'warning', data.head.message);
         }
       })
   }
