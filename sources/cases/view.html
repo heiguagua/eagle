@@ -37,27 +37,27 @@
     <section>
       <!-- list case -->
       <ul class='case-list'>
-        <li v-for='(table, index) in cases' :key='index'>
+        <li v-for='(lawCase, index) in cases' :key='index'>
           <hsc-menu-style-white>
             <hsc-menu-context-menu class='context-menu'>
               <table>
                 <caption>
-                  <i class='fa fa-briefcase'>&nbsp;&nbsp;{{table.title}}</i>
+                  <i class='fa fa-briefcase'>&nbsp;&nbsp;{{lawCase.title}}</i>
                 </caption>
                 <tr>
-                  <td>原告：{{table.accuser}}
+                  <td>原告：{{lawCase.accuser}}
                   </td>
-                  <td>被告：{{table.defendant}}
+                  <td>被告：{{lawCase.defendant}}
                   </td>
-                  <td>案由：{{table.case_brief}}
+                  <td>案由：{{lawCase.case_brief}}
                   </td>
                 </tr>
                 <tr>
-                  <td>案号： {{table.case_no}}
+                  <td>案号： {{lawCase.case_no}}
                   </td>
-                  <td>开庭：{{table.court_open_date}}
+                  <td>开庭：{{lawCase.court_open_date}}
                   </td>
-                  <td>审限：{{table.judge_interval}}
+                  <td>审限：{{lawCase.judge_interval}}
                   </td>
                 </tr>
               </table>
@@ -66,17 +66,17 @@
                   <hsc-menu-item label="修改"></hsc-menu-item>
                   <hsc-menu-item label="删除"></hsc-menu-item>
                 </hsc-menu-item>
-                <router-link to="judge">
+                <router-link :to="{path: 'trial', query: lawCase}">
                   <hsc-menu-item label="庭审笔录"></hsc-menu-item>
                 </router-link>
                 <hsc-menu-item label="裁判文书">
-                  <router-link to="trial">
+                  <router-link to="judge">
                     <hsc-menu-item label="查看"></hsc-menu-item>
                   </router-link>
-                  <router-link to="trial">
+                  <router-link to="judge">
                     <hsc-menu-item label="修改"></hsc-menu-item>
                   </router-link>
-                  <router-link to="trial">
+                  <router-link to="judge">
                     <hsc-menu-item label="重做"></hsc-menu-item>
                   </router-link>
                 </hsc-menu-item>
