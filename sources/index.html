@@ -18,9 +18,12 @@
   <script>
     (function (window) {
       window.url = {
-        // master: 'http://171.221.254.8:9510/CourtDecisionSystem',
-        master: 'http://192.168.13.77:8082/dev',
-        socket: 'ws://192.168.13.77:8082/dev/heartbeat'
+        /* Production */
+        // master: 'http://192.168.13.77:8082/dev',
+        // socket: 'ws://192.168.13.77:8082/dev/heartbeat',
+        /* Development */
+        master: 'http://171.221.254.8:38082/dev',
+        socket: 'ws://171.221.254.8:38082/dev/heartbeat',
       }
     })(window);
 
