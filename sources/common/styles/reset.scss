@@ -35,3 +35,9 @@ html {
     }
   }
 }
+
+// patch for icon-arrow's position in menu
+.el-submenu__icon-arrow {
+  position: static !important;
+  margin: 5px 0 5px 15px !important;
+}
