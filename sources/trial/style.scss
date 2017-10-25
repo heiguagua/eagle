@@ -2,33 +2,18 @@
 #trial {
   display: flex !important;
   flex-direction: row;
-  article.main {
+  #trial-navbar {
+    flex: auto;
+    height: 100%;
+  }
+  #trial-sidebar {
+    flex: 100%;
+    height: 100%;
+    overflow-y: hidden;
+  }
+  #trial-editor {
     height: 100%;
     flex: 0 0 900px;
-    border-right: 1px solid $color-gray-light;
-    border-left: 1px solid $color-gray-light;
     overflow-y: auto;
-    header.tools {
-      border-bottom: 1px solid $color-gray;
-      line-height: 44px;
-      position: fixed;
-      background: $color-white-dark;
-      width: 900px;
-      .left {
-        display: inline-block;
-        position: relative;
-        left: 40px;
-        button {
-          position: relative;
-          top: -1px;
-        }
-      }
-      .right {
-        float: right;
-        display: inline-block;
-        position: relative;
-        right: 30px;
-      }
-    }
   }
 }

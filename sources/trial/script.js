@@ -2,7 +2,6 @@ import Editor from './editor';
 import Sidebar from './sidebar';
 import Navbar from './navbar';
 
-
 export default {
   components: {
     'editor': Editor,
@@ -10,8 +9,6 @@ export default {
     'navbar': Navbar,
   },
   data() {
-    return {
-
-    }
+    return {}
   }
 };
