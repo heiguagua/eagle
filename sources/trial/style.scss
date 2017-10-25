@@ -3,9 +3,18 @@
   display: flex !important;
   flex-direction: row;
   nav.menu {
-    flex: 0 0 230px;
+    flex: auto;
     height: 100%;
-    background: $color-gray-light-extra;
+    background: $color-gray-light;
+    header {
+      border-bottom: 1px solid $color-gray;
+      cursor: pointer;
+      button {
+        text-indent: 12px;
+        color: $color-black-light-extra;
+      }
+    }
+    article {}
   }
   article.main {
     height: 100%;

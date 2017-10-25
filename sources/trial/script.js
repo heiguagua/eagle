@@ -1,6 +1,9 @@
 export default {
   data() {
     return {
+      menu: {
+        isCollapse: true
+      },
       tableData: [{
         date: '2016-05-03',
         name: '王小虎',
@@ -32,5 +35,9 @@ export default {
       }]
     }
   },
-  methods: {}
+  methods: {
+    collapse() {
+      this.menu.isCollapse = !this.menu.isCollapse;
+    }
+  }
 };
