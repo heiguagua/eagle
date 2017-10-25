@@ -1,12 +1,12 @@
-import Editor from './editor';
-import Sidebar from './sidebar';
-import Navbar from './navbar';
+import TrialArticle from './article';
+import TrialSidebar from './sidebar';
+import TrialNavbar from './navbar';
 
 export default {
   components: {
-    'editor': Editor,
-    'sidebar': Sidebar,
-    'navbar': Navbar,
+    TrialArticle,
+    TrialSidebar,
+    TrialNavbar
   },
   data() {
     return {}

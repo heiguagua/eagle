@@ -1,0 +1,14 @@
+@import '../../common/styles/color';
+#trial-article {
+  border-right: 1px solid $color-gray-light;
+  border-left: 1px solid $color-gray-light;
+  #trial-article-toolbar {
+    position: fixed;
+    width: 900px;
+    background: $color-white-dark;
+    border-bottom: 1px solid $color-gray;
+  }
+  #trial-article-editor {
+
+  }
+}
