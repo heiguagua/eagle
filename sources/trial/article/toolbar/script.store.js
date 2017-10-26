@@ -4,13 +4,13 @@ export default {
   },
   mutations: {
     create(state, payload) {
-      state = !state;
+      state.create = payload;
     }
   },
   actions: {
-    create({ state, commit, rootState }) {
-      commit("create")
+    create({ state, rootState, commit, dispatch, getters }, payload) {
+      commit("create", "22")
     }
   },
   getters: {}
-}
+};

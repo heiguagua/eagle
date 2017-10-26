@@ -1,3 +1,4 @@
+import { mapState, mapActions } from 'vuex';
 import Http from '../../../common/scripts/http';
 
 export default {
@@ -6,8 +7,17 @@ export default {
 
     }
   },
-  method: {
-
+  methods: {
+    ...mapActions([
+      'create'
+    ])
   },
-  mounted() {}
+  computed: {
+    // ...mapState([
+    //   'create'
+    // ]),
+  },
+  mounted() {
+
+  }
 };
