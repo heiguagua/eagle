@@ -1,9 +1,10 @@
 <header id='trial-article-toolbar'>
   <div class="left">
-    <el-button @click='create' size='small' type="primary">
+    -{{createState}}-
+    <el-button @click='createAction' size='small' type="primary">
       <i class="fa fa-pencil">&nbsp;新建笔录</i>
     </el-button>
-    <el-button size='small' type="primary">
+    <el-button @click='printState' size='small' type="primary">
       <i class="fa fa-floppy-o">&nbsp;保存笔录</i>
     </el-button>
     <el-button size='small' type="primary">

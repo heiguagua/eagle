@@ -1,4 +1,4 @@
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 import Http from '../../../common/scripts/http';
 
 export default {
@@ -8,14 +8,21 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'create'
-    ])
+    printState() {
+      const vm = this;
+      console.log(this.state);
+    },
+    ...mapActions({
+      'createAction': 'create/createAction'
+    }),
+    ...mapMutations({
+      createMutation: "create/createMutation"
+    })
   },
   computed: {
-    // ...mapState([
-    //   'create'
-    // ]),
+    ...mapState('create', {
+      createState: state => state.createState
+    }),
   },
   mounted() {
 

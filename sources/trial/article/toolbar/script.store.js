@@ -1,15 +1,16 @@
 export default {
+  namespaced: true,
   state: {
-    create: '',
+    createState: 0,
   },
   mutations: {
-    create(state, payload) {
-      state.create = payload;
+    createMutation(state, payload) {
+      state.createState += payload;
     }
   },
   actions: {
-    create({ state, rootState, commit, dispatch, getters }, payload) {
-      commit("create", "22")
+    createAction({ state, rootState, commit, dispatch, getters }, payload) {
+      commit("createMutation", 1)
     }
   },
   getters: {}
