@@ -13,7 +13,7 @@ export default {
       console.log(this.state);
     },
     ...mapActions({
-      'createAction': 'create/createAction'
+      createAction: 'create/createAction'
     }),
     ...mapMutations({
       createMutation: "create/createMutation"
