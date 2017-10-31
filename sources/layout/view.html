@@ -34,7 +34,8 @@
       </el-menu>
     </nav>
     <div class='tool'>
-      <el-input placeholder='查询相似案例' suffix-icon='el-icon-search' v-model='keyword' :on-icon-click='search'>
+      <el-input placeholder='查询相似案例' v-model='keyword' size='medium'>
+        <el-button slot="append" icon="el-icon-search"></el-button>
       </el-input>
       <el-dropdown @command='logout'>
         <span class='el-dropdown-link'>
