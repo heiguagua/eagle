@@ -10,7 +10,7 @@ export default {
   },
   actions: {
     createAction({ state, rootState, commit, dispatch, getters }, payload) {
-      commit("createMutation", 1)
+      commit("createMutation", 5)
     }
   },
   getters: {}

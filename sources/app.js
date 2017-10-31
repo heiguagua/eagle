@@ -34,6 +34,17 @@ router.beforeEach((to, from, next) => {
 /** Store */
 const store = new Vuex.Store(States);
 
+if (module.hot) {
+  module.hot.accept(['./store', './trial/article/toolbar/script.store'], () => {
+    console.info('Vue hot update!');
+    store.hotUpdate({
+      modules: {
+        create: require('./trial/article/toolbar/script.store').default
+      }
+    })
+  })
+};
+
 /** Sync $route to store */
 const unsync = VueRouterSync.sync(store, router);
 unsync();

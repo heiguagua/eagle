@@ -7,14 +7,4 @@ const store = {
   }
 };
 
-// if (module.hot) {
-//   module.hot.accept([
-//     './trial/article/toolbar/script.store',
-//   ], () => {
-//     store.hotUpdate({
-//       stores: require('./trial/article/toolbar/script.store').default,
-//     })
-//   })
-// }
-
 export default store;
