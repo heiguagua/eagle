@@ -18,8 +18,8 @@
       </el-form-item>
       <br />
       <div class='operation'>
-        <el-button @click='httpSearch' size='medium' type='info' :plain='true'>
-          <i class='fa fa-search color-black-light'>&nbsp;查询案件</i>
+        <el-button @click='httpSearch' size='medium' type='primary'>
+          <i class='fa fa-search'>&nbsp;查询案件</i>
         </el-button>
       </div>
     </el-form>
@@ -27,7 +27,7 @@
   <article class='cases'>
     <header>
       <div class='button'>
-        <el-button @click='dialog.show = true' type='primary' size='medium'>
+        <el-button @click='dialog.show = true' type='info' size='medium' round>
           <i class='fa fa-briefcase'>&nbsp;录入案件</i>
         </el-button>
       </div>
