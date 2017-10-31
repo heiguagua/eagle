@@ -12,19 +12,12 @@ export default {
       const vm = this;
       console.log(this.state);
     },
-    ...mapActions({
-      createAction: 'create/createAction'
-    }),
     ...mapMutations({
-      createMutation: "create/createMutation"
+      create: "TrialArticleToolbar/create",
+      back: "TrialArticleToolbar/back",
     })
   },
-  computed: {
-    ...mapState('create', {
-      createState: state => state.createState
-    }),
-  },
   mounted() {
-
+    this.back();
   }
 };

@@ -1,6 +1,9 @@
 <article id='trial-article'>
   <article-toolbar></article-toolbar>
   <section>
-    <article-blank></article-blank>
+    <transition name='el-fade-in-linear'>
+      <component v-bind:is="currentView"></component>
+    </transition>
+
   </section>
 </article>

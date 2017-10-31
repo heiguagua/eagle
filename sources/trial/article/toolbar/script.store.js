@@ -1,17 +1,20 @@
 export default {
   namespaced: true,
   state: {
-    createState: 0,
+    currentView: 'ArticleBlank',
   },
   mutations: {
-    createMutation(state, payload) {
-      state.createState += payload;
+    create(state, payload) {
+      state.currentView = 'ArticleEditor';
+    },
+    back(state, payload) {
+      state.currentView = 'ArticleBlank';
     }
   },
-  actions: {
-    createAction({ state, rootState, commit, dispatch, getters }, payload) {
-      commit("createMutation", 1)
-    }
-  },
+  // actions: {
+  //   createAction({ state, rootState, commit, dispatch, getters }, payload) {
+  //     commit("createMutation", 1)
+  //   }
+  // },
   getters: {}
 };

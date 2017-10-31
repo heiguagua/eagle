@@ -7,7 +7,7 @@ Vue.use(Vuex);
 const Store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   modules: {
-    create: TrialArticleToolbar
+    TrialArticleToolbar
   }
 });
 
@@ -19,7 +19,7 @@ if (module.hot) {
     console.info('Vue hot update!');
     Store.hotUpdate({
       modules: {
-        create: require('./trial/article/toolbar/script.store').default
+        TrialArticleToolbar: require('./trial/article/toolbar/script.store').default
       }
     })
   })
