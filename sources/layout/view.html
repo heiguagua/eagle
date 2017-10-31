@@ -5,9 +5,11 @@
     </div>
     <nav class='navigator'>
       <el-menu background-color='#324057' text-color="#FFFFFF" active-text-color="#20A0FF" mode='horizontal' :router='false'>
-        <el-menu-item index='cases'>
-          <i class="fa fa-database color-gray">&nbsp;案件信息</i>
-        </el-menu-item>
+        <router-link :to="{path: 'cases'}">
+          <el-menu-item index='cases'>
+            <i class="fa fa-database color-gray">&nbsp;案件信息</i>
+          </el-menu-item>
+        </router-link>
         <el-menu-item index='ocr'>
           <i class="fa fa-camera color-gray">&nbsp;OCR识别</i>
         </el-menu-item>
@@ -28,9 +30,11 @@
         <el-menu-item index='calculator'>
           <i class="fa fa-calculator color-gray">&nbsp;费用计算</i>
         </el-menu-item>
-        <el-menu-item index='repository' :route="{path: 'repository'}">
-          <i class="fa fa-paste color-gray">&nbsp;案例参照</i>
-        </el-menu-item>
+        <router-link :to="{path: 'repository'}">
+          <el-menu-item index='repository'>
+            <i class="fa fa-paste color-gray">&nbsp;案例参照</i>
+          </el-menu-item>
+        </router-link>
       </el-menu>
     </nav>
     <div class='tool'>
