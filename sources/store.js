@@ -14,7 +14,7 @@ const Store = new Vuex.Store({
 if (module.hot) {
   module.hot.accept(['./store', './trial/article/toolbar/script.store'], () => {
     console.info('Vue hot update!');
-    store.hotUpdate({
+    Store.hotUpdate({
       modules: {
         create: require('./trial/article/toolbar/script.store').default
       }
