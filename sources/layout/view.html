@@ -1,8 +1,10 @@
 <div id='layout'>
   <header>
-    <div class='logo'>
-      法官智能助理
-    </div>
+    <router-link :to="{path: 'cases'}">
+      <div class='logo'>
+        法官智能助理
+      </div>
+    </router-link>
     <nav class='navigator'>
       <el-menu background-color='#324057' text-color="#FFFFFF" active-text-color="#20A0FF" mode='horizontal' :router='false'>
         <router-link :to="{path: 'cases'}">
