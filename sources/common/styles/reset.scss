@@ -7,8 +7,9 @@
   outline: none;
   width: 100%;
   height: 100%;
-};
+}
 
+;
 html {
   @extend .reset;
   body {
@@ -20,32 +21,43 @@ html {
       @extend .reset;
     }
   }
-};
+}
 
+;
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   background-color: transparent;
-};
+}
 
+;
  ::-webkit-scrollbar-thumb {
   background: $color-silver;
   border-radius: 5px;
-};
+}
 
+;
 // patch for right tools of trial
-// #trial {
-//   .el-collapse {
-//     border-left: none !important;
-//     .el-collapse-item__content {
-//       padding: 0 !important;
-//     }
-//     .el-table {
-//       border: none !important;
-//       padding: 0 !important;
-//     }
-//   }
-// }
+#trial {
+  .el-collapse {
+    .el-collapse-item__header {
+      padding-left: 16px;
+    }
+    .el-collapse-item__content {
+      padding: 0;
+    }
+    .el-collapse-item__wrap {
+      border: none;
+    }
+  }
+  .el-table {
+    border: none;
+    .cell {
+      padding-left: 16px;
+    }
+  }
+}
+
 #cases {
   aside.search {
     .el-form-item {
@@ -55,15 +67,17 @@ html {
       }
     }
   }
-};
+}
 
+;
 // patch for icon-arrow's position in menu
 .el-submenu__icon-arrow {
   position: static !important;
   margin: 5px 0 5px 15px !important;
-};
+}
 
-
+;
+// context menu
 .context-menu {
   .menu {
     * {
