@@ -4,7 +4,6 @@ import ArticleEditor from './editor';
 import ArticleToolbar from './toolbar';
 import { mapState, mapActions, mapMutations } from 'vuex';
 
-
 export default {
   components: {
     ArticleBlank,
@@ -13,6 +12,14 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    create() {
+      this.$router.push('/layout/trial/editor');
+    },
+    back() {
+      this.$router.push('/layout/trial/blank')
+    },
   },
   computed: {
     ...mapState('TrialArticleToolbar', {

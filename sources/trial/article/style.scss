@@ -2,13 +2,27 @@
 #trial-article {
   border-right: 1px solid $color-gray-light;
   border-left: 1px solid $color-gray-light;
-  #trial-article-toolbar {
+  header {
     position: fixed;
+    z-index: 999;
     width: 900px;
     background: $color-white-dark;
     border-bottom: 1px solid $color-gray;
-  }
-  #trial-article-editor {
-
+    line-height: 44px;
+    .left {
+      display: inline-block;
+      position: relative;
+      left: 40px;
+      button {
+        position: relative;
+        top: -1px;
+      }
+    }
+    .right {
+      float: right;
+      display: inline-block;
+      position: relative;
+      right: 30px;
+    }
   }
 }

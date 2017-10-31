@@ -29,7 +29,20 @@ const Router = new VueRouter({
       meta: {
         auth: true
       },
-      component: resolve => require(['./trial/index.vue'], resolve)
+      component: resolve => require(['./trial/index.vue'], resolve),
+      children: [{
+        path: 'blank',
+        meta: {
+          auth: true
+        },
+        component: resolve => require(['./trial/article/blank/index.vue'], resolve)
+      }, {
+        path: 'editor',
+        meta: {
+          auth: true
+        },
+        component: resolve => require(['./trial/article/editor/index.vue'], resolve)
+      }]
     }, {
       path: 'judge',
       meta: {

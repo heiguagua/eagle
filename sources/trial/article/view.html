@@ -1,8 +1,36 @@
 <article id='trial-article'>
-  <article-toolbar></article-toolbar>
+  <header>
+    <div class="left">
+      <el-button @click="create" size='small' type="primary">
+        <i class="fa fa-pencil">&nbsp;新建笔录</i>
+      </el-button>
+      <el-button size='small' type="primary">
+        <i class="fa fa-floppy-o">&nbsp;保存笔录</i>
+      </el-button>
+      <el-button size='small' type="primary">
+        <i class="fa fa-gavel">&nbsp;最终版本</i>
+      </el-button>
+    </div>
+    <div class="right">
+      <el-button-group>
+        <el-button size='small' type="default">
+          <i class="fa fa-file-word-o">&nbsp;导出</i>
+        </el-button>
+        <el-button size='small' type="default">
+          <i class="fa fa-print">&nbsp;打印</i>
+        </el-button>
+        <el-button size='small' type="default">
+          <i class="fa fa-eye">&nbsp;预览</i>
+        </el-button>
+        <el-button @click="back" size='small' type="default">
+          <i class="fa fa-reply">&nbsp;返回</i>
+        </el-button>
+      </el-button-group>
+    </div>
+  </header>
   <section>
-    <transition name='el-fade-in-linear'>
-      <component v-bind:is="currentView"></component>
+    <transition name='fade'>
+      <router-view></router-view>
     </transition>
   </section>
 </article>

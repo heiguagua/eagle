@@ -9,7 +9,6 @@
   height: 100%;
 }
 
-;
 html {
   @extend .reset;
   body {
@@ -23,21 +22,26 @@ html {
   }
 }
 
-;
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   background-color: transparent;
 }
 
-;
- ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: $color-silver;
   border-radius: 5px;
 }
 
-;
-// patch for right tools of trial
+.fade-enter-active {
+  transition: opacity .6s
+}
+
+.fade-enter {
+  opacity: 0
+}
+
+// Patch for right tools of trial
 #trial {
   .el-collapse {
     .el-collapse-item__header {
@@ -58,26 +62,13 @@ html {
   }
 }
 
-#cases {
-  aside.search {
-    .el-form-item {
-      margin-bottom: 10px;
-      .el-form-item__label {
-        padding: 0;
-      }
-    }
-  }
-}
-
-;
-// patch for icon-arrow's position in menu
+// Patch for icon-arrow's position in menu
 .el-submenu__icon-arrow {
   position: static !important;
   margin: 5px 0 5px 15px !important;
 }
 
-;
-// context menu
+// Patch for context menu
 .context-menu {
   .menu {
     * {
@@ -87,6 +78,18 @@ html {
     }
     .menuitem {
       padding: 10px 10px 10px 0 !important;
+    }
+  }
+}
+
+// Cases
+#cases {
+  aside.search {
+    .el-form-item {
+      margin-bottom: 10px;
+      .el-form-item__label {
+        padding: 0;
+      }
     }
   }
 }

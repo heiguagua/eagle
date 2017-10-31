@@ -37,6 +37,6 @@ export default {
     },
   },
   mounted() {
-    this.getTemplate();
+    // this.getTemplate();
   }
 };

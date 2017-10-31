@@ -2,9 +2,7 @@ import Http from '../common/scripts/http';
 import UtilCases from './script.util';
 import DataCases from './script.vue.data';
 import MethodCases from './script.vue.methods';
-import {
-  message
-} from '../common/scripts/helper';
+import { message } from '../common/scripts/helper';
 
 export default {
   data() {
