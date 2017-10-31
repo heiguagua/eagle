@@ -1,8 +1,6 @@
 import Http from '../common/scripts/http.js';
 import Encrypt from '../common/scripts/encrypt.js';
-import {
-  message
-} from '../common/scripts/helper';
+import { message } from '../common/scripts/helper';
 
 export default {
   data() {
@@ -22,7 +20,7 @@ export default {
             password: Encrypt.md5(vm.password)
           }
         })
-        .then(function (result) {
+        .then(function(result) {
           const data = result.data;
           if (Http.protocol(data, 200)) {
             Encrypt.token.set(data.head.token); // Set token
@@ -32,7 +30,7 @@ export default {
             message(vm, 'warning', data.head.message);
           }
         })
-        .then(function (data) {
+        .then(function(data) {
           vm.$router.push('/layout/cases');
         });
     },
