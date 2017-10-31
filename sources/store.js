@@ -12,7 +12,10 @@ const Store = new Vuex.Store({
 });
 
 if (module.hot) {
-  module.hot.accept(['./store', './trial/article/toolbar/script.store'], () => {
+  module.hot.accept([
+    './store',
+    './trial/article/toolbar/script.store',
+  ], () => {
     console.info('Vue hot update!');
     Store.hotUpdate({
       modules: {

@@ -22,16 +22,36 @@ html {
   }
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+ ::-webkit-scrollbar-thumb {
+  background: rgba(210, 214, 222, 0.6);
+  border-radius: 5px;
+}
+
+
 // patch for right tools of trial
-#trial {
-  .el-collapse {
-    border-left: none !important;
-    .el-collapse-item__content {
-      padding: 0 !important;
-    }
-    .el-table {
-      border: none !important;
-      padding: 0 !important;
+// #trial {
+//   .el-collapse {
+//     border-left: none !important;
+//     .el-collapse-item__content {
+//       padding: 0 !important;
+//     }
+//     .el-table {
+//       border: none !important;
+//       padding: 0 !important;
+//     }
+//   }
+// }
+
+#cases {
+  .el-form-item {
+    margin-bottom: 10px;
+    .el-form-item__label {
+      padding: 0;
     }
   }
 }

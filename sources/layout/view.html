@@ -4,7 +4,7 @@
       法官智能助理
     </div>
     <nav class='navigator'>
-      <el-menu theme='dark' mode='horizontal' :router='true'>
+      <el-menu background-color='#324057' text-color="#FFFFFF" active-text-color="#ffd04b" mode='horizontal' :router='false'>
         <el-menu-item index='cases'>
           <i class="fa fa-database">&nbsp;案件信息</i>
         </el-menu-item>
@@ -15,13 +15,13 @@
           <template slot='title'>
             <i class="fa fa-book">&nbsp;模板管理</i>
           </template>
-          <el-menu-item index='demo'>
+          <el-menu-item index='template-reposit'>
             裁判规则
           </el-menu-item>
-          <el-menu-item index='demo'>
+          <el-menu-item index='template-judge'>
             裁判文书
           </el-menu-item>
-          <el-menu-item index='demo'>
+          <el-menu-item index='template-trial'>
             庭审笔录
           </el-menu-item>
         </el-submenu>
@@ -44,16 +44,13 @@
         </span>
         <el-dropdown-menu slot='dropdown'>
           <el-dropdown-item command='update' class='font-size-small color-black'>
-            <i class="fa fa-key"></i>
-            修改密码
+            <i class="fa fa-key"></i> 修改密码
           </el-dropdown-item>
           <el-dropdown-item command='feedback' class='font-size-small color-black' divided>
-            <i class="fa fa-comment"></i>
-            提交反馈
+            <i class="fa fa-comment"></i> 提交反馈
           </el-dropdown-item>
           <el-dropdown-item command='quit' class='font-size-small color-black' divided>
-            <i class="fa fa-sign-out"></i>
-            退出
+            <i class="fa fa-sign-out"></i> 退出
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

@@ -16,21 +16,23 @@
       <el-form-item label='案件名称'>
         <el-input v-model='search.name' placeholder='当事人名称'></el-input>
       </el-form-item>
+      <br />
       <div class='operation'>
-        <el-button @click='httpSearch' type='info' :plain='true' icon='search'>查询案件</el-button>
+        <el-button @click='httpSearch' size='medium' type='info' :plain='true'>
+          <i class='fa fa-search color-black-light'>&nbsp;查询案件</i>
+        </el-button>
       </div>
     </el-form>
   </aside>
   <article class='cases'>
     <header>
       <div class='button'>
-        <el-button @click='dialog.show = true' type='primary'>
+        <el-button @click='dialog.show = true' type='primary' size='medium'>
           <i class='fa fa-briefcase'>&nbsp;录入案件</i>
         </el-button>
       </div>
       <div class='pagination'>
-        <el-pagination @size-change='changePageSize' @current-change='changeCurrentPage' :current-page='pagination.current' :page-sizes='[5, 10, 20, 30, 40, 50]'
-          :page-size='pagination.size' layout='total, sizes, prev, pager, next, jumper' :total='pagination.total'>
+        <el-pagination @size-change='changePageSize' @current-change='changeCurrentPage' :current-page='pagination.current' :page-sizes='[5, 10, 20, 30, 40, 50]' :page-size='pagination.size' layout='total, sizes, prev, pager, next, jumper' :total='pagination.total'>
         </el-pagination>
       </div>
     </header>
