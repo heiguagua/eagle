@@ -12,10 +12,7 @@ export default {
     ArticleEditor
   },
   data() {
-    console.log(this.$store)
-    return {
-      // currentView: 'ArticleBlank',
-    }
+    return {}
   },
   computed: {
     ...mapState('TrialArticleToolbar', {
