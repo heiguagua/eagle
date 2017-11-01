@@ -68,9 +68,14 @@
                   <hsc-menu-item label="修改"></hsc-menu-item>
                   <hsc-menu-item label="删除"></hsc-menu-item>
                 </hsc-menu-item>
-                <router-link :to="{path: '/layout/trial/blank', query: lawCase}">
-                  <hsc-menu-item label="庭审笔录"></hsc-menu-item>
-                </router-link>
+                <hsc-menu-item label="庭审笔录">
+                  <router-link :to="{path: '/layout/trial/blank', query: lawCase, params: {writ_type:'selection'}}">
+                    <hsc-menu-item label="分段式"></hsc-menu-item>
+                  </router-link>
+                  <router-link :to="{}">
+                    <hsc-menu-item label="要素式"></hsc-menu-item>
+                  </router-link>
+                </hsc-menu-item>
                 <hsc-menu-item label="裁判文书">
                   <router-link to="judge">
                     <hsc-menu-item label="查看"></hsc-menu-item>

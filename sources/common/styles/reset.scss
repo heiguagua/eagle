@@ -83,7 +83,7 @@ html {
         }
       }
       .is-active {
-        border-bottom: 5px solid !important;
+        border-bottom: 4px solid !important;
       }
     }
   }
@@ -101,7 +101,7 @@ html {
   }
 }
 
-// Patch for right tools of trial
+// Trial
 #trial {
   .el-collapse {
     .el-collapse-item__header {
