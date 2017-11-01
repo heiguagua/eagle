@@ -4,13 +4,15 @@ import { message } from '../../../common/scripts/helper';
 export default {
   data() {
     return {
-
+      trial: {}
     }
   },
   methods: {
     getTemplate() {
       const vm = this;
       const query = vm.$route.query;
+      const param = vm.$route.params;
+      console.log(param)
       Http.fetch({
           method: 'GET',
           url: Http.url.master + '/trialRecordTemplate',
@@ -18,25 +20,21 @@ export default {
             case_brief: query.case_brief || '民间借贷纠纷',
             category: query.category || '民事一审',
             hearing_procedure: query.hearing_procedure || 'normal',
-            write_type: 'section',
+            write_type: param.write_type || 'section',
           }
         })
-        .then(function(result) {
+        .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200)) {
-            console.log(data)
-            message(vm, 'info', data.head.message);
+            vm.trial = data.body;
             return data
           } else {
             message(vm, 'warning', data.head.message);
           }
-        })
-        .then(function(data) {
-          vm.$router.push('/layout/cases');
         });
     },
   },
   mounted() {
-    // this.getTemplate();
+    this.getTemplate();
   }
 };
