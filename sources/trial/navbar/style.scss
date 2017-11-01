@@ -1,13 +1,31 @@
 @import '../../common/styles/color';
 #trial-navbar {
   background: $color-gray-light;
+  display: flex;
+  flex-direction: column;
   header {
+    height: auto;
     border-bottom: 1px solid $color-gray;
     cursor: pointer;
     button {
       text-indent: 12px;
       height: 44px;
       color: $color-black-light-extra;
+    }
+  }
+  article {
+    height: 100%;
+    overflow-y: auto;
+    ul.el-menu {
+      a {
+        text-decoration: none;
+        color: $color-black-light-extra;
+      }
+      .el-menu-item.is-active {
+        a {
+          color: $color-blue;
+        }
+      }
     }
   }
 }

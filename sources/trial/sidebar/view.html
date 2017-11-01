@@ -2,8 +2,8 @@
   <el-collapse v-model="activedCollapse">
     <el-collapse-item name='trials'>
       <template slot='title'>
-        庭审笔录列表
         <i class='fa fa-list'></i>
+        庭审笔录列表
       </template>
       <el-table :data='trialArray' stripe>
         <el-table-column fixed prop='date' label='日期' width='150'>
@@ -29,8 +29,8 @@
     </el-collapse-item>
     <el-collapse-item name='ocr'>
       <template slot='title'>
+          <i class="fa fa-cloud-upload"></i>
         材料内容识别
-        <i class='fa fa-opera'></i>
       </template>
       <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
       <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>

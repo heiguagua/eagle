@@ -6,23 +6,131 @@
   </header>
   <article>
     <el-menu background-color='#E5E9F2' default-active="1" :collapse="menu.isCollapse">
-      <el-submenu index="1">
+      <el-menu-item index="infomation">
+        <i class="el-icon-menu"></i>
+        <a href='#infomation' slot="title">庭审信息</a>
+      </el-menu-item>
+      <el-menu-item index="discipline">
+        <i class="el-icon-menu"></i>
+        <a href='#discipline' slot="title">法庭纪律</a>
+      </el-menu-item>
+      <el-submenu index="verification">
         <template slot="title">
-          <i class="el-icon-message"></i>
-          <span slot="title">导航一</span>
+          <i class="el-icon-menu"></i>
+          <a href='#verification' slot="title">信息核对</a>
         </template>
-        <el-submenu index="1-4">
-          <span slot="title">选项4</span>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
+        <el-menu-item index="participator">
+          <i class="el-icon-menu"></i>
+          <a href='#participator' slot="title">诉讼参与人</a>
+        </el-menu-item>
+        <el-menu-item index="objection">
+          <i class="el-icon-menu"></i>
+          <a href='#objection' slot="title">异议及理由</a>
+        </el-menu-item>
+        <el-menu-item index="witness">
+          <i class="el-icon-menu"></i>
+          <a href='#witness' slot="title">证人是否出庭</a>
+        </el-menu-item>
+      </el-submenu>
+      <el-submenu index="preface">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <a href='#preface' slot="title">庭审序言</a>
+        </template>
+        <el-menu-item index="organize">
+          <i class="el-icon-menu"></i>
+          <a href='#organize' slot="title">庭审组织</a>
+        </el-menu-item>
+        <el-menu-item index="rights">
+          <i class="el-icon-menu"></i>
+          <a href='#rights' slot="title">告知诉讼权利</a>
+        </el-menu-item>
+        <el-menu-item index="matter">
+          <i class="el-icon-menu"></i>
+          <a href='#matter' slot="title">告知事项</a>
+        </el-menu-item>
+        <el-menu-item index="evasions">
+          <i class="el-icon-menu"></i>
+          <a href='#evasion' slot="title">是否申请回避</a>
+        </el-menu-item>
+        <el-menu-item index="evidence">
+          <i class="el-icon-menu"></i>
+          <a href='#evidence' slot="title">举证期限异议</a>
+        </el-menu-item>
+      </el-submenu>
+      <el-submenu index="investigate">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <a href='#investigate' slot="title">法庭调查</a>
+        </template>
+        <el-menu-item index="opinion">
+          <i class="el-icon-menu"></i>
+          <a href='#opinion' slot="title">诉辩意见</a>
+        </el-menu-item>
+        <el-menu-item index="inquiry">
+          <i class="el-icon-menu"></i>
+          <a href='#inquiry' slot="title">法庭询问</a>
+        </el-menu-item>
+        <el-menu-item index="proof">
+          <i class="el-icon-menu"></i>
+          <a href='#proof' slot="title">举证质证</a>
+        </el-menu-item>
+        <el-menu-item index="conclude">
+          <i class="el-icon-menu"></i>
+          <a href='#conclude' slot="title">争点归纳</a>
+        </el-menu-item>
+        <el-submenu index="conclude">
+          <template slot="title">
+            <i class="el-icon-menu"></i>
+            <a href='#conclude' slot="title">争点归纳</a>
+          </template>
+          <el-menu-item index="undisputed">
+            <i class="el-icon-menu"></i>
+            <a href='#undisputed' slot="title">无争议归纳</a>
+          </el-menu-item>
+          <el-menu-item index="disputed">
+            <i class="el-icon-menu"></i>
+            <a href='#disputed' slot="title">有争点归纳</a>
+          </el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="2">
+      <el-submenu index="argument">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <a href='#argument' slot="title">法庭辩论</a>
+        </template>
+        <el-menu-item index="accuser">
+          <i class="el-icon-menu"></i>
+          <a href='#accuser' slot="title">原告方辩论意见</a>
+        </el-menu-item>
+        <el-menu-item index="accused">
+          <i class="el-icon-menu"></i>
+          <a href='#accused' slot="title">被告方辩论意见</a>
+        </el-menu-item>
+        <el-menu-item index="thirdparty">
+          <i class="el-icon-menu"></i>
+          <a href='#thirdparty' slot="title">第三人辩论意见</a>
+        </el-menu-item>
+        <el-menu-item index="summary">
+          <i class="el-icon-menu"></i>
+          <a href='#summary' slot="title">庭审总结</a>
+        </el-menu-item>
+      </el-submenu>
+      <el-menu-item index="statement">
         <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
+        <a href='#statement' slot="title">最后陈述</a>
       </el-menu-item>
-      <el-menu-item index="3">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航三</span>
+      <el-menu-item index="conciliation">
+        <i class="el-icon-menu"></i>
+        <a href='#conciliation' slot="title">法庭调解</a>
+      </el-menu-item>
+      <el-menu-item index="announce">
+        <i class="el-icon-menu"></i>
+        <a href='#announce' slot="title">休庭宣读</a>
+      </el-menu-item>
+      <el-menu-item index="other">
+        <i class="el-icon-menu"></i>
+        <a href='#other' slot="title">其他</a>
       </el-menu-item>
     </el-menu>
   </article>
