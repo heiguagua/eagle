@@ -1,1 +1,13 @@
-#trial-sidebar {}
+#trial-sidebar {
+  display: flex;
+  flex-direction: column;
+  .collapse {
+    flex: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    // Setting margin for every collapse item
+    div.wrap {
+      margin: 0 15px 15px 15px;
+    }
+  }
+}
