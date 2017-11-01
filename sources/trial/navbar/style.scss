@@ -16,16 +16,5 @@
   article {
     height: 100%;
     overflow-y: auto;
-    ul.el-menu {
-      a {
-        text-decoration: none;
-        color: $color-black-light-extra;
-      }
-      .el-menu-item.is-active {
-        a {
-          color: $color-blue;
-        }
-      }
-    }
   }
 }
