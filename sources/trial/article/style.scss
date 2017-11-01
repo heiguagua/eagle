@@ -12,7 +12,7 @@
     .left {
       display: inline-block;
       position: relative;
-      left: 40px;
+      left: 20px;
       button {
         position: relative;
         top: -1px;
@@ -22,7 +22,8 @@
       float: right;
       display: inline-block;
       position: relative;
-      right: 30px;
+      right: 10px;
+      bottom: 1px;
     }
   }
 }
