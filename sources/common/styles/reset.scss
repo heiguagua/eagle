@@ -33,7 +33,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-silver;
+  background: $color-silver-light;
   border-radius: 5px;
 }
 
@@ -74,15 +74,17 @@ html {
 
 // Layout
 #layout {
-  .el-menu {
-    .el-menu-item,
-    .el-submenu .el-submenu__title {
-      &:hover {
-        background: $color-black-light-extra !important;
+  header {
+    .el-menu {
+      .el-menu-item,
+      .el-submenu .el-submenu__title {
+        &:hover {
+          background: $color-black-light-extra !important;
+        }
       }
-    }
-    .is-active {
-      border-bottom: 5px solid !important;
+      .is-active {
+        border-bottom: 5px solid !important;
+      }
     }
   }
 }
