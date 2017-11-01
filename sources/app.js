@@ -13,9 +13,13 @@ import 'font-awesome/css/font-awesome.css';
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
 import * as VueMenu from '@hscmap/vue-menu';
+import VueScrollTo from 'vue-scrollto';
 
 Vue.use(ElementUI);
 Vue.use(VueMenu);
+Vue.use(VueScrollTo, {
+  container: "#trial-article",
+});
 
 /** Sync $route to store */
 const unsync = VueRouterSync.sync(store, router);
