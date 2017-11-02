@@ -9,6 +9,6 @@ export default {
   },
   methods: Methods,
   mounted() {
-    this.getTemplate();
+    // this.getTemplate();
   }
 };

@@ -1,9 +1,9 @@
 export default {
   trial: {
     // 法院名称
-    name: '',
+    name: '成都市武侯区人民法院',
     // 笔录标题
-    title: '',
+    title: '民事案件审判笔录',
     // 庭审信息
     infomation: '',
     // 法庭纪律

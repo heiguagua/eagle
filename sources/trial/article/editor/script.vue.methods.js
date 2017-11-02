@@ -20,7 +20,7 @@ export default {
       .then(result => {
         const data = result.data;
         if (Http.protocol(data, 200)) {
-          vm.trial = data.body;
+          // vm.trial = data.body;
           return data
         } else {
           message(vm, 'warning', data.head.message);
