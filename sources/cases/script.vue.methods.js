@@ -1,9 +1,7 @@
 import Http from '../common/scripts/http';
 import Encrypt from '../common/scripts/encrypt';
 import UtilCases from './script.util';
-import {
-  message
-} from '../common/scripts/helper';
+import { message } from '../common/scripts/helper';
 
 export default {
   // pagination

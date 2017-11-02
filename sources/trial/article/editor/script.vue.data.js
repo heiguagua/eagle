@@ -1,5 +1,9 @@
 export default {
   trial: {
+    // 法院名称
+    name: '',
+    // 笔录标题
+    title: '',
     // 庭审信息
     infomation: '',
     // 法庭纪律
