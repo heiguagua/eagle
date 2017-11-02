@@ -1,9 +1,12 @@
 import Http from '../common/scripts/http';
+import { message } from '../common/scripts/helper';
 import Encrypt from '../common/scripts/encrypt';
+
 export default {
   data() {
     return {
-      keyword: ''
+      keyword: '',
+      socket: {},
     }
   },
   methods: {
@@ -20,33 +23,57 @@ export default {
           case 'feedback':
             // 提交反馈
             break;
-          case 'quit':
-            Encrypt.token.remove(); // Remove token
-            vm.$router.replace('/login');
+          case 'logout':
+            Http.fetch({
+                method: "POST",
+                url: Http.url.master + '/logout',
+              }).then(result => {
+                const data = result.data;
+                if (Http.protocol(data, 200)) {
+                  Encrypt.token.remove();
+                  vm.$router.replace('/login');
+                  message(vm, 'info', data.head.message);
+                } else {
+                  message(vm, 'warning', data.head.message);
+                }
+              })
+              .catch(function(error) {
+                console.info(error);
+              })
             break;
         }
+    },
+    openSocket() {
+      const token = Encrypt.token.get();
+      const URI = Http.url.socket + '?Authorization=' + token;
+      const socket = this.socket = new WebSocket(URI);
+      socket.onopen = event => {
+        setInterval(() => {
+          socket.send(token);
+        }, 20000);
+      };
+      socket.onmessage = event => {
+        if (event && event.data && event.data.head && event.data.head.message) {
+          console.info(event.data.head.message);
+        }
+      };
+      socket.onerror = event => {
+        console.error(event);
+      };
+    },
+    closeSocket() {
+      const socket = this.socket;
+      socket.close();
+      socket.onclose = event => {
+        socket.close();
+      };
+      console.info('Socket is closed!');
     }
   },
   mounted() {
-    // Heartbeat
-    const token = Encrypt.token.get();
-    const URI = Http.url.socket + '?Authorization=' + token;
-    const Socket = new WebSocket(URI);
-    Socket.onopen = event => {
-      setInterval(() => {
-        Socket.send(token);
-      }, 20000);
-    };
-    Socket.onclose = event => {
-      Socket.send('CLOSE');
-    };
-    Socket.onmessage = event => {
-      if (event && event.data && event.data.head && event.data.head.message) {
-        console.info(event.data.head.message);
-      }
-    };
-    Socket.onerror = event => {
-      Socket.send('ERROR');
-    };
+    this.openSocket();
+  },
+  destroyed() {
+    this.closeSocket();
   }
 };
