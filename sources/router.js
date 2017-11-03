@@ -56,12 +56,6 @@ const Router = new VueRouter({
       },
       component: resolve => require(['./cases/index.vue'], resolve)
     }, {
-      path: 'demo',
-      meta: {
-        auth: true
-      },
-      component: resolve => require(['./demo/index.vue'], resolve)
-    }, {
       path: 'repository',
       meta: {
         auth: true

@@ -1,23 +1,23 @@
+import { mapState, mapActions, mapMutations } from 'vuex';
+import Http from '../../../common/scripts/http';
+
 export default {
   data() {
     return {
-      array: [{
-          name: 'user1'
-        },
-        {
-          name: 'user2'
-        },
-        {
-          name: 'user3'
-        },
-        {
-          name: 'user4'
-        },
-        {
-          name: 'user5'
-        },
-      ]
+
     }
   },
-  methods: {}
+  methods: {
+    printState() {
+      const vm = this;
+      console.log(this.state);
+    },
+    ...mapMutations({
+      create: "TrialArticleToolbar/create",
+      back: "TrialArticleToolbar/back",
+    })
+  },
+  mounted() {
+    this.back();
+  }
 };
