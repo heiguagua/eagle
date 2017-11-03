@@ -1,7 +1,28 @@
 @import '../../../common/styles/color';
 #trial-article-editor {
-  padding: 40px 50px;
+  position: relative;
+  top: 45px;
+  padding: 0px 50px;
   [contenteditable] {
     outline: none;
   }
+  color: $color-black-light;
+  /* Header */
+  header {
+    text-align: center;
+    h1,
+    h2 {
+      display: inline;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+  }
+  /* Section */
+  section {}
+  /* Footer */
+  footer {}
 }
