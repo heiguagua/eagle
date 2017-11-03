@@ -42,6 +42,12 @@ const Router = new VueRouter({
           auth: true
         },
         component: resolve => require(['./trial/article/editor/index.vue'], resolve)
+      }, {
+        path: 'preview',
+        meta: {
+          auth: true
+        },
+        component: resolve => require(['./trial/article/preview/index.vue'], resolve)
       }]
     }, {
       path: 'judge',
