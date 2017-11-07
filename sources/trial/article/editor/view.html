@@ -6,16 +6,69 @@
   <section>
     <p title='庭审信息' id='infomation'>
       <p title='时间' class=''>
+        时间：
+        <el-date-picker v-model="value1" type="date" placeholder="选择日期">
+        </el-date-picker>
+        <el-time-select placeholder="选择时间">
+        </el-time-select>
+        至
+        <el-time-select placeholder="选择时间">
+        </el-time-select>
+      </p>
+      <p title='地点' class=''>
+        地点：
+        <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
+        第
+        <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
+        号法庭第
+        <el-input-number v-model="num1" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number>
+        次开庭
+      </p>
+      <p title='案号' class=''>
+        案号：
         <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
       </p>
-      <p title='地点' class=''></p>
-      <p title='案号' class=''></p>
-      <p title='案由' class=''></p>
-      <p title='是否公开审理、旁听人数' class=''></p>
-      <p title='审判人员1' class=''></p>
-      <p title='审判人员2' class=''></p>
-      <p title='审判人员3' class=''></p>
-      <p title='审判人员4' class=''></p>
+      <p title='案由' class=''>
+        案由：
+        <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
+      </p>
+      <p title='是否公开审理、旁听人数' class=''>
+        是否公开审理：
+        <el-select v-model="value" placeholder="请选择">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+          </el-option>
+        </el-select>
+        旁听人数：
+        <el-input-number v-model="num1" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number>
+      </p>
+      <p title='审判人员1' class=''>
+        <el-select v-model="value" placeholder="请选择">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+          </el-option>
+        </el-select>
+        ：
+        <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
+      </p>
+      <p title='审判人员2' class=''>
+        <el-select v-model="value" placeholder="请选择">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+          </el-option>
+        </el-select>
+        ：
+        <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
+      </p>
+      <p title='审判人员3' class=''>
+        <el-select v-model="value" placeholder="请选择">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+          </el-option>
+        </el-select>
+        ：
+        <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
+      </p>
+      <p title='审判人员4' class=''>
+        书记员：
+        <el-input class='input-width-larger' placeholder="请输入内容"></el-input>
+      </p>
     </p>
     <p title='法庭纪律' id='discipline'></p>
     <p title='信息核对' id='verification'>
