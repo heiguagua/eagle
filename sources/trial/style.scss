@@ -10,6 +10,8 @@
     height: 100%;
     flex: 0 0 900px;
     overflow-y: auto;
+    border-right: 1px solid $color-border-light;
+    border-left: 1px solid $color-border-light;
   }
   #trial-sidebar {
     flex: 100%;

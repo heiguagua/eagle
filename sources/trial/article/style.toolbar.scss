@@ -1,0 +1,33 @@
+div.toolbar {
+  position: fixed;
+  z-index: 99;
+  width: 900px;
+  background: $color-white-dark;
+  border-bottom: 1px solid $color-gray;
+  line-height: 44px;
+  .left {
+    display: inline-block;
+    position: relative;
+    left: 20px;
+    button {
+      position: relative;
+      top: -1px;
+    }
+  }
+  .right {
+    float: right;
+    display: inline-block;
+    position: relative;
+    right: 10px;
+    bottom: 1px;
+  }
+}
+
+div.content {
+  position: relative;
+  top: 50px;
+  p,
+  h1 {
+    margin: 0;
+  }
+}

@@ -1,4 +1,22 @@
 <article id='trial-article-editor'>
+  <div class='toolbar'>
+    <div class="left">
+      <router-link to='/layout/trial/preview'>
+        <el-button size='mini' type="primary">
+          <i class="fa fa-cogs">&nbsp;生成笔录</i>
+        </el-button>
+      </router-link>
+    </div>
+    <div class="right">
+      <el-button-group>
+        <router-link to='/layout/trial/blank'>
+          <el-button @click="back" size='mini' type="default">
+            <i class="fa fa-reply">&nbsp;返回</i>
+          </el-button>
+        </router-link>
+      </el-button-group>
+    </div>
+  </div>
   <header>
     <h1 title='法院名称' id='name'>{{trial.name}}</h1>
     <h2 title='笔录标题' id='title'>{{trial.title}}</h2>

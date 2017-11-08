@@ -1,43 +1,71 @@
-<article id='trial-article-preview'>
-  <header>
-    <h1 title='法院名称' id='name'></h1>
-    <h2 title='笔录标题' id='title'></h2>
-  </header>
-  <section>
-    <p title='庭审信息' id='infomation'></p>
-    <p title='法庭纪律' id='discipline'></p>
-    <p title='信息核对' id='verification'>
-      <p title='诉讼参与人' id='participator'></p>
-      <p title='异议及理由' id='objection'></p>
-      <p title='证人是否出庭' id='witness'></p>
-    </p>
-    <p title='庭审序言' id='preface'>
-      <p title='庭审组织' id='organize'></p>
-      <p title='告知诉讼权利' id='rights'></p>
-      <p title='告知事项' id='matter'></p>
-      <p title='是否申请回避' id='evasion'></p>
-      <p title='举证期限异议' id='evidence'></p>
-    </p>
-    <p title='法庭调查' id='investigate'>
-      <p title='诉辩意见' id='opinion'></p>
-      <p title='法庭询问' id='inquiry'></p>
-      <p title='举证质证' id='proof'></p>
-      <p title='争点归纳' id='conclude'>
-        <p title='无争议归纳' id='undisputed'></p>
-        <p title='有争议归纳' id='disputed'></p>
+<div id='trial-article-preview'>
+  <div class='toolbar'>
+    <div class="left">
+      <el-button size='mini' type="primary">
+        <i class="fa fa-floppy-o">&nbsp;保存笔录</i>
+      </el-button>
+      <el-button size='mini' type="danger">
+        <i class="fa fa-gavel">&nbsp;最终版本</i>
+      </el-button>
+    </div>
+    <div class="right">
+      <el-button-group>
+        <el-button size='mini' type="default">
+          <i class="fa fa-file-word-o">&nbsp;导出</i>
+        </el-button>
+        <el-button size='mini' type="default">
+          <i class="fa fa-print">&nbsp;打印</i>
+        </el-button>
+        <router-link to='/layout/trial/editor'>
+          <el-button @click="back" size='mini' type="default">
+            <i class="fa fa-reply">&nbsp;返回</i>
+          </el-button>
+        </router-link>
+      </el-button-group>
+    </div>
+  </div>
+  <div class="content">
+    <header>
+      <h1 title='法院名称' id='name'>222</h1>
+      <h2 title='笔录标题' id='title'>222</h2>
+    </header>
+    <section>
+      <p title='庭审信息' id='infomation'>ddd</p>
+      <p title='法庭纪律' id='discipline'>ddd</p>
+      <p title='信息核对' id='verification'>
+        <p title='诉讼参与人' id='participator'>dd</p>
+        <p title='异议及理由' id='objection'>dddd</p>
+        <p title='证人是否出庭' id='witness'>dddd</p>
       </p>
-    </p>
-    <p title='法庭辩论' id='argument'>
-      <p title='原告方辩论意见' id='accuser'></p>
-      <p title='被告方辩论意见' id='accused'></p>
-      <p title='第三人辩论意见' id='thirdparty'></p>
-      <p title='庭审总结' id='summary'></p>
-    </p>
-    <p title='最后陈述' id='statement'></p>
-    <p title='法庭调解' id='conciliation'></p>
-    <p title='休庭宣读' id='announce'></p>
-  </section>
-  <footer>
-    <p title='其他' id='other'></p>
-  </footer>
-</article>
+      <p title='庭审序言' id='preface'>
+        <p title='庭审组织' id='organize'></p>
+        <p title='告知诉讼权利' id='rights'></p>
+        <p title='告知事项' id='matter'></p>
+        <p title='是否申请回避' id='evasion'></p>
+        <p title='举证期限异议' id='evidence'></p>
+      </p>
+      <p title='法庭调查' id='investigate'>
+        <p title='诉辩意见' id='opinion'></p>
+        <p title='法庭询问' id='inquiry'></p>
+        <p title='举证质证' id='proof'></p>
+        <p title='争点归纳' id='conclude'>
+          <p title='无争议归纳' id='undisputed'></p>
+          <p title='有争议归纳' id='disputed'></p>
+        </p>
+      </p>
+      <p title='法庭辩论' id='argument'>
+        <p title='原告方辩论意见' id='accuser'></p>
+        <p title='被告方辩论意见' id='accused'></p>
+        <p title='第三人辩论意见' id='thirdparty'></p>
+        <p title='庭审总结' id='summary'></p>
+      </p>
+      <p title='最后陈述' id='statement'></p>
+      <p title='法庭调解' id='conciliation'></p>
+      <p title='休庭宣读' id='announce'></p>
+    </section>
+    <footer>
+      <p title='其他' id='other'></p>
+    </footer>
+  </div>
+
+</div>

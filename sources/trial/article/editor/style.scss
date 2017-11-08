@@ -1,12 +1,6 @@
 @import '../../../common/styles/color';
 #trial-article-editor {
-  position: relative;
-  top: 65px;
-  padding: 0px 50px;
-  [contenteditable] {
-    outline: none;
-  }
-  color: $color-black-light;
+  @import '../style.toolbar';
   /* Header */
   header {
     text-align: center;

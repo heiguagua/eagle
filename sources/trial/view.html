@@ -1,5 +1,9 @@
 <div id='trial'>
   <trial-navbar></trial-navbar>
-  <trial-article></trial-article>
+  <article id='trial-article'>
+    <transition name='fade'>
+      <router-view></router-view>
+    </transition>
+  </article>
   <trial-sidebar></trial-sidebar>
 </div>

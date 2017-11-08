@@ -1,4 +1,24 @@
-<article id='trial-editor-blank'>
-  <span>请点击工具栏[新建笔录]新增一份庭审笔录</span>
-  <span>或点击右侧庭审笔录列表[查看] [修改] [删除] 执行相应操作</span>
-</article>
+<div id='trial-editor-blank'>
+  <div class='toolbar'>
+    <div class="left">
+      <router-link to='/layout/trial/editor'>
+        <el-button size='mini' type="primary">
+          <i class="fa fa-pencil">&nbsp;新建笔录</i>
+        </el-button>
+      </router-link>
+    </div>
+    <div class="right">
+      <el-button-group>
+        <el-button @click="back" size='mini' type="default">
+          <i class="fa fa-reply">&nbsp;返回</i>
+        </el-button>
+      </el-button-group>
+    </div>
+  </div>
+  <div class="content">
+    <article>
+      <span>请点击工具栏[新建笔录]新增一份庭审笔录</span>
+      <span>或点击右侧庭审笔录列表[查看] [修改] [删除] 执行相应操作</span>
+    </article>
+  </div>
+</div>
