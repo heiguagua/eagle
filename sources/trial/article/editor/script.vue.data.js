@@ -65,5 +65,17 @@ export default {
     announce: '',
     // 其他
     other: ''
+  },
+  options: {
+    roles: [
+      [{
+        '审判长': '',
+        '代理审判员': ''
+      }]
+    ],
+    absent: {
+      yes: '到庭',
+      no: '未到庭',
+    }
   }
 }
