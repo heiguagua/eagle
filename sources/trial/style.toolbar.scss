@@ -24,8 +24,7 @@ div.toolbar {
 div.content {
   flex: 100%;
   overflow-y: auto;
-  p,
-  h1 {
-    margin: 0;
-  }
+  padding: 15px 35px;
+  font-size: 14px;
+  color: $color-black;
 }
