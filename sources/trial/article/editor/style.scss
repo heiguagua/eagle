@@ -1,6 +1,9 @@
 @import '../../../common/styles/color';
 #trial-article-editor {
-  @import '../style.toolbar';
+  @import '../../style.toolbar';
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   /* Header */
   header {
     text-align: center;

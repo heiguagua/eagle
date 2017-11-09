@@ -1,7 +1,5 @@
 div.toolbar {
-  position: fixed;
-  z-index: 99;
-  width: 900px;
+  flex: 0 0 44px;
   background: $color-white-dark;
   border-bottom: 1px solid $color-gray;
   line-height: 44px;
@@ -24,8 +22,8 @@ div.toolbar {
 }
 
 div.content {
-  position: relative;
-  top: 50px;
+  flex: 100%;
+  overflow-y: auto;
   p,
   h1 {
     margin: 0;
