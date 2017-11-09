@@ -50,16 +50,16 @@
         </p>
         <p title='是否公开审理、旁听人数'>
           是否公开审理：
-          <el-select placeholder='请选择是否公开' value=''>
-            <el-option>
+          <el-select placeholder='请选择是否公开'>
+            <el-option v-for='item in options.publicStatus' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
           &nbsp;&nbsp;&nbsp; 旁听人数：
-          <el-input-number :min='1' :max='10' label='描述文字'></el-input-number>
+          <el-input-number v-model='trial.infomation.audience' :min='1'></el-input-number>
         </p>
         <p title='审判人员1'>
           <el-select placeholder='请选择职务'>
-            <el-option v-for='item in options.roles[0]' :key='item.key' :label='item.key' :value='item.key'>
+            <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
           ：
@@ -67,7 +67,7 @@
         </p>
         <p title='审判人员2'>
           <el-select placeholder='请选择职务'>
-            <el-option v-for='item in options.roles[1]' :key='item.key' :label='item.key' :value='item.key'>
+            <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
           ：
@@ -75,7 +75,7 @@
         </p>
         <p title='审判人员3'>
           <el-select placeholder='请选择职务'>
-            <el-option v-for='item in options.roles[1]' :key='item.key' :label='item.key' :value='item.key'>
+            <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
           ：

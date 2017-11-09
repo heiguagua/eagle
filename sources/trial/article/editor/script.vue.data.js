@@ -16,10 +16,16 @@ export default {
         number: '',
         times: ''
       },
-      code: '',
-      reason: '',
-      isPublic: '',
-      appear: ''
+      code: '', // 案号
+      reason: '', // 案由
+      isPublic: '', // 是否公开审理
+      audience: '', // 旁听人数
+      officer: [ // 审判人员
+        { duty: '', name: '' },
+        { duty: '', name: '' },
+        { duty: '', name: '' },
+      ],
+      clerk: '', // 书记员
     },
     // 法庭纪律
     discipline: '',
@@ -82,7 +88,7 @@ export default {
     other: ''
   },
   options: {
-    roles: [
+    duties: [
       [
         { key: '审判长' },
         { key: '审判员' },
@@ -94,9 +100,13 @@ export default {
         { key: '人民陪审员' },
       ]
     ],
-    absent: {
-      yes: '到庭',
-      no: '未到庭',
-    }
+    appearStatus: [
+      { yes: '到庭' },
+      { no: '未到庭' },
+    ],
+    publicStatus: [
+      { key: '公开' },
+      { key: '不公开' },
+    ]
   }
 }
