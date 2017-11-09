@@ -17,8 +17,19 @@
   </div>
   <div class="content">
     <article>
-      <span>请点击工具栏[新建笔录]新增一份庭审笔录</span>
-      <span>或点击右侧庭审笔录列表[查看] [修改] [删除] 执行相应操作</span>
+      <p>请点击工具栏
+        <router-link to='/layout/trial/editor'>
+          <el-button size='mini' type="primary">
+            <i class="fa fa-pencil">&nbsp;新建笔录</i>
+          </el-button>
+        </router-link>
+        新增一份庭审笔录，</p>
+      <p>或点击右侧庭审笔录列表
+        <em>[查看]</em>
+        <em>[修改]</em>
+        <em>[删除]</em>
+        执行相应操作。
+      </p>
     </article>
   </div>
 </div>
