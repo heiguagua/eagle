@@ -6,6 +6,9 @@
           <i class='fa fa-cogs'>&nbsp;生成笔录</i>
         </el-button>
       </router-link>
+      <el-button @click='logTrial' size='mini' type='primary'>
+        <i class='fa fa-file'>&nbsp;打印</i>
+      </el-button>
     </div>
     <div class='right'>
       <el-button-group>
@@ -50,7 +53,7 @@
         </p>
         <p title='是否公开审理、旁听人数'>
           是否公开审理：
-          <el-select placeholder='请选择是否公开'>
+          <el-select v-model='trial.infomation.isPublic' placeholder='请选择是否公开'>
             <el-option v-for='item in options.publicStatus' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
@@ -58,32 +61,32 @@
           <el-input-number v-model='trial.infomation.audience' :min='1'></el-input-number>
         </p>
         <p title='审判人员1'>
-          <el-select placeholder='请选择职务'>
+          <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务'>
             <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
           ：
-          <el-input class='input-width-larger' placeholder='请输入姓名'></el-input>
+          <el-input v-model='trial.infomation.officer[0].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
         </p>
         <p title='审判人员2'>
-          <el-select placeholder='请选择职务'>
+          <el-select v-model='trial.infomation.officer[1].duty' placeholder='请选择职务'>
             <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
           ：
-          <el-input class='input-width-larger' placeholder='请输入姓名'></el-input>
+          <el-input v-model='trial.infomation.officer[1].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
         </p>
         <p title='审判人员3'>
-          <el-select placeholder='请选择职务'>
+          <el-select v-model='trial.infomation.officer[2].duty' placeholder='请选择职务'>
             <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
           ：
-          <el-input class='input-width-larger' placeholder='请输入姓名'></el-input>
+          <el-input v-model='trial.infomation.officer[2].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
         </p>
         <p title='审判人员4'>
           书记员：
-          <el-input class='input-width-larger' placeholder='请输入姓名'></el-input>
+          <el-input v-model='trial.infomation.clerk' class='input-width-larger' placeholder='请输入姓名'></el-input>
         </p>
       </p>
       <p title='法庭纪律' id='discipline'></p>

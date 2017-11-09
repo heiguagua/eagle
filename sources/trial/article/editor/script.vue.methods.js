@@ -27,4 +27,7 @@ export default {
         }
       });
   },
+  logTrial() {
+    console.log('Trial', this.trial);
+  }
 };
