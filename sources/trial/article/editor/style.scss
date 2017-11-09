@@ -10,16 +10,21 @@
     h1,
     h2 {
       display: inline;
+      font-weight: normal;
     }
     h1 {
-      font-size: 22px;
+      font-size: 25px;
     }
     h2 {
-      font-size: 20px;
+      font-size: 22px;
     }
   }
   /* Section */
-  section {}
+  .content {
+    p {
+      // font-size: 13px;
+    }
+  }
   /* Footer */
   footer {}
 }
