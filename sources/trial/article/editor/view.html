@@ -84,7 +84,7 @@
           ：
           <el-input v-model='trial.infomation.officer[2].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
         </p>
-        <p title='审判人员4'>
+        <p title='书记员'>
           书记员：
           <el-input v-model='trial.infomation.clerk' class='input-width-larger' placeholder='请输入姓名'></el-input>
         </p>
@@ -99,10 +99,12 @@
         <p>6.对哄闹、冲击法庭，侮辱、诽谤、威胁、殴打审判人员等严重扰乱法庭秩序的人，依法追究刑事责任；情节较轻的，予以罚款、拘留。</p>
         <p>
           全体起立，请
-          <em v-for='item in trial.infomation.officer'>{{item.duty}}</em>
-          入庭。
+          <b>{{trial.infomation.officer[0].duty}}</b>
+          <b v-if='isChiefOfficer'>、{{trial.infomation.officer[1].duty}}</b>
+          <b v-if='isChiefOfficer'>、{{trial.infomation.officer[2].duty}}</b> 入庭。
         </p>
-        <p>报告审判员本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。</p>
+        <p>报告<b>{{trial.infomation.officer[0].duty}}</b>本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。
+        </p>
       </p>
       <p title='信息核对' id='verification'>
         <p title='诉讼参与人' id='participator'></p>
