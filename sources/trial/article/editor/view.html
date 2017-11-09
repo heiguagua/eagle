@@ -26,10 +26,10 @@
       <p title='庭审信息' id='infomation'>
         <p title='时间'>
           时间：
-          <el-date-picker type='date' placeholder='选择日期'></el-date-picker>
-          <el-time-select placeholder='选择时间'></el-time-select>
+          <el-date-picker v-model='trial.infomation.date' type='date' placeholder='选择日期'></el-date-picker>
+          <el-time-select v-model='trial.infomation.time.start' placeholder='选择时间'></el-time-select>
           至
-          <el-time-select placeholder='选择时间'></el-time-select>
+          <el-time-select v-model='trial.infomation.time.end' placeholder='选择时间'></el-time-select>
         </p>
         <p title='地点'>
           地点：
@@ -54,6 +54,7 @@
             <el-option>
             </el-option>
           </el-select>
+          &nbsp;&nbsp;&nbsp;
           旁听人数：
           <el-input-number :min='1' :max='10' label='描述文字'></el-input-number>
         </p>

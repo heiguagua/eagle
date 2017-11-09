@@ -5,7 +5,22 @@ export default {
     // 笔录标题
     title: '民事案件审判笔录',
     // 庭审信息
-    infomation: '',
+    infomation: {
+      date: '',
+      time: {
+        start: '',
+        end: ''
+      },
+      location: {
+        name: '',
+        number: '',
+        times: ''
+      },
+      code: '',
+      reason: '',
+      isPublic: '',
+      appear: ''
+    },
     // 法庭纪律
     discipline: '',
     // 信息核对
