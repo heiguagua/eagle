@@ -1,6 +1,6 @@
 @import '../../../common/styles/color';
 #trial-editor-blank {
-  @import '../../style.toolbar';
+  @import '../style.toolbar';
   display: flex;
   flex-direction: column;
   height: 100%;
