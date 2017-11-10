@@ -1,10 +1,11 @@
 import Http from '../../../common/scripts/http';
 import { message } from '../../../common/scripts/helper';
+import { storage } from "../../../common/scripts/helper";
 
 export default {
   generate() {
     const vm = this;
-    sessionStorage.setItem('trial', JSON.stringify(vm.trial));
+    storage.set('trial', vm.trial);
     vm.$router.push('/layout/trial/preview');
   },
   getTemplate() {
