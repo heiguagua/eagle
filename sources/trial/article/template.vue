@@ -2,9 +2,6 @@
 import Http from "../../common/scripts/http";
 
 export default {
-  data() {
-    return {};
-  },
   render() {
     return (
       <div>
@@ -45,6 +42,14 @@ export default {
         <p title="其他" id="other" />
       </div>
     );
+  },
+  data() {
+    return {
+      trial: {}
+    };
+  },
+  mounted() {
+
   }
 };
 </script>
