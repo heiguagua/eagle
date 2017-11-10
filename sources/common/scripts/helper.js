@@ -8,3 +8,20 @@ export const message = (vm, type, message) => {
     message: message || ''
   })
 };
+
+export const storage = {
+  get(key) {
+    if (key) {
+      return JSON.parse(sessionStorage.getItem(key));
+    } else {
+      console.warn('Session Storage GET Error：' + key);
+    }
+  },
+  set(key, value) {
+    if (key && value) {
+      sessionStorage.setItem(key, JSON.stringify(value));
+    } else {
+      console.warn('Session Storage SET Error：' + key + value);
+    }
+  }
+};

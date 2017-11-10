@@ -1,11 +1,12 @@
 <script>
 import Http from "../../common/scripts/http";
+import { storage } from "../../common/scripts/helper";
 
 export default {
   render() {
     return (
       <div>
-        {this.trial.name}
+        {this.trial.infomation.date}
         <h1 title="法院名称" id="name" />
         <h2 title="笔录标题" id="title" />
         <p title="庭审信息" id="infomation" />
@@ -49,9 +50,8 @@ export default {
       trial: {}
     };
   },
-  mounted() {
-    this.trial = JSON.parse(sessionStorage.getItem("trial"));
-    console.log(this.trial);
+  created() {
+    this.trial = storage.get("trial");
   }
 };
 </script>
