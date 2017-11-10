@@ -5,6 +5,7 @@ export default {
   render() {
     return (
       <div>
+        {this.trial.name}
         <h1 title="法院名称" id="name" />
         <h2 title="笔录标题" id="title" />
         <p title="庭审信息" id="infomation" />
@@ -49,7 +50,8 @@ export default {
     };
   },
   mounted() {
-
+    this.trial = JSON.parse(sessionStorage.getItem("trial"));
+    console.log(this.trial);
   }
 };
 </script>

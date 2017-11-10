@@ -1,11 +1,9 @@
 <article id='trial-article-editor'>
   <div class='toolbar'>
     <div class='left'>
-      <router-link to='/layout/trial/preview'>
-        <el-button size='mini' type='primary'>
-          <i class='fa fa-cogs'>&nbsp;生成笔录</i>
-        </el-button>
-      </router-link>
+      <el-button @click='generate' size='mini' type='primary'>
+        <i class='fa fa-cogs'>&nbsp;生成笔录</i>
+      </el-button>
       <el-button @click='logTrial' size='mini' type='primary'>
         <i class='fa fa-file'>&nbsp;打印</i>
       </el-button>
