@@ -18,7 +18,7 @@ import VueScrollTo from 'vue-scrollto';
 Vue.use(ElementUI);
 Vue.use(VueMenu);
 Vue.use(VueScrollTo, {
-  offset: -50,
+  offset: -60,
   container: "#trial-article-editor .content",
 });
 
