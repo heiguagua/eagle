@@ -1,9 +1,9 @@
 <article id='trial-article-editor'>
   <div class='toolbar'>
     <div class='left'>
-      <el-radio-group v-model='radio4' size='mini'>
-        <el-radio-button label='展开'></el-radio-button>
-        <el-radio-button label='关闭'></el-radio-button>
+      <el-radio-group v-model='tools.switcher' change='switch' size='mini'>
+        <el-radio-button label='展开' name='open'>展开</el-radio-button>
+        <el-radio-button label='关闭' name='close'>关闭</el-radio-button>
       </el-radio-group>
       &nbsp;
       <el-button @click='generate' size='mini' type='primary'>
@@ -28,7 +28,7 @@
       <h1 title='法院名称' id='name'>{{trial.name}}</h1>
       <h2 title='笔录标题' id='title'>{{trial.title}}</h2>
     </header>
-    <el-collapse>
+    <el-collapse :value='tools.open'>
       <el-collapse-item name='infomation'>
         <template slot='title'>
           <b>庭审信息</b>

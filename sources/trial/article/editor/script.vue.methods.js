@@ -3,6 +3,9 @@ import { message } from '../../../common/scripts/helper';
 import { storage } from "../../../common/scripts/helper";
 
 export default {
+  switch(){
+    console.log('info')
+  },
   generate() {
     const vm = this;
     storage.set('trial', vm.trial);

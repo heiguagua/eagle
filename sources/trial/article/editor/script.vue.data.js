@@ -108,5 +108,9 @@ export default {
       { key: '公开' },
       { key: '不公开' },
     ]
+  },
+  tools: {
+    open: ['infomation', 'discipline', 'verifications', 'preface', 'investigate', 'argument', 'statement', 'conciliation', 'announce', 'announce'],
+    switcher: {}
   }
 }
