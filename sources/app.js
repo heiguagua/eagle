@@ -18,7 +18,8 @@ import VueScrollTo from 'vue-scrollto';
 Vue.use(ElementUI);
 Vue.use(VueMenu);
 Vue.use(VueScrollTo, {
-  container: "#trial-article",
+  offset: -50,
+  container: "#trial-article-editor .content",
 });
 
 /** Sync $route to store */
