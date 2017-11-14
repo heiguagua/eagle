@@ -1,62 +1,54 @@
 <template>
-    <div class="edit-div"
-         v-html="innerText"
-         :contenteditable="canEdit"
-         @focus="isLocked = true"
-         @blur="isLocked = false"
-         @input="changeText">
-    </div>
+  <p
+  @focus='isBlock=true'
+  @blur = 'isBlock=false'
+  :contenteditable='isEditable'
+  v-html='inputText'
+  @input='inputChange'></p>
 </template>
-<script type="text/ecmascript-6">
+<script>
 export default {
-  name: "editDiv",
   props: {
     value: {
       type: String,
       default: ""
     },
-    canEdit: {
+    isEditable: {
       type: Boolean,
       default: true
     }
   },
   data() {
     return {
-      innerText: this.value,
-      isLocked: false
+      isBlock: false,
+      inputText: this.value
     };
+  },
+  methods: {
+    inputChange() {
+      this.$emit("input", this.$el.innerHTML);
+    }
   },
   watch: {
     value() {
-      if (!this.isLocked || !this.innerText) {
-        this.innerText = this.value;
-      }
-    }
-  },
-  methods: {
-    changeText() {
-      this.$emit("input", this.$el.innerHTML);
+      if (!this.isBlock || !this.innerText) this.innerText = this.value;
     }
   }
 };
 </script>
-<style lang="scss" rel="stylesheet/scss">
-.edit-div {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  word-break: break-all;
+<style lang='scss' scoped>
+p[contenteditable] {
+  display: inline-block;
+  min-width: 50px;
   outline: none;
-  user-select: text;
-  white-space: pre-wrap;
-  text-align: left;
-  &[contenteditable="true"] {
-    user-modify: read-write-plaintext-only;
-    &:empty:before {
-      content: attr(placeholder);
-      display: block;
-      color: #ccc;
-    }
-  }
+  border: 1px solid red;
+  line-height: 35px;
+  height: 35px;
+  border-radius: 4px;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 0 5px;
 }
 </style>

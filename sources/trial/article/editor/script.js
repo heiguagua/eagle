@@ -3,10 +3,14 @@ import { message } from '../../../common/scripts/helper';
 import Data from './script.vue.data';
 import Methods from './script.vue.methods';
 import Computed from './script.vue.computed';
+import Editor from '../../../common/scripts/editor';
 
 export default {
   data() {
     return Data;
+  },
+  components: {
+    Editor
   },
   computed: Computed,
   methods: Methods,
