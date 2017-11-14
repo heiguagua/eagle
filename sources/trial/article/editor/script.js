@@ -12,5 +12,29 @@ export default {
   methods: Methods,
   mounted() {
     // this.getTemplate();
+  },
+  directives: {
+    editable: {
+      // 指令的定义
+      bind(el, binding, vnode, oldVnode) {
+        const model = binding.value;
+        el.addEventListener('input', () => {
+          vnode.context.$data.trial.other = el.innerHTML;
+        });
+        el.innerHTML = binding.value || '';
+      },
+      inserted(el, binding, vnode, oldVnode) {
+        el.setAttribute('contenteditable', true);
+      },
+      update(el, binding, vnode, oldVnode) {
+
+      },
+      componentUpdated(el, binding, vnode, oldVnode) {
+
+      },
+      unbind(el, binding, vnode, oldVnode) {
+        el.removeEventListener('input', binding.handler)
+      }
+    }
   }
 };

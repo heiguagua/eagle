@@ -85,7 +85,7 @@ export default {
     // 休庭宣读
     announce: '',
     // 其他
-    other: ''
+    other: 'hank'
   },
   options: {
     duties: [

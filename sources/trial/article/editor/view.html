@@ -1,4 +1,5 @@
 <article id='trial-article-editor'>
+  <!-- 工具栏 -->
   <div class='toolbar'>
     <div class='left'>
       <el-button @click='generate' size='mini' type='primary'>
@@ -18,11 +19,15 @@
       </el-button-group>
     </div>
   </div>
+  <!-- 编辑区 -->
   <div class='document'>
+    <!-- 笔录标题 -->
     <header>
-      <h1 title='法院名称' id='name'>{{trial.name}}</h1>
+      <h1 v-editable='trial.other' title='法院名称' id='name'>{{trial.name}}</h1>
       <h2 title='笔录标题' id='title'>{{trial.title}}</h2>
     </header>
+    <!-- #笔录标题 -->
+    <!-- 庭审信息 -->
     <section title='庭审信息' id='infomation'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -41,9 +46,9 @@
           地点：
           <el-input v-model='trial.infomation.location.name' class='width-large' placeholder='请输入法院名称'></el-input>
           第
-          <el-input-number v-model='trial.infomation.location.number' :min='1' :max='999' class='width-small' ></el-input-number>
+          <el-input-number v-model='trial.infomation.location.number' :min='1' :max='999' class='width-small'></el-input-number>
           号法庭第
-          <el-input-number v-model='trial.infomation.location.times' :min='1' :max='999' class='width-small' ></el-input-number>
+          <el-input-number v-model='trial.infomation.location.times' :min='1' :max='999' class='width-small'></el-input-number>
           次开庭
         </p>
         <p title='案号'>
@@ -61,7 +66,7 @@
             </el-option>
           </el-select>
           &nbsp;&nbsp;&nbsp; 旁听人数：
-          <el-input-number v-model='trial.infomation.audience' :min='1' controls-position='right' ></el-input-number>
+          <el-input-number v-model='trial.infomation.audience' :min='1' controls-position='right'></el-input-number>
         </p>
         <p title='审判人员1'>
           <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
@@ -93,6 +98,8 @@
         </p>
       </div>
     </section>
+    <!-- #庭审信息 -->
+    <!-- 法庭纪律 -->
     <section title='法庭纪律' id='discipline'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -116,17 +123,100 @@
         </p>
       </div>
     </section>
-    <section title='信息核对' id='verification'>
+    <!-- #法庭纪律 -->
+    <!-- 信息核对 -->
+    <section title='诉讼参与人' id='participator'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
-        <em>信息核对</em>
+        <em>信息核对&nbsp;-&nbsp;诉讼参与人</em>
       </div>
       <div class="content">
-        <p title='诉讼参与人' id='participator'></p>
-        <p title='异议及理由' id='objection'></p>
-        <p title='证人是否出庭' id='witness'></p>
+        <!-- 原告 -->
+        <p>原告：
+          <el-input v-model='trial.infomation.location.name' class='width-larger' placeholder='请输入法院名称'></el-input>，
+        </p>
+        <p>
+          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容">
+          </el-input>
+        </p>
+        <p>
+          ，（
+          <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
+            <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          以下简称原 ）
+        </p>
+        <!-- #原告 -->
+        <hr />
+        <!-- 法定代表人 -->
+        <p>
+          <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
+            <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          ，
+          <el-input v-model='trial.infomation.location.name' class='width-larger' placeholder='请输入法院名称'></el-input>，
+        </p>
+        <p>
+          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容">
+          </el-input>
+        </p>
+        <p>
+          ，（
+          <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
+            <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          以下简称原 ）
+        </p>
+        <!-- #法定代表人 -->
+        <hr />
+        <!-- 委托诉讼代理人 -->
+        <p>
+          委托诉讼代理人：
+          <el-input v-model='trial.infomation.location.name' class='width-larger' placeholder='请输入法院名称'></el-input>，
+        </p>
+        <p>
+          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容">
+          </el-input>
+        </p>
+        <p>
+          ，（
+          <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
+            <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          ，
+          <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
+            <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          以下简称原代 ）
+        </p>
+        <!-- #委托诉讼代理人 -->
       </div>
     </section>
+    <section title='异议及理由' id='objection'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <em>信息核对&nbsp;-&nbsp;异议及理由</em>
+      </div>
+      <div class="content">
+
+      </div>
+    </section>
+    <section title='证人是否出庭' id='witness'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <em>信息核对&nbsp;-&nbsp;证人是否出庭</em>
+      </div>
+      <div class="content">
+
+      </div>
+    </section>
+    <!-- #信息核对 -->
+    <!-- 庭审序言 -->
     <section title='庭审序言' id='preface'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -140,6 +230,8 @@
         <p title='举证期限异议' id='evidence'></p>
       </div>
     </section>
+    <!-- #庭审序言 -->
+    <!-- 法庭调查 -->
     <section title='法庭调查' id='investigate'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -155,6 +247,8 @@
         </p>
       </div>
     </section>
+    <!-- #法庭调查 -->
+    <!-- 法庭辩论 -->
     <section title='法庭辩论' id='argument'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -167,6 +261,8 @@
         <p title='庭审总结' id='summary'></p>
       </div>
     </section>
+    <!-- #法庭辩论 -->
+    <!-- 最后陈述 -->
     <section title='最后陈述' id='statement'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -176,6 +272,8 @@
         <p></p>
       </div>
     </section>
+    <!-- #最后陈述 -->
+    <!-- 法庭调解 -->
     <section title='法庭调解' id='conciliation'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -185,6 +283,8 @@
         <p></p>
       </div>
     </section>
+    <!-- #法庭调解 -->
+    <!-- 休庭宣读 -->
     <section title='休庭宣读' id='announce'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -194,6 +294,8 @@
         <p></p>
       </div>
     </section>
+    <!-- #休庭宣读 -->
+    <!-- 其他 -->
     <footer title='其他' id='other'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
@@ -203,5 +305,6 @@
         <p></p>
       </div>
     </footer>
+    <!-- #其他 -->
   </div>
 </article>
