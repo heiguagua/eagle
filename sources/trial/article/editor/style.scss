@@ -36,12 +36,12 @@
         border-bottom: 1px solid $color-border-light;
         border-right: 1px solid $color-border-light;
         padding: 0 30px;
-        b {
+        em {
           font-weight: normal;
+          font-style: normal;
           font-size: 14px;
         }
         &:hover {
-          background: $color-white;
           cursor: pointer;
         }
       }
