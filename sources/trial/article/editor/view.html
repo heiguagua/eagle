@@ -23,7 +23,7 @@
   <div class='document'>
     <!-- 笔录标题 -->
     <header>
-      <h1 v-editable='trial.other' title='法院名称' id='name'>{{trial.name}}</h1>
+      <h1 title='法院名称' id='name'>{{trial.name}}</h1>
       <h2 title='笔录标题' id='title'>{{trial.title}}</h2>
     </header>
     <!-- #笔录标题 -->
@@ -136,8 +136,7 @@
           <el-input v-model='trial.infomation.location.name' class='width-larger' placeholder='请输入法院名称'></el-input>，
         </p>
         <p>
-          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容">
-          </el-input>
+          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容"></el-input>
         </p>
         <p>
           ，（
@@ -148,7 +147,6 @@
           以下简称原 ）
         </p>
         <!-- #原告 -->
-        <hr />
         <!-- 法定代表人 -->
         <p>
           <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
@@ -171,7 +169,6 @@
           以下简称原 ）
         </p>
         <!-- #法定代表人 -->
-        <hr />
         <!-- 委托诉讼代理人 -->
         <p>
           委托诉讼代理人：
