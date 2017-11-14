@@ -18,12 +18,12 @@ export default {
       },
       code: '', // 案号
       reason: '', // 案由
-      isPublic: '', // 是否公开审理
+      isPublic: '公开', // 是否公开审理
       audience: '', // 旁听人数
       officer: [ // 审判人员
-        { duty: '', name: '' },
-        { duty: '', name: '' },
-        { duty: '', name: '' },
+        { duty: '审判长', name: '' },
+        { duty: '审判员', name: '' },
+        { duty: '审判员', name: '' },
       ],
       clerk: '', // 书记员
     },

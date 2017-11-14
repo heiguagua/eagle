@@ -268,26 +268,26 @@
 
 /* -----input width----- */
 
-.input-width-larger {
+.width-larger {
+  width: 350px !important;
+}
+
+.width-large {
+  width: 250px !important;
+}
+
+.width-medium {
   width: 200px !important;
 }
 
-.input-width-large {
-  width: 200px !important;
+.width-small {
+  width: 150px !important;
 }
 
-.input-width-medium {
-  width: 200px !important;
+.width-smaller {
+  width: 110px !important;
 }
 
-.input-width-small {
-  width: 200px !important;
-}
-
-.input-width-smaller {
-  width: 200px !important;
-}
-
-.input-width-tiny {
-  width: 200px !important;
+.width-tiny {
+  width: 80px !important;
 }
