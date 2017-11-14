@@ -266,7 +266,7 @@
 }
 
 
-/* -----input width----- */
+/* ----- width----- */
 
 .width-larger {
   width: 350px !important;
@@ -290,4 +290,31 @@
 
 .width-tiny {
   width: 80px !important;
+}
+
+
+/* ----- min width----- */
+
+.min-width-larger {
+  min-width: 350px !important;
+}
+
+.min-width-large {
+  min-width: 250px !important;
+}
+
+.min-width-medium {
+  min-width: 200px !important;
+}
+
+.min-width-small {
+  min-width: 150px !important;
+}
+
+.min-width-smaller {
+  min-width: 110px !important;
+}
+
+.min-width-tiny {
+  min-width: 80px !important;
 }

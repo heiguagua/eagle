@@ -1,5 +1,6 @@
 <template>
   <p
+  class='editor'
   @focus='isBlock=true'
   @blur = 'isBlock=false'
   :contenteditable='isEditable'
@@ -37,18 +38,19 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-p[contenteditable] {
+@import "../styles/color";
+p[contenteditable].editor {
   display: inline-block;
   min-width: 50px;
   outline: none;
-  border: 1px solid red;
-  line-height: 35px;
-  height: 35px;
+  border: 1px solid $color-border-base;
+  line-height: 20px;
+  font-size: 14px;
   border-radius: 4px;
   word-break: break-all;
   word-wrap: break-word;
   overflow-wrap: break-word;
   margin: 0;
-  padding: 0 5px;
+  padding: 6px 5px;
 }
 </style>

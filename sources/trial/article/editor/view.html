@@ -23,7 +23,6 @@
   <div class='document'>
     <!-- 笔录标题 -->
     <header>
-      <editor v-model='trial.other'></editor>
       <h1 title='法院名称' id='name'>{{trial.name}}</h1>
       <h2 title='笔录标题' id='title'>{{trial.title}}</h2>
     </header>
@@ -134,7 +133,7 @@
       <div class="content">
         <!-- 原告 -->
         <p>原告：
-          <el-input v-model='trial.infomation.location.name' class='width-larger' placeholder='请输入法院名称'></el-input>，
+          <editor v-model='trial.infomation.location.name' placeholder='请输入法院名称'></editor>，
         </p>
         <p>
           <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容"></el-input>
