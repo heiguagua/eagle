@@ -19,7 +19,7 @@ Vue.use(ElementUI);
 Vue.use(VueMenu);
 Vue.use(VueScrollTo, {
   offset: -60,
-  container: "#trial-article-editor .content",
+  container: "#trial-article-editor .document",
 });
 
 /** Sync $route to store */

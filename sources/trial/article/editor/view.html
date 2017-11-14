@@ -1,11 +1,6 @@
 <article id='trial-article-editor'>
   <div class='toolbar'>
     <div class='left'>
-      <el-radio-group v-model='tools.switcher' change='switch' size='mini'>
-        <el-radio-button label='展开' name='open'>展开</el-radio-button>
-        <el-radio-button label='关闭' name='close'>关闭</el-radio-button>
-      </el-radio-group>
-      &nbsp;
       <el-button @click='generate' size='mini' type='primary'>
         <i class='fa fa-cogs'>&nbsp;生成笔录</i>
       </el-button>
@@ -23,198 +18,189 @@
       </el-button-group>
     </div>
   </div>
-  <div class='content'>
+  <div class='document'>
     <header>
       <h1 title='法院名称' id='name'>{{trial.name}}</h1>
       <h2 title='笔录标题' id='title'>{{trial.title}}</h2>
     </header>
-    <el-collapse :value='tools.open'>
-      <el-collapse-item name='infomation'>
-        <template slot='title'>
-          <b>庭审信息</b>
-        </template>
-        <section title='庭审信息' id='infomation'>
-          <p title='时间'>
-            时间：
-            <el-date-picker v-model='trial.infomation.date' type='date' placeholder='选择日期' value-format='yyyy年MM月dd日' format='yyyy年MM月dd日'></el-date-picker>
-            <el-time-picker v-model='trial.infomation.time.start' placeholder='选择时间' value-format='HH时mm分' format='HH时mm分' :picker-options="{selectableRange:'08:30:00-18:00:00'}"></el-time-picker>
-            至
-            <el-time-picker v-model='trial.infomation.time.end' placeholder='选择时间' value-format='HH时mm分' format='HH时mm分' :picker-options="{selectableRange:'08:30:00-18:00:00'}"></el-time-picker>
-          </p>
-          <p title='地点'>
-            地点：
-            <el-input v-model='trial.infomation.location.name' class='input-width-larger' placeholder='请输入法院名称'></el-input>
-            第
-            <el-input-number v-model='trial.infomation.location.number' :min='1' :max='999' controls-position='right'></el-input-number>
-            号法庭第
-            <el-input-number v-model='trial.infomation.location.times' :min='1' :max='999' controls-position='right'></el-input-number>
-            次开庭
-          </p>
-          <p title='案号'>
-            案号：
-            <el-input v-model='trial.infomation.code' class='input-width-larger' placeholder='请输入案号'></el-input>
-          </p>
-          <p title='案由'>
-            案由：
-            <el-input v-model='trial.infomation.reason' class='input-width-larger' placeholder='请输入案由'></el-input>
-          </p>
-          <p title='是否公开审理、旁听人数'>
-            是否公开审理：
-            <el-select v-model='trial.infomation.isPublic' placeholder='请选择是否公开'>
-              <el-option v-for='item in options.publicStatus' :key='item.key' :label='item.key' :value='item.key'>
-              </el-option>
-            </el-select>
-            &nbsp;&nbsp;&nbsp; 旁听人数：
-            <el-input-number v-model='trial.infomation.audience' :min='1'></el-input-number>
-          </p>
-          <p title='审判人员1'>
-            <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务'>
-              <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
-              </el-option>
-            </el-select>
-            ：
-            <el-input v-model='trial.infomation.officer[0].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
-          </p>
-          <p title='审判人员2' v-if='isChiefOfficer'>
-            <el-select v-model='trial.infomation.officer[1].duty' placeholder='请选择职务'>
-              <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
-              </el-option>
-            </el-select>
-            ：
-            <el-input v-model='trial.infomation.officer[1].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
-          </p>
-          <p title='审判人员3' v-if='isChiefOfficer'>
-            <el-select v-model='trial.infomation.officer[2].duty' placeholder='请选择职务'>
-              <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
-              </el-option>
-            </el-select>
-            ：
-            <el-input v-model='trial.infomation.officer[2].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
-          </p>
-          <p title='书记员'>
-            书记员：
-            <el-input v-model='trial.infomation.clerk' class='input-width-larger' placeholder='请输入姓名'></el-input>
-          </p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='discipline'>
-        <template slot='title'>
-          <b>法庭纪律</b>
-        </template>
-        <section title='法庭纪律' id='discipline'>
-          <p>书记员：当事人及其诉讼代理人入庭（核对当事人及代理人情况）。为了维护法庭秩序，保障审判活动正常进行，根据《中华人民共和国民事诉讼法》第一百三十七条第一款和《中华人民共和国人民法院法庭规则》之规定，现在宣布法庭纪律：</p>
-          <p>1.开庭审理期间，当事人及其他诉讼参与人和旁听群众均应服从审判员指挥；</p>
-          <p>2.当事人及其他诉讼参与人在开庭审判期间的发言、陈述和辩论，须经审判员许可；</p>
-          <p>3.旁听群众不准进入审判区，不准发言、提问，未经许可不准录音、录像和摄影，不准鼓掌、喧哗、吵闹和有其他妨碍审判活动的行为；</p>
-          <p>4.不准吸烟和随地吐痰，不得在法庭上使用移动电话；</p>
-          <p>5.旁听群众对法庭的审判活动如有意见，可以在闭庭后书面向本院提出，对于违反法庭纪律而又不听劝告和制止的人，审判员有权根据不同情节作出没收胶卷、录音带、录像带、笔记本或责令退出法庭等处理，情节严重的并可追究刑事责任；</p>
-          <p>6.对哄闹、冲击法庭，侮辱、诽谤、威胁、殴打审判人员等严重扰乱法庭秩序的人，依法追究刑事责任；情节较轻的，予以罚款、拘留。</p>
-          <p>
-            全体起立，请
-            <b>{{trial.infomation.officer[0].duty}}</b>
-            <b v-if='isChiefOfficer'>、{{trial.infomation.officer[1].duty}}</b>
-            <b v-if='isChiefOfficer'>、{{trial.infomation.officer[2].duty}}</b> 入庭。
-          </p>
-          <p>报告<b>{{trial.infomation.officer[0].duty}}</b>本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。
-          </p>
-          <!--  -->
-          <p>书记员：当事人及其诉讼代理人入庭（核对当事人及代理人情况）。为了维护法庭秩序，保障审判活动正常进行，根据《中华人民共和国民事诉讼法》第一百三十七条第一款和《中华人民共和国人民法院法庭规则》之规定，现在宣布法庭纪律：</p>
-          <p>1.开庭审理期间，当事人及其他诉讼参与人和旁听群众均应服从审判员指挥；</p>
-          <p>2.当事人及其他诉讼参与人在开庭审判期间的发言、陈述和辩论，须经审判员许可；</p>
-          <p>3.旁听群众不准进入审判区，不准发言、提问，未经许可不准录音、录像和摄影，不准鼓掌、喧哗、吵闹和有其他妨碍审判活动的行为；</p>
-          <p>4.不准吸烟和随地吐痰，不得在法庭上使用移动电话；</p>
-          <p>5.旁听群众对法庭的审判活动如有意见，可以在闭庭后书面向本院提出，对于违反法庭纪律而又不听劝告和制止的人，审判员有权根据不同情节作出没收胶卷、录音带、录像带、笔记本或责令退出法庭等处理，情节严重的并可追究刑事责任；</p>
-          <p>6.对哄闹、冲击法庭，侮辱、诽谤、威胁、殴打审判人员等严重扰乱法庭秩序的人，依法追究刑事责任；情节较轻的，予以罚款、拘留。</p>
-          <p>
-            全体起立，请
-            <b>{{trial.infomation.officer[0].duty}}</b>
-            <b v-if='isChiefOfficer'>、{{trial.infomation.officer[1].duty}}</b>
-            <b v-if='isChiefOfficer'>、{{trial.infomation.officer[2].duty}}</b> 入庭。
-          </p>
-          <p>报告<b>{{trial.infomation.officer[0].duty}}</b>本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。
-          </p>
-          <!--  -->
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='verifications'>
-        <template slot='title'>
-          <b>信息核对</b>
-        </template>
-        <section title='信息核对' id='verification'>
-          <p title='诉讼参与人' id='participator'></p>
-          <p title='异议及理由' id='objection'></p>
-          <p title='证人是否出庭' id='witness'></p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='preface'>
-        <template slot='title'>
-          <b>庭审序言</b>
-        </template>
-        <section title='庭审序言' id='preface'>
-          <p title='庭审组织' id='organize'></p>
-          <p title='告知诉讼权利' id='rights'></p>
-          <p title='告知事项' id='matter'></p>
-          <p title='是否申请回避' id='evasion'></p>
-          <p title='举证期限异议' id='evidence'></p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='investigate'>
-        <template slot='title'>
-          <b>法庭调查</b>
-        </template>
-        <section title='法庭调查' id='investigate'>
-          <p title='诉辩意见' id='opinion'></p>
-          <p title='法庭询问' id='inquiry'></p>
-          <p title='举证质证' id='proof'></p>
-          <p title='争点归纳' id='conclude'>
-            <p title='无争议归纳' id='undisputed'></p>
-            <p title='有争议归纳' id='disputed'></p>
-          </p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='argument'>
-        <template slot='title'>
-          <b>法庭辩论</b>
-        </template>
-        <section id='argument' title='法庭辩论'>
-          <p title='原告方辩论意见' id='accuser'></p>
-          <p title='被告方辩论意见' id='accused'></p>
-          <p title='第三人辩论意见' id='thirdparty'></p>
-          <p title='庭审总结' id='summary'></p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='statement'>
-        <template slot='title'>
-          <b>最后陈述</b>
-        </template>
-        <section title='最后陈述' id='statement'>
-          <p></p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='conciliation'>
-        <template slot='title'>
-          <b>法庭调解</b>
-        </template>
-        <section title='法庭调解' id='conciliation'>
-          <p></p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='announce'>
-        <template slot='title'>
-          <b>休庭宣读</b>
-        </template>
-        <section title='休庭宣读' id='announce'>
-          <p></p>
-        </section>
-      </el-collapse-item>
-      <el-collapse-item name='other'>
-        <template slot='title'>
-          <b>其他</b>
-        </template>
-        <footer title='其他' id='other'>
-          <p></p>
-        </footer>
-      </el-collapse-item>
-    </el-collapse>
+    <section title='庭审信息' id='infomation'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>庭审信息</b>
+      </div>
+      <div class="content">
+        <p title='时间'>
+          时间：
+          <el-date-picker v-model='trial.infomation.date' type='date' placeholder='选择日期' value-format='yyyy年MM月dd日' format='yyyy年MM月dd日'></el-date-picker>
+          <el-time-picker v-model='trial.infomation.time.start' placeholder='选择时间' value-format='HH时mm分' format='HH时mm分' :picker-options="{selectableRange:'08:30:00-18:00:00'}"></el-time-picker>
+          至
+          <el-time-picker v-model='trial.infomation.time.end' placeholder='选择时间' value-format='HH时mm分' format='HH时mm分' :picker-options="{selectableRange:'08:30:00-18:00:00'}"></el-time-picker>
+        </p>
+        <p title='地点'>
+          地点：
+          <el-input v-model='trial.infomation.location.name' class='input-width-larger' placeholder='请输入法院名称'></el-input>
+          第
+          <el-input-number v-model='trial.infomation.location.number' :min='1' :max='999' controls-position='right'></el-input-number>
+          号法庭第
+          <el-input-number v-model='trial.infomation.location.times' :min='1' :max='999' controls-position='right'></el-input-number>
+          次开庭
+        </p>
+        <p title='案号'>
+          案号：
+          <el-input v-model='trial.infomation.code' class='input-width-larger' placeholder='请输入案号'></el-input>
+        </p>
+        <p title='案由'>
+          案由：
+          <el-input v-model='trial.infomation.reason' class='input-width-larger' placeholder='请输入案由'></el-input>
+        </p>
+        <p title='是否公开审理、旁听人数'>
+          是否公开审理：
+          <el-select v-model='trial.infomation.isPublic' placeholder='请选择是否公开'>
+            <el-option v-for='item in options.publicStatus' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          &nbsp;&nbsp;&nbsp; 旁听人数：
+          <el-input-number v-model='trial.infomation.audience' :min='1'></el-input-number>
+        </p>
+        <p title='审判人员1'>
+          <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务'>
+            <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          ：
+          <el-input v-model='trial.infomation.officer[0].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
+        </p>
+        <p title='审判人员2' v-if='isChiefOfficer'>
+          <el-select v-model='trial.infomation.officer[1].duty' placeholder='请选择职务'>
+            <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          ：
+          <el-input v-model='trial.infomation.officer[1].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
+        </p>
+        <p title='审判人员3' v-if='isChiefOfficer'>
+          <el-select v-model='trial.infomation.officer[2].duty' placeholder='请选择职务'>
+            <el-option v-for='item in options.duties[1]' :key='item.key' :label='item.key' :value='item.key'>
+            </el-option>
+          </el-select>
+          ：
+          <el-input v-model='trial.infomation.officer[2].name' class='input-width-larger' placeholder='请输入姓名'></el-input>
+        </p>
+        <p title='书记员'>
+          书记员：
+          <el-input v-model='trial.infomation.clerk' class='input-width-larger' placeholder='请输入姓名'></el-input>
+        </p>
+      </div>
+    </section>
+    <section title='法庭纪律' id='discipline'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>法庭纪律</b>
+      </div>
+      <div class="content">
+        <p>书记员：当事人及其诉讼代理人入庭（核对当事人及代理人情况）。为了维护法庭秩序，保障审判活动正常进行，根据《中华人民共和国民事诉讼法》第一百三十七条第一款和《中华人民共和国人民法院法庭规则》之规定，现在宣布法庭纪律：</p>
+        <p>1.开庭审理期间，当事人及其他诉讼参与人和旁听群众均应服从审判员指挥；</p>
+        <p>2.当事人及其他诉讼参与人在开庭审判期间的发言、陈述和辩论，须经审判员许可；</p>
+        <p>3.旁听群众不准进入审判区，不准发言、提问，未经许可不准录音、录像和摄影，不准鼓掌、喧哗、吵闹和有其他妨碍审判活动的行为；</p>
+        <p>4.不准吸烟和随地吐痰，不得在法庭上使用移动电话；</p>
+        <p>5.旁听群众对法庭的审判活动如有意见，可以在闭庭后书面向本院提出，对于违反法庭纪律而又不听劝告和制止的人，审判员有权根据不同情节作出没收胶卷、录音带、录像带、笔记本或责令退出法庭等处理，情节严重的并可追究刑事责任；</p>
+        <p>6.对哄闹、冲击法庭，侮辱、诽谤、威胁、殴打审判人员等严重扰乱法庭秩序的人，依法追究刑事责任；情节较轻的，予以罚款、拘留。</p>
+        <p>
+          全体起立，请
+          <b>{{trial.infomation.officer[0].duty}}</b>
+          <b v-if='isChiefOfficer'>、{{trial.infomation.officer[1].duty}}</b>
+          <b v-if='isChiefOfficer'>、{{trial.infomation.officer[2].duty}}</b> 入庭。
+        </p>
+        <p>报告<b>{{trial.infomation.officer[0].duty}}</b>本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。
+        </p>
+      </div>
+    </section>
+    <section title='信息核对' id='verification'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>信息核对</b>
+      </div>
+      <div class="content">
+        <p title='诉讼参与人' id='participator'></p>
+        <p title='异议及理由' id='objection'></p>
+        <p title='证人是否出庭' id='witness'></p>
+      </div>
+    </section>
+    <section title='庭审序言' id='preface'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>庭审序言</b>
+      </div>
+      <div class="content">
+        <p title='庭审组织' id='organize'></p>
+        <p title='告知诉讼权利' id='rights'></p>
+        <p title='告知事项' id='matter'></p>
+        <p title='是否申请回避' id='evasion'></p>
+        <p title='举证期限异议' id='evidence'></p>
+      </div>
+    </section>
+    <section title='法庭调查' id='investigate'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>法庭调查</b>
+      </div>
+      <div class="content">
+        <p title='诉辩意见' id='opinion'></p>
+        <p title='法庭询问' id='inquiry'></p>
+        <p title='举证质证' id='proof'></p>
+        <p title='争点归纳' id='conclude'>
+          <p title='无争议归纳' id='undisputed'></p>
+          <p title='有争议归纳' id='disputed'></p>
+        </p>
+      </div>
+    </section>
+    <section title='法庭辩论' id='argument'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>法庭辩论</b>
+      </div>
+      <div class="content">
+        <p title='原告方辩论意见' id='accuser'></p>
+        <p title='被告方辩论意见' id='accused'></p>
+        <p title='第三人辩论意见' id='thirdparty'></p>
+        <p title='庭审总结' id='summary'></p>
+      </div>
+    </section>
+    <section title='最后陈述' id='statement'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>最后陈述</b>
+      </div>
+      <div class="content">
+        <p></p>
+      </div>
+    </section>
+    <section title='法庭调解' id='conciliation'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>法庭调解</b>
+      </div>
+      <div class="content">
+        <p></p>
+      </div>
+    </section>
+    <section title='休庭宣读' id='announce'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>休庭宣读</b>
+      </div>
+      <div class="content">
+        <p></p>
+      </div>
+    </section>
+    <footer title='其他' id='other'>
+      <div class='access'>
+        <i class="el-icon-edit-outline"></i>
+        <b>其他</b>
+      </div>
+      <div class="content">
+        <p></p>
+      </div>
+    </footer>
   </div>
 </article>
