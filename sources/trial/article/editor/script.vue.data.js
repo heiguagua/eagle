@@ -28,7 +28,7 @@ export default {
       clerk: '', // 书记员
     },
     // 法庭纪律
-    discipline: '',
+    // discipline: '',
     // 信息核对
     verification: {
       // 诉讼参与人
@@ -173,8 +173,4 @@ export default {
       '不公开',
     ]
   },
-  tools: {
-    open: ['infomation', 'discipline', 'verifications', 'preface', 'investigate', 'argument', 'statement', 'conciliation', 'announce', 'announce'],
-    switcher: {}
-  }
 }
