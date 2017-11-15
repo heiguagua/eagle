@@ -37,11 +37,11 @@ const Router = new VueRouter({
         },
         component: resolve => require(['./trial/article/blank/index.vue'], resolve)
       }, {
-        path: 'editor',
+        path: 'produce',
         meta: {
           auth: true
         },
-        component: resolve => require(['./trial/article/editor/index.vue'], resolve)
+        component: resolve => require(['./trial/article/produce/index.vue'], resolve)
       }, {
         path: 'preview',
         meta: {

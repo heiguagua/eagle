@@ -1,0 +1,26 @@
+<div id='trial-article-produce'>
+  <!-- 工具栏 -->
+  <div class='toolbar'>
+    <div class='left'>
+      <el-button @click='generate' size='mini' type='primary'>
+        <i class='fa fa-cogs'>&nbsp;生成笔录</i>
+      </el-button>
+      <el-button @click='logTrial' size='mini' type='info'>
+        <i class='fa fa-file'>&nbsp;打印Trial</i>
+      </el-button>
+    </div>
+    <div class='right'>
+      <el-button-group>
+        <router-link to='/layout/trial/blank'>
+          <el-button size='mini' type='default'>
+            <i class='fa fa-reply'>&nbsp;返回</i>
+          </el-button>
+        </router-link>
+      </el-button-group>
+    </div>
+  </div>
+  <!-- 编辑区 -->
+  <div class='document'>
+    <editor></editor>
+  </div>
+</div>
