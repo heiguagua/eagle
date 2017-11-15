@@ -32,7 +32,61 @@ export default {
     // 信息核对
     verification: {
       // 诉讼参与人
-      participator: '',
+      participator: {
+        // 原告
+        accusers: [{
+          // 诉讼主体
+          subjects: [{
+            name: '', // 名称
+            info: '', // 信息
+            isAppear: '到庭', // 是否出庭
+          }],
+          // 责任人
+          responsibles: [{
+            role: '', // 角色
+            name: '', // 名称
+            info: '', // 信息
+            isAppear: '到庭', // 是否出庭
+          }],
+          // 代理人
+          agents: [{
+            name: '', // 名称
+            info: '', // 信息
+            isAppear: '到庭', // 是否出庭
+            auth: '特别授权',
+          }],
+        }],
+        // 被告
+        accuseds: [{
+          // 诉讼主体
+          subjects: [{
+
+          }],
+          // 责任人
+          responsibles: [{
+
+          }],
+          // 代理人
+          agents: [{
+
+          }],
+        }],
+        // 第三人
+        thirdparties: [{
+          // 诉讼主体
+          subjects: [{
+
+          }],
+          // 责任人
+          responsibles: [{
+
+          }],
+          // 代理人
+          agents: [{
+
+          }],
+        }],
+      },
       // 异议及理由
       objection: '',
       // 证人是否出庭
@@ -90,33 +144,33 @@ export default {
   options: {
     duties: [
       [
-        { key: '审判长' },
-        { key: '审判员' },
-        { key: '代理审判员' },
+        '审判长',
+        '审判员',
+        '代理审判员',
       ],
       [
-        { key: '审判员' },
-        { key: '代理审判员' },
-        { key: '人民陪审员' },
+        '审判员',
+        '代理审判员',
+        '人民陪审员',
       ]
     ],
-    agents: [
-      { key: '特别授权' },
-      { key: '一般代理' }
+    authStatus: [
+      '特别授权',
+      '一般代理'
     ],
-    procurators: [
-      { key: '法定代表人' },
-      { key: '负责人' },
-      { key: '法定代表人' },
-      { key: '指定代理人' },
+    responsibles: [
+      '法定代表人',
+      '负责人',
+      '法定代表人',
+      '指定代理人',
     ],
     appearStatus: [
-      { yes: '到庭' },
-      { no: '未到庭' },
+      '到庭',
+      '未到庭',
     ],
     publicStatus: [
-      { key: '公开' },
-      { key: '不公开' },
+      '公开',
+      '不公开',
     ]
   },
   tools: {
