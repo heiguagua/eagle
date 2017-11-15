@@ -1,14 +1,14 @@
 import Http from '../../../common/scripts/http';
 import { message } from '../../../common/scripts/helper';
 // import Editor from '../../../common/scripts/editor';
-import Editor from './editor/index.vue';
+import TrialEditor from './editor/index.vue';
 
 export default {
   data() {
     return {};
   },
   components: {
-    Editor
+    TrialEditor
   },
   methods: {
     generate() {

@@ -7,125 +7,125 @@
   <article>
     <el-menu background-color='#E5E9F2' default-active="1" :collapse="menu.isCollapse">
       <el-menu-item index="infomation" v-scroll-to="'#infomation'">
-        <!-- <i class="el-icon-edit"></i> -->
+        <i class=" el-icon-location"></i>
         <span slot="title">庭审信息</span>
       </el-menu-item>
       <el-menu-item index="discipline" v-scroll-to="'#discipline'">
-        <!-- <i class="el-icon-edit"></i> -->
+        <i class=" el-icon-location"></i>
         <span slot="title">法庭纪律</span>
       </el-menu-item>
       <el-submenu index="verification">
         <template slot="title">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">信息核对</span>
         </template>
         <el-menu-item index="participator" v-scroll-to="'#participator'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">诉讼参与人</span>
         </el-menu-item>
         <el-menu-item index="objection" v-scroll-to="'#objection'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">异议及理由</span>
         </el-menu-item>
         <el-menu-item index="witness" v-scroll-to="'#witness'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">证人是否出庭</span>
         </el-menu-item>
       </el-submenu>
       <el-submenu index="preface">
         <template slot="title">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">庭审序言</span>
         </template>
         <el-menu-item index="organize" v-scroll-to="'#organize'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">庭审组织</span>
         </el-menu-item>
         <el-menu-item index="rights" v-scroll-to="'#rights'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">告知诉讼权利</span>
         </el-menu-item>
         <el-menu-item index="matter" v-scroll-to="'#matter'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">告知事项</span>
         </el-menu-item>
         <el-menu-item index="evasions" v-scroll-to="'#evasions'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">是否申请回避</span>
         </el-menu-item>
         <el-menu-item index="evidence" v-scroll-to="'#evidence'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">举证期限异议</span>
         </el-menu-item>
       </el-submenu>
       <el-submenu index="investigate">
         <template slot="title">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">法庭调查</span>
         </template>
         <el-menu-item index="opinion" v-scroll-to="'#opinion'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">诉辩意见</span>
         </el-menu-item>
         <el-menu-item index="inquiry" v-scroll-to="'#inquiry'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">法庭询问</span>
         </el-menu-item>
         <el-menu-item index="proof" v-scroll-to="'#proof'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">举证质证</span>
         </el-menu-item>
         <el-submenu index="conclude">
           <template slot="title">
-            <!-- <i class="el-icon-edit"></i> -->
+            <i class=" el-icon-location"></i>
             <span slot="title">争点归纳</span>
           </template>
           <el-menu-item index="undisputed" v-scroll-to="'#undisputed'">
-            <!-- <i class="el-icon-edit"></i> -->
+            <i class=" el-icon-location"></i>
             <span slot="title">无争议归纳</span>
           </el-menu-item>
           <el-menu-item index="disputed" v-scroll-to="'#disputed'">
-            <!-- <i class="el-icon-edit"></i> -->
+            <i class=" el-icon-location"></i>
             <span slot="title">有争点归纳</span>
           </el-menu-item>
         </el-submenu>
       </el-submenu>
       <el-submenu index="argument">
         <template slot="title">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">法庭辩论</span>
         </template>
         <el-menu-item index="accuser" v-scroll-to="'#accuser'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">原告方辩论意见</span>
         </el-menu-item>
         <el-menu-item index="accused" v-scroll-to="'#accused'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">被告方辩论意见</span>
         </el-menu-item>
         <el-menu-item index="thirdparty" v-scroll-to="'#thirdparty'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">第三人辩论意见</span>
         </el-menu-item>
         <el-menu-item index="summary" v-scroll-to="'#summary'">
-          <!-- <i class="el-icon-edit"></i> -->
+          <i class=" el-icon-location"></i>
           <span slot="title">庭审总结</span>
         </el-menu-item>
       </el-submenu>
       <el-menu-item index="statement" v-scroll-to="'#statement'">
-        <!-- <i class="el-icon-edit"></i> -->
+        <i class=" el-icon-location"></i>
         <span slot="title">最后陈述</span>
       </el-menu-item>
       <el-menu-item index="conciliation" v-scroll-to="'#conciliation'">
-        <!-- <i class="el-icon-edit"></i> -->
+        <i class=" el-icon-location"></i>
         <span slot="title">法庭调解</span>
       </el-menu-item>
       <el-menu-item index="announce" v-scroll-to="'#announce'">
-        <!-- <i class="el-icon-edit"></i> -->
+        <i class=" el-icon-location"></i>
         <span slot="title">休庭宣读</span>
       </el-menu-item>
       <el-menu-item index="other" v-scroll-to="'#other'">
-        <!-- <i class="el-icon-edit"></i> -->
+        <i class=" el-icon-location"></i>
         <span slot="title">其他</span>
       </el-menu-item>
     </el-menu>
