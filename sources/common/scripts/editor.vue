@@ -3,7 +3,7 @@
      v-html='inputText'
      :placeholder = 'placeholder'
      :contenteditable='isEditable'
-     @blur = 'editorBlur'
+     @blur='editorBlur'
      @focus='editorFocus'
      @input='editorChange'></p>
 </template>

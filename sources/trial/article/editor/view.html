@@ -129,20 +129,27 @@
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
         <em>信息核对&nbsp;-&nbsp;诉讼参与人</em>
+        <el-button-group class='tools'>
+          <el-button type="info" icon="el-icon-plus" size='mini'>增加被告</el-button>
+          <el-button type="info" icon="el-icon-plus" size='mini'>增加原告</el-button>
+          <el-button type="info" icon="el-icon-plus" size='mini'>增加第三人</el-button>
+        </el-button-group>
       </div>
       <div class="content">
         <!-- 原告 -->
         <p>原告：
-          <editor v-model='trial.infomation.location.name' placeholder='请输入法院名称' class='min-width-larger'></editor>，
-          <editor v-model='trial.infomation.location.name' placeholder='请输入法院名称' class='min-width-larger'></editor>
+          <el-input v-model='trial.infomation.location.name' class='width-92' placeholder='请输入法院名称'></el-input>，
         </p>
         <p>
-          ，（
+          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容" class='width-98'></el-input>
+        </p>
+        <p>
+          （
           <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
             <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
           </el-select>
-          以下简称原 ）
+          以下简称原）
         </p>
         <!-- #原告 -->
         <!-- 法定代表人 -->
@@ -152,14 +159,13 @@
             </el-option>
           </el-select>
           ，
-          <el-input v-model='trial.infomation.location.name' class='width-larger' placeholder='请输入法院名称'></el-input>，
+          <el-input v-model='trial.infomation.location.name' class='width-77' placeholder='请输入法院名称'></el-input>，
         </p>
         <p>
-          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容">
-          </el-input>
+          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容" class='width-98'></el-input>
         </p>
         <p>
-          ，（
+          （
           <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
             <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
@@ -170,14 +176,13 @@
         <!-- 委托诉讼代理人 -->
         <p>
           委托诉讼代理人：
-          <el-input v-model='trial.infomation.location.name' class='width-larger' placeholder='请输入法院名称'></el-input>，
+          <el-input v-model='trial.infomation.location.name' class='width-84' placeholder='请输入法院名称'></el-input>，
         </p>
         <p>
-          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容">
-          </el-input>
+          <el-input type="textarea" :autosize="{minRows: 2}" placeholder="请输入内容" class='width-98'></el-input>
         </p>
         <p>
-          ，（
+          （
           <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-small'>
             <el-option v-for='item in options.duties[0]' :key='item.key' :label='item.key' :value='item.key'>
             </el-option>
@@ -212,7 +217,7 @@
     </section>
     <!-- #信息核对 -->
     <!-- 庭审序言 -->
-    <section title='庭审序言' id='preface'>
+    <section title='庭审序言' id='witness'>
       <div class='access'>
         <i class="el-icon-edit-outline"></i>
         <em>庭审序言</em>

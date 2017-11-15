@@ -8,6 +8,7 @@
   .toolbar {}
   .document {
     padding: 0 !important;
+    @import './style.content';
     header {
       text-align: center;
       padding: 19px 0 18px 0;
@@ -41,17 +42,18 @@
           font-style: normal;
           font-size: 14px;
         }
-        &:hover {
-          cursor: pointer;
+        .tools {
+          float: right;
+          margin-top: 11px;
         }
       }
       .content {
         padding: 15px 30px 15px 30px;
       }
-      p {
-        padding: 0;
-        font-size: 14px;
-      }
+    }
+    p {
+      padding: 0;
+      font-size: 14px !important;
     }
   }
   /* Footer */

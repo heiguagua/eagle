@@ -292,6 +292,12 @@
   width: 80px !important;
 }
 
+@for $index from 1 through 100 {
+  .width-#{$index} {
+    width: 1% * $index !important;
+  }
+}
+
 
 /* ----- min width----- */
 
