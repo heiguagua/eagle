@@ -165,7 +165,7 @@
                 <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
                 </el-option>
               </el-select>，
-              <el-input v-model='responsible.name' class='width-65' placeholder='请输入法院名称'></el-input>，
+              <el-input v-model='responsible.name' class='width-65' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人名称'></el-input>，
             </p>
             <p>
               <el-input v-model='responsible.info' type="textarea" :autosize="{minRows: 3}" placeholder='请输入法定代表人/负责人/法定代理人/指定代理人信息' class='width-98'></el-input>
@@ -185,10 +185,10 @@
           <div class='agent' v-for='(agent, index) in accuser.agents'>
             <p>
               委托诉讼代理人：
-              <el-input v-model='agent.name' placeholder='请输入法院名称' class='width-83'></el-input>，
+              <el-input v-model='agent.name' placeholder='请输入委托诉讼代理人名称' class='width-83'></el-input>，
             </p>
             <p>
-              <el-input v-model="agent.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入内容" class='width-98'></el-input>
+              <el-input v-model="agent.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入委托诉讼代理人信息" class='width-98'></el-input>
             </p>
             <p>
               （
