@@ -100,6 +100,16 @@ export default {
         { key: '人民陪审员' },
       ]
     ],
+    agents: [
+      { key: '特别授权' },
+      { key: '一般代理' }
+    ],
+    procurators: [
+      { key: '法定代表人' },
+      { key: '负责人' },
+      { key: '法定代表人' },
+      { key: '指定代理人' },
+    ],
     appearStatus: [
       { yes: '到庭' },
       { no: '未到庭' },
