@@ -110,15 +110,15 @@
     </div>
     <div class='content'>
       <!-- 原告 -->
-      <el-button @click='pushAccuser' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加原告</i></el-button>
+      <el-button @click='addAccuser' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加原告</i></el-button>
       <el-tabs type='border-card'>
-        <el-tab-pane class='accuser animated fadeInDown' v-for='(accuser, index) in trial.verification.participator.accusers'>
+        <el-tab-pane class='accuser animated fadeInDown' v-for='(accuser, index) in trial.verification.participator.accusers' :key='index'>
           <span slot="label">
             <i class="fa fa-user">&nbsp;{{"原告-"+(index+1)}}</i>
             &nbsp;&nbsp;&nbsp;
-            <i class="fa fa-window-close color-red-light" aria-hidden="true"></i>
+            <i @click='removeAccuser(index)' class="fa fa-window-close color-danger"></i>
           </span>
-          <div title='诉讼主体' class='subject' v-for='(subject, index) in accuser.subjects'>
+          <div title='诉讼主体' class='subject' v-for='(subject, index) in accuser.subjects' :key='index'>
             <p>
               <b>原告</b>：
               <el-input v-model='subject.name' placeholder='请输入原告名称' class='width-91'></el-input>，
@@ -144,7 +144,7 @@
               </el-dropdown>
             </p>
           </div>
-          <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, index) in accuser.responsibles'>
+          <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, index) in accuser.responsibles' :key='index'>
             <p>
               <el-select v-model='responsible.role' class='width-30'>
                 <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
@@ -175,7 +175,7 @@
               </el-dropdown>
             </p>
           </div>
-          <div title='委托诉讼代理人' class='agent' v-for='(agent, index) in accuser.agents'>
+          <div title='委托诉讼代理人' class='agent' v-for='(agent, index) in accuser.agents' :key='index'>
             <p>
               委托诉讼代理人：
               <el-input v-model='agent.name' placeholder='请输入委托诉讼代理人名称' class='width-82'></el-input>，
@@ -209,14 +209,14 @@
         </el-tab-pane>
       </el-tabs>
       <!-- 被告 -->
-      <el-button @click='pushAccused' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加被告</i></el-button>
+      <el-button @click='addAccused' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加被告</i></el-button>
       <el-tabs type='border-card'>
-        <el-tab-pane class='accused animated bounceInDown' v-for='(accused, index) in trial.verification.participator.accuseds'>
+        <el-tab-pane class='accused animated bounceInDown' v-for='(accused, index) in trial.verification.participator.accuseds' :key='index'>
           <span slot="label">
             <i class="fa fa-user">&nbsp;{{"被告-"+(index+1)}}</i>
           </span>
           <div>
-            <div title='诉讼主体' class='subject' v-for='(subject, index) in accused.subjects'>
+            <div title='诉讼主体' class='subject' v-for='(subject, index) in accused.subjects' :key='index'>
               <p>
                 <b>被告：</b>
                 <el-input v-model='subject.name' placeholder='请输入被告名称' class='width-91'></el-input>，
@@ -285,13 +285,13 @@
         </el-tab-pane>
       </el-tabs>
       <!-- 第三人 -->
-      <el-button @click='pushThirdparty' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加第三人</i></el-button>
+      <el-button @click='addThirdparty' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加第三人</i></el-button>
       <el-tabs type='border-card'>
-        <el-tab-pane class='thirdparty animated bounceInDown' v-for='(thirdparty, index) in trial.verification.participator.thirdparties'>
+        <el-tab-pane class='thirdparty animated bounceInDown' v-for='(thirdparty, index) in trial.verification.participator.thirdparties' :key='index'>
           <span slot="label">
             <i class="fa fa-user">&nbsp;{{"第三人-"+(index+1)}}</i>
           </span>
-          <div title='诉讼主体' class='subject' v-for='(subject, index) in thirdparty.subjects'>
+          <div title='诉讼主体' class='subject' v-for='(subject, index) in thirdparty.subjects' :key='index'>
             <p>
               <b>第三人：</b>
               <el-input v-model='subject.name' placeholder='请输入第三人名称' class='width-90'></el-input>，
@@ -310,7 +310,7 @@
               <el-button type='danger' plain icon='el-icon-close' size='mini'>移除第三人</el-button>
             </p>
           </div>
-          <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, index) in thirdparty.responsibles'>
+          <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, index) in thirdparty.responsibles' :key='index'>
             <p>
               <el-select v-model='responsible.role' class='width-30'>
                 <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
@@ -331,7 +331,7 @@
               <el-button type='danger' plain icon='el-icon-close' size='mini'>移除诉讼主体</el-button>
             </p>
           </div>
-          <div title='委托诉讼代理人' class='agent' v-for='(agent, index) in thirdparty.agents'>
+          <div title='委托诉讼代理人' class='agent' v-for='(agent, index) in thirdparty.agents' :key='index'>
             <p>
               委托诉讼代理人：
               <el-input v-model='agent.name' placeholder='请输入委托诉讼代理人名称' class='width-83'></el-input>，
