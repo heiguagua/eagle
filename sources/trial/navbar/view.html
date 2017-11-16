@@ -67,14 +67,6 @@
           <i class=" el-icon-location"></i>
           <span slot="title">诉辩意见</span>
         </el-menu-item>
-        <el-menu-item index="inquiry" v-scroll-to="'#inquiry'">
-          <i class=" el-icon-location"></i>
-          <span slot="title">法庭询问</span>
-        </el-menu-item>
-        <el-menu-item index="proof" v-scroll-to="'#proof'">
-          <i class=" el-icon-location"></i>
-          <span slot="title">举证质证</span>
-        </el-menu-item>
         <el-submenu index="conclude">
           <template slot="title">
             <i class=" el-icon-location"></i>
@@ -89,6 +81,18 @@
             <span slot="title">有争点归纳</span>
           </el-menu-item>
         </el-submenu>
+        <el-menu-item index="inquiry" v-scroll-to="'#inquiry'">
+          <i class=" el-icon-location"></i>
+          <span slot="title">法庭询问</span>
+        </el-menu-item>
+        <el-menu-item index="proof" v-scroll-to="'#proof'">
+          <i class=" el-icon-location"></i>
+          <span slot="title">举证质证</span>
+        </el-menu-item>
+        <el-menu-item index="fact" v-scroll-to="'#proof'">
+          <i class=" el-icon-location"></i>
+          <span slot="title">争议事实认定</span>
+        </el-menu-item>
       </el-submenu>
       <el-submenu index="argument">
         <template slot="title">

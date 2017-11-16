@@ -119,7 +119,7 @@
         <!-- 诉讼主体 -->
         <div class='subject' v-for='(subject, index) in accuser.subjects'>
           <p>原告：
-            <el-input v-model='subject.name' placeholder='请输入原告名称' class='width-92' ></el-input>，
+            <el-input v-model='subject.name' placeholder='请输入原告名称' class='width-92'></el-input>，
           </p>
           <p>
             <el-input v-model='subject.info' type='textarea' :autosize='{minRows: 3}' placeholder='请输入原告信息' class='width-98'></el-input>
@@ -187,7 +187,6 @@
         <!-- #委托诉讼代理人 -->
       </div>
       <!-- #原告 -->
-
     </div>
   </section>
   <section title='异议及理由' id='objection'>
@@ -196,7 +195,16 @@
       <em>信息核对&nbsp;-&nbsp;异议及理由</em>
     </div>
     <div class='content'>
-
+      <p>审：各方对出庭人员有无异议？</p>
+      <p>原</p>
+      <p>原</p>
+      <p>原代</p>
+      <p>被</p>
+      <p>被</p>
+      <p>被代</p>
+      <p>第</p>
+      <p>第</p>
+      <p>第代</p>
     </div>
   </section>
   <section title='证人是否出庭' id='witness'>
@@ -205,39 +213,191 @@
       <em>信息核对&nbsp;-&nbsp;证人是否出庭</em>
     </div>
     <div class='content'>
-
+      <p>审：经核对，各方当事人和其他诉讼参加人均符合法律规定，可以参加本次诉讼活动。各方当事人是否有证人出庭作证？</p>
+      <p>原</p>
+      <p>原</p>
+      <p>原代</p>
+      <p>被</p>
+      <p>被</p>
+      <p>被代</p>
+      <p>第</p>
+      <p>第</p>
+      <p>第代</p>
     </div>
   </section>
   <!-- #信息核对 -->
-  <!-- 庭审序言 -->
-  <section title='庭审序言' id='witness'>
+  <!-- 庭审序言-庭审组织 -->
+  <section title='庭审序言-庭审组织' id='organize'>
     <div class='access'>
       <i class='el-icon-edit-outline'></i>
-      <em>庭审序言</em>
+      <em>庭审序言-庭审组织</em>
     </div>
     <div class='content'>
-      <p title='庭审组织' id='organize'></p>
-      <p title='告知诉讼权利' id='rights'></p>
-      <p title='告知事项' id='matter'></p>
-      <p title='是否申请回避' id='evasion'></p>
-      <p title='举证期限异议' id='evidence'></p>
+      <p>审：本院受理AAAAAAAAA与AAAAA一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用普通程序第二次公开开庭进行审理。 因工作调动，审判员/审判长/代理审判员/人民陪审员/书记员由XXX更换为XXX。 本案由审判长、审判员、审判员依法组成合议庭，由审判员担任审判长，由书记员担任记录。</p>
+    </div>
+  </section>
+  <section title='庭审序言-告知诉讼权利' id='rights'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>庭审序言-告知诉讼权利</em>
+    </div>
+    <div class='content'>
+      <p>审：本院已在庭前向各方当事人送达了《当事人诉讼权利义务通知书》和《举证通知书》，是否收到？各方对自己的权利义务是否清楚？</p>
+      <p>原：收到，清楚。</p>
+      <p>原：收到，清楚。</p>
+      <p>原代：收到，清楚。</p>
+      <p>被：收到，清楚。</p>
+      <p>被：收到，清楚。</p>
+      <p>被代：收到，清楚。</p>
+      <p>第：收到，清楚。</p>
+      <p>第：收到，清楚。</p>
+      <p>第代：收到，清楚。</p>
+      <p>审：鉴于各方均已收到本院发出的当事人诉讼权利义务通知书，且对自己的权利义务均清楚，本庭不再另行通知当事人的诉讼权利和义务。</p>
+    </div>
+  </section>
+  <section title='庭审序言-告知事项' id='matter'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>庭审序言-告知事项</em>
+    </div>
+    <div class='content'>
+      <p>审：为了严肃法庭纪律，规范庭审活动，本庭向各方当事人、诉讼参与人明确告知四项内容：</p>
+      <p>一、根据最高人民法院相关规定，本案的庭审活动将进行全程同步录音（或录像），所形成的视频、音频资料将存入案件卷宗，并可能在网上公开或作法制宣传等之用。</p>
+      <p>二、根据《中华人民共和国民事诉讼法》第十三条、第一百一十一条，最高人民法院《关于民事诉讼证据的若干规定》第八十条之规定，各方当事人和诉讼参与人在民事诉讼活动中应当遵循诚实信用原则，如实陈述案件事实和提供相关证据材料。如有作虚假陈述，提供虚假证据，妨碍证人、鉴定人、勘验人作证等行为的，除依法追究法律责任外，本庭还将对其违反诚信的行为作为综合评判案件事实和判决结果的考量因素。</p>
+      <p>三、根据宪法和法律规定，人民法院依法独立行使审判权，法官依法审判案件，不受行政机关、社会团体和个人的干涉。各方当事人及诉讼参与人应以法律规定的方式表达诉求和提供证据，在诉讼过程中不得通过他人转交材料或转达诉求，不得庭外请托合议庭或其他法官，不得以任何形式干扰法院独立和公正行使审判权。如有上述不符合法律规定之行为的，本庭将记录在案，同时责令行为方向本庭及对方当事人作出说明。律师有上述行为的，本院还将函告司法行政部门。</p>
+      <p>四、在案件审理过程中，本庭将严格遵守上级法院及本院有关审判工作纪律之规定，不接受当事人及相关人员的请客送礼，不与律师进行不正当交往，公开、公平、公正地审理案件。</p>
+      <p>审：双方对以上内容是否清楚?</p>
+      <p>原：清楚。</p>
+      <p>原：清楚。</p>
+      <p>原代：清楚。</p>
+      <p>被：清楚。</p>
+      <p>被：清楚。</p>
+      <p>被代：清楚。</p>
+      <p>第：清楚。</p>
+      <p>第：清楚。</p>
+      <p>第代：清楚。</p>
+    </div>
+  </section>
+  <section title='庭审序言-是否申请回避' id='evasion'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>庭审序言-是否申请回避</em>
+    </div>
+    <div class='content'>
+      <p>审：根据《中华人民共和国民事诉讼法》第四十四条、四十五条、四十六条之规定，当事人可以申请回避，各方是否申请回避？</p>
+      <p>原：不申请。</p>
+      <p>原：不申请。</p>
+      <p>原代：不申请。</p>
+      <p>被：不申请。</p>
+      <p>被：不申请。</p>
+      <p>被代：不申请。</p>
+      <p>第：不申请。</p>
+      <p>第：不申请。</p>
+      <p>第代：不申请。</p>
+    </div>
+  </section>
+  <section title='庭审序言-举证期限异议' id='evidence'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>庭审序言-举证期限异议</em>
+    </div>
+    <div class='content'>
+      <p>审：庭前向各方送达权利义务通知书、举证通知书，各方是否已收到？对证据期限有无异议？是否同意今天开庭？</p>
+      <p>原：已收到，无异议，同意。</p>
+      <p>原：已收到，无异议，同意。</p>
+      <p>原代：已收到，无异议，同意。</p>
+      <p>被：已收到，无异议，同意。</p>
+      <p>被：已收到，无异议，同意。</p>
+      <p>被代：已收到，无异议，同意。</p>
+      <p>第：已收到，无异议，同意。</p>
+      <p>第：已收到，有异议，同意。</p>
+      <p>第代：已收到，无异议，同意。</p>
     </div>
   </section>
   <!-- #庭审序言 -->
   <!-- 法庭调查 -->
-  <section title='法庭调查' id='investigate'>
+  <section title='法庭调查-诉辩意见' id='opinion'>
     <div class='access'>
       <i class='el-icon-edit-outline'></i>
-      <em>法庭调查</em>
+      <em>法庭调查-诉辩意见</em>
     </div>
     <div class='content'>
-      <p title='诉辩意见' id='opinion'></p>
-      <p title='法庭询问' id='inquiry'></p>
-      <p title='举证质证' id='proof'></p>
-      <p title='争点归纳' id='conclude'>
-        <p title='无争议归纳' id='undisputed'></p>
-        <p title='有争议归纳' id='disputed'></p>
-      </p>
+      <p>审：现在进行法庭调查。首先由原告简要陈述诉讼请求、事实和理由。</p>
+      <p>原：</p>
+      <p>原：</p>
+      <p>原代：</p>
+      <p>审：现在由被告简要宣读答辩状或针对原告的诉讼请求及理由进行答辩。</p>
+      <p>被：</p>
+      <p>被：</p>
+      <p>被代：</p>
+      <p>审：现在由第三人陈述意见。</p>
+      <p>第：</p>
+      <p>第：</p>
+      <p>第代：</p>
+    </div>
+  </section>
+  <section title='法庭调查-无争议归纳' id='undisputed'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>法庭调查-无争议归纳</em>
+    </div>
+    <div class='content'>
+      <p>审：根据各方陈述意见，归纳无争议及争议事实如下：无争议事实：</p>
+      <p>原：无异议，无补充。</p>
+      <p>原：无异议，无补充。</p>
+      <p>原代：无异议，无补充。</p>
+      <p>被：无异议，无补充。</p>
+      <p>被：有异议，无补充。</p>
+      <p>被代：无异议，无补充。</p>
+      <p>第：无异议， 无补充。</p>
+      <p>第：无异议，无补充。</p>
+      <p>第代：无异议，无补充。</p>
+    </div>
+  </section>
+  <section title='法庭调查-有争议归纳' id='disputed'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>法庭调查-有争议归纳</em>
+    </div>
+    <div class='content'>
+      <p>审：争议事实：对于本院归纳内容是否有异议或补充？</p>
+      <p>原：无异议，无补充。</p>
+      <p>原：无异议，无补充。</p>
+      <p>原代：无异议，无补充。</p>
+      <p>被：无异议，无补充。</p>
+      <p>被：无异议，无补充。</p>
+      <p>被代：无异议，无补充。</p>
+      <p>第： 无异议，无补充。</p>
+      <p>第：无异议，无补充。</p>
+      <p>第代：无异议，无补充。</p>
+    </div>
+  </section>
+  <section title='法庭调查-法庭询问' id='inquiry'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>法庭调查-法庭询问</em>
+    </div>
+    <div class='content'>
+      <p>审：现在法庭做如下询问</p>
+      <h1>全案要素表选择</h1>
+    </div>
+  </section>
+  <section title='法庭调查-举证质证' id='proof'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>法庭调查-举证质证</em>
+    </div>
+    <div class='content'>
+      <p>审：现在开始举证，先由原告方举证。</p>
+    </div>
+  </section>
+  <section title='法庭调查-争议事实认定' id='fact'>
+    <div class='access'>
+      <i class='el-icon-edit-outline'></i>
+      <em>法庭调查-争议事实认定</em>
+    </div>
+    <div class='content'>
+      <p>审：现在开始举证，先由原告方举证。</p>
     </div>
   </section>
   <!-- #法庭调查 -->
@@ -284,7 +444,7 @@
       <em>休庭宣读</em>
     </div>
     <div class='content'>
-      <p></p>
+      <p>当事人及代理人签名处（注：当事人应当逐页在指定位置签名，并在末页写明：“以上笔录阅后无误”字样后签名并署时间）：</p>
     </div>
   </section>
   <!-- #休庭宣读 -->
