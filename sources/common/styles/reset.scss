@@ -27,14 +27,14 @@ html {
 
 // Scroll bar
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-font-placeholder;
-  border-radius: 5px;
+  background: $color-gray-light;
+  border-radius: 0px;
 }
 
 // Fade transition
@@ -126,8 +126,7 @@ html {
 #trial-article-editor {
   .el-textarea {
     textarea {
-      min-height: 40px !important;
-      // line-height: 30px !important;
+      min-height: 40px !important; // line-height: 30px !important;
       padding-top: 10px !important;
     }
   }
