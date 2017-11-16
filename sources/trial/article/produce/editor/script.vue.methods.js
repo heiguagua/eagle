@@ -22,7 +22,7 @@ export default {
               const accusers = vm.trial.verification.participator.accusers;
               accusers.splice(params.index, 1);
             }
-            notify(vm, 'warning', '温馨提示：不能删除原告！', '成功');
+            notify(vm, 'warning', '温馨提示：不能删除第1位原告！', '成功');
           }
         }
         break;
