@@ -1,17 +1,15 @@
 export default {
-  duties: [
-    [
-      '审判长',
-      '审判员',
-      '代理审判员',
-    ],
-    [
-      '审判员',
-      '代理审判员',
-      '人民陪审员',
-    ]
+  primaryDuties: [
+    '审判长',
+    '审判员',
+    '代理审判员',
   ],
-  authStatus: [
+  normalDuties: [
+    '审判员',
+    '代理审判员',
+    '人民陪审员',
+  ],
+  auths: [
     '特别授权',
     '一般代理'
   ],
@@ -21,11 +19,11 @@ export default {
     '法定代理人',
     '指定代理人',
   ],
-  appearStatus: [
+  appears: [
     '到庭',
     '未到庭',
   ],
-  publicStatus: [
+  publics: [
     '公开',
     '不公开',
   ]
