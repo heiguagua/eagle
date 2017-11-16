@@ -6,7 +6,7 @@ import methods from './script.vue.methods';
 export default {
   data() {
     return {
-      trial,
+      trial: trial(),
       options,
     }
   },
