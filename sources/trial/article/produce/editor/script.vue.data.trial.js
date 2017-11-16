@@ -59,30 +59,46 @@ export default {
       accuseds: [{
         // 诉讼主体
         subjects: [{
-
+          name: '', // 名称
+          info: '', // 信息
+          isAppear: '到庭', // 是否出庭
         }],
         // 责任人
         responsibles: [{
-
+          role: '法定代表人', // 角色
+          name: '', // 名称
+          info: '', // 信息
+          isAppear: '到庭', // 是否出庭
         }],
         // 代理人
         agents: [{
-
+          name: '', // 名称
+          info: '', // 信息
+          isAppear: '到庭', // 是否出庭
+          auth: '特别授权',
         }],
       }],
       // 第三人
       thirdparties: [{
         // 诉讼主体
         subjects: [{
-
+          name: '', // 名称
+          info: '', // 信息
+          isAppear: '到庭', // 是否出庭
         }],
         // 责任人
         responsibles: [{
-
+          role: '法定代表人', // 角色
+          name: '', // 名称
+          info: '', // 信息
+          isAppear: '到庭', // 是否出庭
         }],
         // 代理人
         agents: [{
-
+          name: '', // 名称
+          info: '', // 信息
+          isAppear: '到庭', // 是否出庭
+          auth: '特别授权',
         }],
       }],
     },
