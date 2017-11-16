@@ -110,13 +110,13 @@
     </div>
     <div class='content'>
       <!-- 原告 -->
-      <el-button @click='addAccuser' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加原告</i></el-button>
+      <el-button @click='accuserHandler("accuser", "add")' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加原告</i></el-button>
       <el-tabs type='border-card'>
         <el-tab-pane class='accuser animated fadeInDown' v-for='(accuser, index) in trial.verification.participator.accusers' :key='index'>
           <span slot="label">
             <i class="fa fa-user">&nbsp;{{"原告-"+(index+1)}}</i>
             &nbsp;&nbsp;&nbsp;
-            <i @click='removeAccuser(index)' class="fa fa-window-close color-danger"></i>
+            <i @click='accuserHandler("accuser", "remove", {index: index})' class="fa fa-window-close color-danger"></i>
           </span>
           <div title='诉讼主体' class='subject' v-for='(subject, index) in accuser.subjects' :key='index'>
             <p>

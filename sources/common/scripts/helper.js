@@ -9,6 +9,14 @@ export const message = (vm, type, message) => {
   })
 };
 
+export const notify = (vm, type, message, title) => {
+  vm.$notify({
+    type: type || 'info',
+    message: message || '',
+    title: title || '',
+  })
+};
+
 export const storage = {
   get(key) {
     if (key) {
