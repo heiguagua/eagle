@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "@hscmap/vue-menu": "^1.2.1",
+    "animate.css": "^3.5.2",
     "axios": "^0.17.0",
     "element-ui": "^2.0.4",
     "font-awesome": "^4.7.0",

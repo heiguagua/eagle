@@ -9,6 +9,7 @@ import './common/styles/base.scss';
 import './common/styles/reset.scss';
 import './common/styles/theme.scss';
 import 'font-awesome/css/font-awesome.css';
+import 'animate.css/animate.css';
 // ui
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';

@@ -40,20 +40,6 @@
     }
     .content {
       padding: 15px 50px 15px 50px;
-      .accuser,
-      .accused,
-      .thirdparty {
-        margin: 0 -20px;
-        padding: 20px;
-        border: 1px solid $color-blue-light-extra;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        &:hover {
-          background: $color-gray-light-extra;
-          transition: all .5s ease;
-          box-shadow: 2px $color-blue-light-extra;
-        }
-      }
     }
   }
   p {
