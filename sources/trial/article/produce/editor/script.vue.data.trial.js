@@ -36,7 +36,9 @@ export default () => {
         // 原告
         accusers: [{
           // 诉讼主体
+          ordinal: 0, // 序数
           subjects: [{
+            ordinal: 0, // 序数
             name: '', // 名称
             info: '', // 信息
             isAppear: '到庭', // 是否出庭
