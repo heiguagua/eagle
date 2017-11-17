@@ -13,5 +13,16 @@ export default {
   computed,
   methods,
   mounted() {},
-  directives: {}
+  directives: {
+    hoverToggle: {
+      // 指令的定义
+      bind: function(el, binding, vnode, oldVnode) {
+        var target = el.querySelectorAll('.hover-toggle');
+        console.log(target);
+        // target.addEventListener('mouseover', function(event) {
+        //   alert();
+        // })
+      }
+    }
+  }
 };

@@ -1,4 +1,4 @@
-<article id='trial-editor'>
+<article id='trial-editor' v-hoverToggle>
   <!-- 笔录标题 -->
   <header>
     <h1 title='法院名称' id='name'>{{trial.name}}</h1>
@@ -129,7 +129,7 @@
               </el-option>
             </el-select>
             以下简称<b>原{{subjectIndex+1}}</b>）
-            <el-dropdown @click='accuserHandler("subject", "add", {accuserIndex: accuserIndex})' type='info' size='mini' split-button>
+            <el-dropdown class='hover-toggle' @click='accuserHandler("subject", "add", {accuserIndex: accuserIndex})' type='info' size='mini' split-button>
               <i class='fa fa-plus'>&nbsp;添加</i>
               <el-dropdown-menu slot='dropdown'>
                 <el-dropdown-item></el-dropdown-item>

@@ -131,17 +131,3 @@ html {
     }
   }
 }
-
-#trial-editor {
-  .el-tabs {
-    box-shadow: none;
-    margin: -1px 0 20px 0;
-    .el-tabs__header {
-      color: red !important;
-      background: $color-white-dark;
-    }
-    .el-tabs__content {
-      padding: 5px 20px !important;
-    }
-  }
-}
