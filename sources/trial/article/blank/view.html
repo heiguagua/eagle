@@ -9,14 +9,16 @@
     </div>
     <div class="right">
       <el-button-group>
-        <el-button size='mini' type="default">
-          <i class="fa fa-reply">&nbsp;返回</i>
-        </el-button>
+        <router-link to='/layout/cases'>
+          <el-button size='mini' type="default">
+            <i class="fa fa-reply">&nbsp;返回</i>
+          </el-button>
+        </router-link>
       </el-button-group>
     </div>
   </div>
   <div class="content">
-    <article>
+    <article class='animated zoomInUp'>
       <p>请点击工具栏
         <router-link to='/layout/trial/produce'>
           <el-button size='mini' type="primary">
@@ -24,11 +26,10 @@
           </el-button>
         </router-link>
         新增一份庭审笔录，</p>
-      <p>或点击右侧庭审笔录列表
+      <p>或者点击右侧庭审笔录列表
         <em>[查看]</em>
         <em>[修改]</em>
-        <em>[删除]</em>
-        执行相应操作。
+        <em>[删除]</em> 执行相应操作。
       </p>
     </article>
   </div>

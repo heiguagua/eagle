@@ -114,7 +114,7 @@
     <div class='content'>
       <!-- 原告 -->
       <div class='accuser animated slideInDown' v-for='(accuser, accuserIndex) in trial.verification.participator.accusers' :key='accuserIndex'>
-        <div title='诉讼主体' class='subject animated slideInDown' v-for='(subject, subjectIndex) in accuser.subjects' :key='subjectIndex'>
+        <div title='诉讼主体' class='subject animated slideInLeft' v-for='(subject, subjectIndex) in accuser.subjects' :key='subjectIndex'>
           <p>
             <b>原告</b>：
             <el-input v-model='subject.name' placeholder='请输入原告名称' class='width-92'></el-input>，

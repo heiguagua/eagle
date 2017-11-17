@@ -35,8 +35,7 @@
         font-size: 14px;
       }
       .tools {
-        float: right;
-        // margin-top: 11px;
+        float: right; // margin-top: 11px;
       }
     }
     .content {
@@ -45,7 +44,10 @@
       .accuser,
       .accused,
       .thirdparty {
-
+        hr {
+          margin: 35px 0;
+          border-top: 1px dotted $color-silver-light;
+        }
       }
     }
   }
