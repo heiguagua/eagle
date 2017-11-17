@@ -106,257 +106,104 @@
   <section title='诉讼参与人' id='participator'>
     <div class='access'>
       <i class='el-icon-edit-outline'></i>
-      <em>信息核对&nbsp;-&nbsp;诉讼参与人</em>
+      <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;原告</em>
+      <div class="tools">
+        <el-button @click='accuserHandler("accuser", "add")' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加原告</i></el-button>
+      </div>
     </div>
     <div class='content'>
       <!-- 原告 -->
-      <el-button @click='accuserHandler("accuser", "add")' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加原告</i></el-button>
-      <el-tabs type='border-card'>
-        <el-tab-pane class='accuser animated fadeInDown' v-for='(accuser, accuserIndex) in trial.verification.participator.accusers' :key='accuserIndex'>
-          <span slot="label">
-            <i class="fa fa-user">&nbsp;{{"原告 "+(accuserIndex+1)}}</i>
-            &nbsp;&nbsp;&nbsp;
-            <i @click='accuserHandler("accuser", "remove", {index: accuserIndex})' class="fa fa-window-close color-danger"></i>
-          </span>
-          <div title='诉讼主体' class='subject animated slideInLeft' v-for='(subject, subjectIndex) in accuser.subjects' :key='subjectIndex'>
-            <p>
-              <b>原告</b>：
-              <el-input v-model='subject.name' placeholder='请输入原告名称' class='width-91'></el-input>，
-            </p>
-            <p>
-              <el-input v-model='subject.info' type='textarea' :autosize='{minRows: 4}' placeholder='请输入原告信息' class='width-100'></el-input>
-            </p>
-            <p>
-              （
-              <el-select v-model='subject.isAppear' class='width-20'>
-                <el-option v-for='appear in options.appears' :key='appear' :label='appear' :value='appear'>
-                </el-option>
-              </el-select>
-              以下简称原{{subjectIndex+1}}）
-              <el-dropdown @click='accuserHandler("subject", "add", {accuserIndex: accuserIndex})' type='primary' size='mini' split-button>
-                <i class='fa fa-plus'>&nbsp;添加</i>
-                <el-dropdown-menu slot='dropdown'>
-                  <el-dropdown-item></el-dropdown-item>
-                  <el-dropdown-item>
-                    <i @click='accuserHandler("subject", "remove", {accuserIndex: accuserIndex,subjectIndex: subjectIndex})' class='fa fa-times color-danger'>&nbsp;移除</i>
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </p>
-          </div>
-          <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, responsibleIndex) in accuser.responsibles' :key='responsibleIndex'>
-            <p>
-              <el-select v-model='responsible.role' class='width-30'>
-                <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
-                </el-option>
-              </el-select>，
-              <el-input v-model='responsible.name' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人名称' class='width-65'></el-input>，
-            </p>
-            <p>
-              <el-input v-model='responsible.info' type='textarea' :autosize='{minRows: 4}' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人信息' class='width-100'></el-input>
-            </p>
-            <p>
-              （
-              <el-select v-model='responsible.isAppear' class='width-20'>
-                <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
-                </el-option>
-              </el-select>
-              以下简称原）
-              <el-dropdown>
-                <el-button type='primary' size='mini'>
-                  <i class='fa fa-trash'>&nbsp;操作</i>
-                  <i class='el-icon-arrow-down el-icon--right'></i>
-                </el-button>
-                <el-dropdown-menu slot='dropdown'>
-                  <el-dropdown-item>
-                    <i class='fa fa-times color-danger'>&nbsp;移除</i>
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </p>
-          </div>
-          <div title='委托诉讼代理人' class='agent' v-for='(agent, agentIndex) in accuser.agents' :key='agentIndex'>
-            <p>
-              委托诉讼代理人：
-              <el-input v-model='agent.name' placeholder='请输入委托诉讼代理人名称' class='width-82'></el-input>，
-            </p>
-            <p>
-              <el-input v-model='agent.info' type='textarea' :autosize='{minRows: 4}' placeholder='请输入委托诉讼代理人信息' class='width-100'></el-input>
-            </p>
-            <p>
-              （
-              <el-select v-model='agent.isAppear' class='width-20'>
-                <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
-                </el-option>
-              </el-select>
-              ，
-              <el-select v-model='agent.auth' class='width-25'>
-                <el-option v-for='auth in options.auths' :key='auth' :label='auth' :value='auth'>
-                </el-option>
-              </el-select>
-              以下简称原代{{agentIndex+1}}）
-              <el-dropdown split-button type='primary' size='mini'>
-                <i class='fa fa-plus'>&nbsp;添加</i>
-                <el-dropdown-menu slot='dropdown'>
-                  <el-dropdown-item></el-dropdown-item>
-                  <el-dropdown-item>
-                    <i class='fa fa-times color-danger'>&nbsp;移除</i>
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </p>
-          </div>
-        </el-tab-pane>
-      </el-tabs>
+      <div class='accuser animated slideInDown' v-for='(accuser, accuserIndex) in trial.verification.participator.accusers' :key='accuserIndex'>
+        <div title='诉讼主体' class='subject animated slideInDown' v-for='(subject, subjectIndex) in accuser.subjects' :key='subjectIndex'>
+          <p>
+            <b>原告</b>：
+            <el-input v-model='subject.name' placeholder='请输入原告名称' class='width-92'></el-input>，
+          </p>
+          <p>
+            <el-input v-model='subject.info' type='textarea' :autosize='{minRows: 4}' placeholder='请输入原告信息' class='width-100'></el-input>
+          </p>
+          <p>
+            （
+            <el-select v-model='subject.isAppear' class='width-20'>
+              <el-option v-for='appear in options.appears' :key='appear' :label='appear' :value='appear'>
+              </el-option>
+            </el-select>
+            以下简称<b>原{{subjectIndex+1}}</b>）
+            <el-dropdown @click='accuserHandler("subject", "add", {accuserIndex: accuserIndex})' type='info' size='mini' split-button>
+              <i class='fa fa-plus'>&nbsp;添加</i>
+              <el-dropdown-menu slot='dropdown'>
+                <el-dropdown-item></el-dropdown-item>
+                <el-dropdown-item>
+                  <i @click='accuserHandler("subject", "remove", {accuserIndex: accuserIndex,subjectIndex: subjectIndex})' class='fa fa-times color-danger'>&nbsp;移除</i>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </p>
+        </div>
+        <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, responsibleIndex) in accuser.responsibles' :key='responsibleIndex'>
+          <p>
+            <el-select v-model='responsible.role' class='width-30'>
+              <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
+              </el-option>
+            </el-select>，
+            <el-input v-model='responsible.name' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人名称' class='width-65'></el-input>，
+          </p>
+          <p>
+            <el-input v-model='responsible.info' type='textarea' :autosize='{minRows: 4}' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人信息' class='width-100'></el-input>
+          </p>
+          <p>
+            （
+            <el-select v-model='responsible.isAppear' class='width-20'>
+              <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
+              </el-option>
+            </el-select>
+            以下简称原）
+            <el-dropdown split-button type='info' size='mini'>
+              <i class='fa fa-trash'>&nbsp;操作</i>
+              <el-dropdown-menu slot='dropdown'>
+                <el-dropdown-item></el-dropdown-item>
+                <el-dropdown-item>
+                  <i class='fa fa-times color-danger'>&nbsp;移除</i>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </p>
+        </div>
+        <div title='委托诉讼代理人' class='agent' v-for='(agent, agentIndex) in accuser.agents' :key='agentIndex'>
+          <p>
+            委托诉讼代理人：
+            <el-input v-model='agent.name' placeholder='请输入委托诉讼代理人名称' class='width-83'></el-input>，
+          </p>
+          <p>
+            <el-input v-model='agent.info' type='textarea' :autosize='{minRows: 4}' placeholder='请输入委托诉讼代理人信息' class='width-100'></el-input>
+          </p>
+          <p>
+            （
+            <el-select v-model='agent.isAppear' class='width-20'>
+              <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
+              </el-option>
+            </el-select>
+            ，
+            <el-select v-model='agent.auth' class='width-25'>
+              <el-option v-for='auth in options.auths' :key='auth' :label='auth' :value='auth'>
+              </el-option>
+            </el-select>
+            以下简称原代{{agentIndex+1}}）
+            <el-dropdown split-button type='info' size='mini'>
+              <i class='fa fa-plus'>&nbsp;添加</i>
+              <el-dropdown-menu slot='dropdown'>
+                <el-dropdown-item></el-dropdown-item>
+                <el-dropdown-item>
+                  <i class='fa fa-times color-danger'>&nbsp;移除</i>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </p>
+        </div>
+        <hr />
+      </div>
       <!-- 被告 -->
-      <el-button @click='addAccused' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加被告</i></el-button>
-      <el-tabs type='border-card'>
-        <el-tab-pane class='accused animated bounceInDown' v-for='(accused, accusedIndex) in trial.verification.participator.accuseds' :key='accusedIndex'>
-          <span slot="label">
-            <i class="fa fa-user">&nbsp;{{"被告-"+(accusedIndex+1)}}</i>
-          </span>
-          <div>
-            <div title='诉讼主体' class='subject' v-for='(subject, subjectIndex) in accused.subjects' :key='subjectIndex'>
-              <p>
-                <b>被告：</b>
-                <el-input v-model='subject.name' placeholder='请输入被告名称' class='width-91'></el-input>，
-              </p>
-              <p>
-                <el-input v-model='subject.info' type='textarea' :autosize='{minRows: 3}' placeholder='请输入被告信息' class='width-98'></el-input>
-              </p>
-              <p>
-                （
-                <el-select v-model='subject.isAppear' class='width-20'>
-                  <el-option v-for='appear in options.appears' :key='appear' :label='appear' :value='appear'>
-                  </el-option>
-                </el-select>
-                以下简称被{{subjectIndex+1}}）
-                <el-button type='primary' plain icon='el-icon-plus' size='mini'>添加被告</el-button>
-                <el-button type='danger' plain icon='el-icon-close' size='mini'>移除被告</el-button>
-              </p>
-            </div>
-            <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, responsibleIndex) in accused.responsibles' :key='responsibleIndex'>
-              <p>
-                <el-select v-model='responsible.role' class='width-30'>
-                  <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
-                  </el-option>
-                </el-select>，
-                <el-input v-model='responsible.name' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人名称' class='width-65'></el-input>，
-              </p>
-              <p>
-                <el-input v-model='responsible.info' type='textarea' :autosize='{minRows: 3}' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人信息' class='width-98'></el-input>
-              </p>
-              <p>
-                （
-                <el-select v-model='responsible.isAppear' class='width-20'>
-                  <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
-                  </el-option>
-                </el-select>
-                以下简称被）
-                <el-button type='danger' plain icon='el-icon-close' size='mini'>移除诉讼主体</el-button>
-              </p>
-            </div>
-            <div title='委托诉讼代理人' class='agent' v-for='(agent, agentIndex) in accused.agents' :key='agentIndex'>
-              <p>
-                委托诉讼代理人：
-                <el-input v-model='agent.name' placeholder='请输入委托诉讼代理人名称' class='width-83'></el-input>，
-              </p>
-              <p>
-                <el-input v-model='agent.info' type='textarea' :autosize='{minRows: 3}' placeholder='请输入委托诉讼代理人信息' class='width-98'></el-input>
-              </p>
-              <p>
-                （
-                <el-select v-model='agent.isAppear' class='width-20'>
-                  <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
-                  </el-option>
-                </el-select>
-                ，
-                <el-select v-model='agent.auth' class='width-22'>
-                  <el-option v-for='auth in options.auths' :key='auth' :label='auth' :value='auth'>
-                  </el-option>
-                </el-select>
-                以下简称被代{{agentIndex+1}}）
-                <el-button type='primary' plain icon='el-icon-plus' size='mini'>添加诉讼代理人</el-button>
-                <el-button type='danger' plain icon='el-icon-close' size='mini'>移除诉讼代理人</el-button>
-              </p>
-            </div>
-            <!-- #委托诉讼代理人 -->
-          </div>
-        </el-tab-pane>
-      </el-tabs>
       <!-- 第三人 -->
-      <el-button @click='addThirdparty' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加第三人</i></el-button>
-      <el-tabs type='border-card'>
-        <el-tab-pane class='thirdparty animated bounceInDown' v-for='(thirdparty, index) in trial.verification.participator.thirdparties' :key='index'>
-          <span slot="label">
-            <i class="fa fa-user">&nbsp;{{"第三人-"+(index+1)}}</i>
-          </span>
-          <div title='诉讼主体' class='subject' v-for='(subject, index) in thirdparty.subjects' :key='index'>
-            <p>
-              <b>第三人：</b>
-              <el-input v-model='subject.name' placeholder='请输入第三人名称' class='width-90'></el-input>，
-            </p>
-            <p>
-              <el-input v-model='subject.info' type='textarea' :autosize='{minRows: 3}' placeholder='请输入第三人信息' class='width-98'></el-input>
-            </p>
-            <p>
-              （
-              <el-select v-model='subject.isAppear' class='width-20'>
-                <el-option v-for='appear in options.appears' :key='appear' :label='appear' :value='appear'>
-                </el-option>
-              </el-select>
-              以下简称原{{index+1}}）
-              <el-button type='primary' plain icon='el-icon-plus' size='mini'>添加第三人</el-button>
-              <el-button type='danger' plain icon='el-icon-close' size='mini'>移除第三人</el-button>
-            </p>
-          </div>
-          <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, index) in thirdparty.responsibles' :key='index'>
-            <p>
-              <el-select v-model='responsible.role' class='width-30'>
-                <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
-                </el-option>
-              </el-select>，
-              <el-input v-model='responsible.name' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人名称' class='width-65'></el-input>，
-            </p>
-            <p>
-              <el-input v-model='responsible.info' type='textarea' :autosize='{minRows: 3}' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人信息' class='width-98'></el-input>
-            </p>
-            <p>
-              （
-              <el-select v-model='responsible.isAppear' class='width-20'>
-                <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
-                </el-option>
-              </el-select>
-              以下简称原）
-              <el-button type='danger' plain icon='el-icon-close' size='mini'>移除诉讼主体</el-button>
-            </p>
-          </div>
-          <div title='委托诉讼代理人' class='agent' v-for='(agent, index) in thirdparty.agents' :key='index'>
-            <p>
-              委托诉讼代理人：
-              <el-input v-model='agent.name' placeholder='请输入委托诉讼代理人名称' class='width-83'></el-input>，
-            </p>
-            <p>
-              <el-input v-model='agent.info' type='textarea' :autosize='{minRows: 3}' placeholder='请输入委托诉讼代理人信息' class='width-98'></el-input>
-            </p>
-            <p>
-              （
-              <el-select v-model='agent.isAppear' class='width-20'>
-                <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
-                </el-option>
-              </el-select>
-              ，
-              <el-select v-model='agent.auth' class='width-25'>
-                <el-option v-for='auth in options.auths' :key='auth' :label='auth' :value='auth'>
-                </el-option>
-              </el-select>
-              以下简称原代{{index+1}}）
-              <el-button type='primary' plain icon='el-icon-plus' size='mini'>添加诉讼代理人</el-button>
-              <el-button type='danger' plain icon='el-icon-close' size='mini'>移除诉讼代理人</el-button>
-            </p>
-          </div>
-        </el-tab-pane>
-      </el-tabs>
     </div>
   </section>
   <section title='异议及理由' id='objection'>

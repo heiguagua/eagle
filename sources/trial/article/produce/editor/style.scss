@@ -6,6 +6,7 @@
     padding: 19px 0 18px 0;
     background: $color-white;
     border-bottom: 1px solid $color-border-light;
+    background: url(../../../../assets/editor/paper-grid.jpg);
     h1,
     h2 {
       display: inline;
@@ -35,12 +36,15 @@
       }
       .tools {
         float: right;
-        margin-top: 11px;
+        // margin-top: 11px;
       }
     }
     .content {
       padding: 15px 50px 15px 50px;
-      .accuser, .accused, .thirdparty {
+      background: url(../../../../assets/editor/paper-grid.jpg);
+      .accuser,
+      .accused,
+      .thirdparty {
 
       }
     }

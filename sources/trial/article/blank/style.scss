@@ -4,14 +4,15 @@
   flex-direction: column;
   height: 100%;
   @import '../common';
+  background: url(../../../assets/editor/paper-grid.jpg);
   .content {
     >article {
       height: 97%;
-      margin-top: 10px; // border: 1px solid $color-gray-light;
+      margin-top: 10%; // border: 1px solid $color-gray-light;
       padding: 20px 50px;
       box-sizing: border-box;
       p {
-        line-height: 30px;
+        line-height: 40px;
       }
       em {
         color: $color-blue;
