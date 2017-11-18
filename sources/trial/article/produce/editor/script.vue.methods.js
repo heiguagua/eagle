@@ -10,7 +10,7 @@ export default {
         {
           // 添加
           if (operation === "add") {
-            const accuser = Trial().verification.participator.accusers[0];
+            let accuser = Trial().verification.participator.accusers[0];
             this.trial.verification.participator.accusers.push(accuser);
             message(vm, "success", "温馨提示：原告添加成功！");
           }
@@ -18,7 +18,7 @@ export default {
           else if (operation === "remove") {
             let accuserIndex = params.accuserIndex;
             if (accuserIndex !== 0) {
-              const accusers = vm.trial.verification.participator.accusers;
+              let accusers = vm.trial.verification.participator.accusers;
               accusers.splice(accuserIndex, 1);
               message(vm, "warning", "温馨提示：原告删除成功！");
             } else {
@@ -53,11 +53,17 @@ export default {
         {
           // 添加
           if (operation === "add") {
-
+            // let accuserIndex = params.accuserIndex;
+            // let originSubject = Trial().verification.participator.accusers[0].responsibles[0];
+            // let targetSubject = this.trial.verification.participator.accusers[accuserIndex].responsibles.push(originSubject);
+            // message(vm, "success", "温馨提示：原告法定代表人/负责人/法定代理人/指定代理人添加成功！");
           }
           // 删除
           else if (operation === "remove") {
-
+            let accuserIndex = params.accuserIndex;
+            let responsibleIndex = params.responsibleIndex;
+            this.trial.verification.participator.accusers[accuserIndex].responsibles.splice(responsibleIndex, 1);
+            message(vm, "warning", "温馨提示：原告法定代表人/负责人/法定代理人/指定代理人删除成功！");
           }
         }
         break;
@@ -65,11 +71,26 @@ export default {
         {
           // 添加
           if (operation === "add") {
-
+            let accuserIndex = params.accuserIndex;
+            let originAgent = Trial().verification.participator.accusers[0].agents[0];
+            let targetAgents = this.trial.verification.participator.accusers[accuserIndex].agents;
+            if (targetAgents.length < 2) {
+              targetAgents.push(originAgent);
+              message(vm, "success", "温馨提示：原告委托诉讼代理人添加成功！");
+            } else {
+              message(vm, "error", "温馨提示：不能添加更多的原告委托诉讼代理人！");
+            }
           }
           // 删除
           else if (operation === "remove") {
-
+            let accuserIndex = params.accuserIndex;
+            let agentIndex = params.agentIndex;
+            if (agentIndex !== 0) {
+              this.trial.verification.participator.accusers[accuserIndex].agents.splice(agentIndex, 1);
+              message(vm, "warning", "温馨提示：原告委托诉讼代理人删除成功！");
+            } else {
+              message(vm, "error", "温馨提示：不能删除唯一的原告委托诉讼代理人！");
+            }
           }
         }
         break;
@@ -81,15 +102,15 @@ export default {
   },
   /* 增加被告 */
   addAccused() {
-    const vm = this;
-    const accused = Trial().verification.participator.accuseds[0];
+    let vm = this;
+    let accused = Trial().verification.participator.accuseds[0];
     this.trial.verification.participator.accuseds.push(accused);
     notify(vm, "success", "温馨提示：诉讼参予人-被告添加成功！", "成功");
   },
   /* 增加第三人 */
   addThirdparty() {
-    const vm = this;
-    const thirdparty = Trial().verification.participator.thirdparties[0];
+    let vm = this;
+    let thirdparty = Trial().verification.participator.thirdparties[0];
     this.trial.verification.participator.thirdparties.push(thirdparty);
     notify(vm, "success", "温馨提示：诉讼参予人-第三人添加成功！", "成功");
   },

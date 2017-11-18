@@ -4,7 +4,6 @@
     <h1 title="法院名称" id="name">{{trial.name}}</h1>
     <h2 title="笔录标题" id="title">{{trial.title}}</h2>
   </header>
-  <!-- #笔录标题 -->
   <!-- 庭审信息 -->
   <section title="庭审信息" id="infomation">
     <div class="access">
@@ -76,7 +75,6 @@
       </p>
     </div>
   </section>
-  <!-- #庭审信息 -->
   <!-- 法庭纪律 -->
   <section title="法庭纪律" id="discipline">
     <div class="access">
@@ -101,7 +99,6 @@
       </p>
     </div>
   </section>
-  <!-- #法庭纪律 -->
   <!-- 信息核对 -->
   <section title="诉讼参与人" id="participator">
     <section title="原告" class="accuser animated slideInDown" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
@@ -137,7 +134,7 @@
               </el-option>
             </el-select>
             以下简称<b>原{{subject.ordinal}}</b>）
-            <el-dropdown class="hover-toggle" @click="accuserHandler('subject', 'add', {accuserIndex: accuserIndex})" type="primary" size="mini" split-button>
+            <el-dropdown @click="accuserHandler('subject', 'add', {accuserIndex: accuserIndex})" type="primary" size="mini" split-button>
               <i class="fa fa-plus">&nbsp;添加</i>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item></el-dropdown-item>
@@ -147,7 +144,7 @@
               </el-dropdown-menu>
             </el-dropdown>
           </p>
-          <hr>
+          <hr />
         </div>
         <div title="法定代表人/负责人/法定代理人/指定代理人" class="responsible" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
           <p>
@@ -166,7 +163,7 @@
               <el-option v-for="option in options.appears" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>
-            以下简称<b>原{{responsibleIndex + 1}}</b>）
+            以下简称<b>原{{responsibleIndex+1}}</b>）
             <el-dropdown>
               <el-button type="primary" size="mini">
                 <i class="fa fa-trash">&nbsp;移除</i>
@@ -174,11 +171,12 @@
               </el-button>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>
-                  <i class="fa fa-times color-danger">&nbsp;移除</i>
+                  <i @click="accuserHandler('responsible', 'remove', {accuserIndex: accuserIndex, responsibleIndex: responsibleIndex})" class="fa fa-times color-danger">&nbsp;移除</i>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </p>
+          <hr />
         </div>
         <div title="委托诉讼代理人" class="agent" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
           <p>
@@ -200,16 +198,17 @@
               </el-option>
             </el-select>
             以下简称<b>原代{{agentIndex + 1}}</b>
-            <el-dropdown split-button type="primary" size="mini">
+            <el-dropdown @click="accuserHandler('agent', 'add', {accuserIndex: accuserIndex})" type="primary" size="mini" split-button>
               <i class="fa fa-plus">&nbsp;添加</i>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item></el-dropdown-item>
                 <el-dropdown-item>
-                  <i class="fa fa-times color-danger">&nbsp;移除</i>
+                  <i @click="accuserHandler('agent', 'remove', {accuserIndex: accuserIndex, agentIndex: agentIndex})" class="fa fa-times color-danger">&nbsp;移除</i>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </p>
+          <hr />
         </div>
       </div>
     </section>
@@ -252,7 +251,6 @@
       <p>第代</p>
     </div>
   </section>
-  <!-- #信息核对 -->
   <!-- 庭审序言-庭审组织 -->
   <section title="庭审序言-庭审组织" id="organize">
     <div class="access">
@@ -341,7 +339,6 @@
       <p>第代：已收到，无异议，同意。</p>
     </div>
   </section>
-  <!-- #庭审序言 -->
   <!-- 法庭调查 -->
   <section title="法庭调查-诉辩意见" id="opinion">
     <div class="access">
@@ -427,7 +424,6 @@
       <p>审：现在开始举证，先由原告方举证。</p>
     </div>
   </section>
-  <!-- #法庭调查 -->
   <!-- 法庭辩论 -->
   <section title="法庭辩论" id="argument">
     <div class="access">
@@ -441,7 +437,6 @@
       <p title="庭审总结" id="summary"></p>
     </div>
   </section>
-  <!-- #法庭辩论 -->
   <!-- 最后陈述 -->
   <section title="最后陈述" id="statement">
     <div class="access">
@@ -452,7 +447,6 @@
       <p></p>
     </div>
   </section>
-  <!-- #最后陈述 -->
   <!-- 法庭调解 -->
   <section title="法庭调解" id="conciliation">
     <div class="access">
@@ -463,7 +457,6 @@
       <p></p>
     </div>
   </section>
-  <!-- #法庭调解 -->
   <!-- 休庭宣读 -->
   <section title="休庭宣读" id="announce">
     <div class="access">
@@ -474,7 +467,6 @@
       <p>当事人及代理人签名处（注：当事人应当逐页在指定位置签名，并在末页写明：“以上笔录阅后无误”字样后签名并署时间）：</p>
     </div>
   </section>
-  <!-- #休庭宣读 -->
   <!-- 其他 -->
   <footer title="其他" id="other">
     <div class="access">
@@ -485,5 +477,4 @@
       <p></p>
     </div>
   </footer>
-  <!-- #其他 -->
 </article>
