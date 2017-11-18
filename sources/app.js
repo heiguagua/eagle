@@ -19,7 +19,7 @@ import VueScrollTo from 'vue-scrollto';
 Vue.use(ElementUI);
 Vue.use(VueMenu);
 Vue.use(VueScrollTo, {
-  offset: 0,
+  offset: 1,
   container: "#trial-article-produce .document",
 });
 

@@ -123,11 +123,12 @@ html {
   }
 }
 
-#trial-article-editor {
-  .el-textarea {
-    textarea {
-      min-height: 40px !important; // line-height: 30px !important;
-      padding-top: 10px !important;
+#trial-editor {
+  .el-dropdown-menu {
+    .el-dropdown-menu__item {
+      line-height: 24px !important;
+      padding: 0 10px !important;
+      font-size: 12px !important;
     }
   }
 }

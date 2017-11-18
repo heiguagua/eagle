@@ -40,7 +40,7 @@
       <p title='是否公开审理、旁听人数'>
         是否公开审理：
         <el-select v-model='trial.infomation.isPublic' class='width-25'>
-          <el-option v-for='item in options.publics' :key='item' :label='item' :value='item'>
+          <el-option v-for='option in options.publics' :key='option' :label='option' :value='option'>
           </el-option>
         </el-select>
         &nbsp;&nbsp;&nbsp; 旁听人数：
@@ -48,7 +48,7 @@
       </p>
       <p title='审判人员1'>
         <el-select v-model='trial.infomation.officer[0].duty' placeholder='请选择职务' class='width-30'>
-          <el-option v-for='item in options.primaryDuties' :key='item' :label='item' :value='item'>
+          <el-option v-for='option in options.primaryDuties' :key='option' :label='option' :value='option'>
           </el-option>
         </el-select>
         ：
@@ -56,7 +56,7 @@
       </p>
       <p title='审判人员2' v-if='isChiefOfficer'>
         <el-select v-model='trial.infomation.officer[1].duty' placeholder='请选择职务' class='width-30'>
-          <el-option v-for='item in options.normalDuties' :key='item' :label='item' :value='item'>
+          <el-option v-for='option in options.normalDuties' :key='option' :label='option' :value='option'>
           </el-option>
         </el-select>
         ：
@@ -64,7 +64,7 @@
       </p>
       <p title='审判人员3' v-if='isChiefOfficer'>
         <el-select v-model='trial.infomation.officer[2].duty' placeholder='请选择职务' class='width-30'>
-          <el-option v-for='item in options.normalDuties' :key='item' :label='item' :value='item'>
+          <el-option v-for='option in options.normalDuties' :key='option' :label='option' :value='option'>
           </el-option>
         </el-select>
         ：
@@ -104,7 +104,7 @@
   <!-- #法庭纪律 -->
   <!-- 信息核对 -->
   <section title='诉讼参与人' id='participator'>
-    <section class='accuser animated slideInDown' v-for='(accuser, accuserIndex) in trial.verification.participator.accusers' :key='accuserIndex'>
+    <section title='原告' class='accuser animated slideInDown' v-for='(accuser, accuserIndex) in trial.verification.participator.accusers' :key='accuserIndex'>
       <div class='access'>
         <i class='el-icon-edit-outline'></i>
         <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;原告</em>
@@ -152,7 +152,7 @@
         <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, responsibleIndex) in accuser.responsibles' :key='responsibleIndex'>
           <p>
             <el-select v-model='responsible.role' class='width-30'>
-              <el-option v-for='item in options.responsibles' :key='item' :label='item' :value='item'>
+              <el-option v-for='option in options.responsibles' :key='option' :label='option' :value='option'>
               </el-option>
             </el-select>，
             <el-input v-model='responsible.name' placeholder='请输入法定代表人/负责人/法定代理人/指定代理人名称' class='width-65'></el-input>，
@@ -163,14 +163,16 @@
           <p>
             （
             <el-select v-model='responsible.isAppear' class='width-20'>
-              <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
+              <el-option v-for='option in options.appears' :key='option' :label='option' :value='option'>
               </el-option>
             </el-select>
-            以下简称<b>原{{responsible.ordinal}}</b>）
-            <el-dropdown split-button type='primary' size='mini'>
-              <i class='fa fa-trash'>&nbsp;操作</i>
-              <el-dropdown-menu slot='dropdown'>
-                <el-dropdown-item></el-dropdown-item>
+            以下简称<b>原{{responsibleIndex + 1}}</b>）
+            <el-dropdown>
+              <el-button type="primary" size='mini'>
+                <i class='fa fa-trash'>&nbsp;移除</i>
+                <i class="el-icon-arrow-down el-icon--right"></i>
+              </el-button>
+              <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>
                   <i class='fa fa-times color-danger'>&nbsp;移除</i>
                 </el-dropdown-item>
@@ -189,7 +191,7 @@
           <p>
             （
             <el-select v-model='agent.isAppear' class='width-20'>
-              <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
+              <el-option v-for='option in options.appears' :key='option' :label='option' :value='option'>
               </el-option>
             </el-select>
             ，
@@ -197,7 +199,7 @@
               <el-option v-for='auth in options.auths' :key='auth' :label='auth' :value='auth'>
               </el-option>
             </el-select>
-            以下简称<b>原代{{agent.ordinal}}</b>
+            以下简称<b>原代{{agentIndex + 1}}</b>
             <el-dropdown split-button type='primary' size='mini'>
               <i class='fa fa-plus'>&nbsp;添加</i>
               <el-dropdown-menu slot='dropdown'>
