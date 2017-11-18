@@ -421,7 +421,7 @@
               <el-option v-for="auth in options.auths" :key="auth" :label="auth" :value="auth">
               </el-option>
             </el-select>
-            以下简称<b>原代{{agentIndex + 1}}</b>
+            以下简称<b>第{{agentIndex + 1}}代</b>
             <el-dropdown @click="thirdpartyHandler('agent', 'add', {accuserIndex})" type="primary" size="mini" split-button>
               <i class="fa fa-plus">&nbsp;添加</i>
               <el-dropdown-menu slot="dropdown">
