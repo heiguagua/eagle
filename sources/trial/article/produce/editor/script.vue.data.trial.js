@@ -35,8 +35,9 @@ export default () => {
       participator: {
         // 原告
         accusers: [{
+          // 序数
+          ordinal: 1,
           // 诉讼主体
-          ordinal: 1, // 序数
           subjects: [{
             ordinal: 1, // 序数
             name: "", // 名称
@@ -45,7 +46,6 @@ export default () => {
           }],
           // 责任人
           responsibles: [{
-            ordinal: 1, // 序数
             role: "法定代表人", // 角色
             name: "", // 名称
             info: "", // 信息
@@ -53,7 +53,6 @@ export default () => {
           }],
           // 代理人
           agents: [{
-            ordinal: 1, // 序数
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
@@ -62,8 +61,11 @@ export default () => {
         }],
         // 被告
         accuseds: [{
+          // 序数
+          ordinal: 1,
           // 诉讼主体
           subjects: [{
+            ordinal: 1, // 序数
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
@@ -85,8 +87,11 @@ export default () => {
         }],
         // 第三人
         thirdparties: [{
+          // 序数
+          ordinal: 1,
           // 诉讼主体
           subjects: [{
+            ordinal: 1, // 序数
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
@@ -159,6 +164,6 @@ export default () => {
     // 休庭宣读
     announce: "",
     // 其他
-    other: "hank"
+    other: ""
   };
 };
