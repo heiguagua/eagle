@@ -16,12 +16,13 @@ export default {
           }
           // 删除
           else if (operation === 'remove') {
-            if (params.index !== 0) {
+            let accuserIndex = params.accuserIndex;
+            if (accuserIndex !== 0) {
               const accusers = vm.trial.verification.participator.accusers;
-              accusers.splice(params.index, 1);
+              accusers.splice(accuserIndex, 1);
               message(vm, 'warning', '温馨提示：原告删除成功！');
             } else {
-              message(vm, 'error', '温馨提示：不能删除首位原告！');
+              message(vm, 'error', '温馨提示：不能删除唯一的原告！');
             }
           }
         }
@@ -37,7 +38,14 @@ export default {
           }
           // 删除
           else if (operation === 'remove') {
-            console.log(params.subjectIndex);
+            let accuserIndex = params.accuserIndex;
+            let subjectIndex = params.subjectIndex;
+            if (subjectIndex !== 0) {
+              this.trial.verification.participator.accusers[accuserIndex].subjects.splice(subjectIndex, 1);
+              message(vm, 'warning', '温馨提示：原告删除成功！');
+            } else {
+              message(vm, 'error', '温馨提示：不能删除唯一的原告！');
+            }
           }
         }
         break;

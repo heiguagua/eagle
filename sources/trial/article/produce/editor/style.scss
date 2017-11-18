@@ -35,19 +35,17 @@
         font-size: 14px;
       }
       .tools {
-        float: right; // margin-top: 11px;
+        float: right;
+        position: relative;
+        top: -1px;
       }
     }
     .content {
       padding: 15px 50px 15px 50px;
       background: url(../../../../assets/editor/paper-grid.jpg);
-      .accuser,
-      .accused,
-      .thirdparty {
-        hr {
-          margin: 35px 0;
-          border-top: 1px dotted $color-silver-light;
-        }
+      hr {
+        margin: 30px 0;
+        border-top: 1px dotted $color-silver-light;
       }
     }
   }

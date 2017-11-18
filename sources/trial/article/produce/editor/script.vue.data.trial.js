@@ -36,15 +36,16 @@ export default () => {
         // 原告
         accusers: [{
           // 诉讼主体
-          ordinal: 0, // 序数
+          ordinal: 1, // 序数
           subjects: [{
-            ordinal: 0, // 序数
+            ordinal: 1, // 序数
             name: '', // 名称
             info: '', // 信息
             isAppear: '到庭', // 是否出庭
           }],
           // 责任人
           responsibles: [{
+            ordinal: 1, // 序数
             role: '法定代表人', // 角色
             name: '', // 名称
             info: '', // 信息
@@ -52,6 +53,7 @@ export default () => {
           }],
           // 代理人
           agents: [{
+            ordinal: 1, // 序数
             name: '', // 名称
             info: '', // 信息
             isAppear: '到庭', // 是否出庭

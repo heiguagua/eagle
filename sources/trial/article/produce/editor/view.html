@@ -104,16 +104,24 @@
   <!-- #法庭纪律 -->
   <!-- 信息核对 -->
   <section title='诉讼参与人' id='participator'>
-    <div class='access'>
-      <i class='el-icon-edit-outline'></i>
-      <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;原告</em>
-      <div class="tools">
-        <el-button @click='accuserHandler("accuser", "add")' type='primary' plain><i class="fa fa-user-plus">&nbsp;增加原告</i></el-button>
+    <section class='accuser animated slideInDown' v-for='(accuser, accuserIndex) in trial.verification.participator.accusers' :key='accuserIndex'>
+      <div class='access'>
+        <i class='el-icon-edit-outline'></i>
+        <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;原告</em>
+        <div class="tools">
+          <el-dropdown @click='accuserHandler("accuser", "add")' type='primary' size="small" split-button>
+            <i class='fa fa-user-plus'>&nbsp;添加</i>
+            <el-dropdown-menu slot='dropdown'>
+              <el-dropdown-item></el-dropdown-item>
+              <el-dropdown-item>
+                <i @click='accuserHandler("accuser", "remove", {accuserIndex: accuserIndex})' class='fa fa-user-times color-danger'>&nbsp;移除</i>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
       </div>
-    </div>
-    <div class='content'>
-      <!-- 原告 -->
-      <div class='accuser animated slideInDown' v-for='(accuser, accuserIndex) in trial.verification.participator.accusers' :key='accuserIndex'>
+      <div class='content'>
+        <!-- 原告 -->
         <div title='诉讼主体' class='subject animated slideInLeft' v-for='(subject, subjectIndex) in accuser.subjects' :key='subjectIndex'>
           <p>
             <b>原告</b>：
@@ -128,8 +136,8 @@
               <el-option v-for='appear in options.appears' :key='appear' :label='appear' :value='appear'>
               </el-option>
             </el-select>
-            以下简称<b>原{{subjectIndex+1}}</b>）
-            <el-dropdown class='hover-toggle' @click='accuserHandler("subject", "add", {accuserIndex: accuserIndex})' type='info' size='mini' split-button>
+            以下简称<b>原{{subject.ordinal}}</b>）
+            <el-dropdown class='hover-toggle' @click='accuserHandler("subject", "add", {accuserIndex: accuserIndex})' type='primary' size='mini' split-button>
               <i class='fa fa-plus'>&nbsp;添加</i>
               <el-dropdown-menu slot='dropdown'>
                 <el-dropdown-item></el-dropdown-item>
@@ -139,6 +147,7 @@
               </el-dropdown-menu>
             </el-dropdown>
           </p>
+          <hr>
         </div>
         <div title='法定代表人/负责人/法定代理人/指定代理人' class='responsible' v-for='(responsible, responsibleIndex) in accuser.responsibles' :key='responsibleIndex'>
           <p>
@@ -157,8 +166,8 @@
               <el-option v-for='item in options.appears' :key='item' :label='item' :value='item'>
               </el-option>
             </el-select>
-            以下简称原）
-            <el-dropdown split-button type='info' size='mini'>
+            以下简称<b>原{{responsible.ordinal}}</b>）
+            <el-dropdown split-button type='primary' size='mini'>
               <i class='fa fa-trash'>&nbsp;操作</i>
               <el-dropdown-menu slot='dropdown'>
                 <el-dropdown-item></el-dropdown-item>
@@ -188,8 +197,8 @@
               <el-option v-for='auth in options.auths' :key='auth' :label='auth' :value='auth'>
               </el-option>
             </el-select>
-            以下简称原代{{agentIndex+1}}）
-            <el-dropdown split-button type='info' size='mini'>
+            以下简称<b>原代{{agent.ordinal}}</b>
+            <el-dropdown split-button type='primary' size='mini'>
               <i class='fa fa-plus'>&nbsp;添加</i>
               <el-dropdown-menu slot='dropdown'>
                 <el-dropdown-item></el-dropdown-item>
@@ -200,11 +209,10 @@
             </el-dropdown>
           </p>
         </div>
-        <hr />
       </div>
-      <!-- 被告 -->
-      <!-- 第三人 -->
-    </div>
+    </section>
+    <!-- 被告 -->
+    <!-- 第三人 -->
   </section>
   <section title='异议及理由' id='objection'>
     <div class='access'>
