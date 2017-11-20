@@ -1,9 +1,13 @@
 import Http from "../common/scripts/http";
 import Encrypt from "../common/scripts/encrypt";
 import UtilCases from "./script.util";
-import { message } from "../common/scripts/helper";
+import { message, storage } from "../common/scripts/helper";
 
 export default {
+  newTrial(lawCase, params) {
+    storage.set("case",_.assign({}, lawCase, params));
+    this.$router.push("/layout/trial/blank");
+  },
   // pagination
   changePageSize(size) {
     const vm = this;
