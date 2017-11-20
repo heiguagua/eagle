@@ -1,5 +1,5 @@
-import TrialSidebar from './sidebar';
-import TrialNavbar from './navbar';
+import TrialSidebar from "./sidebar";
+import TrialNavbar from "./navbar";
 
 export default {
   components: {
