@@ -1,13 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import TrialArticleToolbar from './demo/script.store';
+import trialArticleProduceStore from './trial/article/produce/script.store';
+import trialArticleProduceEditorStore from './trial/article/produce/editor/script.store';
+
 
 Vue.use(Vuex);
 
 const Store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   modules: {
-    TrialArticleToolbar
+    trialArticleProduceStore,
+    trialArticleProduceEditorStore,
   }
 });
 
@@ -19,7 +22,8 @@ if (module.hot) {
     console.info('Vue hot update!');
     Store.hotUpdate({
       modules: {
-        TrialArticleToolbar: require('./demo/script.store').default
+        trialArticleProduceStore: require('./trial/article/produce/script.store').default,
+        trialArticleProduceEditorStore: require('./trial/article/produce/editor/script.store').default,
       }
     })
   })
