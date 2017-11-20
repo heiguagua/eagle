@@ -9,11 +9,8 @@ export default {
       password: ''
     }
   },
-  mounted() {
-    const token = storage.get("token");
-    if (token && token !== "") {
-      storage.remove("token");
-    }
+  beforeCreate() {
+    storage.remove("token");
   },
   methods: {
     login() {
