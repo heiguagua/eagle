@@ -31,5 +31,10 @@ export const storage = {
     } else {
       console.warn('Session Storage SET Error：' + key + value);
     }
+  },
+  remove(key) {
+    if (key) {
+      sessionStorage.removeItem(key);
+    }
   }
 };

@@ -51,6 +51,7 @@ export default {
         setInterval(() => {
           socket.send(token);
         }, 20000);
+        console.info('Socket is open!');
       };
       socket.onmessage = event => {
         if (event && event.data && event.data.head && event.data.head.message) {

@@ -1,6 +1,6 @@
 import Http from '../common/scripts/http.js';
 import Encrypt from '../common/scripts/encrypt.js';
-import { message } from '../common/scripts/helper';
+import { message, storage } from '../common/scripts/helper';
 
 export default {
   data() {
@@ -8,6 +8,9 @@ export default {
       username: '',
       password: ''
     }
+  },
+  mounted() {
+    storage.get("item") ? storage.remove("token") : "";
   },
   methods: {
     login() {

@@ -12,7 +12,9 @@ export default {
   methods: {
     generate() {
       const vm = this;
-      storage.set('trial', '');
+      const editorTrial = this.$refs.TrialEditor.trial;
+      storage.set('trial', editorTrial);
+      console.log("Trial", editorTrial);
       vm.$router.push('/layout/trial/preview');
     },
     getTemplate() {
@@ -46,6 +48,7 @@ export default {
   },
   mounted() {
     // this.getTemplate();
+    console.log()
   },
   directives: {}
 };
