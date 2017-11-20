@@ -1,6 +1,5 @@
 import Http from '../../../common/scripts/http';
-import { message } from '../../../common/scripts/helper';
-// import Editor from '../../../common/scripts/editor';
+import { message, storage } from '../../../common/scripts/helper';
 import TrialEditor from './editor/index.vue';
 
 export default {
@@ -13,7 +12,7 @@ export default {
   methods: {
     generate() {
       const vm = this;
-      storage.set('trial', vm.trial);
+      storage.set('trial', '');
       vm.$router.push('/layout/trial/preview');
     },
     getTemplate() {
