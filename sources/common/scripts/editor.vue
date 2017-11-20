@@ -1,11 +1,11 @@
 <template>
-  <p class='editor'
-     v-html='inputText'
-     :placeholder = 'placeholder'
-     :contenteditable='isEditable'
-     @blur='editorBlur'
-     @focus='editorFocus'
-     @input='editorChange'></p>
+  <p class="editor"
+     v-html="inputText"
+     :placeholder = "placeholder"
+     :contenteditable="isEditable"
+     @blur="editorBlur"
+     @focus="editorFocus"
+     @input="editorChange"></p>
 </template>
 <script>
 export default {
@@ -52,7 +52,7 @@ export default {
   }
 };
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import "../styles/color";
 p[contenteditable].editor {
   display: inline-block;

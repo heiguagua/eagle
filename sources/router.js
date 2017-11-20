@@ -1,72 +1,72 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Http from './common/scripts/http';
-import Auth from './common/scripts/auth';
-import Layout from './layout/index.vue';
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Http from "./common/scripts/http";
+import Auth from "./common/scripts/auth";
+import Layout from "./layout/index.vue";
 
 Vue.use(VueRouter);
 
-const Login = resolve => require(['./login/index.vue'], resolve)
+const Login = resolve => require(["./login/index.vue"], resolve)
 
 const Router = new VueRouter({
   routes: [{
-    path: '/',
+    path: "/",
     component: Login
   }, {
-    path: '/login',
+    path: "/login",
     component: Login
   }, {
-    path: '/layout',
+    path: "/layout",
     component: Layout,
     children: [{
-      path: 'template',
+      path: "template",
       meta: {
         auth: true
       },
-      component: resolve => require(['./template/index.vue'], resolve)
+      component: resolve => require(["./template/index.vue"], resolve)
     }, {
-      path: 'trial',
+      path: "trial",
       meta: {
         auth: true
       },
-      component: resolve => require(['./trial/index.vue'], resolve),
+      component: resolve => require(["./trial/index.vue"], resolve),
       children: [{
-        path: 'blank',
+        path: "blank",
         meta: {
           auth: true
         },
-        component: resolve => require(['./trial/article/blank/index.vue'], resolve)
+        component: resolve => require(["./trial/article/blank/index.vue"], resolve)
       }, {
-        path: 'produce',
+        path: "produce",
         meta: {
           auth: true
         },
-        component: resolve => require(['./trial/article/produce/index.vue'], resolve)
+        component: resolve => require(["./trial/article/produce/index.vue"], resolve)
       }, {
-        path: 'preview',
+        path: "preview",
         meta: {
           auth: true
         },
-        component: resolve => require(['./trial/article/preview/index.vue'], resolve)
+        component: resolve => require(["./trial/article/preview/index.vue"], resolve)
       }]
     }, {
-      path: 'judge',
+      path: "judge",
       meta: {
         auth: true
       },
-      component: resolve => require(['./judge/index.vue'], resolve)
+      component: resolve => require(["./judge/index.vue"], resolve)
     }, {
-      path: 'cases',
+      path: "cases",
       meta: {
         auth: true
       },
-      component: resolve => require(['./cases/index.vue'], resolve)
+      component: resolve => require(["./cases/index.vue"], resolve)
     }, {
-      path: 'repository',
+      path: "repository",
       meta: {
         auth: true
       },
-      component: resolve => require(['./repository/index.vue'], resolve)
+      component: resolve => require(["./repository/index.vue"], resolve)
     }]
   }]
 });
