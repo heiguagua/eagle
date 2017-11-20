@@ -64,7 +64,6 @@ export default {
     },
     closeSocket() {
       const socket = this.socket;
-      socket.close();
       socket.onclose = event => {
         socket.close();
       };
