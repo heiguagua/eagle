@@ -1,8 +1,8 @@
-@import '../../../common/styles/color';
+@import "../../../common/styles/color";
 #trial-article-preview {
   display: flex;
   flex-direction: column;
   height: 100%;
   background: url(../../../assets/editor/paper.png);
-  @import '../common';
+  @import "../common";
 }

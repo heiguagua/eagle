@@ -1,50 +1,50 @@
-<div id='cases'>
-  <aside class='search'>
-    <el-form label-position='top' label-width='80px' :model='dialog.case'>
-      <el-form-item label='案件状态'>
-        <el-select v-model='search.status' placeholder='请选择案件状态'>
-          <el-option v-for='option in search.options' :key='option.value' :label='option.label' :value='option.value'>
+<div id="cases">
+  <aside class="search">
+    <el-form label-position="top" label-width="80px" :model="dialog.case">
+      <el-form-item label="案件状态">
+        <el-select v-model="search.status" placeholder="请选择案件状态">
+          <el-option v-for="option in search.options" :key="option.value" :label="option.label" :value="option.value">
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label='案件理由'>
-        <el-input suffix-icon='el-icon-edit' v-model='search.reason' placeholder='请输入案由'></el-input>
+      <el-form-item label="案件理由">
+        <el-input suffix-icon="el-icon-edit" v-model="search.reason" placeholder="请输入案由"></el-input>
       </el-form-item>
-      <el-form-item label='案件号码'>
-        <el-input suffix-icon='el-icon-edit' v-model='search.code' placeholder='请输入案号'></el-input>
+      <el-form-item label="案件号码">
+        <el-input suffix-icon="el-icon-edit" v-model="search.code" placeholder="请输入案号"></el-input>
       </el-form-item>
-      <el-form-item label='案件名称'>
-        <el-input suffix-icon='el-icon-edit' v-model='search.name' placeholder='当事人名称'></el-input>
+      <el-form-item label="案件名称">
+        <el-input suffix-icon="el-icon-edit" v-model="search.name" placeholder="当事人名称"></el-input>
       </el-form-item>
       <br />
-      <div class='operation'>
-        <el-button @click='httpSearch' size='medium' type='primary'>
-          <i class='fa fa-search'>&nbsp;查询案件</i>
+      <div class="operation">
+        <el-button @click="httpSearch" size="medium" type="primary">
+          <i class="fa fa-search">&nbsp;查询案件</i>
         </el-button>
       </div>
     </el-form>
   </aside>
-  <article class='cases'>
+  <article class="cases">
     <header>
-      <div class='button'>
-        <el-button @click='dialog.show = true' type='info' size='medium' round>
-          <i class='fa fa-briefcase'>&nbsp;录入案件</i>
+      <div class="button">
+        <el-button @click="dialog.show = true" type="info" size="medium" round>
+          <i class="fa fa-briefcase">&nbsp;录入案件</i>
         </el-button>
       </div>
-      <div class='pagination'>
-        <el-pagination @size-change='changePageSize' @current-change='changeCurrentPage' :current-page='pagination.current' :page-sizes='[5, 10, 20, 30, 40, 50]' :page-size='pagination.size' layout='total, sizes, prev, pager, next, jumper' :total='pagination.total'>
+      <div class="pagination">
+        <el-pagination @size-change="changePageSize" @current-change="changeCurrentPage" :current-page="pagination.current" :page-sizes="[5, 10, 20, 30, 40, 50]" :page-size="pagination.size" layout="total, sizes, prev, pager, next, jumper" :total="pagination.total">
         </el-pagination>
       </div>
     </header>
     <section>
       <!-- list case -->
-      <ul class='case-list'>
-        <li v-for='(lawCase, index) in cases' :key='index'>
+      <ul class="case-list">
+        <li v-for="(lawCase, index) in cases" :key="index">
           <hsc-menu-style-white>
-            <hsc-menu-context-menu class='context-menu'>
+            <hsc-menu-context-menu class="context-menu">
               <table>
                 <caption>
-                  <i class='fa fa-briefcase'>&nbsp;&nbsp;{{lawCase.title}}</i>
+                  <i class="fa fa-briefcase">&nbsp;&nbsp;{{lawCase.title}}</i>
                 </caption>
                 <tr>
                   <td>原告：{{lawCase.accuser}}
@@ -69,7 +69,7 @@
                   <hsc-menu-item label="删除"></hsc-menu-item>
                 </hsc-menu-item>
                 <hsc-menu-item label="庭审笔录">
-                  <router-link :to="{path: '/layout/trial/blank', query: lawCase, params: {writ_type:'section'}}">
+                  <router-link :to="{path: "/layout/trial/blank", query: lawCase, params: {writ_type:"section"}}">
                     <hsc-menu-item label="分段式"></hsc-menu-item>
                   </router-link>
                   <router-link :to="{}">
@@ -96,41 +96,41 @@
     </section>
   </article>
   <!-- Dialog show -->
-  <el-dialog class='dialog-case-add' :visible.sync='dialog.show'>
-    <span slot='title' class='dialog-footer'>
-      <i class='fa fa-briefcase'>&nbsp;录入案件</i>
+  <el-dialog class="dialog-case-add" :visible.sync="dialog.show">
+    <span slot="title" class="dialog-footer">
+      <i class="fa fa-briefcase">&nbsp;录入案件</i>
     </span>
-    <div class='dialog-form'>
-      <el-form :rules="dialog.validator" label-position='right' label-width='80px' :model='dialog.case'>
-        <el-form-item label='原告' prop='accuser'>
-          <el-input placeholder='请输入原告信息' v-model='dialog.case.accuser'></el-input>
+    <div class="dialog-form">
+      <el-form :rules="dialog.validator" label-position="right" label-width="80px" :model="dialog.case">
+        <el-form-item label="原告" prop="accuser">
+          <el-input placeholder="请输入原告信息" v-model="dialog.case.accuser"></el-input>
         </el-form-item>
-        <el-form-item label='被告' prop='accused'>
-          <el-input placeholder='请输入被告信息' v-model='dialog.case.accused'></el-input>
+        <el-form-item label="被告" prop="accused">
+          <el-input placeholder="请输入被告信息" v-model="dialog.case.accused"></el-input>
         </el-form-item>
-        <el-form-item label='案号' prop='code'>
-          <el-input placeholder='请输入案号信息' v-model='dialog.case.code'></el-input>
+        <el-form-item label="案号" prop="code">
+          <el-input placeholder="请输入案号信息" v-model="dialog.case.code"></el-input>
         </el-form-item>
-        <el-form-item label='案由' prop='reason'>
-          <el-input placeholder='请输入案由信息' v-model='dialog.case.reason'></el-input>
+        <el-form-item label="案由" prop="reason">
+          <el-input placeholder="请输入案由信息" v-model="dialog.case.reason"></el-input>
         </el-form-item>
-        <el-form-item label='适用程序' prop='process'>
-          <el-select placeholder='请选择适用程序' v-model='dialog.case.process'>
-            <el-option v-for='option in dialog.options' :key='option.value' :label='option.label' :value='option.value'>
+        <el-form-item label="适用程序" prop="process">
+          <el-select placeholder="请选择适用程序" v-model="dialog.case.process">
+            <el-option v-for="option in dialog.options" :key="option.value" :label="option.label" :value="option.value">
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label='受理日期' prop='date'>
-          <el-date-picker placeholder='请选择受理日期' v-model='dialog.case.date' align='left' type='date' :picker-options='dialog.dataPickder'>
+        <el-form-item label="受理日期" prop="date">
+          <el-date-picker placeholder="请选择受理日期" v-model="dialog.case.date" align="left" type="date" :picker-options="dialog.dataPickder">
           </el-date-picker>
         </el-form-item>
       </el-form>
     </div>
-    <span slot='footer' class='dialog-footer'>
-      <el-button @click='dialog.show = false'>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="dialog.show = false">
         <i class="fa fa-reply">&nbsp;&nbsp;取&nbsp;消</i>
       </el-button>
-      <el-button @click='httpSave' type='primary'>
+      <el-button @click="httpSave" type="primary">
         <i class="fa fa-floppy-o">&nbsp;&nbsp;保&nbsp;存</i>
       </el-button>
     </span>

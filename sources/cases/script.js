@@ -1,8 +1,8 @@
-import Http from '../common/scripts/http';
-import UtilCases from './script.util';
-import DataCases from './script.vue.data';
-import MethodCases from './script.vue.methods';
-import { message } from '../common/scripts/helper';
+import Http from "../common/scripts/http";
+import UtilCases from "./script.util";
+import DataCases from "./script.vue.data";
+import MethodCases from "./script.vue.methods";
+import { message } from "../common/scripts/helper";
 
 export default {
   data() {
@@ -19,7 +19,7 @@ export default {
           vm.cases = data.body;
           vm.search.total = data.head.total;
         } else {
-          message(vm, 'warning', data.head.message);
+          message(vm, "warning", data.head.message);
         }
       })
   }

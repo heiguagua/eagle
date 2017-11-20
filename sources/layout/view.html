@@ -1,62 +1,62 @@
-<div id='layout'>
+<div id="layout">
   <header>
-    <router-link :to="{path: 'cases'}">
-      <div class='logo'>
+    <router-link :to="{path: "cases"}">
+      <div class="logo">
         法官智能助理
       </div>
     </router-link>
-    <nav class='navigator'>
-      <el-menu background-color='#324057' text-color="#FFFFFF" active-text-color="#20A0FF" mode='horizontal' :router='false'>
-        <router-link :to="{path: '/layout/cases'}">
-          <el-menu-item index='cases'>
+    <nav class="navigator">
+      <el-menu background-color="#324057" text-color="#FFFFFF" active-text-color="#20A0FF" mode="horizontal" :router="false">
+        <router-link :to="{path: "/layout/cases"}">
+          <el-menu-item index="cases">
             <i class="fa fa-database color-gray">&nbsp;案件信息</i>
           </el-menu-item>
         </router-link>
-        <el-menu-item index='ocr'>
+        <el-menu-item index="ocr">
           <i class="fa fa-camera color-gray">&nbsp;OCR识别</i>
         </el-menu-item>
-        <el-submenu index='template'>
-          <template slot='title'>
+        <el-submenu index="template">
+          <template slot="title">
             <i class="fa fa-book color-gray">&nbsp;模板管理</i>
           </template>
-          <el-menu-item index='template-reposit'>
+          <el-menu-item index="template-reposit">
             <i class="fa fa-file-text color-gray">&nbsp;裁判规则</i>
           </el-menu-item>
-          <el-menu-item index='template-judge'>
+          <el-menu-item index="template-judge">
             <i class="fa fa-file-text color-gray">&nbsp;裁判文书</i>
           </el-menu-item>
-          <el-menu-item index='template-trial'>
+          <el-menu-item index="template-trial">
             <i class="fa fa-file-text color-gray">&nbsp;庭审笔录</i>
           </el-menu-item>
         </el-submenu>
-        <el-menu-item index='calculator'>
+        <el-menu-item index="calculator">
           <i class="fa fa-calculator color-gray">&nbsp;费用计算</i>
         </el-menu-item>
-        <router-link :to="{path: '/layout/repository'}">
-          <el-menu-item index='repository'>
+        <router-link :to="{path: "/layout/repository"}">
+          <el-menu-item index="repository">
             <i class="fa fa-paste color-gray">&nbsp;案例参照</i>
           </el-menu-item>
         </router-link>
       </el-menu>
     </nav>
-    <div class='tool'>
-      <el-input placeholder='查询相似案例' v-model='keyword' size='medium'>
+    <div class="tool">
+      <el-input placeholder="查询相似案例" v-model="keyword" size="medium">
         <el-button slot="append" icon="el-icon-search"></el-button>
       </el-input>
-      <el-dropdown @command='logout'>
-        <span class='el-dropdown-link'>
+      <el-dropdown @command="logout">
+        <span class="el-dropdown-link">
           <i class="fa fa-user-o"></i>
           用户
-          <i class='el-icon-caret-bottom el-icon--right'></i>
+          <i class="el-icon-caret-bottom el-icon--right"></i>
         </span>
-        <el-dropdown-menu slot='dropdown'>
-          <el-dropdown-item command='update' class='font-size-small color-black'>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="update" class="font-size-small color-black">
             <i class="fa fa-key"></i> 修改密码
           </el-dropdown-item>
-          <el-dropdown-item command='feedback' class='font-size-small color-black' divided>
+          <el-dropdown-item command="feedback" class="font-size-small color-black" divided>
             <i class="fa fa-comment"></i> 提交反馈
           </el-dropdown-item>
-          <el-dropdown-item command='logout' class='font-size-small color-black' divided>
+          <el-dropdown-item command="logout" class="font-size-small color-black" divided>
             <i class="fa fa-sign-out"></i> 退出
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -64,7 +64,7 @@
     </div>
   </header>
   <!-- router view -->
-  <transition name='fade'>
+  <transition name="fade">
     <router-view class="router"></router-view>
   </transition>
 </div>

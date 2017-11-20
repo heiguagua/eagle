@@ -1,17 +1,17 @@
-import Http from '../common/scripts/http.js';
-import Encrypt from '../common/scripts/encrypt.js';
+import Http from "../common/scripts/http.js";
+import Encrypt from "../common/scripts/encrypt.js";
 export default {
   data() {
     return {
-      search: ''
+      search: ""
     }
   },
   methods: {
     onSearch() {
-      console.log('on Search!');
+      console.log("on Search!");
     },
     logout() {
-      console.log('test');
+      console.log("test");
     }
   }
 };

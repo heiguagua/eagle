@@ -1,9 +1,9 @@
-@import '../../../common/styles/color';
+@import "../../../common/styles/color";
 #trial-editor-blank {
   display: flex;
   flex-direction: column;
   height: 100%;
-  @import '../common';
+  @import "../common";
   background: url(../../../assets/editor/paper-grid.jpg);
   .content {
     >article {

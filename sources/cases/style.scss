@@ -1,4 +1,4 @@
-@import '../common/styles/color';
+@import "../common/styles/color";
 #cases {
   display: flex !important;
   flex-direction: row;
@@ -99,5 +99,5 @@
       }
     }
   }
-  @import 'style.dialog';
+  @import "style.dialog";
 }

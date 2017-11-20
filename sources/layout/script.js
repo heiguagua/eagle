@@ -1,40 +1,40 @@
-import Http from '../common/scripts/http';
-import { message } from '../common/scripts/helper';
-import Encrypt from '../common/scripts/encrypt';
+import Http from "../common/scripts/http";
+import { message } from "../common/scripts/helper";
+import Encrypt from "../common/scripts/encrypt";
 
 export default {
   data() {
     return {
-      keyword: '',
+      keyword: "",
       socket: {},
     }
   },
   methods: {
     search() {
-      console.log('search!');
+      console.log("search!");
     },
     logout(command) {
       const vm = this;
       if (command)
         switch (command) {
-          case 'update':
+          case "update":
             // 修改密码
             break;
-          case 'feedback':
+          case "feedback":
             // 提交反馈
             break;
-          case 'logout':
+          case "logout":
             Http.fetch({
                 method: "POST",
-                url: Http.url.master + '/logout',
+                url: Http.url.master + "/logout",
               }).then(result => {
                 const data = result.data;
                 if (Http.protocol(data, 200)) {
                   Encrypt.token.remove();
-                  vm.$router.replace('/login');
-                  message(vm, 'info', data.head.message);
+                  vm.$router.replace("/login");
+                  message(vm, "info", data.head.message);
                 } else {
-                  message(vm, 'warning', data.head.message);
+                  message(vm, "warning", data.head.message);
                 }
               })
               .catch(function(error) {
@@ -51,7 +51,7 @@ export default {
         setInterval(() => {
           socket.send(token);
         }, 20000);
-        console.info('Socket is open!');
+        console.info("Socket is open!");
       };
       socket.onmessage = event => {
         if (event && event.data && event.data.head && event.data.head.message) {
@@ -67,7 +67,7 @@ export default {
       socket.onclose = event => {
         socket.close();
       };
-      console.info('Socket is closed!');
+      console.info("Socket is closed!");
     }
   },
   mounted() {
