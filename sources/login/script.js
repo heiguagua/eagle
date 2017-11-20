@@ -10,7 +10,10 @@ export default {
     }
   },
   mounted() {
-    storage.get("item") ? storage.remove("token") : "";
+    const token = storage.get("token");
+    if (token && token !== "") {
+      storage.remove("token");
+    }
   },
   methods: {
     login() {
