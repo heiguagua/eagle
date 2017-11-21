@@ -21,11 +21,12 @@ export default {
   methods,
   created() {
     // TODO 对Trial进行对象的深度比较，然后判断是使用全新的Trial，还是使用当前对象树上挂载的
-    if (this.trial) {
-      this.setTrial(this.$store.state.Trial.trial);
-    } else {
-      this.setTrial(trial());
-    }
+    // if (this.trial!=="{}") {
+    //   this.setTrial(this.$store.state.Trial.trial); // 从store获取trial
+    // } else {
+    //   this.setTrial(trial()); // 使用全新的trial
+    // }
+    this.setTrial(trial());
   },
   directives: {
     hoverToggle: {
