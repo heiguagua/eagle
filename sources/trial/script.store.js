@@ -6,15 +6,13 @@ export default {
   state: {
     trial: {},
     trials: [],
-    material: {},
-    materials: [],
   },
   mutations: {
     setTrial(state, payload) {
       state.trial = payload;
     },
     setTrials(state, payload) {
-      state.trial = payload;
+      state.trials = payload;
     }
   },
   actions: {
@@ -27,7 +25,13 @@ export default {
           }
         })
         .then(result => {
-
+          const data = result.data;
+          if (Http.protocol(data, 200)) {
+            message(payload.vm, "info", data.head.status);
+            context.commit("setTrials", data);
+          } else {
+            message(payload.vm, "warning", data.head.message);
+          }
         });
     },
     saveTrial(context, payload) {
@@ -41,7 +45,13 @@ export default {
           }
         })
         .then(result => {
-
+          const data = result.data;
+          if (Http.protocol(data, 200)) {
+            context.commit("setTrials", data);
+            message(payload.vm, "info", data.head.status);
+          } else {
+            message(payload.vm, "warning", data.head.message);
+          }
         })
     },
     getTrials(context, payload) {
@@ -57,12 +67,10 @@ export default {
         .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200)) {
-            console.log("getTrials", data);
-            this.trials.body;
-            // message(vm, "info", data.head.message);
+            message(payload.vm, "info", data.head.status);
             context.commit("setTrials", data);
           } else {
-            // message(vm, "warning", data.head.message);
+            message(payload.vm, "warning", data.head.message);
           }
         })
     }

@@ -40,11 +40,12 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      getTrials: 'Trial/getTrials'
-    }),
+    ...mapActions("Trial", [
+      "getTrials",
+    ]),
   },
   mounted() {
-    this.getTrials();
+    const vm = this;
+    this.getTrials({ vm });
   }
 }
