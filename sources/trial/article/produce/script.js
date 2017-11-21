@@ -46,9 +46,6 @@ export default {
       console.log('Trial', this.trial);
     }
   },
-  mounted() {
-    // this.getTemplate();
-    console.log()
-  },
+  mounted() {},
   directives: {}
 };
