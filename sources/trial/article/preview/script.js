@@ -14,19 +14,31 @@ export default {
   },
   methods: {
     ...mapActions("Trial", [
-      "saveTrial"
+      "getTrials"
     ]),
     save() {
       const vm = this;
       const code = storage.get("case").case_no; // 案号
-      const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
+      const json = JSON.stringify(this.$store.state.Trial.trial); // 庭审笔录状态树
       const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
-      this.saveTrial({
-        case_no: code,
-        json,
-        html,
-        vm
-      });
+      Http.fetch({
+          method: "POST",
+          url: Http.url.master + "/trial",
+          data: {
+            case_no: code,
+            json,
+            html,
+          }
+        })
+        .then(result => {
+          const data = result.data;
+          if (Http.protocol(data, 200)) {
+            message(vm, "info", data.head.status);
+            vm.getTrials(vm);
+          } else {
+            message(vm, "warning", data.head.message);
+          }
+        })
     },
     toWord() {
       Http.fetch({

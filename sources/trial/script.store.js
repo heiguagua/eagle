@@ -34,26 +34,6 @@ export default {
           }
         });
     },
-    saveTrial(context, payload) {
-      Http.fetch({
-          method: "POST",
-          url: Http.url.master + "/trial",
-          data: {
-            case_no: payload.case_no,
-            json: payload.json,
-            html: payload.html,
-          }
-        })
-        .then(result => {
-          const data = result.data;
-          if (Http.protocol(data, 200)) {
-            context.commit("setTrials", data);
-            message(payload.vm, "info", data.head.status);
-          } else {
-            message(payload.vm, "warning", data.head.message);
-          }
-        })
-    },
     getTrials(context, payload) {
       let lawsuit = storage.get("case");
       // lawsuit
@@ -68,7 +48,8 @@ export default {
           const data = result.data;
           if (Http.protocol(data, 200)) {
             message(payload.vm, "info", data.head.status);
-            context.commit("setTrials", data);
+            console.info(JSON.parse(data.json))
+            context.commit("setTrials", data.json);
           } else {
             message(payload.vm, "warning", data.head.message);
           }
