@@ -2,6 +2,7 @@ export default {
   namespaced: true,
   state: {
     trial: {},
+    trialList: [],
   },
   mutations: {
     syncTrial(state, payload) {

@@ -1,32 +1,27 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import trialArticleProduceStore from "./trial/article/produce/script.store";
-import trialArticleProduceEditorStore from "./trial/article/produce/editor/script.store";
-
+import Trial from "./trial/script.store";
 
 Vue.use(Vuex);
 
 const Store = new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
   modules: {
-    trialArticleProduceStore,
-    trialArticleProduceEditorStore,
+    Trial
   }
 });
 
 if (module.hot) {
   module.hot.accept([
     "./store",
-    "./trial/article/produce/script.store",
-    "./trial/article/produce/editor/script.store",
+    "./trial/script.store",
   ], () => {
-    console.info("Vue hot update!");
     Store.hotUpdate({
       modules: {
-        trialArticleProduceStore: require("./trial/article/produce/script.store").default,
-        trialArticleProduceEditorStore: require("./trial/article/produce/editor/script.store").default,
+        Trial: require("./trial/script.store").default,
       }
     })
+    console.info("Vue hot update!");
   })
 };
 
