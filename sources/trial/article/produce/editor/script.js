@@ -1,19 +1,32 @@
 import trial from "./script.vue.data.trial";
 import options from "./script.vue.data.options";
-import computed from "./script.vue.computed";
 import methods from "./script.vue.methods";
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   data() {
     return {
-      trial: trial(),
+      // trial: trial(),
       options,
     }
   },
-  computed,
+  computed: {
+    ...mapState("Trial", [
+      "trial"
+    ]),
+    isChiefOfficer() {
+      return (this.trial.infomation.officer[0].duty === "审判长") ? true : false;
+    },
+  },
   methods,
-  mounted() {},
+  created() {
+    // TODO 对Trial进行对象的深度比较，然后判断是使用全新的Trial，还是使用当前对象树上挂载的
+    if (this.trial) {
+      this.setTrial(this.$store.state.Trial.trial);
+    } else {
+      this.setTrial(trial());
+    }
+  },
   directives: {
     hoverToggle: {
       // 指令的定义

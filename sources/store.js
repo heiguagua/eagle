@@ -5,7 +5,7 @@ import Trial from "./trial/script.store";
 Vue.use(Vuex);
 
 const Store = new Vuex.Store({
-  strict: process.env.NODE_ENV !== "production",
+  // strict: process.env.NODE_ENV !== "production",
   modules: {
     Trial
   }

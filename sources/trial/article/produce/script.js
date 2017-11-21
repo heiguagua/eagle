@@ -10,11 +10,13 @@ export default {
     TrialEditor
   },
   methods: {
+    logTrial() {
+      console.info('Trial', this.$store.state.Trial.trial);
+    },
     generate() {
       const vm = this;
-      const editorTrial = this.$refs.TrialEditor.trial;
-      storage.set('trial', editorTrial);
-      console.log("Trial", editorTrial);
+      const editorTrial = this.$store.state.Trial.trial;
+      // storage.set('trial', editorTrial);
       vm.$router.push('/layout/trial/preview');
     },
     getTemplate() {
@@ -42,9 +44,6 @@ export default {
           }
         });
     },
-    logTrial() {
-      console.log('Trial', this.trial);
-    }
   },
   mounted() {},
   directives: {}
