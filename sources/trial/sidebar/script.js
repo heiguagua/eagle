@@ -1,5 +1,6 @@
 import UtilSidebar from "./script.util";
 import Http from "../../common/scripts/http";
+import { mapMutations, mapActions, mapState } from "vuex";
 import { message } from "../../common/scripts/helper";
 
 
@@ -39,22 +40,11 @@ export default {
     }
   },
   methods: {
-    getTrialList() {
-      const vm = this;
-      UtilSidebar.query({
-          case_no: this.$route.query.case_no
-        })
-        .then(result => {
-          const data = result.data;
-          if (Http.protocol(data, 200)) {
-            // vm.trialArray = data.body;
-          } else {
-            message(vm, "warning", data.head.message);
-          }
-        })
-    },
+    ...mapActions({
+      getTrials: 'Trial/getTrials'
+    }),
   },
   mounted() {
-    this.getTrialList();
+    this.getTrials();
   }
 }

@@ -1,5 +1,6 @@
 import Http from "../../../common/scripts/http";
 import JudgeTemplate from "./template";
+import { mapMutations, mapActions, mapState } from "vuex";
 import { message, storage } from "../../../common/scripts/helper";
 
 export default {
@@ -12,28 +13,36 @@ export default {
     };
   },
   methods: {
+    ...mapActions("Trial", [
+      "saveTrial"
+    ]),
     save() {
       const vm = this;
       const code = storage.get("case").case_no; // 案号
       const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
       const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
-      Http.fetch({
-          method: "POST",
-          url: Http.url.master + "/trial",
-          data: {
-            case_no: code,
-            json: json,
-            html: html,
-          }
-        })
-        .then(result => {
-          const data = result.data;
-          if (Http.protocol(data, 200)) {
-            message(vm, "success", data.head.message);
-          } else {
-            message(vm, "warning", data.head.message);
-          }
-        });
+      this.saveTrial({
+        case_no: code,
+        json,
+        html,
+      });
+      // Http.fetch({
+      //     method: "POST",
+      //     url: Http.url.master + "/trial",
+      //     data: {
+      //       case_no: code,
+      //       json: json,
+      //       html: html,
+      //     }
+      //   })
+      //   .then(result => {
+      //     const data = result.data;
+      //     if (Http.protocol(data, 200)) {
+      //       message(vm, "success", data.head.message);
+      //     } else {
+      //       message(vm, "warning", data.head.message);
+      //     }
+      //   });
     },
     toWord() {
       Http.fetch({
