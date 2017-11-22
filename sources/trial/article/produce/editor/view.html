@@ -444,15 +444,21 @@
     </div>
     <div class="content">
       <p>审：各方对出庭人员有无异议？</p>
-      <p>原</p>
-      <p>原</p>
-      <p>原代</p>
-      <p>被</p>
-      <p>被</p>
-      <p>被代</p>
-      <p>第</p>
-      <p>第</p>
-      <p>第代</p>
+      <div v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-select v-model="subject.objection.whether" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+          </p>
+          <p v-if="subject.objection.whether === '有异议'">
+            <el-input v-model="subject.objection.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      </p>
     </div>
   </section>
   <section title="证人是否出庭" id="witness">
@@ -462,7 +468,7 @@
     </div>
     <div class="content">
       <p>审：经核对，各方当事人和其他诉讼参加人均符合法律规定，可以参加本次诉讼活动。各方当事人是否有证人出庭作证？</p>
-      <p>原</p>
+      <p>原：</p>
       <p>原</p>
       <p>原代</p>
       <p>被</p>

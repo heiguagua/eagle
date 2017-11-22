@@ -45,7 +45,7 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              whether: "", // 异议状态
+              whether: "无异议", // 异议状态
               detail: "", // 理由
             }
           }],

@@ -26,5 +26,9 @@ export default {
   publics: [
     "公开",
     "不公开",
+  ],
+  objections: [
+    "无异议",
+    "有异议"
   ]
 };
