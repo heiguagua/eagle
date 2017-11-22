@@ -45,8 +45,11 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
           // 责任人
@@ -57,8 +60,12 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            // 证人是否出庭
+            witness: {
+              detail: "无",
             },
           }],
           // 代理人
@@ -69,8 +76,11 @@ export default () => {
             auth: "特别授权",
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
         }],
@@ -86,8 +96,11 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
           // 责任人
@@ -98,8 +111,11 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
           // 代理人
@@ -110,8 +126,11 @@ export default () => {
             auth: "特别授权",
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
         }],
@@ -127,8 +146,11 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
           // 责任人
@@ -139,8 +161,11 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
           // 代理人
@@ -151,8 +176,11 @@ export default () => {
             auth: "特别授权",
             // 异议及理由
             objection: {
-              status: "无异议", // 异议状态
-              detail: "", // 理由
+              status: "无异议",
+              detail: "",
+            },
+            witness: {
+              detail: "无",
             },
           }],
         }],

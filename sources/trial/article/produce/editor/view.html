@@ -496,15 +496,30 @@
     </div>
     <div class="content">
       <p>审：经核对，各方当事人和其他诉讼参加人均符合法律规定，可以参加本次诉讼活动。各方当事人是否有证人出庭作证？</p>
-      <p>原：</p>
-      <p>原</p>
-      <p>原代</p>
-      <p>被</p>
-      <p>被</p>
-      <p>被代</p>
-      <p>第</p>
-      <p>第</p>
-      <p>第代</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-input v-model="subject.witness.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-input v-model="subject.witness.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-input v-model="subject.witness.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <!-- 庭审序言-庭审组织 -->
