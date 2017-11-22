@@ -45,9 +45,9 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             // 异议及理由
             objection: {
-              whether: "无异议", // 异议状态
+              status: "无异议", // 异议状态
               detail: "", // 理由
-            }
+            },
           }],
           // 责任人
           responsibles: [{
@@ -55,6 +55,11 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
           // 代理人
           agents: [{
@@ -62,6 +67,11 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             auth: "特别授权",
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
         }],
         // 被告
@@ -74,6 +84,11 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
           // 责任人
           responsibles: [{
@@ -81,6 +96,11 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
           // 代理人
           agents: [{
@@ -88,6 +108,11 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             auth: "特别授权",
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
         }],
         // 第三人
@@ -100,6 +125,11 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
           // 责任人
           responsibles: [{
@@ -107,6 +137,11 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
           // 代理人
           agents: [{
@@ -114,6 +149,11 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             auth: "特别授权",
+            // 异议及理由
+            objection: {
+              status: "无异议", // 异议状态
+              detail: "", // 理由
+            },
           }],
         }],
       },

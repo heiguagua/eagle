@@ -444,16 +444,44 @@
     </div>
     <div class="content">
       <p>审：各方对出庭人员有无异议？</p>
-      <div v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
           <p>
             原：
-            <el-select v-model="subject.objection.whether" class="width-25">
+            <el-select v-model="subject.objection.status" class="width-25">
               <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
           </p>
-          <p v-if="subject.objection.whether === '有异议'">
+          <p v-if="subject.objection.status === '有异议'">
+            <el-input v-model="subject.objection.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-select v-model="subject.objection.status" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+          </p>
+          <p v-if="subject.objection.status === '有异议'">
+            <el-input v-model="subject.objection.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-select v-model="subject.objection.status" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+          </p>
+          <p v-if="subject.objection.status === '有异议'">
             <el-input v-model="subject.objection.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
           </p>
         </div>
