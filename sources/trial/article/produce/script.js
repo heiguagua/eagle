@@ -16,7 +16,7 @@ export default {
     generate() {
       const vm = this;
       const editorTrial = this.$store.state.Trial.trial;
-      // storage.set('trial', editorTrial);
+      storage.set('trial', editorTrial);
       vm.$router.push('/layout/trial/preview');
     },
     getTemplate() {

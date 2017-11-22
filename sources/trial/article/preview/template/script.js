@@ -6,15 +6,14 @@ export default {
   data() {
     return {
       case: {},
+      trial: {},
     };
   },
   computed: {
-    ...mapState("Trial", [
-      "trial"
-    ]),
   },
   created() {
     this.case = storage.get("case");
+    this.trial = storage.get("trial");
   },
   methods: {
     save() {

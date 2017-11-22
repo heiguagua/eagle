@@ -47,8 +47,7 @@ export default {
         .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200)) {
-            message(payload.vm, "info", data.head.status);
-            console.info(JSON.parse(data.json))
+            message(payload.vm, "info", data.head.message);
             context.commit("setTrials", data.json);
           } else {
             message(payload.vm, "warning", data.head.message);

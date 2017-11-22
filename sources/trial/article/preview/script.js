@@ -33,8 +33,8 @@ export default {
         .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200)) {
-            message(vm, "info", data.head.status);
-            vm.getTrials(vm);
+            message(vm, "info", data.head.message);
+            vm.getTrials({ vm });
           } else {
             message(vm, "warning", data.head.message);
           }
