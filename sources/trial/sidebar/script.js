@@ -39,12 +39,17 @@ export default {
       }]
     }
   },
+  computed: {
+    ...mapState("Trial", [
+      "trials"
+    ]),
+  },
   methods: {
     ...mapActions("Trial", [
       "getTrials",
     ]),
   },
-  mounted() {
+  created() {
     const vm = this;
     this.getTrials({ vm });
   }
