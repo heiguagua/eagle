@@ -43,6 +43,11 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            // 异议及理由
+            objection: {
+              whether: "", // 异议状态
+              detail: "", // 理由
+            }
           }],
           // 责任人
           responsibles: [{
