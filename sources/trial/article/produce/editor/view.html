@@ -760,18 +760,55 @@
     </div>
     <div class="content">
       <p>审：根据各方陈述意见，归纳无争议及争议事实如下：无争议事实：</p>
-      <p>原：无异议，无补充。</p>
-      <p>原：无异议，无补充。</p>
-      <p>原代：无异议，无补充。</p>
-      <p>被：无异议，无补充。</p>
-      <p>被：有异议，无补充。</p>
-      <p>被代：无异议，无补充。</p>
-      <p>第：无异议， 无补充。</p>
-      <p>第：无异议，无补充。</p>
-      <p>第代：无异议，无补充。</p>
+      <el-input v-model="trial.investigate.conclude.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-select v-model="subject.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-select v-model="subject.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-select v-model="subject.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+      </div>
     </div>
   </section>
-  <section title="法庭调查-有争议归纳" id="disputed">
+  <section title="法庭调查-争议归纳" id="disputed">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>法庭调查-有争议归纳</em>

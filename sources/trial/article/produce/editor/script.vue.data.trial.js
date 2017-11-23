@@ -75,6 +75,16 @@ export default () => {
             opinion: {
               detail: "详见民事诉讼状。",
             },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
           }],
           // 责任人
           responsibles: [{
@@ -114,6 +124,16 @@ export default () => {
             opinion: {
               detail: "详见民事诉讼状。",
             },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
           }],
           // 代理人
           agents: [{
@@ -151,6 +171,16 @@ export default () => {
             // 诉辩意见
             opinion: {
               detail: "详见民事诉讼状。",
+            },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
             },
           }],
         }],
@@ -195,6 +225,16 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
           }],
           // 责任人
           responsibles: [{
@@ -233,6 +273,16 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
           }],
           // 代理人
           agents: [{
@@ -270,6 +320,16 @@ export default () => {
             // 诉辩意见
             opinion: {
               detail: "",
+            },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
             },
           }],
         }],
@@ -314,6 +374,16 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
           }],
           // 责任人
           responsibles: [{
@@ -351,6 +421,16 @@ export default () => {
             // 诉辩意见
             opinion: {
               detail: "",
+            },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
             },
           }],
           // 代理人
@@ -390,6 +470,16 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 无争议归纳
+            undisputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
+            // 争议归纳
+            disputed: {
+              isObjection: "无异议", // 是否有异议
+              isSupply: "无补充", // 是否有补充
+            },
           }],
         }],
       },
@@ -422,9 +512,15 @@ export default () => {
       // 争点归纳
       conclude: {
         // 无争议归纳
-        undisputed: "",
+        undisputed: {
+          status: "",
+          detail: "",
+        },
         // 有争议归纳
-        disputed: ""
+        disputed: {
+          status: "",
+          detail: ""
+        }
       }
     },
     // 法庭辩论
