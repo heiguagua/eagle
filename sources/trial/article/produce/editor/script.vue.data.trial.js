@@ -48,8 +48,32 @@ export default () => {
               status: "无异议",
               detail: "",
             },
+            // 证人是否出庭
             witness: {
               detail: "无",
+            },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "详见民事诉讼状。",
             },
           }],
           // 责任人
@@ -67,6 +91,29 @@ export default () => {
             witness: {
               detail: "无",
             },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "详见民事诉讼状。",
+            },
           }],
           // 代理人
           agents: [{
@@ -81,6 +128,29 @@ export default () => {
             },
             witness: {
               detail: "无",
+            },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "详见民事诉讼状。",
             },
           }],
         }],
@@ -102,6 +172,29 @@ export default () => {
             witness: {
               detail: "无",
             },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "",
+            },
           }],
           // 责任人
           responsibles: [{
@@ -117,6 +210,29 @@ export default () => {
             witness: {
               detail: "无",
             },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "",
+            },
           }],
           // 代理人
           agents: [{
@@ -131,6 +247,29 @@ export default () => {
             },
             witness: {
               detail: "无",
+            },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "",
             },
           }],
         }],
@@ -152,6 +291,29 @@ export default () => {
             witness: {
               detail: "无",
             },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "",
+            },
           }],
           // 责任人
           responsibles: [{
@@ -167,6 +329,29 @@ export default () => {
             witness: {
               detail: "无",
             },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "",
+            },
           }],
           // 代理人
           agents: [{
@@ -181,6 +366,29 @@ export default () => {
             },
             witness: {
               detail: "无",
+            },
+            // 告知诉讼权利
+            rights: {
+              detail: "收到，清楚。",
+            },
+            // 告知事项
+            matter: {
+              detail: "清楚。",
+            },
+            // 是否申请回避
+            evasion: {
+              status: "不申请",
+              detail: "",
+            },
+            // 举证期限异议
+            evidence: {
+              status: "无异议",
+              isAgree: "同意",
+              detail: "",
+            },
+            // 诉辩意见
+            opinion: {
+              detail: "",
             },
           }],
         }],

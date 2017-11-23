@@ -486,7 +486,6 @@
           </p>
         </div>
       </div>
-      </p>
     </div>
   </section>
   <section title="证人是否出庭" id="witness">
@@ -539,15 +538,30 @@
     </div>
     <div class="content">
       <p>审：本院已在庭前向各方当事人送达了《当事人诉讼权利义务通知书》和《举证通知书》，是否收到？各方对自己的权利义务是否清楚？</p>
-      <p>原：收到，清楚。</p>
-      <p>原：收到，清楚。</p>
-      <p>原代：收到，清楚。</p>
-      <p>被：收到，清楚。</p>
-      <p>被：收到，清楚。</p>
-      <p>被代：收到，清楚。</p>
-      <p>第：收到，清楚。</p>
-      <p>第：收到，清楚。</p>
-      <p>第代：收到，清楚。</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-input v-model="subject.rights.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-input v-model="subject.rights.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-input v-model="subject.rights.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
       <p>审：鉴于各方均已收到本院发出的当事人诉讼权利义务通知书，且对自己的权利义务均清楚，本庭不再另行通知当事人的诉讼权利和义务。</p>
     </div>
   </section>
@@ -563,15 +577,30 @@
       <p>三、根据宪法和法律规定，人民法院依法独立行使审判权，法官依法审判案件，不受行政机关、社会团体和个人的干涉。各方当事人及诉讼参与人应以法律规定的方式表达诉求和提供证据，在诉讼过程中不得通过他人转交材料或转达诉求，不得庭外请托合议庭或其他法官，不得以任何形式干扰法院独立和公正行使审判权。如有上述不符合法律规定之行为的，本庭将记录在案，同时责令行为方向本庭及对方当事人作出说明。律师有上述行为的，本院还将函告司法行政部门。</p>
       <p>四、在案件审理过程中，本庭将严格遵守上级法院及本院有关审判工作纪律之规定，不接受当事人及相关人员的请客送礼，不与律师进行不正当交往，公开、公平、公正地审理案件。</p>
       <p>审：双方对以上内容是否清楚?</p>
-      <p>原：清楚。</p>
-      <p>原：清楚。</p>
-      <p>原代：清楚。</p>
-      <p>被：清楚。</p>
-      <p>被：清楚。</p>
-      <p>被代：清楚。</p>
-      <p>第：清楚。</p>
-      <p>第：清楚。</p>
-      <p>第代：清楚。</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-input v-model="subject.matter.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-input v-model="subject.matter.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-input v-model="subject.matter.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <section title="庭审序言-是否申请回避" id="evasion">
@@ -581,15 +610,48 @@
     </div>
     <div class="content">
       <p>审：根据《中华人民共和国民事诉讼法》第四十四条、四十五条、四十六条之规定，当事人可以申请回避，各方是否申请回避？</p>
-      <p>原：不申请。</p>
-      <p>原：不申请。</p>
-      <p>原代：不申请。</p>
-      <p>被：不申请。</p>
-      <p>被：不申请。</p>
-      <p>被代：不申请。</p>
-      <p>第：不申请。</p>
-      <p>第：不申请。</p>
-      <p>第代：不申请。</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-select v-model="subject.evasion.status" class="width-25">
+              <el-option v-for="option in options.evasions" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+          </p>
+          <p v-if="subject.evasion.status === '申请'">
+            <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告回避理由" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-select v-model="subject.evasion.status" class="width-25">
+              <el-option v-for="option in options.evasions" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+          </p>
+          <p v-if="subject.evasion.status === '申请'">
+            <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入被告回避理由" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-select v-model="subject.evasion.status" class="width-25">
+              <el-option v-for="option in options.evasions" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+          </p>
+          <p v-if="subject.evasion.status === '申请'">
+            <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入第三人回避理由" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <section title="庭审序言-举证期限异议" id="evidence">
@@ -599,15 +661,60 @@
     </div>
     <div class="content">
       <p>审：庭前向各方送达权利义务通知书、举证通知书，各方是否已收到？对证据期限有无异议？是否同意今天开庭？</p>
-      <p>原：已收到，无异议，同意。</p>
-      <p>原：已收到，无异议，同意。</p>
-      <p>原代：已收到，无异议，同意。</p>
-      <p>被：已收到，无异议，同意。</p>
-      <p>被：已收到，无异议，同意。</p>
-      <p>被代：已收到，无异议，同意。</p>
-      <p>第：已收到，无异议，同意。</p>
-      <p>第：已收到，有异议，同意。</p>
-      <p>第代：已收到，无异议，同意。</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-select v-model="subject.evidence.status" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.evidence.isAgree" class="width-20">
+              <el-option v-for="option in options.agrees" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+          <p v-if="subject.evidence.status === '有异议'">
+            <el-input v-model="subject.evidence.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告异议原因" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-select v-model="subject.evidence.status" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.evidence.isAgree" class="width-20">
+              <el-option v-for="option in options.agrees" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+          <p v-if="subject.evidence.status === '有异议'">
+            <el-input v-model="subject.evidence.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入被告异议原因" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-select v-model="subject.evidence.status" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.evidence.isAgree" class="width-20">
+              <el-option v-for="option in options.agrees" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+          <p v-if="subject.evidence.status === '有异议'">
+            <el-input v-model="subject.evidence.content" type="textarea" :autosize="{minRows: 4}" placeholder="请输入第三人异议原因" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <!-- 法庭调查 -->
@@ -618,17 +725,32 @@
     </div>
     <div class="content">
       <p>审：现在进行法庭调查。首先由原告简要陈述诉讼请求、事实和理由。</p>
-      <p>原：</p>
-      <p>原：</p>
-      <p>原代：</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
       <p>审：现在由被告简要宣读答辩状或针对原告的诉讼请求及理由进行答辩。</p>
-      <p>被：</p>
-      <p>被：</p>
-      <p>被代：</p>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入被告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
       <p>审：现在由第三人陈述意见。</p>
-      <p>第：</p>
-      <p>第：</p>
-      <p>第代：</p>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入第三人诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <section title="法庭调查-无争议归纳" id="undisputed">

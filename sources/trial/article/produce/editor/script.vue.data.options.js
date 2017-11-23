@@ -30,5 +30,13 @@ export default {
   objections: [
     "无异议",
     "有异议"
-  ]
+  ],
+  evasions: [
+    "不申请",
+    "申请"
+  ],
+  agrees: [
+    "同意",
+    "不同意"
+  ],
 };
