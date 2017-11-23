@@ -48,6 +48,22 @@ export default {
     ...mapActions("Trial", [
       "getTrials",
     ]),
+    removeTrials(row) {
+      const recordID = row.record_id;
+      Http.fetch({
+          method: "DELETE",
+          url: Http.url.master + "/trial/" + recordID
+        })
+        .then(result => {
+          const data = result.data;
+          if (Http.protocol(data, 200)) {
+            message(vm, "info", data.head.status);
+            context.commit("setTrials", data);
+          } else {
+            message(vm, "warning", data.head.message);
+          }
+        });
+    },
   },
   created() {
     const vm = this;

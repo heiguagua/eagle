@@ -814,16 +814,54 @@
       <em>法庭调查-有争议归纳</em>
     </div>
     <div class="content">
-      <p>审：争议事实：对于本院归纳内容是否有异议或补充？</p>
-      <p>原：无异议，无补充。</p>
-      <p>原：无异议，无补充。</p>
-      <p>原代：无异议，无补充。</p>
-      <p>被：无异议，无补充。</p>
-      <p>被：无异议，无补充。</p>
-      <p>被代：无异议，无补充。</p>
-      <p>第： 无异议，无补充。</p>
-      <p>第：无异议，无补充。</p>
-      <p>第代：无异议，无补充。</p>
+      <p>审：争议事实：</p>
+      <el-input v-model="trial.investigate.conclude.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
+      <p>对于本院归纳内容是否有异议或补充？</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p>
+            原：
+            <el-select v-model="subject.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+      </div>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p>
+            被：
+            <el-select v-model="subject.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+      </div>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p>
+            第：
+            <el-select v-model="subject.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="subject.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <section title="法庭调查-法庭询问" id="inquiry">
@@ -904,7 +942,17 @@
       <em>其他</em>
     </div>
     <div class="content">
-      <p></p>
+      <p>书记员：全体起立，请审判人员退庭。请旁听人员退庭。请当事人退庭并到书记员处阅读庭审笔录并签名。</p>
+      <p>（证据原件已退还当事人）</p>
+      <p>（以上笔录阅后无误，请签字确认）</p>
+      <p>
+        <div>
+          原告代理人签字：
+        </div>
+        <div>
+          被告代理人签字：
+        </div>
+      </p>
     </div>
   </footer>
 </article>
