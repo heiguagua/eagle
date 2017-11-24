@@ -70,7 +70,7 @@ export default {
       const vm = this;
       const recordID = row.record_id || "";
       const case_no = row.case_no || "";
-      vm.$router.push({ path: "/layout/trial/produce", params: { operation: "update" } });
+      vm.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
     },
   },
   created() {
