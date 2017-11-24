@@ -5,8 +5,8 @@ import { message, storage } from "../common/scripts/helper";
 
 export default {
   newTrial(lawCase, params) {
-    storage.set("case",_.assign({}, lawCase, params));
-    this.$router.push("/layout/trial/blank");
+    storage.set("case", _.assign({}, lawCase, params));
+    this.$router.push({ path: "/layout/trial/blank", query: { operation: "create" } });
   },
   // pagination
   changePageSize(size) {
