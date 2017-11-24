@@ -48,7 +48,7 @@ export default {
     ...mapActions("Trial", [
       "getTrials",
     ]),
-    removeTrials(row) {
+    removeTrial(row) {
       const vm = this;
       const recordID = row.record_id || "";
       const case_no = row.case_no || "";
@@ -65,6 +65,12 @@ export default {
             message(vm, "warning", data.head.message);
           }
         });
+    },
+    updateTrial(row) {
+      const vm = this;
+      const recordID = row.record_id || "";
+      const case_no = row.case_no || "";
+      vm.$router.push("/layout/trial/produce");
     },
   },
   created() {

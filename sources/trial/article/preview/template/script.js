@@ -9,8 +9,7 @@ export default {
       trial: {},
     };
   },
-  computed: {
-  },
+  computed: {},
   created() {
     this.case = storage.get("case");
     this.trial = storage.get("trial");

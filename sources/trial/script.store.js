@@ -19,10 +19,7 @@ export default {
     getTrial(context, payload) {
       Http.fetch({
           method: "GET",
-          url: Http.url.master + "/trial",
-          params: {
-
-          }
+          url: Http.url.master + "/trial/" + payload.recordID,
         })
         .then(result => {
           const data = result.data;
