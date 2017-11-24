@@ -49,16 +49,18 @@ export default {
       "getTrials",
     ]),
     removeTrials(row) {
-      const recordID = row.record_id;
+      const vm = this;
+      const recordID = row.record_id || "";
+      const case_no = row.case_no || "";
       Http.fetch({
           method: "DELETE",
-          url: Http.url.master + "/trial/" + recordID
+          url: Http.url.master + "/trial/" + recordID + "/" + case_no,
         })
         .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200)) {
             message(vm, "info", data.head.status);
-            context.commit("setTrials", data);
+            vm.getTrials({ vm })
           } else {
             message(vm, "warning", data.head.message);
           }
@@ -69,4 +71,4 @@ export default {
     const vm = this;
     this.getTrials({ vm });
   }
-}
+};
