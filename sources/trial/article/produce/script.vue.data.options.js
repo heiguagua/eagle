@@ -1,45 +1,47 @@
 export default {
-  primaryDuties: [
-    "审判长",
-    "审判员",
-    "代理审判员",
-  ],
-  normalDuties: [
-    "审判员",
-    "代理审判员",
-    "人民陪审员",
-  ],
-  auths: [
+  duty: {
+    primary: [
+      "审判长",
+      "审判员",
+      "代理审判员",
+    ],
+    normal: [
+      "审判员",
+      "代理审判员",
+      "人民陪审员",
+    ],
+  },
+  auth: [
     "特别授权",
     "一般代理"
   ],
-  responsibles: [
+  responsible: [
     "法定代表人",
     "负责人",
     "法定代理人",
     "指定代理人",
   ],
-  appears: [
+  appear: [
     "到庭",
     "未到庭",
   ],
-  publics: [
+  public: [
     "公开",
     "不公开",
   ],
-  objections: [
+  objection: [
     "无异议",
     "有异议"
   ],
-  evasions: [
+  evasion: [
     "不申请",
     "申请"
   ],
-  agrees: [
+  agree: [
     "同意",
     "不同意"
   ],
-  supplys: [
+  supply: [
     "无补充",
     "有补充"
   ],

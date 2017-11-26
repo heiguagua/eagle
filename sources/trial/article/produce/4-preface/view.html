@@ -1,5 +1,5 @@
 <div title="庭审序言" class="preface">
-  <section title="庭审序言-庭审组织" id="organize">
+  <section title="庭审序言-庭审组织" class="organize">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-庭审组织</em>
@@ -8,7 +8,7 @@
       <p>审：本院受理AAAAAAAAA与AAAAA一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用普通程序第二次公开开庭进行审理。 因工作调动，审判员/审判长/代理审判员/人民陪审员/书记员由XXX更换为XXX。 本案由审判长、审判员、审判员依法组成合议庭，由审判员担任审判长，由书记员担任记录。</p>
     </div>
   </section>
-  <section title="庭审序言-告知诉讼权利" id="rights">
+  <section title="庭审序言-告知诉讼权利" class="rights">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-告知诉讼权利</em>
@@ -42,7 +42,7 @@
       <p>审：鉴于各方均已收到本院发出的当事人诉讼权利义务通知书，且对自己的权利义务均清楚，本庭不再另行通知当事人的诉讼权利和义务。</p>
     </div>
   </section>
-  <section title="庭审序言-告知事项" id="matter">
+  <section title="庭审序言-告知事项" class="matter">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-告知事项</em>
@@ -80,7 +80,7 @@
       </div>
     </div>
   </section>
-  <section title="庭审序言-是否申请回避" id="evasion">
+  <section title="庭审序言-是否申请回避" class="evasion">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-是否申请回避</em>
@@ -92,7 +92,7 @@
           <p>
             原：
             <el-select v-model="subject.evasion.status" class="width-25">
-              <el-option v-for="option in options.evasions" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
           </p>
@@ -106,7 +106,7 @@
           <p>
             被：
             <el-select v-model="subject.evasion.status" class="width-25">
-              <el-option v-for="option in options.evasions" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
           </p>
@@ -120,7 +120,7 @@
           <p>
             第：
             <el-select v-model="subject.evasion.status" class="width-25">
-              <el-option v-for="option in options.evasions" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
           </p>
@@ -131,7 +131,7 @@
       </div>
     </div>
   </section>
-  <section title="庭审序言-举证期限异议" id="evidence">
+  <section title="庭审序言-举证期限异议" class="evidence">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-举证期限异议</em>
@@ -143,11 +143,11 @@
           <p>
             原：
             <el-select v-model="subject.evidence.status" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.evidence.isAgree" class="width-20">
-              <el-option v-for="option in options.agrees" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.agree" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
@@ -161,11 +161,11 @@
           <p>
             被：
             <el-select v-model="subject.evidence.status" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.evidence.isAgree" class="width-20">
-              <el-option v-for="option in options.agrees" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.agree" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
@@ -179,11 +179,11 @@
           <p>
             第：
             <el-select v-model="subject.evidence.status" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.evidence.isAgree" class="width-20">
-              <el-option v-for="option in options.agrees" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.agree" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>

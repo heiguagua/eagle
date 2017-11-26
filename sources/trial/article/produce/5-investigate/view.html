@@ -1,5 +1,5 @@
 <div title="法庭调查" class="investigate">
-  <section title="法庭调查-诉辩意见" id="opinion">
+  <section title="法庭调查-诉辩意见" class="opinion">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>法庭调查-诉辩意见</em>
@@ -34,7 +34,7 @@
       </div>
     </div>
   </section>
-  <section title="法庭调查-无争议归纳" id="undisputed">
+  <section title="法庭调查-无争议归纳" class="undisputed">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>法庭调查-无争议归纳</em>
@@ -77,11 +77,11 @@
           <p>
             第：
             <el-select v-model="subject.undisputed.isObjection" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.undisputed.isSupply" class="width-20">
-              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
@@ -89,7 +89,7 @@
       </div>
     </div>
   </section>
-  <section title="法庭调查-争议归纳" id="disputed">
+  <section title="法庭调查-争议归纳" class="disputed">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>法庭调查-有争议归纳</em>
@@ -103,11 +103,11 @@
           <p>
             原：
             <el-select v-model="subject.disputed.isObjection" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.disputed.isSupply" class="width-20">
-              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
@@ -118,11 +118,11 @@
           <p>
             被：
             <el-select v-model="subject.disputed.isObjection" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.disputed.isSupply" class="width-20">
-              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
@@ -133,11 +133,11 @@
           <p>
             第：
             <el-select v-model="subject.disputed.isObjection" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.disputed.isSupply" class="width-20">
-              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
@@ -145,7 +145,7 @@
       </div>
     </div>
   </section>
-  <section title="法庭调查-法庭询问" id="inquiry">
+  <section title="法庭调查-法庭询问" class="inquiry">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>法庭调查-法庭询问</em>
@@ -155,7 +155,7 @@
       <h1>全案要素表选择</h1>
     </div>
   </section>
-  <section title="法庭调查-举证质证" id="proof">
+  <section title="法庭调查-举证质证" class="proof">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>法庭调查-举证质证</em>
@@ -164,7 +164,7 @@
       <p>审：现在开始举证，先由原告方举证。</p>
     </div>
   </section>
-  <section title="法庭调查-争议事实认定" id="fact">
+  <section title="法庭调查-争议事实认定" class="fact">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>法庭调查-争议事实认定</em>
