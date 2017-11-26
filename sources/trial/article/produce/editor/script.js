@@ -3,6 +3,8 @@ import options from "./script.vue.data.options";
 import methods from "./script.vue.methods";
 import TrialHeader from "../0-header";
 import TrialInfomation from "../1-infomation";
+import TrialDiscipline from "../2-discipline";
+import TrialVerification from "../3-verification";
 
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
@@ -13,6 +15,8 @@ export default {
   components: {
     TrialHeader,
     TrialInfomation,
+    TrialDiscipline,
+    TrialVerification
   },
   computed: {
     ...mapState("Trial", [

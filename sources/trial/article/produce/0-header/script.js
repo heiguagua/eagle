@@ -6,7 +6,8 @@ export default {
   },
   computed: {
     ...mapState("Trial", [
-      "trial"
+      "trial",
+      "options"
     ]),
   },
   methods: {
