@@ -1,6 +1,6 @@
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
-import Trial from "../editor/script.vue.data.trial";
 import { message, notify } from "../../../../common/scripts/helper";
+import Trial from "../script.vue.data.trial";
 
 
 export default {

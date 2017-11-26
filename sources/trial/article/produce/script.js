@@ -1,15 +1,50 @@
 import Http from '../../../common/scripts/http';
 import { message, storage } from '../../../common/scripts/helper';
-import TrialEditor from './editor/index.vue';
+import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
+
+import TrialHeader from "./0-header";
+import TrialInfomation from "./1-infomation";
+import TrialDiscipline from "./2-discipline";
+import TrialVerification from "./3-verification";
+import TrialPreface from "./4-preface";
+import TrialInvestigate from "./5-investigate";
+import TrialArgument from "./6-argument";
+import TrialStatement from "./7-statement";
+import TrialConciliation from "./8-conciliation";
+import TrialAnnounce from "./9-announce";
+import TrialOther from "./10-other";
+
+import trial from "./script.vue.data.trial.js";
+import options from "./script.vue.data.options.js";
 
 export default {
   data() {
     return {};
   },
+  computed: {
+    ...mapState("Trial", [
+      "trial",
+      "options"
+    ]),
+  },
   components: {
-    TrialEditor
+    TrialHeader,
+    TrialInfomation,
+    TrialDiscipline,
+    TrialVerification,
+    TrialPreface,
+    TrialInvestigate,
+    TrialArgument,
+    TrialStatement,
+    TrialConciliation,
+    TrialAnnounce,
+    TrialOther
   },
   methods: {
+    ...mapMutations("Trial", [
+      "setTrial",
+      "setOptions"
+    ]),
     logTrial() {
       console.info('Trial', this.$store.state.Trial.trial);
     },
@@ -46,5 +81,25 @@ export default {
     },
   },
   mounted() {},
-  directives: {}
+  created() {
+    // TODO 对Trial进行对象的深度比较，然后判断是使用全新的Trial，还是使用当前对象树上挂载的
+    // if (this.trial!=="{}") {
+    //   this.setTrial(this.$store.state.Trial.trial); // 从store获取trial
+    // } else {
+    //   this.setTrial(trial()); // 使用全新的trial
+    // }
+    this.setOptions(options);
+    this.setTrial(trial());
+  },
+  directives: {
+    hoverToggle: {
+      // 指令的定义
+      bind: function(el, binding, vnode, oldVnode) {
+        var target = el.querySelectorAll(".hover-toggle");
+        // target.addEventListener("mouseover", function(event) {
+        //   alert();
+        // })
+      }
+    }
+  }
 };

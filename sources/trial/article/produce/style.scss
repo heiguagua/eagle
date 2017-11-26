@@ -5,4 +5,47 @@
   height: 100%;
   background: $color-white;
   @import '../common';
+  #trial-editor {
+    border-right: 1px solid $color-border-light;
+    header {
+      text-align: center;
+      padding: 19px 0 18px 0;
+      background: $color-white;
+      background: url(../../../assets/editor/paper-grid.jpg);
+    }
+    section,
+    footer {
+      background: $color-white;
+      .access {
+        background: $color-gray-light;
+        height: 40px;
+        line-height: 40px;
+        border-top: 1px solid $color-gray;
+        border-bottom: 1px solid $color-gray;
+        padding: 0 50px;
+        em {
+          font-weight: normal;
+          font-style: normal;
+          font-size: 14px;
+        }
+        .tools {
+          float: right;
+          position: relative;
+          top: -1px;
+        }
+      }
+      .content {
+        padding: 15px 50px 15px 50px;
+        background: url(../../../assets/editor/paper-grid.jpg);
+        hr {
+          margin: 30px 0;
+          border-top: 1px dotted $color-silver-light;
+        }
+      }
+    }
+    p {
+      padding: 0;
+      font-size: 14px !important;
+    }
+  }
 }

@@ -21,6 +21,29 @@
   </div>
   <!-- 编辑区 -->
   <div class='document'>
-    <trial-editor ref="TrialEditor" class="animated fadeInLeft"></trial-editor>
+    <article id="trial-editor" class="animated fadeInLeft" v-hoverToggle>
+      <!-- 笔录头部 -->
+      <trial-header></trial-header>
+      <!-- 庭审信息 -->
+      <trial-infomation></trial-infomation>
+      <!-- 法庭纪律 -->
+      <trial-discipline></trial-discipline>
+      <!-- 信息核对 -->
+      <trial-verification></trial-verification>
+      <!-- 庭审序言 -->
+      <trial-preface></trial-preface>
+      <!-- 法庭调查 -->
+      <trial-investigate></trial-investigate>
+      <!-- 法庭辩论 -->
+      <trial-argument></trial-argument>
+      <!-- 最后陈述 -->
+      <trial-statement></trial-statement>
+      <!-- 法庭调解 -->
+      <trial-conciliation></trial-conciliation>
+      <!-- 休庭宣读 -->
+      <trial-announce></trial-announce>
+      <!-- 其他 -->
+      <trial-other></trial-other>
+    </article>
   </div>
 </div>
