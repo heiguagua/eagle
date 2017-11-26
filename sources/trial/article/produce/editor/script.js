@@ -5,6 +5,7 @@ import TrialHeader from "../0-header";
 import TrialInfomation from "../1-infomation";
 import TrialDiscipline from "../2-discipline";
 import TrialVerification from "../3-verification";
+import TrialPreface from "../4-preface";
 
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
@@ -16,7 +17,8 @@ export default {
     TrialHeader,
     TrialInfomation,
     TrialDiscipline,
-    TrialVerification
+    TrialVerification,
+    TrialPreface,
   },
   computed: {
     ...mapState("Trial", [
