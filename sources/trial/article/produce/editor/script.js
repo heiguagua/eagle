@@ -6,6 +6,12 @@ import TrialInfomation from "../1-infomation";
 import TrialDiscipline from "../2-discipline";
 import TrialVerification from "../3-verification";
 import TrialPreface from "../4-preface";
+import TrialInvestigate from "../5-investigate";
+import TrialArgument from "../6-argument";
+import TrialStatement from "../7-statement";
+import TrialConciliation from "../8-conciliation";
+import TrialAnnounce from "../9-announce";
+import TrialOther from "../10-other";
 
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
@@ -19,6 +25,12 @@ export default {
     TrialDiscipline,
     TrialVerification,
     TrialPreface,
+    TrialInvestigate,
+    TrialArgument,
+    TrialStatement,
+    TrialConciliation,
+    TrialAnnounce,
+    TrialOther
   },
   computed: {
     ...mapState("Trial", [
