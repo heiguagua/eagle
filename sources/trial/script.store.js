@@ -6,6 +6,7 @@ export default {
   state: {
     trial: {},
     trials: [],
+    options: {},
   },
   mutations: {
     setTrial(state, payload) {
@@ -13,7 +14,10 @@ export default {
     },
     setTrials(state, payload) {
       state.trials = payload;
-    }
+    },
+    setOptions(state, payload) {
+      state.options = payload;
+    },
   },
   actions: {
     getTrial(context, payload) {

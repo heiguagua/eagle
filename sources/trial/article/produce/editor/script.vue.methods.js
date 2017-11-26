@@ -4,7 +4,8 @@ import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   ...mapMutations("Trial", [
-    "setTrial"
+    "setTrial",
+    "setOptions"
   ]),
   // 原告
   accuserHandler(target, operation, params) {
