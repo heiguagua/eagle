@@ -45,7 +45,7 @@ export default {
     },
     openSocket() {
       const token = Encrypt.token.get();
-      const URI = Http.url.socket;
+      const URI = Http.url.socket + "?token=" + token;
       const socket = this.socket = new WebSocket(URI);
       socket.onopen = event => {
         setInterval(() => {
