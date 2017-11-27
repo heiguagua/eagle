@@ -5,7 +5,7 @@
       <em>庭审序言-庭审组织</em>
       <div class="tools">
         <el-button @click="changeJudge()" size='small' type='primary'>
-          <i class='fa fa-cogs'>&nbsp;是否更换审判人员</i>
+          <i class='fa fa-user'>&nbsp;是否更换审判人员</i>
         </el-button>
       </div>
     </div>
@@ -14,13 +14,13 @@
         <span>{{ trial.infomation.code }}</span>原告
         <span v-for="data in trial.verification.participator.accusers">
           <span v-for="item in data.subjects">
-            <span>{{ item.name }}</span>
+          <span>{{ item.name }}</span>
         </span>
         </span>
         与被告
         <span v-for="data in trial.verification.participator.accuseds">
           <span v-for="item in data.subjects">
-            <span>{{ item.name }}</span>
+          <span>{{ item.name }}</span>
         </span>
         </span>
         一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用 普通程序第
