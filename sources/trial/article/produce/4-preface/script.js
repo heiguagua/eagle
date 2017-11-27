@@ -11,6 +11,15 @@ export default {
     ]),
   },
   methods: {
+    changeJudge() {
+      const vm = this;
+      if(vm.trial.preface.organize.status == "hide") {
+        vm.trial.preface.organize.status = "show";
+      }else {
+        vm.trial.preface.organize.status = "hide";
+      }
+      
+    },
 
   },
 };

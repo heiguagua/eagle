@@ -494,7 +494,10 @@ export default () => {
     // 庭审序言
     preface: {
       // 庭审组织
-      organize: "",
+      organize: {
+        status: "hide",
+        detail: "因工作调动，审判员/审判长/代理审判员/人民陪审员/书记员由XXX更换为XXX。",
+      },
       // 告知诉讼权利
       rights: "",
       // 告知事项
