@@ -1,7 +1,7 @@
 import Http from '../../../common/scripts/http';
 import { message, storage } from '../../../common/scripts/helper';
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
-
+// Compoents
 import TrialHeader from "./0-header";
 import TrialInfomation from "./1-infomation";
 import TrialDiscipline from "./2-discipline";
@@ -13,7 +13,7 @@ import TrialStatement from "./7-statement";
 import TrialConciliation from "./8-conciliation";
 import TrialAnnounce from "./9-announce";
 import TrialOther from "./10-other";
-
+// Store
 import trial from "./script.vue.data.trial.js";
 import options from "./script.vue.data.options.js";
 
