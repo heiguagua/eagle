@@ -7,28 +7,64 @@
     <div class="content">
       <p>审：现在进行法庭调查。首先由原告简要陈述诉讼请求、事实和理由。</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
-        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
           <p>
             原：
-            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+          <p>
+            原{{responsibleIndex+1}}：
+            <el-input v-model="responsible.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+          <p>
+            原代{{agentIndex+1}}：
+            <el-input v-model="agent.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
           </p>
         </div>
       </div>
       <p>审：现在由被告简要宣读答辩状或针对原告的诉讼请求及理由进行答辩。</p>
       <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
-        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
           <p>
             被：
-            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入被告诉辩意见" class="width-100"></el-input>
+            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+          <p>
+            被{{responsibleIndex+1}}：
+            <el-input v-model="responsible.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+          <p>
+            被代{{agentIndex+1}}：
+            <el-input v-model="agent.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
           </p>
         </div>
       </div>
       <p>审：现在由第三人陈述意见。</p>
       <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
-        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
           <p>
             第：
-            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入第三人诉辩意见" class="width-100"></el-input>
+            <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+          <p>
+            第{{responsibleIndex+1}}：
+            <el-input v-model="responsible.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+          <p>
+            第代{{agentIndex+1}}：
+            <el-input v-model="agent.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
           </p>
         </div>
       </div>
@@ -41,39 +77,91 @@
     </div>
     <div class="content">
       <p>审：根据各方陈述意见，归纳无争议及争议事实如下：无争议事实：</p>
-      <el-input v-model="trial.investigate.conclude.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
+      <el-input v-model="trial.investigate.conclude.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
-        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
           <p>
             原：
             <el-select v-model="subject.undisputed.isObjection" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.undisputed.isSupply" class="width-20">
-              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+          <p>
+            原{{responsibleIndex+1}}：
+            <el-select v-model="responsible.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="responsible.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+          <p>
+            原代{{agentIndex+1}}：
+            <el-select v-model="agent.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="agent.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
         </div>
       </div>
       <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
-        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
           <p>
             被：
             <el-select v-model="subject.undisputed.isObjection" class="width-25">
-              <el-option v-for="option in options.objections" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>，
             <el-select v-model="subject.undisputed.isSupply" class="width-20">
-              <el-option v-for="option in options.supplys" :key="option" :label="option" :value="option">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+          <p>
+            被{{responsibleIndex+1}}：
+            <el-select v-model="responsible.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="responsible.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+          <p>
+            被代{{agentIndex+1}}：
+            <el-select v-model="agent.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="agent.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
           </p>
         </div>
       </div>
       <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
-        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
           <p>
             第：
             <el-select v-model="subject.undisputed.isObjection" class="width-25">
@@ -81,6 +169,32 @@
               </el-option>
             </el-select>，
             <el-select v-model="subject.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+          <p>
+            第{{responsibleIndex+1}}：
+            <el-select v-model="responsible.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="responsible.undisputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+          <p>
+            第代{{agentIndex+1}}：
+            <el-select v-model="agent.undisputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="agent.undisputed.isSupply" class="width-20">
               <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
@@ -96,10 +210,10 @@
     </div>
     <div class="content">
       <p>审：争议事实：</p>
-      <el-input v-model="trial.investigate.conclude.detail" type="textarea" :autosize="{minRows: 4}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
+      <el-input v-model="trial.investigate.conclude.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
       <p>对于本院归纳内容是否有异议或补充？</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
-        <div v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
           <p>
             原：
             <el-select v-model="subject.disputed.isObjection" class="width-25">
@@ -112,9 +226,35 @@
             </el-select>。
           </p>
         </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+          <p>
+            原{{responsibleIndex+1}}：
+            <el-select v-model="responsible.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="responsible.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+          <p>
+            原代{{agentIndex+1}}：
+            <el-select v-model="agent.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="agent.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
       </div>
       <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
-        <div v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
           <p>
             被：
             <el-select v-model="subject.disputed.isObjection" class="width-25">
@@ -127,9 +267,35 @@
             </el-select>。
           </p>
         </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+          <p>
+            被{{responsibleIndex+1}}：
+            <el-select v-model="responsible.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="responsible.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+          <p>
+            被代{{agentIndex+1}}：
+            <el-select v-model="agent.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="agent.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
       </div>
       <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
-        <div v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
           <p>
             第：
             <el-select v-model="subject.disputed.isObjection" class="width-25">
@@ -137,6 +303,32 @@
               </el-option>
             </el-select>，
             <el-select v-model="subject.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+          <p>
+            第{{responsibleIndex+1}}：
+            <el-select v-model="responsible.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="responsible.disputed.isSupply" class="width-20">
+              <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>。
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+          <p>
+            第代{{agentIndex+1}}：
+            <el-select v-model="agent.disputed.isObjection" class="width-25">
+              <el-option v-for="option in options.objection" :key="option" :label="option" :value="option">
+              </el-option>
+            </el-select>，
+            <el-select v-model="agent.disputed.isSupply" class="width-20">
               <el-option v-for="option in options.supply" :key="option" :label="option" :value="option">
               </el-option>
             </el-select>。
