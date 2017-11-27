@@ -1,6 +1,7 @@
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 import { message, notify } from "../../../../../common/scripts/helper";
 import Trial from "../../script.vue.data.trial";
+import Util from "../util.js";
 
 export default {
   data() {
@@ -21,6 +22,7 @@ export default {
             // 添加
             if (operation === "add") {
               let accuser = Trial().verification.participator.accusers[0];
+              accuser.subjects[0]["ordinal"] = Util.addNum('subjects', 'accusers', this.trial).length + 1;
               this.trial.verification.participator.accusers.push(accuser);
               message(vm, "success", "温馨提示：原告添加成功！");
             }
@@ -30,6 +32,7 @@ export default {
               if (accuserIndex !== 0) {
                 let accusers = vm.trial.verification.participator.accusers;
                 accusers.splice(accuserIndex, 1);
+                Util.updateNum('subjects', 'accusers', this.trial);
                 message(vm, "warning", "温馨提示：原告删除成功！");
               } else {
                 message(vm, "error", "温馨提示：不能删除唯一的原告！");
@@ -43,6 +46,7 @@ export default {
             if (operation === "add") {
               let accuserIndex = params.accuserIndex;
               let originSubject = Trial().verification.participator.accusers[0].subjects[0];
+              originSubject["ordinal"] = Util.addNum('subjects', 'accusers', this.trial).length + 1;
               let targetSubject = this.trial.verification.participator.accusers[accuserIndex].subjects.push(originSubject);
               message(vm, "success", "温馨提示：原告诉讼主体添加成功！");
             }
@@ -52,6 +56,7 @@ export default {
               let subjectIndex = params.subjectIndex;
               if (subjectIndex !== 0) {
                 this.trial.verification.participator.accusers[accuserIndex].subjects.splice(subjectIndex, 1);
+                Util.updateNum('subjects', 'accusers', this.trial);
                 message(vm, "warning", "温馨提示：原告删除成功！");
               } else {
                 message(vm, "error", "温馨提示：不能删除唯一的原告！");

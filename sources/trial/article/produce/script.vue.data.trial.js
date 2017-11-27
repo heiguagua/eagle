@@ -42,7 +42,7 @@ export default () => {
           ordinal: 1,
           // 诉讼主体
           subjects: [{
-            ordinal: 1, // 序数
+            ordinal: "", // 序数
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
