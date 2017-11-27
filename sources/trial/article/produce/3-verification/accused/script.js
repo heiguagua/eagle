@@ -1,6 +1,7 @@
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 import { message, notify } from "../../../../../common/scripts/helper";
 import Trial from "../../script.vue.data.trial";
+import Util from "../util.js";
 
 export default {
   data() {
@@ -21,8 +22,9 @@ export default {
             // 添加
             if (operation === "add") {
               let accused = Trial().verification.participator.accuseds[0];
+              accused.subjects[0]["ordinal"] = Util.addNum('subjects', 'accuseds', this.trial).length + 1;
               this.trial.verification.participator.accuseds.push(accused);
-              message(vm, "success", "温馨提示：原告添加成功！");
+              message(vm, "success", "温馨提示：被告添加成功！");
             }
             // 删除
             else if (operation === "remove") {
@@ -30,9 +32,10 @@ export default {
               if (accusedIndex !== 0) {
                 let accuseds = vm.trial.verification.participator.accuseds;
                 accuseds.splice(accusedIndex, 1);
-                message(vm, "warning", "温馨提示：原告删除成功！");
+                Util.updateNum('subjects', 'accuseds', this.trial);
+                message(vm, "warning", "温馨提示：被告删除成功！");
               } else {
-                message(vm, "error", "温馨提示：不能删除唯一的原告！");
+                message(vm, "error", "温馨提示：不能删除唯一的被告！");
               }
             }
           }
@@ -43,8 +46,9 @@ export default {
             if (operation === "add") {
               let accusedIndex = params.accusedIndex;
               let originSubject = Trial().verification.participator.accuseds[0].subjects[0];
+              originSubject["ordinal"] = Util.addNum('subjects', 'accuseds', this.trial).length + 1;
               let targetSubject = this.trial.verification.participator.accuseds[accusedIndex].subjects.push(originSubject);
-              message(vm, "success", "温馨提示：原告诉讼主体添加成功！");
+              message(vm, "success", "温馨提示：被告诉讼主体添加成功！");
             }
             // 删除
             else if (operation === "remove") {
@@ -52,7 +56,8 @@ export default {
               let subjectIndex = params.subjectIndex;
               if (subjectIndex !== 0) {
                 this.trial.verification.participator.accuseds[accusedIndex].subjects.splice(subjectIndex, 1);
-                message(vm, "warning", "温馨提示：原告删除成功！");
+                Util.updateNum('subjects', 'accuseds', this.trial);
+                message(vm, "warning", "温馨提示：被告删除成功！");
               } else {
                 message(vm, "error", "温馨提示：不能删除唯一的原告！");
               }
