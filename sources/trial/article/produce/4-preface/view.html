@@ -5,41 +5,33 @@
       <em>庭审序言-庭审组织</em>
       <div class="tools">
         <el-button @click="changeJudge()" size='small' type='primary'>
-        <i class='fa fa-cogs'>&nbsp;是否更换审判人员</i>
-      </el-button>
+          <i class='fa fa-cogs'>&nbsp;是否更换审判人员</i>
+        </el-button>
       </div>
     </div>
     <div class="content">
-      <p>审：本院受理
-        案号<span>{{ trial.infomation.code }}</span>
-        原告
+      <p>审：本院受理案号
+        <span>{{ trial.infomation.code }}</span>原告
         <span v-for="data in trial.verification.participator.accusers">
           <span v-for="item in data.subjects">
             <span>{{ item.name }}</span>
-          </span>
-        </span> 
-        与
-        被告
+        </span>
+        </span>
+        与被告
         <span v-for="data in trial.verification.participator.accuseds">
           <span v-for="item in data.subjects">
             <span>{{ item.name }}</span>
-          </span>
-        </span> 
-        一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用
-        普通程序
-        第<span>{{ trial.infomation.location.times }}</span>次
-        {{ trial.infomation.isPublic }}
-        开庭进行审理。
-        <el-input v-model="trial.preface.organize.detail" v-if="trial.preface.organize.status == 'show'" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告信息" class="width-100"></el-input>
+        </span>
+        </span>
+        一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用 普通程序第
+        <span>{{ trial.infomation.location.times }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。
+        <el-input style="margin: 5px 0" v-model="trial.preface.organize.detail" v-if="trial.preface.organize.status == 'show'" type="textarea" :autosize="{minRows: 4}" placeholder="请输入原告信息" class="width-100"></el-input>
         本案由
         <span>{{ trial.infomation.officer[0].duty }}</span><span>{{ trial.infomation.officer[0].name }}</span>、
         <span>{{ trial.infomation.officer[1].duty }}</span><span>{{ trial.infomation.officer[1].name }}</span>、
-        <span>{{ trial.infomation.officer[2].duty }}</span><span>{{ trial.infomation.officer[2].name }}</span>
-        依法组成合议庭，由审判员
-        <span>{{ trial.infomation.officer[0].name }}</span>
-        担任审判长，由书记员
-        <span>{{ trial.infomation.clerk }}</span>
-        担任记录。
+        <span>{{ trial.infomation.officer[2].duty }}</span><span>{{ trial.infomation.officer[2].name }}</span>依法组成合议庭，由审判员
+        <span>{{ trial.infomation.officer[0].name }}</span>担任审判长，由书记员
+        <span>{{ trial.infomation.clerk }}</span>担任记录。
       </p>
     </div>
   </section>
