@@ -88,6 +88,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 最后陈述
+            statement: {
+              detail: "",
+            },
           }],
           // 责任人
           responsibles: [{
@@ -137,6 +141,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 最后陈述
+            statement: {
+              detail: "",
+            },
           }],
           // 代理人
           agents: [{
@@ -184,6 +192,10 @@ export default () => {
             disputed: {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
+            },
+            // 最后陈述
+            statement: {
+              detail: "",
             },
           }],
         }],
@@ -238,6 +250,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 最后陈述
+            statement: {
+              detail: "",
+            },
           }],
           // 责任人
           responsibles: [{
@@ -286,6 +302,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 最后陈述
+            statement: {
+              detail: "",
+            },
           }],
           // 代理人
           agents: [{
@@ -333,6 +353,10 @@ export default () => {
             disputed: {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
+            },
+            // 最后陈述
+            statement: {
+              detail: "",
             },
           }],
         }],
@@ -387,6 +411,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 最后陈述
+            statement: {
+              detail: "",
+            },
           }],
           // 责任人
           responsibles: [{
@@ -435,6 +463,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 最后陈述
+            statement: {
+              detail: "",
+            },
           }],
           // 代理人
           agents: [{
@@ -482,6 +514,10 @@ export default () => {
             disputed: {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
+            },
+            // 最后陈述
+            statement: {
+              detail: "",
             },
           }],
         }],
