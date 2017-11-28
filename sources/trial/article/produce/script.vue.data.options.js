@@ -45,4 +45,8 @@ export default {
     "无补充",
     "有补充"
   ],
+  conciliation: [
+    "同意",
+    "不同意"
+  ],
 };
