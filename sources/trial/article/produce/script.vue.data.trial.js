@@ -97,7 +97,7 @@ export default () => {
               status: "",
               detail: "",
               standpoint: "清楚",
-            }
+            },
           }],
           // 责任人
           responsibles: [{
@@ -151,6 +151,12 @@ export default () => {
             statement: {
               detail: "",
             },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
+            },
           }],
           // 代理人
           agents: [{
@@ -202,6 +208,12 @@ export default () => {
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
             },
           }],
         }],
@@ -260,6 +272,12 @@ export default () => {
             statement: {
               detail: "",
             },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
+            },
           }],
           // 责任人
           responsibles: [{
@@ -312,6 +330,12 @@ export default () => {
             statement: {
               detail: "",
             },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
+            },
           }],
           // 代理人
           agents: [{
@@ -363,6 +387,12 @@ export default () => {
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
             },
           }],
         }],
@@ -421,6 +451,12 @@ export default () => {
             statement: {
               detail: "",
             },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
+            },
           }],
           // 责任人
           responsibles: [{
@@ -473,6 +509,12 @@ export default () => {
             statement: {
               detail: "",
             },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
+            },
           }],
           // 代理人
           agents: [{
@@ -524,6 +566,12 @@ export default () => {
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 法庭调解
+            conciliation: {
+              status: "",
+              detail: "",
+              standpoint: "清楚",
             },
           }],
         }],
