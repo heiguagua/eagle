@@ -88,6 +88,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭辩论
+            argument: {
+              detail: "",
+            },
             // 最后陈述
             statement: {
               detail: "",
@@ -147,6 +151,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭辩论
+            argument: {
+              detail: "",
+            },
             // 最后陈述
             statement: {
               detail: "",
@@ -205,6 +213,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭辩论
+            argument: {
+              detail: "",
+            },
             // 最后陈述
             statement: {
               detail: "",
@@ -223,7 +235,7 @@ export default () => {
           ordinal: 1,
           // 诉讼主体
           subjects: [{
-            ordinal: 1, // 序数
+            ordinal: "", // 序数
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
@@ -267,6 +279,10 @@ export default () => {
             disputed: {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
+            },
+            // 法庭辩论
+            argument: {
+              detail: "",
             },
             // 最后陈述
             statement: {
@@ -326,6 +342,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭辩论
+            argument: {
+              detail: "",
+            },
             // 最后陈述
             statement: {
               detail: "",
@@ -383,6 +403,10 @@ export default () => {
             disputed: {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
+            },
+            // 法庭辩论
+            argument: {
+              detail: "",
             },
             // 最后陈述
             statement: {
@@ -402,7 +426,7 @@ export default () => {
           ordinal: 1,
           // 诉讼主体
           subjects: [{
-            ordinal: 1, // 序数
+            ordinal: "", // 序数
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
@@ -446,6 +470,10 @@ export default () => {
             disputed: {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
+            },
+            // 法庭辩论
+            argument: {
+              detail: "",
             },
             // 最后陈述
             statement: {
@@ -505,6 +533,10 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭辩论
+            argument: {
+              detail: "",
+            },
             // 最后陈述
             statement: {
               detail: "",
@@ -562,6 +594,10 @@ export default () => {
             disputed: {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
+            },
+            // 法庭辩论
+            argument: {
+              detail: "",
             },
             // 最后陈述
             statement: {
@@ -628,7 +664,13 @@ export default () => {
       // 第三人辩论意见
       thirdparty: "",
       // 庭审总结
-      summary: "",
+      summary: {
+        detail: ""
+      },
+      other: {
+        debateArray: [],
+        debateTimes: 1
+      }
     },
     // 最后陈述
     statement: "",
