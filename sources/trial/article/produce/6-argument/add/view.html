@@ -1,5 +1,5 @@
 <section title="庭审总结" class="argument-summary">
-  <div class="access">
+  <!-- <div class="access">
     <i class="el-icon-edit-outline"></i>
     <em>法庭辩论-新增辩论次数</em>
     <div class="tools">
@@ -13,10 +13,10 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-  </div>
-  </div>
-  <div class="content" v-for="times in trial.argument.other.debateArray">
-     <p>审：现在进行第<span>{{times.count}}</span>轮辩论。首先由原告发表第<span>{{times.count}}</span>轮辩论意见。</p>
+  </div> -->
+  <!-- </div> -->
+  <div class="content" v-for="(times,index) in trial.argument.other.debateArray">
+     <p>审：现在进行第<span>{{index+1}}</span>轮辩论。首先由原告发表第<span>{{index+1}}</span>轮辩论意见。</p>
      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>

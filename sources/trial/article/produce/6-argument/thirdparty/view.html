@@ -2,6 +2,17 @@
   <div class="access">
     <i class="el-icon-edit-outline"></i>
     <em>法庭辩论-第三人发表意见。</em>
+    <div class="tools">
+      <el-dropdown @click="addTrial()" type="primary" size="small" split-button>
+        <i class="fa fa-user-plus">&nbsp;添加辩论次数</i>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item></el-dropdown-item>
+          <el-dropdown-item>
+            <i @click="delDebate()" class="fa fa-user-times color-danger">&nbsp;移除</i>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </div>
   <div class="content">
     <p>审：现在由第三人发表意见。</p>
