@@ -20,7 +20,5 @@ export default {
       "options"
     ]),
   },
-  methods: {
-
-  },
+  methods: {},
 };
