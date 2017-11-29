@@ -6,7 +6,7 @@
   <div class="content">
     <p>审：现在法庭做如下询问</p>
     <p>
-      <el-cascader :options="factors">
+      <el-cascader class="width-100" :options="factors" @change="handleChange">
       </el-cascader>
     </p>
   </div>
