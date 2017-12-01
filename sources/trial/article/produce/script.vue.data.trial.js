@@ -111,7 +111,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
           // 责任人
@@ -185,7 +190,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
           // 代理人
@@ -258,7 +268,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
         }],
@@ -336,7 +351,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
           // 责任人
@@ -409,7 +429,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
           // 代理人
@@ -482,7 +507,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
         }],
@@ -560,7 +590,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
           // 责任人
@@ -633,7 +668,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
           // 代理人
@@ -706,7 +746,12 @@ export default () => {
                 toAccuser: "", // 对于原告举证的质证意见
                 toAccused: "", // 对于被告举证的质证意见
                 toThirdparty: "", // 对于第三人举证的质证意见
-              }
+              },
+              // 是否需要交叉询问或补充调查
+              requirement: {
+                status: "",
+                detail: "",
+              },
             },
           }],
         }],
