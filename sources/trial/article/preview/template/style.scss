@@ -1,1 +1,19 @@
-#trial-template {}
+#trial-template {
+    width: 70%;
+    color: #000000;
+    margin: 0 auto;
+    word-wrap: break-word;
+    word-break: break-all;
+  #content-wrap {
+    padding-bottom: 100px;
+  }
+  #content-wrap p{
+    line-height: 30pt;
+    margin: 0.5pt 0.917cm;
+    font-family: 仿宋;
+    font-size: 16pt;
+    text-indent: 30pt;
+    text-align: justify;
+    text-justify: inter-ideograph;
+  }
+}
