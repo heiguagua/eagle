@@ -102,6 +102,17 @@ export default () => {
               detail: "",
               standpoint: "清楚",
             },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
+            },
           }],
           // 责任人
           responsibles: [{
@@ -165,6 +176,17 @@ export default () => {
               detail: "",
               standpoint: "清楚",
             },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
+            },
           }],
           // 代理人
           agents: [{
@@ -226,6 +248,17 @@ export default () => {
               status: "",
               detail: "",
               standpoint: "清楚",
+            },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
             },
           }],
         }],
@@ -294,6 +327,17 @@ export default () => {
               detail: "",
               standpoint: "清楚",
             },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
+            },
           }],
           // 责任人
           responsibles: [{
@@ -356,6 +400,17 @@ export default () => {
               detail: "",
               standpoint: "清楚",
             },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
+            },
           }],
           // 代理人
           agents: [{
@@ -417,6 +472,17 @@ export default () => {
               status: "",
               detail: "",
               standpoint: "清楚",
+            },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
             },
           }],
         }],
@@ -485,6 +551,17 @@ export default () => {
               detail: "",
               standpoint: "清楚",
             },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
+            },
           }],
           // 责任人
           responsibles: [{
@@ -547,6 +624,17 @@ export default () => {
               detail: "",
               standpoint: "清楚",
             },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
+            },
           }],
           // 代理人
           agents: [{
@@ -608,6 +696,17 @@ export default () => {
               status: "",
               detail: "",
               standpoint: "清楚",
+            },
+            // 举证质证
+            proof: {
+              // 举证内容
+              detail: "",
+              // 质证意见
+              sugestion: {
+                toAccuser: "", // 对于原告举证的质证意见
+                toAccused: "", // 对于被告举证的质证意见
+                toThirdparty: "", // 对于第三人举证的质证意见
+              }
             },
           }],
         }],

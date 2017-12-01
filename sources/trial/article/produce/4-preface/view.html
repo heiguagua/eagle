@@ -65,7 +65,7 @@
       <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
           <p>
-            被{{subject.ordinal}}：
+            被{{ subject.ordinal }}：
             <el-input v-model="subject.rights.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
           </p>
         </div>
