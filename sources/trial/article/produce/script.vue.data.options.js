@@ -49,4 +49,8 @@ export default {
     "同意",
     "不同意"
   ],
+  requirement: [
+    "有",
+    "无"
+  ],
 };

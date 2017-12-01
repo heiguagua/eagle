@@ -114,7 +114,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -193,7 +193,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -271,7 +271,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -354,7 +354,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -432,7 +432,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -510,7 +510,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -593,7 +593,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -671,7 +671,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
@@ -749,7 +749,7 @@ export default () => {
               },
               // 是否需要交叉询问或补充调查
               requirement: {
-                status: "",
+                status: "无",
                 detail: "",
               },
             },
