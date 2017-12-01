@@ -637,10 +637,6 @@ export default () => {
     investigate: {
       // 诉辩意见
       opinion: "",
-      // 法庭询问
-      inquiry: "",
-      // 举证质证
-      proof: "",
       // 争点归纳
       conclude: {
         // 无争议归纳
@@ -653,7 +649,15 @@ export default () => {
           status: "",
           detail: ""
         }
-      }
+      },
+      // 法庭询问
+      inquiry: "",
+      // 举证质证
+      proof: "",
+      // 争义事实认定
+      fact: {
+        detail: ""
+      },
     },
     // 法庭辩论
     argument: {
