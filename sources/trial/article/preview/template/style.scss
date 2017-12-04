@@ -1,13 +1,15 @@
+@import '../../../../common/styles/color';
 #trial-template {
-    width: 70%;
-    color: #000000;
-    margin: 0 auto;
-    word-wrap: break-word;
-    word-break: break-all;
+  width: 70%;
+  color: $color-black-pure;
+  padding: 0 15%;
+  word-wrap: break-word;
+  word-break: break-all;
+  background: url(../../../../assets/editor/paper.png);
   #content-wrap {
     padding-bottom: 100px;
   }
-  #content-wrap p{
+  #content-wrap p {
     line-height: 30pt;
     margin: 0.5pt 0.917cm;
     font-family: 仿宋;
