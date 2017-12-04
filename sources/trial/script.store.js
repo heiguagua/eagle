@@ -17,7 +17,7 @@ export default {
     },
     setOptions(state, payload) {
       state.options = payload;
-    },
+    }
   },
   actions: {
     getTrial(context, payload) {

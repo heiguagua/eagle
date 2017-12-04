@@ -90,7 +90,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -169,7 +169,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -247,7 +247,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -330,7 +330,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -408,7 +408,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -486,7 +486,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -569,7 +569,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -647,7 +647,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+              detail: {"0":""},
             },
             // 最后陈述
             statement: {
@@ -725,7 +725,7 @@ export default () => {
             },
             // 法庭辩论
             argument: {
-              detail: "",
+             detail: {"0":""},
             },
             // 最后陈述
             statement: {
