@@ -55,27 +55,17 @@ export default {
         })
         .then(result => {
           const data = result.data;
-          console.log(data)
-          // if (Http.protocol(data, 200)) {
-          //   var blob = new Blob([data], { type: "application/vnd.ms-word" }),
-          //     fileName = "下载.docx";
-          //   downFile(blob, fileName);
-
-          //   function downFile(blob, fileName) {
-          //     if (window.navigator.msSaveOrOpenBlob) {
-          //       navigator.msSaveBlob(blob, fileName);
-          //     } else {
-          //       var link = document.createElement("a");
-          //       link.href = window.URL.createObjectURL(blob);
-          //       link.download = fileName;
-          //       link.click();
-          //       window.URL.revokeObjectURL(link.href);
-          //     }
-          //   }
-          //   return data
-          // } else {
-          //   message(vm, "warning", data.head.message);
-          // }
+          console.log("WORD", data);
+          if (data) {
+            let link = document.createElement("a");
+            link.href = window.URL.createObjectURL(data);
+            link.download = "庭审笔录.docx";
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+            message(vm, "info", "温馨提示：庭审笔录导出成功！");
+          } else {
+            message(vm, "warning", "温馨提示：庭审笔录导出失败！");
+          }
         });
     }
   }

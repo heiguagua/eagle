@@ -5,11 +5,11 @@
   </div>
   <div id="content-wrap">
     <p title="庭审信息" id="infomation">
-      <p>案号：{{trial.infomation.code}}</p> 
+      <p>案号：{{trial.infomation.code}}</p>
       <p>案由：{{trial.infomation.reason}}</p>
-     <p> 开庭时间：{{trial.infomation.date}}{{trial.infomation.time.start}}至{{trial.infomation.time.end}}
-     </p> 
-     <p>开庭地点：{{trial.infomation.location.name}}第{{trial.infomation.location.number}}号法庭第{{trial.infomation.location.times}}次开庭</p>
+      <p> 开庭时间：{{trial.infomation.date}}{{trial.infomation.time.start}}至{{trial.infomation.time.end}}
+      </p>
+      <p>开庭地点：{{trial.infomation.location.name}}第{{trial.infomation.location.number}}号法庭第{{trial.infomation.location.times}}次开庭</p>
       <p>是否公开审理：{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 旁听人数：{{trial.infomation.audience}}人</p>
       <p>
         <p>审&nbsp;&nbsp;判&nbsp;&nbsp;长：{{trial.infomation.officer[0].name}}</p>
@@ -79,50 +79,50 @@
           <p title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
             原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：<span>{{responsible.objection.status }} </span>
             <span v-if="responsible.objection.status === '有异议'">
-                    ， {{responsible.objection.content}}
-                  </span>。
+              ， {{responsible.objection.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
             原<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>代：{{agent.objection.status}}
-            <span v-if="agent.objection.status === '有异议'">  
-                    ， {{agent.objection.content}}
-                  </span>。
+            <span v-if="agent.objection.status === '有异议'">
+              ， {{agent.objection.content}}
+            </span>。
           </p>
         </div>
         <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
             被<span>{{ subject.ordinal }}</span>：{{subject.objection.status}}
             <span v-if="subject.objection.status === '有异议'">
-                   ， {{subject.objection.content}}
-                  </span>。
+              ， {{subject.objection.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex"> 被 <span v-if="accused.responsibles.length > 1">{{responsibleIndex+1}}</span>：{{responsible.objection.status}}
             <span v-if="responsible.objection.status === '有异议'">
-                      ，{{responsible.objection.content}}
-                  </span>。
+              ，{{responsible.objection.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
             被<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>代：{{agent.objection.status}}
             <span v-if="agent.objection.status === '有异议'">
-                        ， {{agent.objection.content}}
-                    </span> 。
+              ， {{agent.objection.content}}
+            </span> 。
           </p>
         </div>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
             第<span>{{ subject.ordinal }}</span>：{{subject.objection.status}} <span v-if="subject.objection.status === '有异议'">
-                          ， {{subject.objection.content}}
-                      </span>。
+              ， {{subject.objection.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
             第<span v-if="thirdparty.responsibles.length > 1">{{responsibleIndex+1}}</span>：{{responsible.objection.status}} <span v-if="responsible.objection.status === '有异议'">
-                          ， {{responsible.objection.content}}
-                      </span>。
+              ， {{responsible.objection.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
             第<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>代： {{agent.objection.status}} <span v-if="agent.objection.status === '有异议'">
-                      ，{{agent.objection.content}}
-                  </span>。
+              ，{{agent.objection.content}}
+            </span>。
           </p>
         </div>
       </p>
@@ -168,14 +168,14 @@
         <p>审：本院受理案号
           <span>{{ trial.infomation.code }}</span>原告
           <span v-for="data in trial.verification.participator.accusers">
-                      <span v-for="item in data.subjects">
-                      <span>{{ item.name }}</span>
+            <span v-for="item in data.subjects">
+            <span>{{ item.name }}</span>
           </span>
           </span>
           与被告
           <span v-for="data in trial.verification.participator.accuseds">
-                      <span v-for="item in data.subjects">
-                      <span>{{ item.name }}</span>
+            <span v-for="item in data.subjects">
+            <span>{{ item.name }}</span>
           </span>
           </span>
           一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用 普通程序第
@@ -226,7 +226,6 @@
         <p>审：鉴于各方均已收到本院发出的当事人诉讼权利义务通知书，且对自己的权利义务均清楚，本庭不再另行通知当事人的诉讼权利和义务。</p>
       </p>
       <p title="告知事项" id="matter">
-
         <p>审：为了严肃法庭纪律，规范庭审活动，本庭向各方当事人、诉讼参与人明确告知四项内容：</p>
         <p>一、根据最高人民法院相关规定，本案的庭审活动将进行全程同步录音（或录像），所形成的视频、音频资料将存入案件卷宗，并可能在网上公开或作法制宣传等之用。</p>
         <p>二、根据《中华人民共和国民事诉讼法》第十三条、第一百一十一条，最高人民法院《关于民事诉讼证据的若干规定》第八十条之规定，各方当事人和诉讼参与人在民事诉讼活动中应当遵循诚实信用原则，如实陈述案件事实和提供相关证据材料。如有作虚假陈述，提供虚假证据，妨碍证人、鉴定人、勘验人作证等行为的，除依法追究法律责任外，本庭还将对其违反诚信的行为作为综合评判案件事实和判决结果的考量因素。</p>
@@ -273,55 +272,55 @@
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             原<span>{{ subject.ordinal }}</span>：{{subject.evasion.status}}<span v-if="subject.evasion.status === '申请'">
-                        ，{{subject.evasion.content}}</span>。
+            ，{{subject.evasion.content}}</span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
             原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：<span>{{responsible.evasion.status }} </span>
             <span v-if="responsible.evasion.status === '申请'">
-                        ， {{responsible.evasion.content}}
-                      </span>。
+              ， {{responsible.evasion.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
             原<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>代：{{agent.evasion.status}}
-            <span v-if="agent.evasion.status === '申请'">  
-                        ， {{agent.evasion.content}}
-                      </span>。
+            <span v-if="agent.evasion.status === '申请'">
+              ， {{agent.evasion.content}}
+            </span>。
           </p>
         </div>
         <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
             被<span>{{ subject.ordinal }}</span>：{{subject.evasion.status}}
             <span v-if="subject.evasion.status === '申请'">
-                       ， {{subject.evasion.content}}
-                      </span>。
+              ， {{subject.evasion.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex"> 被 <span v-if="accused.responsibles.length > 1">{{responsibleIndex+1}}</span>：{{responsible.evasion.status}}
             <span v-if="responsible.evasion.status === '申请'">
-                          ，{{responsible.evasion.content}}
-                      </span>。
+                ，{{responsible.evasion.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
             被<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>代：{{agent.evasion.status}}
             <span v-if="agent.evasion.status === '申请'">
-                            ， {{agent.evasion.content}}
-                        </span> 。
+                ， {{agent.evasion.content}}
+            </span> 。
           </p>
         </div>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
             第<span>{{ subject.ordinal }}</span>：{{subject.evasion.status}} <span v-if="subject.evasion.status === '申请'">
-                              ， {{subject.evasion.content}}
-                          </span>。
+                ， {{subject.evasion.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
             第<span v-if="thirdparty.responsibles.length > 1">{{responsibleIndex+1}}</span>：{{responsible.evasion.status}} <span v-if="responsible.evasion.status === '申请'">
-                              ， {{responsible.evasion.content}}
-                          </span>。
+                ， {{responsible.evasion.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
             第<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>代： {{agent.evasion.status}} <span v-if="agent.evasion.status === '申请'">
-                          ，{{agent.evasion.content}}
-                      </span>。
+                ，{{agent.evasion.content}}
+            </span>。
           </p>
         </div>
       </p>
@@ -330,55 +329,55 @@
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             原<span>{{ subject.ordinal }}</span>：已收到，{{subject.evidence.status}}，{{subject.evidence.isAgree }}<span v-if="subject.evidence.status === '有异议'">
-                        ，{{subject.evidence.content}}</span>。
+            ，{{subject.evidence.content}}</span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
             原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：已收到，<span>{{responsible.evidence.status }} ，{{responsible.evidence.isAgree }}</span>
             <span v-if="responsible.evidence.status === '有异议'">
-                        ， {{responsible.evidence.content}}
-                      </span>。
+              ， {{responsible.evidence.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
             原<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>代：已收到，{{agent.evidence.status}}，{{agent.evidence.isAgree}}
-            <span v-if="agent.evidence.status === '有异议'">  
-                        ， {{agent.evidence.content}}
-                      </span>。
+            <span v-if="agent.evidence.status === '有异议'">
+              ， {{agent.evidence.content}}
+            </span>。
           </p>
         </div>
         <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
             被<span>{{ subject.ordinal }}</span>：已收到，{{subject.evidence.status}}，{{subject.evidence.isAgree}}
             <span v-if="subject.evidence.status === '有异议'">
-                       ， {{subject.evidence.content}}
-                      </span>。
+              ， {{subject.evidence.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex"> 被 <span v-if="accused.responsibles.length > 1">{{responsibleIndex+1}}</span>：已收到，{{responsible.evidence.status}}，{{responsible.evidence.isAgree}}
             <span v-if="responsible.evidence.status === '有异议'">
-                          ，{{responsible.evidence.content}}
-                      </span>。
+                ，{{responsible.evidence.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
             被<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>代：已收到，{{agent.evidence.status}}，{{agent.evidence.isAgree}}
             <span v-if="agent.evidence.status === '有异议'">
-                            ， {{agent.evidence.content}}
-                        </span> 。
+                ， {{agent.evidence.content}}
+            </span> 。
           </p>
         </div>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
             第<span>{{ subject.ordinal }}</span>：已收到，{{subject.evidence.status}}，{{subject.evidence.isAgree}} <span v-if="subject.evidence.status === '有异议'">
-                              ， {{subject.evidence.content}}
-                          </span>。
+                ， {{subject.evidence.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
             第<span v-if="thirdparty.responsibles.length > 1">{{responsibleIndex+1}}</span>：已收到，{{responsible.evidence.status}}，{{responsible.evidence.isAgree}} <span v-if="responsible.evidence.status === '有异议'">
-                              ， {{responsible.evidence.content}}
-                          </span>。
+                ， {{responsible.evidence.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
             第<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>代：已收到，{{agent.evidence.status}} ，{{agent.evidence.isAgree}} <span v-if="agent.evidence.status === '有异议'">
-                          ，{{agent.evidence.content}}
-                      </span>。
+                ，{{agent.evidence.content}}
+            </span>。
           </p>
         </div>
       </p>
@@ -698,7 +697,6 @@
             被<span v-if="accused.agents.length > 1">{{agentIndex+1}}代</span>： {{agent.statement.detail}}
           </p>
         </div>
-
         <p>审：现在由第三人陈述。</p>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
@@ -717,19 +715,19 @@
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             原<span>{{ subject.ordinal }}</span>：{{subject.conciliation.status}}<span v-if="subject.conciliation.status === '申请'">
-                          ，{{subject.conciliation.content}}</span>。
+            ，{{subject.conciliation.content}}</span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
             原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：<span>{{responsible.conciliation.status }} </span>
             <span v-if="responsible.conciliation.status === '不愿意'">
-                          ， {{responsible.conciliation.content}}
-                        </span>。
+              ， {{responsible.conciliation.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
             原<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>代：{{agent.conciliation.status}}
-            <span v-if="agent.conciliation.status === '不愿意'">  
-                          ， {{agent.conciliation.content}}
-                        </span>。
+            <span v-if="agent.conciliation.status === '不愿意'">
+              ， {{agent.conciliation.content}}
+            </span>。
           </p>
         </div>
         <p>审：被告是否愿意调解？</p>
@@ -737,37 +735,37 @@
           <p title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
             被<span>{{ subject.ordinal }}</span>：{{subject.conciliation.status}}
             <span v-if="subject.conciliation.status === '不愿意'">
-                         ， {{subject.conciliation.content}}
-                        </span>。
+              ， {{subject.conciliation.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex"> 被 <span v-if="accused.responsibles.length > 1">{{responsibleIndex+1}}</span>：{{responsible.conciliation.status}}
             <span v-if="responsible.conciliation.status === '不愿意'">
-                            ，{{responsible.conciliation.content}}
-                        </span>。
+                ，{{responsible.conciliation.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
             被<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>代：{{agent.conciliation.status}}
             <span v-if="agent.conciliation.status === '不愿意'">
-                              ， {{agent.conciliation.content}}
-                          </span> 。
+                ， {{agent.conciliation.content}}
+            </span> 。
           </p>
         </div>
         <p>审：第三人是否愿意参加调解？</p>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <p title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
             第<span>{{ subject.ordinal }}</span>：{{subject.conciliation.status}} <span v-if="subject.conciliation.status === '不愿意'">
-                                ， {{subject.conciliation.content}}
-                            </span>。
+                ， {{subject.conciliation.content}}
+            </span>。
           </p>
           <p title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
             第<span v-if="thirdparty.responsibles.length > 1">{{responsibleIndex+1}}</span>：{{responsible.conciliation.status}} <span v-if="responsible.conciliation.status === '不愿意'">
-                                ， {{responsible.conciliation.content}}
-                            </span>。
+                ， {{responsible.conciliation.content}}
+            </span>。
           </p>
           <p title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
             第<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>代： {{agent.conciliation.status}} <span v-if="agent.conciliation.status === '不愿意'">
-                            ，{{agent.conciliation.content}}
-                        </span>。
+                ，{{agent.conciliation.content}}
+            </span>。
           </p>
         </div>
         <p>审：鉴于各方当事人均同意调解，休庭后由法庭组织各方当事人进行调解，也可以自行调解。</p>
@@ -813,10 +811,8 @@
         <p>（证据原件已退还当事人）</p>
         <p>（以上笔录阅后无误，请签字确认）</p>
         <p>
-            原告代理人签字：&emsp;&emsp;&emsp;&emsp;&emsp;
-            被告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          原告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 被告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </p>
-        <br><br>
       </p>
   </div>
 
