@@ -42,14 +42,15 @@ export default {
         })
     },
     toWord() {
+      const vm = this;
+      const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
       Http.fetch({
           method: "POST",
-          url: Http.url.master + "/word/generate",
-          withCredentials: true,
+          url: Http.url.master + "/export/word",
           responseType: "blob",
           data: {
-            name: "demo",
-            html: "<html>demo</html>",
+            fileName: "demo",
+            html,
           }
         })
         .then(result => {
