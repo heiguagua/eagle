@@ -65,7 +65,7 @@ export default {
         });
       }
       let database = new DataBase(this.trial.verification.participator,this.trial.argument.other.debateTimes,true)
-      state.trial.verification.participator = database.participator
+      this.trial.verification.participator = database.participator
 
     },
     //删除评论次数
@@ -73,7 +73,7 @@ export default {
       this.trial.argument.other.debateArray.splice(index, 1);
       this.trial.argument.other.debateTimes--;
       let database = new DataBase(this.trial.verification.participator,this.trial.argument.other.debateTimes,false)
-      state.trial.verification.participator = database.participator
+      this.trial.verification.participator = database.participator
     }
   },
 };
