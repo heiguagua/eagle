@@ -88,6 +88,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -167,6 +169,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -245,6 +249,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -328,6 +334,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -406,6 +414,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -484,6 +494,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -567,6 +579,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -645,6 +659,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
               detail: {"0":""},
@@ -723,6 +739,8 @@ export default () => {
               isObjection: "无异议", // 是否有异议
               isSupply: "无补充", // 是否有补充
             },
+            // 法庭询问
+            inquiry: [],
             // 法庭辩论
             argument: {
              detail: {"0":""},
@@ -795,7 +813,9 @@ export default () => {
         }
       },
       // 法庭询问
-      inquiry: "",
+      inquiry: {
+        elementquerys: []
+      },
       // 举证质证
       proof: "",
       // 争义事实认定
