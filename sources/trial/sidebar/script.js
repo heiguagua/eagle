@@ -70,6 +70,23 @@ export default {
       const vm = this;
       const recordID = row.record_id || "";
       const case_no = row.case_no || "";
+      Http.fetch({
+          method: "GET",
+          url: Http.url.master + "/trial/" + recordID,
+          params: {
+            record_id: recordID,
+          }
+        })
+        .then(result => {
+          const data = result.data;
+          console.log(data)
+          if (Http.protocol(data, 200)) {
+            message(vm, "info", data.head.status);
+            vm.getTrials({ vm })
+          } else {
+            message(vm, "warning", data.head.message);
+          }
+        });
       vm.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
     },
   },
