@@ -46,7 +46,6 @@ export default {
                    }
                   console.log(accused.subjects)
                 }
-                
               this.trial.verification.participator.accuseds.push(accused);
               message(vm, "success", "温馨提示：被告添加成功！");
             }
@@ -78,7 +77,6 @@ export default {
                  originSubject.inquiry =this.getArray(len);
                 //  console.log( originSubject.inquiry)
                }
-               
               let targetSubject = this.trial.verification.participator.accuseds[accusedIndex].subjects.push(originSubject);
               message(vm, "success", "温馨提示：被告诉讼主体添加成功！");
             }
@@ -128,7 +126,6 @@ export default {
                 originAgent.inquiry =this.getArray(len);
                 // console.log(originAgent.inquiry)
               }
-             
                 targetAgents.push(originAgent);
                 message(vm, "success", "温馨提示：原告委托诉讼代理人添加成功！");
               } else {
