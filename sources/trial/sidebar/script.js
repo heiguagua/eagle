@@ -62,7 +62,10 @@ export default {
           }
         })
         .then(result => {
-          vm.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
+          vm.$router.replace({ path: "/layout/trial/blank", query: { operation: "update" } });
+        })
+        .then(result => {
+          vm.$router.replace({ path: "/layout/trial/produce", query: { operation: "update" } });
         })
     },
   },
