@@ -32,7 +32,7 @@ export default {
               let accused = Trial().verification.participator.accuseds[0];
               accused.subjects[0]["ordinal"] = Util.addNum('subjects', 'accuseds', this.trial).length + 1;
               // 法庭询问,添加了几个问题
-              console.log(this.trial.investigate.inquiry)
+              // console.log(this.trial.investigate.inquiry)
                 let len =this.trial.investigate.inquiry.elementquerys.length || 0;
                 if(len){
                    for(let j=0;j< accused.subjects.length;j++){
@@ -44,7 +44,7 @@ export default {
                    for(let j=0;j< accused.subjects.length;j++){
                     accused.agents[j].inquiry =this.getArray(len);
                    }
-                  console.log(accused.subjects)
+                  // console.log(accused.subjects)
                 }
               this.trial.verification.participator.accuseds.push(accused);
               message(vm, "success", "温馨提示：被告添加成功！");
@@ -71,7 +71,7 @@ export default {
               let originSubject = Trial().verification.participator.accuseds[0].subjects[0];
               originSubject["ordinal"] = Util.addNum('subjects', 'accuseds', this.trial).length + 1;
                // 法庭询问,添加了几个问题
-               console.log(this.trial.investigate.inquiry)
+              //  console.log(this.trial.investigate.inquiry)
                let len =this.trial.investigate.inquiry.elementquerys.length || 0;
                if(len){
                  originSubject.inquiry =this.getArray(len);

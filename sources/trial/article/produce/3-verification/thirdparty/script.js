@@ -14,6 +14,14 @@ export default {
     ]),
   },
   methods: {
+    getArray(len) {
+      let array = [];
+      for (let i = 0; i < len; i++) {
+        console.log(i)
+        array.push({ "detail": "" })
+      }
+      return array
+    },
     thirdpartyHandler(target, operation, params) {
       const vm = this;
       switch (target) {
@@ -23,6 +31,22 @@ export default {
             if (operation === "add") {
               let thirdparty = Trial().verification.participator.thirdparties[0];
               thirdparty.subjects[0]["ordinal"] = Util.addNum('subjects', 'thirdparties', this.trial).length + 1;
+
+              // 法庭询问,添加了几个问题
+              // console.log(this.trial.investigate.inquiry)
+              let len = this.trial.investigate.inquiry.elementquerys.length || 0;
+              if (len) {
+                for (let j = 0; j < thirdparty.subjects.length; j++) {
+                  thirdparty.subjects[j].inquiry = this.getArray(len);
+                }
+                for (let j = 0; j < thirdparty.responsibles.length; j++) {
+                  thirdparty.responsibles[j].inquiry = this.getArray(len);
+                }
+                for (let j = 0; j < thirdparty.subjects.length; j++) {
+                  thirdparty.agents[j].inquiry = this.getArray(len);
+                }
+                // console.log(thirdparty.subjects)
+              }
               this.trial.verification.participator.thirdparties.push(thirdparty);
               message(vm, "success", "温馨提示：第三人添加成功！");
             }
@@ -47,6 +71,13 @@ export default {
               let accuserIndex = params.accuserIndex;
               let originSubject = Trial().verification.participator.thirdparties[0].subjects[0];
               originSubject["ordinal"] = Util.addNum('subjects', 'thirdparties', this.trial).length + 1;
+              // 法庭询问,添加了几个问题
+              //  console.log(this.trial.investigate.inquiry)
+              let len = this.trial.investigate.inquiry.elementquerys.length || 0;
+              if (len) {
+                originSubject.inquiry = this.getArray(len);
+                //  console.log( originSubject.inquiry)
+              }
               let targetSubject = this.trial.verification.participator.thirdparties[accuserIndex].subjects.push(originSubject);
               message(vm, "success", "温馨提示：第三人诉讼主体添加成功！");
             }
@@ -90,6 +121,12 @@ export default {
               let originAgent = Trial().verification.participator.thirdparties[0].agents[0];
               let targetAgents = this.trial.verification.participator.thirdparties[accuserIndex].agents;
               if (targetAgents.length < 2) {
+                // 法庭询问,添加了几个问题
+                let len = this.trial.investigate.inquiry.elementquerys.length || 0;
+                if (len) {
+                  originAgent.inquiry = this.getArray(len);
+                  // console.log(originAgent.inquiry)
+                }
                 targetAgents.push(originAgent);
                 message(vm, "success", "温馨提示：第三人委托诉讼代理人添加成功！");
               } else {
