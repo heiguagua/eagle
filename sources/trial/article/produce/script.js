@@ -88,6 +88,9 @@ export default {
     // } else {
     //   this.setTrial(trial()); // 使用全新的trial
     // }
+    const vm = this;
+    console.log("dfadsfasd", vm.$route.query);
+
     this.setOptions(options);
     this.setTrial(trial());
   },

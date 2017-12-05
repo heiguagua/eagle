@@ -1,7 +1,7 @@
 <div id="trial-editor-blank">
   <div class="toolbar">
     <div class="left">
-      <router-link to="/layout/trial/produce">
+      <router-link :to="{path: '/layout/trial/produce', query: { operation: 'create' }}">
         <el-button size="mini" type="primary">
           <i class="fa fa-pencil">&nbsp;新建笔录</i>
         </el-button>
@@ -10,7 +10,7 @@
     <div class="right">
       <el-button-group>
         <router-link to="/layout/cases">
-          <el-button size="mini" type="default">
+          <el-button v-if="isProduction" size="mini" type="default">
             <i class="fa fa-reply">&nbsp;返回</i>
           </el-button>
         </router-link>
@@ -20,7 +20,7 @@
   <div class="content">
     <article class="animated zoomInUp">
       <p>请点击工具栏
-        <router-link to="/layout/trial/produce">
+        <router-link :to="{path: '/layout/trial/produce', query: { operation: 'create' }}">
           <el-button size="mini" type="primary">
             <i class="fa fa-pencil">&nbsp;新建笔录</i>
           </el-button>
