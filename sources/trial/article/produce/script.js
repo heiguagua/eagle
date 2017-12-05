@@ -87,17 +87,17 @@ export default {
     if (operation === "create") {
       this.setOptions(options);
       this.setTrial(trial());
-      console.log("create");
     } else if (operation === "update") {
-      this.setOptions(options);
-      console.log("update");
+      const updateTrial = JSON.parse(storage.get("updateTrial"));
+      this.setTrial(updateTrial);
+      console.log(updateTrial);
     }
   },
   directives: {
     hoverToggle: {
       // 指令的定义
       bind: function(el, binding, vnode, oldVnode) {
-        var target = el.querySelectorAll(".hover-toggle");
+        let target = el.querySelectorAll(".hover-toggle");
         // target.addEventListener("mouseover", function(event) {
         //   alert();
         // })

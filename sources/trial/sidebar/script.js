@@ -1,42 +1,12 @@
 import UtilSidebar from "./script.util";
 import Http from "../../common/scripts/http";
 import { mapMutations, mapActions, mapState } from "vuex";
-import { message } from "../../common/scripts/helper";
-
+import { message, storage } from "../../common/scripts/helper";
 
 export default {
   data() {
     return {
       activedCollapse: ["trials", "ocr"],
-      trialArray: [{
-        date: "第1次庭审",
-        name: "王小虎",
-        province: "上海",
-        city: "普陀区",
-        address: "上海市普陀区金沙江路 1518 弄",
-        zip: 200333
-      }, {
-        date: "第2次庭审",
-        name: "王小虎",
-        province: "上海",
-        city: "普陀区",
-        address: "上海市普陀区金沙江路 1518 弄",
-        zip: 200333
-      }, {
-        date: "第3次庭审",
-        name: "王小虎",
-        province: "上海",
-        city: "普陀区",
-        address: "上海市普陀区金沙江路 1518 弄",
-        zip: 200333
-      }, {
-        date: "第4次庭审",
-        name: "王小虎",
-        province: "上海",
-        city: "普陀区",
-        address: "上海市普陀区金沙江路 1518 弄",
-        zip: 200333
-      }]
     }
   },
   computed: {
@@ -47,6 +17,10 @@ export default {
   methods: {
     ...mapActions("Trial", [
       "getTrials",
+    ]),
+    ...mapMutations("Trial", [
+      "setTrial",
+      "setOptions"
     ]),
     removeTrial(row) {
       const vm = this;
@@ -79,15 +53,17 @@ export default {
         })
         .then(result => {
           const data = result.data;
-          console.log(data)
-          if (Http.protocol(data, 200)) {
-            message(vm, "info", data.head.status);
-            vm.getTrials({ vm })
+          if (Http.protocol(data, 200) && data.body.length !== 0) {
+            const updateTrial = data.body[0].json
+            storage.set('updateTrial', updateTrial);
+            message(vm, "info", data.head.message);
           } else {
             message(vm, "warning", data.head.message);
           }
-        });
-      vm.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
+        })
+        .then(result => {
+          vm.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
+        })
     },
   },
   created() {
