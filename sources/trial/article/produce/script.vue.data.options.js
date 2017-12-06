@@ -1,4 +1,5 @@
 export default {
+  loading: false, // 遮罩动画
   duty: {
     primary: [
       "审判长",
