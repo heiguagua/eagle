@@ -22,6 +22,13 @@ export default {
       }
       return array
     },
+    getArray_1(len_1) {
+      let array = [{"detail": ""}];
+      for (let i = 0; i <= len_1; i++) {
+        array.push({ "detail": "" })
+      }
+      return array
+    },
     accuserHandler(target, operation, params) {
       const vm = this;
       switch (target) {
@@ -51,13 +58,13 @@ export default {
               let len_1 = this.trial.argument.other.debateArray.length || 0;
               if (len_1) {
                 for (let j = 0; j < accuser.subjects.length; j++) {
-                  accuser.subjects[j].argument = this.getArray(len_1);
+                  accuser.subjects[j].argument = this.getArray_1(len_1);
                 }
                 for (let j = 0; j < accuser.responsibles.length; j++) {
-                  accuser.responsibles[j].argument = this.getArray(len_1);
+                  accuser.responsibles[j].argument = this.getArray_1(len_1);
                 }
                 for (let j = 0; j < accuser.subjects.length; j++) {
-                  accuser.agents[j].argument = this.getArray(len_1);
+                  accuser.agents[j].argument = this.getArray_1(len_1);
                 }
               }
 
@@ -95,7 +102,7 @@ export default {
               // 法庭辩论
               let len_1 = this.trial.argument.other.debateArray.length || 0;
               if (len_1) {
-                originSubject.argument = this.getArray(len_1);
+                originSubject.argument = this.getArray_1(len_1);
                 //  console.log( originSubject.inquiry)
               }
               let targetSubject = this.trial.verification.participator.accusers[accuserIndex].subjects.push(originSubject);
@@ -150,7 +157,7 @@ export default {
                 // 法庭辩论
                 let len_1 = this.trial.argument.other.debateArray.length || 0;
                 if (len_1) {
-                  originAgent.argument = this.getArray(len_1);
+                  originAgent.argument = this.getArray_1(len_1);
                   // console.log(originAgent.inquiry)
                 }
                 targetAgents.push(originAgent);

@@ -22,6 +22,13 @@ export default {
       }
       return array
     },
+    getArray_1(len_1) {
+      let array = [{"detail": ""}];
+      for (let i = 0; i <= len_1; i++) {
+        array.push({ "detail": "" })
+      }
+      return array
+    },
     thirdpartyHandler(target, operation, params) {
       const vm = this;
       switch (target) {
@@ -52,13 +59,13 @@ export default {
               let len_1 = this.trial.argument.other.debateArray.length || 0;
               if (len_1) {
                 for (let j = 0; j < thirdparty.subjects.length; j++) {
-                  thirdparty.subjects[j].argument = this.getArray(len_1);
+                  thirdparty.subjects[j].argument = this.getArray_1(len_1);
                 }
                 for (let j = 0; j < thirdparty.responsibles.length; j++) {
-                  thirdparty.responsibles[j].argument = this.getArray(len_1);
+                  thirdparty.responsibles[j].argument = this.getArray_1(len_1);
                 }
                 for (let j = 0; j < thirdparty.subjects.length; j++) {
-                  thirdparty.agents[j].argument = this.getArray(len_1);
+                  thirdparty.agents[j].argument = this.getArray_1(len_1);
                 }
               }
               this.trial.verification.participator.thirdparties.push(thirdparty);
@@ -95,7 +102,7 @@ export default {
               // 法庭辩论
                 let len_1 = this.trial.argument.other.debateArray.length || 0;
                 if (len_1) {
-                  originSubject.argument = this.getArray(len_1);
+                  originSubject.argument = this.getArray_1(len_1);
                   // console.log(originAgent.inquiry)
                 }
               let targetSubject = this.trial.verification.participator.thirdparties[accuserIndex].subjects.push(originSubject);
@@ -150,7 +157,7 @@ export default {
                 // 法庭辩论
                 let len_1 = this.trial.argument.other.debateArray.length || 0;
                 if (len_1) {
-                  originAgent.argument = this.getArray(len_1);
+                  originAgent.argument = this.getArray_1(len_1);
                   // console.log(originAgent.inquiry)
                 }
                 targetAgents.push(originAgent);
