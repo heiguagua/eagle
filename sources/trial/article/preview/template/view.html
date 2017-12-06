@@ -698,13 +698,13 @@
           <p>审：法庭调查结束，现在进行法庭辩论。为保证法庭辩论正常有序的进行，本庭提醒各方当事人，辩论应当实事求是、以理服人，在辩论中，各方当事人要围绕本案争议的焦点，对本案的事实认定、责任、法律适用等发表辩论意见，不得引用与本案无关或者未经法庭核对的事实、证据，不得重复，严禁使用不文明语言。首先由原告发表辩论意见。</p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
             <p title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
-              原{{subject.ordinal}}： {{subject.argument.detail[0]}}
+              原{{subject.ordinal}}： {{subject.argument[0].detail}}
             </p>
             <p title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
-              原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>： {{responsible.argument.detail[0]}}
+              原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>： {{responsible.argument[0].detail}}
             </p>
             <p title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
-              原<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>代： {{agent.argument.detail[0]}}
+              原<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>代： {{agent.argument[0].detail}}
             </p>
           </div>
         </p>
@@ -712,13 +712,13 @@
           <p>审：现在由被告发表辩论意见。</p>
           <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
             <p title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
-              被{{subject.ordinal}}：{{subject.argument.detail[0]}}
+              被{{subject.ordinal}}：{{subject.argument[0].detail}}
             </p>
             <p title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
-              被<span v-if="accused.responsibles.length > 1">{{ responsibleIndex+1 }}</span>： {{responsible.argument.detail[0]}}
+              被<span v-if="accused.responsibles.length > 1">{{ responsibleIndex+1 }}</span>： {{responsible.argument[0].detail}}
             </p>
             <p title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
-              被<span v-if="accused.agents.length > 1">{{agentIndex+1}}代</span>： {{agent.argument.detail[0]}}
+              被<span v-if="accused.agents.length > 1">{{agentIndex+1}}代</span>： {{agent.argument[0].detail}}
             </p>
           </div>
         </p>
@@ -726,16 +726,74 @@
           <p>审：现在由第三人发表意见。</p>
           <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
             <p title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
-              第{{subject.ordinal}}： {{subject.argument.detail[0]}}
+              第{{subject.ordinal}}： {{subject.argument[0].detail}}
             </p>
             <p title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
-              第<span v-if="thirdparty.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：{{responsible.argument.detail[0]}}
+              第<span v-if="thirdparty.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：{{responsible.argument[0].detail}}
             </p>
             <p title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
-              第<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>代： {{agent.argument.detail[0]}}
+              第<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>代： {{agent.argument[0].detail}}
             </p>
           </div>
         </p>
+        <div title="添加辩论次数">
+          <div class="content" v-if="trial.argument.other.debateArray.length" v-for="(times,index) in trial.argument.other.debateArray">
+             <p>审：现在进行第<span>{{index+1}}</span>轮辩论。首先由原告发表第<span>{{index+1}}</span>轮辩论意见。</p>
+             <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+              <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+                <p>
+                  原{{subject.ordinal}}：{{subject.argument[index + 1].detail}}
+                </p>
+              </div>
+              <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+                <p>
+                  原：{{responsible.argument[index + 1].detail}}
+                </p>
+              </div>
+              <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+                <p>
+                  原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[index + 1].detail}}
+                </p>
+              </div>
+            </div>
+            <p>审：现在由被告发表辩论意见。</p>
+            <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+              <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+                <p>
+                  被{{subject.ordinal}}：{{subject.argument[index + 1].detail}}
+                </p>
+              </div>
+              <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+                <p>
+                  被：{{responsible.argument[index + 1].detail}}
+                </p>
+              </div>
+              <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+                <p>
+                  被代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[index + 1].detail}}
+                </p>
+              </div>
+            </div>
+            <p>审：现在由第三人发表意见。</p>
+            <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+              <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+                <p>
+                  第{{subject.ordinal}}：{{subject.argument[index + 1].detail}}
+                </p>
+              </div>
+              <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+                <p>
+                  第：{{responsible.argument[index + 1].detail}}
+                </p>
+              </div>
+              <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+                <p>
+                  第代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[index + 1].detail}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <p title="庭审总结" id="summary"></p>
       </p>
       <p title="最后陈述" id="statement">

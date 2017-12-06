@@ -46,6 +46,21 @@ export default {
                 }
                 // console.log(accuser.subjects)
               }
+
+              // 法庭辩论，添加几轮辩论
+              let len_1 = this.trial.argument.other.debateArray.length || 0;
+              if (len_1) {
+                for (let j = 0; j < accuser.subjects.length; j++) {
+                  accuser.subjects[j].argument = this.getArray(len_1);
+                }
+                for (let j = 0; j < accuser.responsibles.length; j++) {
+                  accuser.responsibles[j].argument = this.getArray(len_1);
+                }
+                for (let j = 0; j < accuser.subjects.length; j++) {
+                  accuser.agents[j].argument = this.getArray(len_1);
+                }
+              }
+
               this.trial.verification.participator.accusers.push(accuser);
               message(vm, "success", "温馨提示：原告添加成功！");
             }
@@ -75,6 +90,12 @@ export default {
               let len = this.trial.investigate.inquiry.elementquerys.length || 0;
               if (len) {
                 originSubject.inquiry = this.getArray(len);
+                //  console.log( originSubject.inquiry)
+              }
+              // 法庭辩论
+              let len_1 = this.trial.argument.other.debateArray.length || 0;
+              if (len_1) {
+                originSubject.argument = this.getArray(len_1);
                 //  console.log( originSubject.inquiry)
               }
               let targetSubject = this.trial.verification.participator.accusers[accuserIndex].subjects.push(originSubject);
@@ -124,6 +145,12 @@ export default {
                 let len = this.trial.investigate.inquiry.elementquerys.length || 0;
                 if (len) {
                   originAgent.inquiry = this.getArray(len);
+                  // console.log(originAgent.inquiry)
+                }
+                // 法庭辩论
+                let len_1 = this.trial.argument.other.debateArray.length || 0;
+                if (len_1) {
+                  originAgent.argument = this.getArray(len_1);
                   // console.log(originAgent.inquiry)
                 }
                 targetAgents.push(originAgent);

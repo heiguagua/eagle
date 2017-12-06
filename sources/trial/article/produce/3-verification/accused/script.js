@@ -46,6 +46,20 @@ export default {
                    }
                   // console.log(accused.subjects)
                 }
+                // 法庭辩论，添加几轮辩论
+              let len_1 = this.trial.argument.other.debateArray.length || 0;
+              if (len_1) {
+                for (let j = 0; j < accused.subjects.length; j++) {
+                  accused.subjects[j].argument = this.getArray(len_1);
+                }
+                for (let j = 0; j < accused.responsibles.length; j++) {
+                  accused.responsibles[j].argument = this.getArray(len_1);
+                }
+                for (let j = 0; j < accused.subjects.length; j++) {
+                  accused.agents[j].argument = this.getArray(len_1);
+                }
+              }
+
               this.trial.verification.participator.accuseds.push(accused);
               message(vm, "success", "温馨提示：被告添加成功！");
             }
@@ -77,6 +91,11 @@ export default {
                  originSubject.inquiry =this.getArray(len);
                 //  console.log( originSubject.inquiry)
                }
+               // 法庭辩论
+                let len_1 = this.trial.argument.other.debateArray.length || 0;
+                if (len_1) {
+                  originSubject.argument = this.getArray(len_1);
+                }
               let targetSubject = this.trial.verification.participator.accuseds[accusedIndex].subjects.push(originSubject);
               message(vm, "success", "温馨提示：被告诉讼主体添加成功！");
             }
@@ -126,6 +145,12 @@ export default {
                 originAgent.inquiry =this.getArray(len);
                 // console.log(originAgent.inquiry)
               }
+              // 法庭辩论
+                let len_1 = this.trial.argument.other.debateArray.length || 0;
+                if (len_1) {
+                  originAgent.argument = this.getArray(len_1);
+                  // console.log(originAgent.inquiry)
+                }
                 targetAgents.push(originAgent);
                 message(vm, "success", "温馨提示：原告委托诉讼代理人添加成功！");
               } else {

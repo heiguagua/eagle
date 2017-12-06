@@ -91,9 +91,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -172,9 +172,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -252,9 +252,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -337,9 +337,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -417,9 +417,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -497,9 +497,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -582,9 +582,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -662,9 +662,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-              detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",
@@ -742,9 +742,9 @@ export default () => {
             // 法庭询问
             inquiry: [],
             // 法庭辩论
-            argument: {
-             detail: {"0":""},
-            },
+            argument: [{
+              detail: "",
+            }],
             // 最后陈述
             statement: {
               detail: "",

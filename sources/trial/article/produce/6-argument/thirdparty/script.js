@@ -33,7 +33,7 @@ class DataBase {
   }
   addChildren(data){
     data.forEach(item => {
-      item.argument.detail[this.item] = ''
+      item.argument.push({ "detail": "" })
     })
   }
   removeChildren(data){
@@ -41,7 +41,8 @@ class DataBase {
     if(this.item <= 0){
       this.item = 1
     }
-    delete item.argument.detail[this.item]
+    // delete item.argument.detail[this.item]
+    item.argument.splice(index, 1);
     })
   }
 }
