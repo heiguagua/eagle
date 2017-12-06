@@ -19,6 +19,9 @@ export default {
   },
   created() {
     const params =storage.get("case");
+    this.trial.infomation.code =params.case_no;
+    this.trial.infomation.reason =params.case_brief;
+    this.trial.infomation.location.name =params.court_name;
     if(params.hearing_procedure === "simple"){
       this.trial.infomation.officer[0].duty ="审判员";
     }

@@ -1,5 +1,6 @@
 import Http from '../../../common/scripts/http';
 import { message, storage } from '../../../common/scripts/helper';
+import { elementquerysOrder } from './5-investigate/4-inquiry/script';
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 // Compoents
 import TrialHeader from "./0-header";
@@ -50,6 +51,9 @@ export default {
     },
     generate() {
       const vm = this;
+      //审议归纳排序
+      this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys);
+      // console.log("排序后的审议归纳："+this.trial.investigate.inquiry.proof_affirm);
       const editorTrial = this.$store.state.Trial.trial;
       storage.set('trial', editorTrial);
       vm.$router.push('/layout/trial/preview');
@@ -85,18 +89,8 @@ export default {
     const vm = this;
     const operation = vm.$route.query.operation;
     if (operation === "create") {
-      const params =storage.get("case");
-      // console.log("参数：")
-      // console.log(params)
       this.setOptions(options);
       this.setTrial(trial());
-      this.trial.infomation.code =params.case_no;
-      this.trial.infomation.reason =params.case_brief;
-      this.trial.infomation.location.name =params.court_name;
-      this.trial.verification.participator.accusers[0].subjects[0].name=params.accuser;
-      this.trial.verification.participator.accusers[0].subjects[0].info=params.accuser_baseinfo;
-      this.trial.verification.participator.accuseds[0].subjects[0].name=params.defendant;
-      this.trial.verification.participator.accuseds[0].subjects[0].info=params.defendant_baseinfo;
     } else if (operation === "update") {
       const updateTrial = JSON.parse(storage.get("updateTrial"));
       this.setTrial(updateTrial);

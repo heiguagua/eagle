@@ -814,7 +814,8 @@ export default () => {
       },
       // 法庭询问
       inquiry: {
-        elementquerys: []
+        elementquerys: [],
+        proof_affirm:"" //审议归纳已排序
       },
       // 举证质证
       proof: "",

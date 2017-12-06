@@ -1,5 +1,5 @@
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
-import { message, notify } from "../../../../../common/scripts/helper";
+import { message, notify,storage } from "../../../../../common/scripts/helper";
 import Trial from "../../script.vue.data.trial";
 import Util from "../util.js";
 
@@ -177,4 +177,9 @@ export default {
       }
     },
   },
+  created(){
+    const params =storage.get("case");
+    this.trial.verification.participator.accuseds[0].subjects[0].name=params.defendant;
+    this.trial.verification.participator.accuseds[0].subjects[0].info=params.defendant_baseinfo;
+  }
 };

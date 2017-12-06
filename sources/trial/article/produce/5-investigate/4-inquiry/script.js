@@ -83,7 +83,7 @@ export default {
             this.trial.investigate.inquiry.elementquerys.forEach(item => {
               if (item.ask_info_start.indexOf("其") == 0) {
                 order = parseInt(item.ask_info_start.substring(1, 2)) + 1;
-                console.log(order)
+                // console.log(order)
               }
               if (item.verdict_index != 0) {
                 index = item.verdict_index;
@@ -102,7 +102,7 @@ export default {
             "end": end //原始的审部分
           })
         } else if (numJSON == 9 && end == "审：") {
-          console.log("排序：" + index)
+          // console.log("排序：" + index)
           this.trial.investigate.inquiry.elementquerys.push({
             "ask_info_start": "其" + order + "、", //审问题
             "summary_info_end": end, //审结论
@@ -154,4 +154,31 @@ export default {
         }
       });
   }
+};
+export const elementquerysOrder = (array) => {
+  let arr = [],
+    proof_affirm = ""; //审议归纳已排序
+  if (array.length) {
+    array.forEach((item) => {
+      if (item.verdict_index != 0) {
+        arr.push(item)
+      }
+    })
+    for (let i = 0; i < arr.length - 1; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (~~arr[i].verdict_index > ~~arr[j].verdict_index) { //~~ 这个符号是取number类型类似parentInt()
+          let temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+        }
+      }
+    }
+    for (let k = 0; k < arr.length; k++) {
+      // console.log(arr[k].summary_info_end.substring(2))
+      proof_affirm += arr[k].summary_info_end.substring(2)
+    }
+
+  }
+  return proof_affirm;
+
 };
