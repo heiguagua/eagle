@@ -16,7 +16,7 @@
         <el-button size="mini" type="default">
           <i class="fa fa-print">&nbsp;打印</i>
         </el-button>
-        <router-link to="/layout/trial/produce">
+        <router-link :to="{path: '/layout/trial/produce', query: { operation: 'update' }}">
           <el-button size="mini" type="default">
             <i class="fa fa-reply">&nbsp;返回</i>
           </el-button>
