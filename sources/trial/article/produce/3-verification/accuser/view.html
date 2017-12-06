@@ -1,5 +1,5 @@
-<div title="原告" class="accuser animated slideInDown">
-  <section v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+<div title="原告" class="accuser">
+  <section v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex" class="animated slideInDown">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;原告</em>
@@ -110,5 +110,4 @@
       </div>
     </div>
   </section>
-
 </div>
