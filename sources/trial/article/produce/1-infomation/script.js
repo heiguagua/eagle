@@ -22,7 +22,6 @@ export default {
     if(params.hearing_procedure === "simple"){
       this.trial.infomation.officer[0].duty ="审判员";
     }
-    
   },
   methods: {
 
