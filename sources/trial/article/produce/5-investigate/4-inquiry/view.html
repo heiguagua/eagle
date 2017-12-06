@@ -16,8 +16,7 @@
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-        <p v-if="element.start!==''">审：{{element.ask_info_start}}</p>
-        <p v-if="element.start ==''">审：
+        <p >审：
             <el-input v-model="element.ask_info_start" type="textarea" :autosize="{minRows: 2}" placeholder="" class="width-100"></el-input>
         </p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
@@ -80,10 +79,7 @@
             </p>
           </div>
         </div>
-        <p v-if="element.end !=='' && element.end !=='审：'">
-         {{element.summary_info_end}}
-        </p>
-        <p v-else>
+        <p>
           <el-input v-model="element.summary_info_end" type="textarea" :autosize="{minRows: 2}" placeholder="" class="width-100"></el-input>
         </p>
       </div>
