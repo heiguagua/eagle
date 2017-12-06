@@ -23,11 +23,11 @@
     </p>
     <p title="案号">
       案号：
-      <el-input v-model="trial.infomation.code" placeholder="请输入案号" class="width-91"></el-input>
+      <el-input v-model="trial.infomation.code" placeholder="请输入案号" class="width-91" :disabled="true"></el-input>
     </p>
     <p title="案由">
       案由：
-      <el-input v-model="trial.infomation.reason" placeholder="请输入案由" class="width-91"></el-input>
+      <el-input v-model="trial.infomation.reason" placeholder="请输入案由" class="width-91" :disabled="true"></el-input>
     </p>
     <p title="是否公开审理、旁听人数">
       是否公开审理：
@@ -40,13 +40,13 @@
     </p>
     <p title="审判人员1">
       <el-select v-model="trial.infomation.officer[0].duty" placeholder="请选择职务" class="width-30">
-        <el-option v-for="option in options.duty.primary" :key="option" :label="option" :value="option">
+        <el-option v-show="option!=='审判长'" v-for="option in options.duty.primary" :key="option" :label="option" :value="option">
         </el-option>
       </el-select>
       ：
       <el-input v-model="trial.infomation.officer[0].name" placeholder="请输入姓名" class="width-64"></el-input>
     </p>
-    <p title="审判人员2" v-if="isChiefOfficer">
+    <p title="审判人员2" v-if="isChiefOfficerTwo&&isChiefOfficer">
       <el-select v-model="trial.infomation.officer[1].duty" placeholder="请选择职务" class="width-30">
         <el-option v-for="option in options.duty.normal" :key="option" :label="option" :value="option">
         </el-option>
@@ -54,7 +54,7 @@
       ：
       <el-input v-model="trial.infomation.officer[1].name" placeholder="请输入姓名" class="width-64"></el-input>
     </p>
-    <p title="审判人员3" v-if="isChiefOfficer">
+    <p title="审判人员3" v-if="isChiefOfficerTwo&&isChiefOfficer">
       <el-select v-model="trial.infomation.officer[2].duty" placeholder="请选择职务" class="width-30">
         <el-option v-for="option in options.duty.normal" :key="option" :label="option" :value="option">
         </el-option>

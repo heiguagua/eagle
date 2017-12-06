@@ -85,8 +85,18 @@ export default {
     const vm = this;
     const operation = vm.$route.query.operation;
     if (operation === "create") {
+      const params =storage.get("case");
+      // console.log("参数：")
+      // console.log(params)
       this.setOptions(options);
       this.setTrial(trial());
+      this.trial.infomation.code =params.case_no;
+      this.trial.infomation.reason =params.case_brief;
+      this.trial.infomation.location.name =params.court_name;
+      this.trial.verification.participator.accusers[0].subjects[0].name=params.accuser;
+      this.trial.verification.participator.accusers[0].subjects[0].info=params.accuser_baseinfo;
+      this.trial.verification.participator.accuseds[0].subjects[0].name=params.defendant;
+      this.trial.verification.participator.accuseds[0].subjects[0].info=params.defendant_baseinfo;
     } else if (operation === "update") {
       const updateTrial = JSON.parse(storage.get("updateTrial"));
       this.setTrial(updateTrial);
