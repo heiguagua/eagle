@@ -1,4 +1,4 @@
-<div id="trial-article-preview">
+<div id="trial-article-preview" v-loading="options.loading">
   <div class="toolbar">
     <div class="left">
       <el-button size="mini" type="primary">
@@ -16,11 +16,9 @@
         <el-button size="mini" type="default">
           <i class="fa fa-print">&nbsp;打印</i>
         </el-button>
-        <router-link :to="{path: '/layout/trial/produce', query: { operation: 'update' }}">
-          <el-button size="mini" type="default">
-            <i class="fa fa-reply">&nbsp;返回</i>
-          </el-button>
-        </router-link>
+        <el-button @click="back" size="mini" type="default">
+          <i class="fa fa-reply">&nbsp;返回</i>
+        </el-button>
       </el-button-group>
     </div>
   </div>

@@ -8,9 +8,13 @@ export default {
     JudgeTemplate
   },
   data() {
-    return {
-
-    };
+    return {};
+  },
+  computed: {
+    ...mapState("Trial", [
+      "trial",
+      "options"
+    ]),
   },
   methods: {
     ...mapActions("Trial", [
@@ -19,8 +23,9 @@ export default {
     save() {
       const vm = this;
       const code = storage.get("case").case_no; // 案号
-      const json = JSON.stringify(this.$store.state.Trial.trial); // 庭审笔录状态树
+      const json = storage.get("trial"); // 庭审笔录状态树
       const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
+      vm.options.loading = false;
       Http.fetch({
           method: "POST",
           url: Http.url.master + "/trial",
@@ -35,11 +40,15 @@ export default {
           if (Http.protocol(data, 200)) {
             vm.getTrials({ vm });
             message(vm, "info", data.head.message);
+            vm.options.loading = true;
             vm.$router.push("/layout/trial/blank");
           } else {
             message(vm, "warning", data.head.message);
           }
         })
+    },
+    back() {
+      this.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
     },
     toWord() {
       const vm = this;
