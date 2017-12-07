@@ -134,7 +134,6 @@ export default {
   created() {
     const vm = this;
     const lawsuit = storage.get("case");
-    console.log(lawsuit);
     Http.fetch({
         method: 'GET',
         url: Http.url.master + '/trial/elements',

@@ -55,7 +55,7 @@ export default {
           const data = result.data;
           if (Http.protocol(data, 200) && data.body.length !== 0) {
             const updateTrial = data.body[0].json
-            storage.set('updateTrial', updateTrial);
+            storage.set('trial', updateTrial);
             message(vm, "info", data.head.message);
           } else {
             message(vm, "warning", data.head.message);

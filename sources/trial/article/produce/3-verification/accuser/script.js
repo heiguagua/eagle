@@ -2,6 +2,7 @@ import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 import { message, notify, storage } from "../../../../../common/scripts/helper";
 import Trial from "../../script.vue.data.trial";
 import Util from "../util.js";
+import Vue from "vue";
 
 export default {
   data() {
@@ -68,7 +69,8 @@ export default {
       else if (operation === "remove") {
         let accuserIndex = params.accuserIndex;
         if (accuserIndex !== 0) {
-          this.trial.verification.participator.accusers.splice(accuserIndex, 1);
+          Vue.delete(this.trial.verification.participator.accusers, accuserIndex)
+          // this.trial.verification.participator.accusers.splice(accuserIndex, 1);
           Util.updateNum('subjects', 'accusers', this.trial);
           message(vm, "warning", "温馨提示：原告删除成功！");
         } else {

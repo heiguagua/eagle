@@ -51,10 +51,8 @@ export default {
     },
     generate() {
       const vm = this;
-      //审议归纳排序
-      this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys);
-      // console.log("排序后的审议归纳："+this.trial.investigate.inquiry.proof_affirm);
-      const editorTrial = this.$store.state.Trial.trial;
+      this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys); //审议归纳排序
+      const editorTrial = this.trial;
       storage.set('trial', editorTrial);
       vm.$router.push('/layout/trial/preview');
     },
@@ -88,13 +86,14 @@ export default {
   created() {
     const vm = this;
     const operation = vm.$route.query.operation;
+    // 区分新建、修改的状态，从而挂载不同的store
     if (operation === "create") {
       this.setOptions(options);
       this.setTrial(trial());
     } else if (operation === "update") {
-      const updateTrial = JSON.parse(storage.get("updateTrial"));
-      this.setTrial(updateTrial);
-      console.log(updateTrial);
+      this.setOptions(options);
+      const trial = storage.get("trial");
+      this.setTrial(trial);
     }
   },
   directives: {
