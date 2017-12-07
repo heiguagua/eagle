@@ -2,12 +2,6 @@ import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 import Trial from "../script.vue.data.trial";
 
 export default {
-  // computed: {
-    // ...mapState("Trial", [
-    //   "trial",
-    //   "options"
-    // ]),
-  // },
   addNum(type, parentType,trial) {
     const vm = this;
     let i = 1;
@@ -59,5 +53,145 @@ export default {
         }
       });
     }
-  }
+  },
+  showSetting: function(trial) {
+    const vm = this;
+    let allList = null,
+      defendant = null,
+      third = null,
+      tempArray_1, tempArray_2, tempArray_3;
+    let obj = this.concatArray(trial);
+    allList = obj.all;
+    defendant = obj.defendantArray;
+    third = obj.thirdArray;
+
+    //全部数据到庭情况  
+    tempArray_1 = allList.filter(function(item) {
+      return item.show_flag === true;
+    });
+    //被告到庭情况
+    tempArray_2 = defendant.filter(function(item) {
+      return item.show_flag === true;
+    });
+    //第三人到庭情况
+    tempArray_3 = third.filter(function(item) {
+      return item.show_flag === true;
+    });
+
+    /**全部缺席和全部到庭 start**/
+    if (tempArray_2.length && tempArray_3.length || tempArray_2.length && !third.length) {
+      trial.verification.participator.other.attendance_flag = true;
+    } else if (!tempArray_2.length && !tempArray_3.length) {
+      trial.verification.participator.other.attendance_flag = false;
+    }
+    /** end **/
+
+    /**部分缺席显示字段 start**/
+    tempArray_2.length ? (trial.verification.participator.other.defendant_part_flag = true) : (trial.verification.participator.other.defendant_part_flag = false);
+    tempArray_3.length ? (trial.verification.participator.other.third_part_flag = true) : (trial.verification.participator.other.third_part_flag = false);
+    tempArray_3.length ? (trial.verification.participator.other.third_man_flag = true) : (trial.verification.participator.other.third_man_flag = false);
+
+    if (!third.length) {
+      trial.verification.participator.other.third_part_flag = true
+      trial.verification.participator.other.third_man_flag = false
+    }
+    this.show2hide(trial, 'accuseds', 'defendant_2_flag');
+    this.show2hide(trial, 'thirdparties', 'third_2_flag');
+    /** end **/
+
+    // 加字段（absence）
+    if (((!trial.verification.participator.other.defendant_part_flag && trial.verification.participator.other.third_part_flag) || (trial.verification.participator.other.defendant_part_flag && !trial.verification.participator.other.third_part_flag)) || !trial.verification.participator.other.attendance_flag || trial.verification.participator.other.defendant_2_flag || trial.verification.participator.other.third_2_flag) {
+      trial.verification.participator.other.absence = 1;
+    }
+  },
+  show2hide: function(trial,str1, str2) {
+    trial.verification[str2] = false;
+    if (trial.verification.participator[str1].length > 1) {
+      trial.verification.participator[str1].forEach(function(item) {
+        if (this.isType(item) === 'Object') {
+          let array = [];
+          for (let i in item) {
+            if (i !== '$$hashKey') {
+              array = array.concat(item[i]);
+            }
+          }
+          if (array.length) {
+            let tempArray = array.filter(function(item) {
+              return item.show_flag === true;
+            });
+            if (!tempArray.length) {
+              trial.verification[str2] = true;
+            }
+          }
+        }
+      })
+    }
+  },
+  /**
+   * [concatArray 构造全部数据]
+   * @return {[type]} [全部数据]
+   */
+  concatArray: function(trial) {
+    const vm = this;
+    let all = [],
+      defendantArray = [],
+      thirdArray = [];
+
+    for (let i in trial.verification.participator) {
+      if (this.isType(trial.verification.participator[i]) === 'Array') {
+        trial.verification.participator[i].forEach(function(v) {
+          all = all.concat(vm.for2Array(v));
+        });
+        if (i === 'defendant') {
+          trial.verification.participator[i].forEach(function(v) {
+            defendantArray = defendantArray.concat(vm.for2Array(v));
+          });
+        }
+        if (i === 'third') {
+          trial.verification.participator[i].forEach(function(v) {
+            thirdArray = thirdArray.concat(vm.for2Array(v));
+          });
+        }
+      }
+    }
+    return {
+      all: all,
+      defendantArray: defendantArray,
+      thirdArray: thirdArray
+    };
+  },
+  /**
+   * [for2Array 构造全部数据]
+   * @param  {[type]} data [每个类型的数据]
+   * @return {[type]}      [description]
+   */
+  for2Array: function(data) {
+    let tempArray = [];
+    if (this.isType(data) === 'Object') {
+      for (let i in data) {
+        if (this.isType(data[i]) === 'Array') {
+          tempArray = tempArray.concat(data[i]);
+        }
+      }
+    }
+    return tempArray;
+  },
+  /**
+   * [isType 类型判断]
+   * @param  {[type]}  data [数据]
+   * @return {Boolean}      [类型]
+   */
+  isType: function(data) {
+    let type = Object.prototype.toString.call(data);
+    switch (type) {
+      case '[object Array]':
+        return 'Array';
+      case '[object Object]':
+        return 'Object';
+      case '[object String]':
+        return 'String';
+      case '[object Function]':
+        return 'Function';
+    }
+  },
 }

@@ -46,6 +46,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -127,6 +128,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -207,6 +209,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
             // 异议及理由
             objection: {
@@ -293,6 +296,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -373,6 +377,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -452,6 +457,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
             // 异议及理由
             objection: {
@@ -538,6 +544,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -618,6 +625,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -697,6 +705,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
+            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
             // 异议及理由
             objection: {
@@ -773,6 +782,15 @@ export default () => {
             },
           }],
         }],
+        other: {
+          attendance_flag: true,
+          defendant_part_flag: true,
+          third_part_flag: true,
+          third_man_flag: true,
+          absentee: [], //缺席人员数据
+          toCourtMan: [], //到庭人员数据
+          absence:0
+        }
       },
       // 异议及理由
       objection: "",
