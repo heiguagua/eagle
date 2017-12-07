@@ -22,9 +22,9 @@ export default {
       }
       return array
     },
-    getArray_1(len_1) {
+    getArgumentArray(debateArrayLen) {
       let array = [{"detail": ""}];
-      for (let i = 0; i <= len_1; i++) {
+      for (let i = 0; i <= debateArrayLen; i++) {
         array.push({ "detail": "" })
       }
       return array
@@ -56,16 +56,16 @@ export default {
               }
 
                 // 法庭辩论，添加几轮辩论
-              let len_1 = this.trial.argument.other.debateArray.length || 0;
-              if (len_1) {
+              let debateArrayLen = this.trial.argument.other.debateArray.length || 0;
+              if (debateArrayLen) {
                 for (let j = 0; j < thirdparty.subjects.length; j++) {
-                  thirdparty.subjects[j].argument = this.getArray_1(len_1);
+                  thirdparty.subjects[j].argument = this.getArgumentArray(debateArrayLen);
                 }
                 for (let j = 0; j < thirdparty.responsibles.length; j++) {
-                  thirdparty.responsibles[j].argument = this.getArray_1(len_1);
+                  thirdparty.responsibles[j].argument = this.getArgumentArray(debateArrayLen);
                 }
                 for (let j = 0; j < thirdparty.subjects.length; j++) {
-                  thirdparty.agents[j].argument = this.getArray_1(len_1);
+                  thirdparty.agents[j].argument = this.getArgumentArray(debateArrayLen);
                 }
               }
               this.trial.verification.participator.thirdparties.push(thirdparty);
@@ -100,9 +100,9 @@ export default {
                 //  console.log( originSubject.inquiry)
               }
               // 法庭辩论
-                let len_1 = this.trial.argument.other.debateArray.length || 0;
-                if (len_1) {
-                  originSubject.argument = this.getArray_1(len_1);
+                let debateArrayLen = this.trial.argument.other.debateArray.length || 0;
+                if (debateArrayLen) {
+                  originSubject.argument = this.getArgumentArray(debateArrayLen);
                   // console.log(originAgent.inquiry)
                 }
               let targetSubject = this.trial.verification.participator.thirdparties[accuserIndex].subjects.push(originSubject);
@@ -155,9 +155,9 @@ export default {
                   // console.log(originAgent.inquiry)
                 }
                 // 法庭辩论
-                let len_1 = this.trial.argument.other.debateArray.length || 0;
-                if (len_1) {
-                  originAgent.argument = this.getArray_1(len_1);
+                let debateArrayLen = this.trial.argument.other.debateArray.length || 0;
+                if (debateArrayLen) {
+                  originAgent.argument = this.getArgumentArray(debateArrayLen);
                   // console.log(originAgent.inquiry)
                 }
                 targetAgents.push(originAgent);
