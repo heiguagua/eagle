@@ -27,5 +27,18 @@
     overflow-y: auto;
     font-size: 14px;
     color: $color-black;
+    .header {
+      h1,
+      h2 {
+        display: inline;
+        font-weight: normal;
+      }
+      h1 {
+        font-size: 25px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+    }
   }
 }
