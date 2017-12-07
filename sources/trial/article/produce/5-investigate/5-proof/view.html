@@ -16,7 +16,7 @@
   </div>
   <div class="content">
     <p>审：现在开始举证，先由原告方举证。</p>
-    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser1'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>
           原{{subject.ordinal}}：
@@ -36,8 +36,8 @@
         </p>
       </div>
     </div>
-    <p>审：各方发表质证意见。</p>
-    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+     <p>审：各方发表质证意见。</p>
+    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused1'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
         <p>
           被{{subject.ordinal}}：
@@ -57,7 +57,7 @@
         </p>
       </div>
     </div>
-    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex1'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p>
           第{{subject.ordinal}}：
@@ -79,7 +79,7 @@
     </div>
     <hr />
     <p>审：现由被告方举证。</p>
-    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused2'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
         <p>
           被{{subject.ordinal}}：
@@ -100,7 +100,7 @@
       </div>
     </div>
     <p>审：各方发表质证意见。</p>
-    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser2'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>
           原{{subject.ordinal}}：
@@ -120,7 +120,7 @@
         </p>
       </div>
     </div>
-    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex2'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p>
           第{{subject.ordinal}}：
@@ -141,8 +141,8 @@
       </div>
     </div>
     <hr />
-    <p>审：现由第三人举证。</p>
-    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+     <p>审：现由第三人举证。</p>
+    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex3'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p>
           第{{subject.ordinal}}：
@@ -163,7 +163,7 @@
       </div>
     </div>
     <p>审：各方发表质证意见。</p>
-    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser3'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>
           原{{subject.ordinal}}：
@@ -183,7 +183,7 @@
         </p>
       </div>
     </div>
-    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused3'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
         <p>
           被{{subject.ordinal}}：
@@ -205,7 +205,7 @@
     </div>
     <hr />
     <p>审：各方当事人是否需要交叉询问或法庭补充调查？</p>
-    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+    <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser4'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>
           原{{subject.ordinal}}：
@@ -243,7 +243,7 @@
         </p>
       </div>
     </div>
-    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+    <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused4'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
         <p>
           被{{subject.ordinal}}：
@@ -281,7 +281,7 @@
         </p>
       </div>
     </div>
-    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+    <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex4'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p>
           第{{subject.ordinal}}：
@@ -318,6 +318,6 @@
           <el-input v-model="agent.proof.requirement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告理由" class="width-100"></el-input>
         </p>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>

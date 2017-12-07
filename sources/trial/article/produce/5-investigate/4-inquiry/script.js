@@ -19,7 +19,7 @@ class DataBase {
     this.updata(this.accusers, index)
     this.updata(this.thirdparties, index)
   }
-  updata(data, key, index) {
+  updata(data, index) {
     data.forEach((item) => {
       if (this.flag) {
         this.addChildren(item.subjects)
