@@ -27,7 +27,7 @@
         </p>
         <p>
           （
-          <el-select v-model="subject.isAppear" class="width-20">
+          <el-select v-model="subject.isAppear" class="width-20" @change="toCourtChange(subject)">
             <el-option v-for="appear in options.appear" :key="appear" :label="appear" :value="appear">
             </el-option>
           </el-select>
@@ -57,7 +57,7 @@
         </p>
         <p>
           （
-          <el-select v-model="responsible.isAppear" class="width-20">
+          <el-select v-model="responsible.isAppear" class="width-20" @change="toCourtChange(responsible)">
             <el-option v-for="option in options.appear" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
@@ -86,7 +86,7 @@
         </p>
         <p>
           （
-          <el-select v-model="agent.isAppear" class="width-20">
+          <el-select v-model="agent.isAppear" class="width-20" @change="toCourtChange(agent)">
             <el-option v-for="option in options.appear" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>

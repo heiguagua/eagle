@@ -67,42 +67,43 @@ export default {
 
     //全部数据到庭情况  
     tempArray_1 = allList.filter(function(item) {
-      return item.show_flag === true;
+      return item.showFlag === true;
     });
     //被告到庭情况
     tempArray_2 = defendant.filter(function(item) {
-      return item.show_flag === true;
+      return item.showFlag === true;
     });
     //第三人到庭情况
     tempArray_3 = third.filter(function(item) {
-      return item.show_flag === true;
+      return item.showFlag === true;
     });
 
     /**全部缺席和全部到庭 start**/
     if (tempArray_2.length && tempArray_3.length || tempArray_2.length && !third.length) {
-      trial.verification.participator.other.attendance_flag = true;
+      trial.verification.participator.other.attendanceFlag = true;
     } else if (!tempArray_2.length && !tempArray_3.length) {
-      trial.verification.participator.other.attendance_flag = false;
+      trial.verification.participator.other.attendanceFlag = false;
     }
     /** end **/
 
     /**部分缺席显示字段 start**/
-    tempArray_2.length ? (trial.verification.participator.other.defendant_part_flag = true) : (trial.verification.participator.other.defendant_part_flag = false);
-    tempArray_3.length ? (trial.verification.participator.other.third_part_flag = true) : (trial.verification.participator.other.third_part_flag = false);
-    tempArray_3.length ? (trial.verification.participator.other.third_man_flag = true) : (trial.verification.participator.other.third_man_flag = false);
+    tempArray_2.length ? (trial.verification.participator.other.defendantPartFlag = true) : (trial.verification.participator.other.defendantPartFlag = false);
+    tempArray_3.length ? (trial.verification.participator.other.thirdPartFlag = true) : (trial.verification.participator.other.thirdPartFlag = false);
+    tempArray_3.length ? (trial.verification.participator.other.thirdManFlag = true) : (trial.verification.participator.other.thirdManFlag = false);
 
     if (!third.length) {
-      trial.verification.participator.other.third_part_flag = true
-      trial.verification.participator.other.third_man_flag = false
+      trial.verification.participator.other.thirdPartFlag = true
+      trial.verification.participator.other.thirdManFlag = false
     }
-    this.show2hide(trial, 'accuseds', 'defendant_2_flag');
-    this.show2hide(trial, 'thirdparties', 'third_2_flag');
+    this.show2hide(trial, 'accuseds', 'defendantFlag');
+    this.show2hide(trial, 'thirdparties', 'thirdFlag');
     /** end **/
 
     // 加字段（absence）
-    if (((!trial.verification.participator.other.defendant_part_flag && trial.verification.participator.other.third_part_flag) || (trial.verification.participator.other.defendant_part_flag && !trial.verification.participator.other.third_part_flag)) || !trial.verification.participator.other.attendance_flag || trial.verification.participator.other.defendant_2_flag || trial.verification.participator.other.third_2_flag) {
+    if (((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdPartFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdPartFlag)) || !trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag) {
       trial.verification.participator.other.absence = 1;
     }
+    console.log(trial.verification.participator.other.attendanceFlag)
   },
   show2hide: function(trial,str1, str2) {
     trial.verification[str2] = false;

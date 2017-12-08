@@ -29,6 +29,13 @@ export default {
       }
       return array
     },
+    toCourtChange(obj) {debugger//到庭，未到庭的选择事件
+      obj.isAppear == "到庭" ? (obj.showFlag = true) : (obj.showFlag = false);
+      Util.showSetting(this.trial);
+      // vm.event.verify.verify_participant.getAbsentee(); //存储未到庭人员 （诉讼地位名：姓名）
+      // vm.event.verify.verify_participant.lagalAgentChange(obj);
+      // vm.event.verify.verify_participant.getToCourt(); //存储到庭人员 （诉讼地位名：姓名）
+    },
     thirdpartyHandler(target, operation, params) {
       const vm = this;
       switch (target) {

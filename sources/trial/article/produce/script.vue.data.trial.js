@@ -52,6 +52,10 @@ export default () => {
               status: "无异议",
               detail: "",
             },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
+            },
             // 证人是否出庭
             witness: {
               detail: "无",
@@ -134,6 +138,10 @@ export default () => {
               status: "无异议",
               detail: "",
             },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
+            },
             // 证人是否出庭
             witness: {
               detail: "无",
@@ -215,6 +223,10 @@ export default () => {
             objection: {
               status: "无异议",
               detail: "",
+            },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
             },
             witness: {
               detail: "无",
@@ -302,6 +314,10 @@ export default () => {
               status: "无异议",
               detail: "",
             },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
+            },
             witness: {
               detail: "无",
             },
@@ -383,6 +399,10 @@ export default () => {
               status: "无异议",
               detail: "",
             },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
+            },
             witness: {
               detail: "无",
             },
@@ -463,6 +483,10 @@ export default () => {
             objection: {
               status: "无异议",
               detail: "",
+            },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
             },
             witness: {
               detail: "无",
@@ -550,6 +574,10 @@ export default () => {
               status: "无异议",
               detail: "",
             },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
+            },
             witness: {
               detail: "无",
             },
@@ -630,6 +658,10 @@ export default () => {
             objection: {
               status: "无异议",
               detail: "",
+            },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
             },
             witness: {
               detail: "无",
@@ -712,6 +744,10 @@ export default () => {
               status: "无异议",
               detail: "",
             },
+            //异议及理由-缺席审理
+            absenceObjection: {
+              detail:"清楚。"
+            },
             witness: {
               detail: "无",
             },
@@ -783,10 +819,12 @@ export default () => {
           }],
         }],
         other: {
-          attendance_flag: true,
-          defendant_part_flag: true,
-          third_part_flag: true,
-          third_man_flag: true,
+          attendanceFlag: true,
+          defendantPartFlag: true,
+          thirdPartFlag: true,
+          thirdManFlag: true,
+          // defendant_2_flag:true,
+          // third_2_flag:true,
           absentee: [], //缺席人员数据
           toCourtMan: [], //到庭人员数据
           absence:0
