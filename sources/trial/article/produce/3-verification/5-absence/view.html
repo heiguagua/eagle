@@ -1,4 +1,20 @@
 <section title="缺席审理" class="absence" v-if="((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdPartFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdPartFlag)) || !trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag">
+  <div class="access">
+    <i class="el-icon-edit-outline"></i>
+    <em>庭审序言-缺席审理</em>
+    <div class="tools">
+      <el-dropdown>
+        <el-button type="primary" size="small">
+          操作<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>
+            <i class="fa fa-gavel">&nbsp;休庭</i>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
+  </div>
   <div class="content">
     <p>审：被告a、被告法定代表人、被告代理经本院依法传唤，无正当理由拒不当庭，本案缺席审理，是否清楚？</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
