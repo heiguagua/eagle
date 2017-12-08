@@ -5,10 +5,10 @@
       <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;原告</em>
       <div class="tools">
         <el-dropdown @click="accuserEvent('add')" type="primary" size="small" split-button>
-          <i class="fa fa-user-plus">&nbsp;添加</i>
+          <i class="fa fa-user-plus">&nbsp;添加原告</i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
-              <i @click="accuserEvent('remove', {accuserIndex})" class="fa fa-user-times color-danger">&nbsp;移除</i>
+              <i @click="accuserEvent('remove', {accuserIndex})" class="fa fa-user-times color-danger">&nbsp;移除当前原告</i>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>

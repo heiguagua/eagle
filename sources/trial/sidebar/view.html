@@ -29,11 +29,9 @@
       <template slot="title">
         <i class="fa fa-cloud-upload">&nbsp;&nbsp;案件材料</i>
       </template>
-
       <div class="wrap">
-        <el-upload :action="uploadUrl"  :before-upload="beforeAvatarUpload" :on-success="handleSuccess" :headers="headers" :data="uploadData" :limit="100" :auto-upload="true" multiple :file-list="fileList" list-type="picture">
-          
-          <el-button slot="trigger" size="small" type="primary">
+        <el-upload :action="uploadUrl" :before-upload="beforeAvatarUpload" :on-success="handleSuccess" :headers="headers" :data="uploadData" :limit="100" :auto-upload="true" multiple :file-list="fileList" list-type="picture">
+          <el-button slot="trigger" size="small" type="warning" plain>
             <i class="fa fa-folder-open">&nbsp;选取文件</i>
           </el-button>
           <!-- <el-button size="mini" type="success" @click="submitUpload"
@@ -57,23 +55,22 @@
       </div>
     </el-collapse-item>
   </el-collapse>
-
   <el-dialog title="图片识别" :visible.sync="dialogImageVisible" class="dialog">
-      <section class="left">
-          <div class="box-body">
-           <img :src="ocrImageUrl" class="img-responsive" />
-          </div>
-        </section>
-        <section class="right">
-          <div class="text-muted ocrResultStyle" contenteditable="true" v-loading="ocrResultLoading">
-            <p v-for="result in ocrResult"  >
-              {{result.text}}
-            </p>
-          </div>
-        </section>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="ocrMaterial()">识 别</el-button>
+    <section class="left">
+      <div class="box-body">
+        <img :src="ocrImageUrl" class="img-responsive" />
       </div>
-    </el-dialog>
+    </section>
+    <section class="right">
+      <div class="text-muted ocrResultStyle" contenteditable="true" v-loading="ocrResultLoading">
+        <p v-for="result in ocrResult">
+          {{result.text}}
+        </p>
+      </div>
+    </section>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="dialogFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="ocrMaterial()">识 别</el-button>
+    </div>
+  </el-dialog>
 </aside>
