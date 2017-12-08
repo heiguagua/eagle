@@ -59,7 +59,7 @@
             <el-option v-for="option in options.appear" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
-          以下简称<b>原{{responsibleIndex+1}}</b>）
+          以下简称<b>原{{responsibleIndex + 1}}</b>）
           <el-button @click="responsibleEvent('remove', {accuserIndex, responsibleIndex})" size="mini" type="info">
             <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
           </el-button>
