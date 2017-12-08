@@ -67,10 +67,10 @@ export default {
       }
       /* 删除操作 */
       else if (operation === "remove") {
-        let accuserIndex = params.accuserIndex;
-        if (accuserIndex !== 0) {
-          Vue.delete(this.trial.verification.participator.accusers, accuserIndex)
-          // this.trial.verification.participator.accusers.splice(accuserIndex, 1);
+        const accuserIndex = params.accuserIndex;
+        const accusers = this.trial.verification.participator.accusers;
+        if (accusers.length > 1) {
+          Vue.delete(accusers, accuserIndex);
           Util.updateNum('subjects', 'accusers', this.trial);
           message(vm, "warning", "温馨提示：原告删除成功！");
         } else {
@@ -100,10 +100,11 @@ export default {
       }
       /* 删除操作 */
       else if (operation === "remove") {
-        let accuserIndex = params.accuserIndex;
-        let subjectIndex = params.subjectIndex;
-        if (subjectIndex !== 0) {
-          this.trial.verification.participator.accusers[accuserIndex].subjects.splice(subjectIndex, 1);
+        const subjectIndex = params.subjectIndex;
+        const accuserIndex = params.accuserIndex;
+        const subjects = this.trial.verification.participator.accusers[accuserIndex].subjects;
+        if (subjects > 0) {
+          subjects.splice(subjectIndex, 1);
           Util.updateNum('subjects', 'accusers', this.trial);
           message(vm, "warning", "温馨提示：原告删除成功！");
         } else {
@@ -151,10 +152,11 @@ export default {
       }
       /* 删除操作 */
       else if (operation === "remove") {
-        let accuserIndex = params.accuserIndex;
-        let agentIndex = params.agentIndex;
-        if (agentIndex !== 0) {
-          this.trial.verification.participator.accusers[accuserIndex].agents.splice(agentIndex, 1);
+        const agentIndex = params.agentIndex;
+        const accuserIndex = params.accuserIndex;
+        const agents = this.trial.verification.participator.accusers[accuserIndex].agents;
+        if (agents.length != 0) {
+          agents.splice(agentIndex, 1);
           message(vm, "warning", "温馨提示：原告委托诉讼代理人删除成功！");
         } else {
           message(vm, "error", "温馨提示：不能删除唯一的原告委托诉讼代理人！");

@@ -7,7 +7,7 @@
         <el-dropdown @click="accuserEvent('add')" type="primary" size="small" split-button>
           <i class="fa fa-user-plus">&nbsp;添加</i>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item></el-dropdown-item>
+
             <el-dropdown-item>
               <i @click="accuserEvent('remove', {accuserIndex})" class="fa fa-user-times color-danger">&nbsp;移除</i>
             </el-dropdown-item>
@@ -35,7 +35,6 @@
           <el-dropdown @click="subjectEvent('add', {accuserIndex})" type="primary" size="mini" split-button>
             <i class="fa fa-plus">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item></el-dropdown-item>
               <el-dropdown-item>
                 <i @click="subjectEvent('remove', {accuserIndex, subjectIndex})" class="fa fa-times color-danger">&nbsp;移除</i>
               </el-dropdown-item>
@@ -96,10 +95,9 @@
             </el-option>
           </el-select>
           以下简称<b>原代{{agentIndex + 1}}</b>
-          <el-dropdown @click="agentEvent('add', {accuserIndex})" type="primary" size="mini" split-button>
+          <el-dropdown @click="agentEvent('add', {accuserIndex})" type="default" size="mini" split-button>
             <i class="fa fa-plus">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item></el-dropdown-item>
               <el-dropdown-item>
                 <i @click="agentEvent('remove', {accuserIndex, agentIndex})" class="fa fa-times color-danger">&nbsp;移除</i>
               </el-dropdown-item>
