@@ -83,6 +83,10 @@ export default () => {
             opinion: {
               detail: "详见民事诉讼状。",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -99,9 +103,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -169,6 +181,10 @@ export default () => {
             opinion: {
               detail: "详见民事诉讼状。",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -185,9 +201,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -254,6 +278,10 @@ export default () => {
             opinion: {
               detail: "详见民事诉讼状。",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -270,9 +298,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -344,6 +380,10 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -360,9 +400,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -429,6 +477,10 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -445,9 +497,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -514,6 +574,10 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -530,9 +594,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -604,6 +676,10 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -620,9 +696,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -689,6 +773,10 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -705,9 +793,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -774,6 +870,10 @@ export default () => {
             opinion: {
               detail: "",
             },
+            // 诉辩意见-缺席审理
+            absenceOpinion: {
+              detail:"清楚。"
+            },
             // 无争议归纳
             undisputed: {
               isObjection: "无异议", // 是否有异议
@@ -790,9 +890,17 @@ export default () => {
             argument: [{
               detail: "",
             }],
+            //法庭辩论-缺席审理
+            absenceArgument: {
+              detail:"清楚。"
+            },
             // 最后陈述
             statement: {
               detail: "",
+            },
+            // 最后陈述-缺席审理
+            absenceStatement: {
+              detail:"清楚。"
             },
             // 法庭调解
             conciliation: {
