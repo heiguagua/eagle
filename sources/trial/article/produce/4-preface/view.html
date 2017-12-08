@@ -4,9 +4,19 @@
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-庭审组织</em>
       <div class="tools">
-        <el-button @click="changeJudge()" size='small' type='primary'>
-          <i class='fa fa-user'>&nbsp;是否更换审判人员</i>
-        </el-button>
+        <el-dropdown>
+          <el-button type="primary" size="small">
+            操作<i class="el-icon-arrow-down el-icon--right"></i>
+          </el-button>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>
+              <i @click="changeJudge()" class='fa fa-user'>&nbsp;更换审判人员</i>
+            </el-dropdown-item>
+            <el-dropdown-item>
+              <i class="fa fa-gavel">&nbsp;休庭</i>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </div>
     <div class="content">
@@ -40,7 +50,7 @@
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-告知诉讼权利</em>
       <div class="tools">
-        <el-dropdown  type="primary" size="small" split-button>
+        <el-dropdown type="primary" size="small" split-button>
           <i class="fa fa-user-plus">&nbsp;休庭</i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item></el-dropdown-item>
@@ -121,7 +131,7 @@
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-告知事项</em>
       <div class="tools">
-        <el-dropdown  type="primary" size="small" split-button>
+        <el-dropdown type="primary" size="small" split-button>
           <i class="fa fa-user-plus">&nbsp;休庭</i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item></el-dropdown-item>
@@ -206,7 +216,7 @@
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-是否申请回避</em>
       <div class="tools">
-        <el-dropdown  type="primary" size="small" split-button>
+        <el-dropdown type="primary" size="small" split-button>
           <i class="fa fa-user-plus">&nbsp;休庭</i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item></el-dropdown-item>
@@ -340,7 +350,7 @@
       <i class="el-icon-edit-outline"></i>
       <em>庭审序言-举证期限异议</em>
       <div class="tools">
-        <el-dropdown  type="primary" size="small" split-button>
+        <el-dropdown type="primary" size="small" split-button>
           <i class="fa fa-user-plus">&nbsp;休庭</i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item></el-dropdown-item>

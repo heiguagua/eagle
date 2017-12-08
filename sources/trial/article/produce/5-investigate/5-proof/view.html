@@ -3,12 +3,13 @@
     <i class="el-icon-edit-outline"></i>
     <em>法庭调查-举证质证</em>
     <div class="tools">
-      <el-dropdown  type="primary" size="small" split-button>
-        <i class="fa fa-user-plus">&nbsp;休庭</i>
+      <el-dropdown>
+        <el-button type="primary" size="small">
+          操作<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item></el-dropdown-item>
           <el-dropdown-item>
-            <i class="fa fa-user-times color-danger">&nbsp;移除</i>
+            <i class="fa fa-gavel">&nbsp;休庭</i>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -36,7 +37,7 @@
         </p>
       </div>
     </div>
-     <p>审：各方发表质证意见。</p>
+    <p>审：各方发表质证意见。</p>
     <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused1'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
         <p>
@@ -141,7 +142,7 @@
       </div>
     </div>
     <hr />
-     <p>审：现由第三人举证。</p>
+    <p>审：现由第三人举证。</p>
     <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex3'">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p>

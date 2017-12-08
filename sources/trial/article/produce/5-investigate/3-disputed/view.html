@@ -3,12 +3,13 @@
     <i class="el-icon-edit-outline"></i>
     <em>法庭调查-有争议归纳</em>
     <div class="tools">
-      <el-dropdown  type="primary" size="small" split-button>
-        <i class="fa fa-user-plus">&nbsp;休庭</i>
+      <el-dropdown>
+        <el-button type="primary" size="small">
+          操作<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item></el-dropdown-item>
           <el-dropdown-item>
-            <i class="fa fa-user-times color-danger">&nbsp;移除</i>
+            <i class="fa fa-gavel">&nbsp;休庭</i>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
