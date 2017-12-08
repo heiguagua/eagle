@@ -2,7 +2,6 @@ import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 import { message, notify, storage } from "../../../../../common/scripts/helper";
 import Trial from "../../script.vue.data.trial";
 import Util from "../util.js";
-import Vue from "vue";
 
 export default {
   data() {
@@ -70,7 +69,7 @@ export default {
         const accuserIndex = params.accuserIndex;
         const accusers = this.trial.verification.participator.accusers;
         if (accusers.length > 1) {
-          Vue.delete(accusers, accuserIndex);
+          accusers.splice(accuserIndex, 1);
           Util.updateNum('subjects', 'accusers', this.trial);
           message(vm, "warning", "温馨提示：原告删除成功！");
         } else {
@@ -103,7 +102,7 @@ export default {
         const subjectIndex = params.subjectIndex;
         const accuserIndex = params.accuserIndex;
         const subjects = this.trial.verification.participator.accusers[accuserIndex].subjects;
-        if (subjects > 0) {
+        if (subjects != 0) {
           subjects.splice(subjectIndex, 1);
           Util.updateNum('subjects', 'accusers', this.trial);
           message(vm, "warning", "温馨提示：原告删除成功！");
