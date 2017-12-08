@@ -29,23 +29,31 @@
       <template slot="title">
         <i class="fa fa-cloud-upload">&nbsp;&nbsp;案件材料</i>
       </template>
+
       <div class="wrap">
-        <el-upload action="/uploadCaseFiles" :auto-upload="false" list-type="picture" multiple>
-          <el-button slot="trigger" size="mini" type="warning">
+        <el-upload :action="uploadUrl"  :before-upload="beforeAvatarUpload" :on-success="handleSuccess" :headers="headers" :data="uploadData" :limit="100" :auto-upload="true" multiple :file-list="fileList" list-type="picture">
+          
+          <el-button slot="trigger" size="small" type="primary">
             <i class="fa fa-folder-open">&nbsp;选取文件</i>
           </el-button>
-          <el-button size="mini" type="success">
+          <!-- <el-button size="mini" type="success" @click="submitUpload"
             <i class="fa fa-cloud-upload">&nbsp;上传材料</i>
-          </el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且大小不超过800kb</div>
+          </el-button> -->
+          <div slot="tip" class="el-upload__tip">只能上传jpg、gif、jpeg、png 格式文件，且大小不超过4M</div>
         </el-upload>
-        <el-carousel :autoplay="false" type="card" height="400px">
-          <el-carousel-item v-for="item in 6" :key="item">
-            <el-card :body-style="{padding: '0px'}">
-              {{item}}<img src="" />
-            </el-card>
-          </el-carousel-item>
-        </el-carousel>
+        <div class="thumbnail">
+          <div v-for="(image,imageIndex) in images" :key="imageIndex" class="panel panel-info panel-fix">
+            <div class="panel-heading">
+              <span class="text-muted imageName" :title="image.name">{{ image.name }}</span>
+              <div class="box-tools pull-right">
+                <button @click="removeImage(image.name)" type="button" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="panel-body padding-5">
+              <img alt="请使用指定浏览器查看图片！" @click="openOcrModal('http://' + image.url)" :src="'http://' + image.url" class="img-thumbnail img-responsive" />
+            </div>
+          </div>
+        </div>
       </div>
     </el-collapse-item>
   </el-collapse>
