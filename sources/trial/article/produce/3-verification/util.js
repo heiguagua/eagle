@@ -142,12 +142,12 @@ export default {
         trial.verification.participator[i].forEach(function(v) {
           all = all.concat(vm.for2Array(v));
         });
-        if (i === 'defendant') {
+        if (i === 'accuseds') {
           trial.verification.participator[i].forEach(function(v) {
             defendantArray = defendantArray.concat(vm.for2Array(v));
           });
         }
-        if (i === 'third') {
+        if (i === 'thirdparties') {
           trial.verification.participator[i].forEach(function(v) {
             thirdArray = thirdArray.concat(vm.for2Array(v));
           });
