@@ -1,5 +1,7 @@
 export default () => {
   return {
+    // 休庭位置
+    adjourn: "",
     // 笔录头部
     head: {
       // 法院名称
@@ -46,7 +48,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -54,7 +56,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 证人是否出庭
             witness: {
@@ -85,7 +87,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -105,7 +107,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -113,7 +115,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -148,7 +150,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -156,7 +158,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 证人是否出庭
             witness: {
@@ -187,7 +189,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -207,7 +209,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -215,7 +217,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -249,7 +251,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
             // 异议及理由
             objection: {
@@ -258,7 +260,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             witness: {
               detail: "无",
@@ -288,7 +290,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -308,7 +310,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -316,7 +318,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -356,7 +358,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -364,7 +366,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             witness: {
               detail: "无",
@@ -394,7 +396,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -414,7 +416,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -422,7 +424,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -457,7 +459,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -465,7 +467,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             witness: {
               detail: "无",
@@ -495,7 +497,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -515,7 +517,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -523,7 +525,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -557,7 +559,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
             // 异议及理由
             objection: {
@@ -566,7 +568,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             witness: {
               detail: "无",
@@ -596,7 +598,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -616,7 +618,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -624,7 +626,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -664,7 +666,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -672,7 +674,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             witness: {
               detail: "无",
@@ -702,7 +704,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -722,7 +724,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -730,7 +732,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -765,7 +767,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             // 异议及理由
             objection: {
               status: "无异议",
@@ -773,7 +775,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             witness: {
               detail: "无",
@@ -803,7 +805,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -823,7 +825,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -831,7 +833,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -865,7 +867,7 @@ export default () => {
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
-            showFlag:true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
             // 异议及理由
             objection: {
@@ -874,7 +876,7 @@ export default () => {
             },
             //异议及理由-缺席审理
             absenceObjection: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             witness: {
               detail: "无",
@@ -904,7 +906,7 @@ export default () => {
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 无争议归纳
             undisputed: {
@@ -924,7 +926,7 @@ export default () => {
             }],
             //法庭辩论-缺席审理
             absenceArgument: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 最后陈述
             statement: {
@@ -932,7 +934,7 @@ export default () => {
             },
             // 最后陈述-缺席审理
             absenceStatement: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解
             conciliation: {
@@ -971,7 +973,7 @@ export default () => {
           // third_2_flag:true,
           absentee: [], //缺席人员数据
           toCourtMan: [], //到庭人员数据
-          absence:0
+          absence: 0
         }
       },
       // 异议及理由
@@ -1015,7 +1017,7 @@ export default () => {
       // 法庭询问
       inquiry: {
         elementquerys: [],
-        proof_affirm:"" //审议归纳已排序
+        proof_affirm: "" //审议归纳已排序
       },
       // 举证质证
       proof: "",
