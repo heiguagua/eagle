@@ -32,11 +32,11 @@
             </el-option>
           </el-select>
           以下简称<b>原{{subject.ordinal}}</b>）
-          <el-dropdown @click="subjectEvent('add', {accuserIndex})" type="primary" size="mini" split-button>
+          <el-dropdown @click="subjectEvent('add', {accuserIndex})" type="info" size="mini" split-button>
             <i class="fa fa-plus">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
-                <i @click="subjectEvent('remove', {accuserIndex, subjectIndex})" class="fa fa-times color-danger">&nbsp;移除</i>
+                <i @click="subjectEvent('remove', {accuserIndex, subjectIndex})" class="fa fa-times color-danger">&nbsp;&nbsp;移除</i>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -61,17 +61,9 @@
             </el-option>
           </el-select>
           以下简称<b>原{{responsibleIndex+1}}</b>）
-          <el-dropdown>
-            <el-button type="primary" size="mini">
-              <i class="fa fa-trash">&nbsp;移除</i>
-              <i class="el-icon-arrow-down el-icon--right"></i>
-            </el-button>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>
-                <i @click="responsibleEvent('remove', {accuserIndex, responsibleIndex})" class="fa fa-times color-danger">&nbsp;移除</i>
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+          <el-button @click="responsibleEvent('remove', {accuserIndex, responsibleIndex})" size="mini" type="info">
+            <i class="fa fa-times">&nbsp;移除</i>
+          </el-button>
         </p>
         <hr />
       </div>
@@ -95,7 +87,7 @@
             </el-option>
           </el-select>
           以下简称<b>原代{{agentIndex + 1}}</b>
-          <el-dropdown @click="agentEvent('add', {accuserIndex})" type="default" size="mini" split-button>
+          <el-dropdown @click="agentEvent('add', {accuserIndex})" type="info" size="mini" split-button>
             <i class="fa fa-plus">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
