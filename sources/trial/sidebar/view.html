@@ -57,4 +57,23 @@
       </div>
     </el-collapse-item>
   </el-collapse>
+
+  <el-dialog title="图片识别" :visible.sync="dialogImageVisible" class="dialog">
+      <section class="left">
+          <div class="box-body">
+           <img :src="ocrImageUrl" class="img-responsive" />
+          </div>
+        </section>
+        <section class="right">
+          <div class="text-muted ocrResultStyle" contenteditable="true" v-loading="ocrResultLoading">
+            <p v-for="result in ocrResult"  >
+              {{result.text}}
+            </p>
+          </div>
+        </section>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="ocrMaterial()">识 别</el-button>
+      </div>
+    </el-dialog>
 </aside>

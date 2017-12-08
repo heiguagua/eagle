@@ -18,7 +18,11 @@ export default {
       uploadUrl: Http.url.master + "/legal_case/uploadCaseFiles", //上传材料地址
       uploadData: {
         case_no: params.case_no
-      } //上传材料参数
+      } ,//上传材料参数
+      dialogImageVisible : false ,//识别图片的对话框是否显示
+      ocrImageUrl:"" ,//待识别的图片
+      ocrResult: [] ,//识别的图片内容
+      ocrResultLoading: false
     }
   },
   computed: {
@@ -105,7 +109,7 @@ export default {
       }
       if (this.images.length) {
         // console.log(this.images)
-        for (var i in this.images) {
+        for (let i in this.images) {
           if (this.images[i].name.indexOf(file.name) > -1) {
             isNoExist=false;
             return 
@@ -142,7 +146,7 @@ export default {
           // console.log(result.data)
           let data = result.data;
           if (data.body) {
-            for (var i in data.body) {
+            for (let i in data.body) {
               data.body[i].name = data.body[i].url.substr(data.body[i].url.lastIndexOf('/') + 1)
             }
             this.images = data.body;
@@ -197,11 +201,65 @@ export default {
         }
       })
     },
-    //点击案件材料弹出模态框
-    openOcrModal: function(image){
-
+    //点击案件材料弹出对话框框
+    openOcrModal: function(imageUrl){
+      this.dialogImageVisible =true;
+      this.ocrImageUrl =imageUrl;
+    },
+    //识别图片内容
+    ocrMaterial: function() {
+      this.ocrResultLoading= true;
+      Http.fetch({
+        method: "POST",
+        url: Http.url.ocr + "/api/ocr_rec_url/",
+        data : {
+          url: this.ocrImageUrl
+        }
+      })
+      .then(results => {
+        this.ocrResultLoading= false;
+        // console.log(this.ocrResultLoading)
+        const data =results.data ;
+          if (data.result.res == '') {
+            message(this, "error", "您上传的是非文本图片，无法识别文本");
+            this.ocrResult =[];
+          }
+          this.ocrResult = data.result.res;
+        })
     }
 
+  },
+  directives: {
+    copyButton: {
+      // 指令的定义
+      bind: function(el,envent) {
+        console.log(envent)
+      // el.querySelector("#app").remove(".copy");
+      // let txt = '';
+      // if (document.selection) {
+      //   txt = document.selection.createRange().text; //ie
+      // } else {
+      //   txt = document.getSelection();
+      // }
+      // let selection = window.getSelection();
+      // // console.log( selection );
+      // let range = selection.getRangeAt(0)
+      // let location = range.getBoundingClientRect(); // { width, height, top, right, bottom, right }
+      // let copyContent = txt.toString().replace(/ /g, '').replace(/\n/g, "");
+      // // console.log(copyContent);
+      // //首先创建div
+      // let temp = "<button id='ocr_location' titile='点击复制' type='button' class=' copy btn btn-default btn-sm btn-flat'" + "data-clipboard-text='" + copyContent + "' data-clipboard-action='copy' >" +
+      //   "<i class='fa fa-paste text-info '>&nbsp;复制&nbsp;</i>" +
+      //   "</button>";
+      // if (txt.toString() != '') {
+      //   el.querySelectorAll("#app").append(temp);
+      //   //给div设置样式，比如大小、位置
+      //   let cssStr = "display:inline-block;z-index:10000;width:60px;height:30px; position:absolute;left:" + location.left + 'px;top:' + location.top + 'px;';
+      //   //将样式添加到div上，显示div
+      //   el.querySelector('#ocr_location').attr('style', cssStr);
+      // }
+      }
+    }
   }
 
 };

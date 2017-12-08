@@ -36,4 +36,23 @@
       overflow: hidden;
     }
   }
+  .dialog {
+    .left {
+      width: 50%;
+      height:100%;
+      img {
+        width: 100%;
+      }
+    }
+    .right {
+      width: 50%;
+      height:100%;
+      .ocrResultStyle {
+        font-Size:16px;
+        overflow: scroll;
+        height: 500px;
+      }
+    }
+  }
+ 
 }

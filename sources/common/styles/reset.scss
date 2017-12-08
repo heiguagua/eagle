@@ -132,3 +132,8 @@ html {
     }
   }
 }
+#trial-sidebar .dialog {
+  .el-dialog__body {
+    display: flex !important;
+  }
+}
