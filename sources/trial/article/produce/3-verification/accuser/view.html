@@ -7,7 +7,6 @@
         <el-dropdown @click="accuserEvent('add')" type="primary" size="small" split-button>
           <i class="fa fa-user-plus">&nbsp;添加</i>
           <el-dropdown-menu slot="dropdown">
-
             <el-dropdown-item>
               <i @click="accuserEvent('remove', {accuserIndex})" class="fa fa-user-times color-danger">&nbsp;移除</i>
             </el-dropdown-item>
@@ -43,7 +42,7 @@
         </p>
         <hr />
       </div>
-      <div title="法定代表人/负责人/法定代理人/指定代理人" class="responsible" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+      <div title="法定代表人/负责人/法定代理人/指定代理人" class="responsible animated slideInDown" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p>
           <el-select v-model="responsible.role" class="width-30">
             <el-option v-for="option in options.responsible" :key="option" :label="option" :value="option">
@@ -67,7 +66,7 @@
         </p>
         <hr />
       </div>
-      <div title="委托诉讼代理人" class="agent" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+      <div title="委托诉讼代理人" class="agent animated slideInDown" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
         <p>
           委托诉讼代理人：
           <el-input v-model="agent.name" placeholder="请输入委托诉讼代理人名称" class="width-83"></el-input>，
