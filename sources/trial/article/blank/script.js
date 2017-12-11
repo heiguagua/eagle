@@ -9,11 +9,16 @@ export default {
     };
   },
   computed: {
+    ...mapState("Trial", [
+      "trial",
+      "options"
+    ]),
     isProduction() {
       return process.env.NODE_ENV !== "production";
     }
   },
-  methods: {
-
-  }
+  mounted() {
+    this.options.loading = false;
+  },
+  methods: {}
 };

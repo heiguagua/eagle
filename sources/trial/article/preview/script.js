@@ -25,7 +25,7 @@ export default {
       const code = storage.get("case").case_no; // 案号
       const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
       const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
-      vm.options.loading = false;
+      vm.options.loading = true;
       Http.fetch({
           method: "POST",
           url: Http.url.master + "/trial",
@@ -40,7 +40,6 @@ export default {
           if (Http.protocol(data, 200)) {
             vm.getTrials({ vm });
             message(vm, "info", data.head.message);
-            vm.options.loading = true;
             vm.$router.push("/layout/trial/blank");
           } else {
             message(vm, "warning", data.head.message);
