@@ -70,6 +70,9 @@ export default {
         }
         this.trial.verification.participator.accuseds.push(accused);
         message(vm, "success", "温馨提示：被告添加成功！");
+        // 更新到庭未到庭人员状态
+        Util.showSetting(this.trial); //获取到庭状态
+        Util.getAbsentee(this.trial); //获取未到庭人员列表
       }
       /* 删除操作 */
       else if (operation === "remove") {
@@ -79,6 +82,9 @@ export default {
           accuseds.splice(accusedIndex, 1);
           Util.updateNum('subjects', 'accuseds', this.trial);
           message(vm, "warning", "温馨提示：被告删除成功！");
+          // 更新到庭未到庭人员状态
+          Util.showSetting(this.trial); //获取到庭状态
+          Util.getAbsentee(this.trial); //获取未到庭人员列表
         } else {
           message(vm, "error", "温馨提示：不能删除唯一的被告！");
         }
@@ -103,6 +109,9 @@ export default {
         }
         let targetSubject = this.trial.verification.participator.accuseds[accusedIndex].subjects.push(originSubject);
         message(vm, "success", "温馨提示：被告诉讼主体添加成功！");
+        // 更新到庭未到庭人员状态
+        Util.showSetting(this.trial); //获取到庭状态
+        Util.getAbsentee(this.trial); //获取未到庭人员列表
       }
       /* 删除操作 */
       else if (operation === "remove") {
@@ -113,6 +122,9 @@ export default {
           subjects.splice(subjectIndex, 1);
           Util.updateNum('subjects', 'accuseds', this.trial);
           message(vm, "warning", "温馨提示：被告删除成功！");
+          // 更新到庭未到庭人员状态
+          Util.showSetting(this.trial); //获取到庭状态
+          Util.getAbsentee(this.trial); //获取未到庭人员列表
         } else {
           message(vm, "error", "温馨提示：不能删除唯一的被告！");
         }
@@ -128,6 +140,9 @@ export default {
         let responsibleIndex = params.responsibleIndex;
         this.trial.verification.participator.accuseds[accusedIndex].responsibles.splice(responsibleIndex, 1);
         message(vm, "warning", "温馨提示：被告法定代表人/负责人/法定代理人/指定代理人删除成功！");
+        // 更新到庭未到庭人员状态
+        Util.showSetting(this.trial); //获取到庭状态
+        Util.getAbsentee(this.trial); //获取未到庭人员列表
       }
     },
     agentEvent(operation, params) {
@@ -152,6 +167,9 @@ export default {
           }
           targetAgents.push(originAgent);
           message(vm, "success", "温馨提示：被告委托诉讼代理人添加成功！");
+          // 更新到庭未到庭人员状态
+          Util.showSetting(this.trial); //获取到庭状态
+          Util.getAbsentee(this.trial); //获取未到庭人员列表
         } else {
           message(vm, "error", "温馨提示：不能添加更多的被告委托诉讼代理人！");
         }
@@ -164,6 +182,9 @@ export default {
         if (agents.length != 0) {
           agents.splice(agentIndex, 1);
           message(vm, "warning", "温馨提示：被告委托诉讼代理人删除成功！");
+          // 更新到庭未到庭人员状态
+          Util.showSetting(this.trial); //获取到庭状态
+          Util.getAbsentee(this.trial); //获取未到庭人员列表
         } else {
           message(vm, "error", "温馨提示：不能删除唯一的被告委托诉讼代理人！");
         }

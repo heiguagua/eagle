@@ -21,7 +21,7 @@
     <span v-for="(person, personIndex) in trial.verification.other.absentee">
       <i>{{ person.type }}</i>
       <i>{{ person.name }}</i>
-      <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < person in trial.verification.other.absentee.length">、</i>
+      <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</i>
     </span>
     经本院依法传唤，无正当理由拒不当庭，本案缺席审理，是否清楚？</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
