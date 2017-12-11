@@ -223,7 +223,6 @@ export default {
         for (let k in item) {
           if (vm.isType(item[k]) === 'Array') {
             item[k].forEach(function(v) {
-              console.log(v.isAppear)
               if (v.isAppear == "未到庭" && flag) {
                 trial.verification.other.absentee.push({
                   name: v.name,
