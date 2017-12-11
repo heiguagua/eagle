@@ -99,11 +99,11 @@ export default {
     this.show2hide(trial, 'thirdparties', 'thirdFlag');
     /** end **/
 
-    // 加字段（absence）
+    // 加字段（absence）//部分缺席或者全部缺席的情况
     if (((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdPartFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdPartFlag)) || !trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag) {
       trial.verification.participator.other.absence = 1;
-    }
-    console.log(trial.verification.participator.other.attendanceFlag)
+      trial.verification.participator.other.absenseStatus = true;
+    };
   },
   show2hide: function(trial,str1, str2) {
     trial.verification[str2] = false;

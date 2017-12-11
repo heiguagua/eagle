@@ -969,8 +969,7 @@ export default () => {
           defendantPartFlag: true,
           thirdPartFlag: true,
           thirdManFlag: true,
-          // defendant_2_flag:true,
-          // third_2_flag:true,
+          absenseStatus:false,
           absentee: [], //缺席人员数据
           toCourtMan: [], //到庭人员数据
           absence: 0

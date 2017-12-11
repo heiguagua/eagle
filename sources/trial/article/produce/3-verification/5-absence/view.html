@@ -1,4 +1,4 @@
-<section title="缺席审理" class="absence" v-if="((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdPartFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdPartFlag)) || !trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag">
+<section title="缺席审理" class="absence" v-if="trial.verification.participator.other.absenseStatus">
   <div class="access">
     <i class="el-icon-edit-outline"></i>
     <em>庭审序言-缺席审理</em>
