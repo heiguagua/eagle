@@ -92,7 +92,7 @@ export default {
       this.setTrial(trial());
     } else if (operation === "update") {
       this.setOptions(options);
-      const trial = storage.get("trial");
+      const trial = JSON.parse(storage.get("trial"));
       this.setTrial(trial);
     }
   },

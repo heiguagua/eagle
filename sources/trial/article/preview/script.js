@@ -23,7 +23,7 @@ export default {
     save() {
       const vm = this;
       const code = storage.get("case").case_no; // 案号
-      const json = storage.get("trial"); // 庭审笔录状态树
+      const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
       const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
       vm.options.loading = false;
       Http.fetch({
