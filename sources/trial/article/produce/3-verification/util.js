@@ -235,4 +235,27 @@ export default {
       })
     }
   },
+  //将到庭人员信息保存
+  getToCourt: function() {
+    const vm = this;
+    trial.verification.other.toCourtMan = [];
+    for (var i in vm.article.store.data.verify.personList) {
+      trial.verification.participator[i].forEach(function(item) {
+        for (var j in item) {
+          if (vm.isType(item[j]) === 'Array') {
+            item[j].forEach(function(v) {
+              if (v.isAppear == "到庭") {
+                trial.verification.other.toCourtMan.push({
+                  name: v.name,
+                  type: v.type,
+                  parentType: v.parentType
+                });
+              }
+            });
+          }
+        }
+      });
+    }
+  },
+
 }

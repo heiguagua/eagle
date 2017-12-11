@@ -34,7 +34,7 @@ export default {
       Util.showSetting(this.trial);
       Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
       // vm.event.verify.verify_participant.lagalAgentChange(obj);
-      // vm.event.verify.verify_participant.getToCourt();//存储到庭人员 （诉讼地位名：姓名）
+      Util.getToCourt(); //存储到庭人员 （诉讼地位名：姓名）
     },
     accusedEvent(operation, params) {
       const vm = this;
