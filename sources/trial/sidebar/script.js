@@ -27,7 +27,8 @@ export default {
   },
   computed: {
     ...mapState("Trial", [
-      "trials"
+      "trials",
+      "options"
     ]),
   },
   created() {
@@ -63,6 +64,7 @@ export default {
     },
     updateTrial(row) {
       const vm = this;
+      vm.options.loading = true;
       const recordID = row.record_id || "";
       const case_no = row.case_no || "";
       Http.fetch({
@@ -112,10 +114,10 @@ export default {
         for (let i in this.images) {
           if (this.images[i].name.indexOf(file.name) > -1) {
             isNoExist=false;
-            return 
+            return
           }
         }
-      } 
+      }
       if (!isJPG) {
         message(this, "error", "上传头像图片只能是 jpg、gif、jpeg、png 格式!");
       }
@@ -129,7 +131,7 @@ export default {
     },
     //上传成功
     handleSuccess(response, file, fileList) {
-      message(this, "success", response.head.message); 
+      message(this, "success", response.head.message);
       this.downloader();
     },
     //查询当前案号的相关案件材料
@@ -188,7 +190,7 @@ export default {
                 } else {
                   message(this, "warning", data.head.message);
                 }
-                
+
               })
           }else{
             done();
