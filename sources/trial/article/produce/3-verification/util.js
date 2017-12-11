@@ -80,29 +80,29 @@ export default {
 
     /**全部缺席和全部到庭 start**/
     if (tempArray_2.length && tempArray_3.length || tempArray_2.length && !third.length) {
-      trial.verification.participator.other.attendanceFlag = true;
+      trial.verification.other.attendanceFlag = true;
     } else if (!tempArray_2.length && !tempArray_3.length) {
-      trial.verification.participator.other.attendanceFlag = false;
+      trial.verification.other.attendanceFlag = false;
     }
     /** end **/
 
     /**部分缺席显示字段 start**/
-    tempArray_2.length ? (trial.verification.participator.other.defendantPartFlag = true) : (trial.verification.participator.other.defendantPartFlag = false);
-    tempArray_3.length ? (trial.verification.participator.other.thirdPartFlag = true) : (trial.verification.participator.other.thirdPartFlag = false);
-    tempArray_3.length ? (trial.verification.participator.other.thirdManFlag = true) : (trial.verification.participator.other.thirdManFlag = false);
+    tempArray_2.length ? (trial.verification.other.defendantPartFlag = true) : (trial.verification.other.defendantPartFlag = false);
+    tempArray_3.length ? (trial.verification.other.thirdPartFlag = true) : (trial.verification.other.thirdPartFlag = false);
+    tempArray_3.length ? (trial.verification.other.thirdManFlag = true) : (trial.verification.other.thirdManFlag = false);
 
     if (!third.length) {
-      trial.verification.participator.other.thirdPartFlag = true
-      trial.verification.participator.other.thirdManFlag = false
+      trial.verification.other.thirdPartFlag = true
+      trial.verification.other.thirdManFlag = false
     }
     this.show2hide(trial, 'accuseds', 'defendantFlag');
     this.show2hide(trial, 'thirdparties', 'thirdFlag');
     /** end **/
 
     // 加字段（absence）//部分缺席或者全部缺席的情况
-    if (((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdPartFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdPartFlag)) || !trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag) {
-      trial.verification.participator.other.absence = 1;
-      trial.verification.participator.other.absenseStatus = true;
+    if (((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag) {
+      trial.verification.other.absence = 1;
+      trial.verification.other.absenseStatus = true;
     };
   },
   show2hide: function(trial,str1, str2) {
@@ -193,6 +193,47 @@ export default {
         return 'String';
       case '[object Function]':
         return 'Function';
+    }
+  },
+  //将未到庭人员信息保存（诉讼地位名：姓名）
+  getAbsentee: function(trial) {
+    const vm = this;
+    trial.verification.other.absentee = [];
+    for (let i in trial.verification.participator) {
+      trial.verification.participator[i].forEach(function(item) {
+        let a = [],
+          b = [],
+          c = [],
+          flag = false,
+          count = 0;
+        for (let j in item) {
+          if (vm.isType(item[j]) === 'Array' && item[j].length) {
+            a = item[j].filter(function(i) {
+              return i.isAppear == "未到庭";
+            });
+            b = b.concat(a);
+            item[j].forEach(function(item) {
+              count++;
+            })
+          }
+        }
+        if (b.length === count) {
+          flag = true;
+        }
+        for (let k in item) {
+          if (vm.isType(item[k]) === 'Array') {
+            item[k].forEach(function(v) {
+              console.log(v.isAppear)
+              if (v.isAppear == "未到庭" && flag) {
+                trial.verification.other.absentee.push({
+                  name: v.name,
+                  type: v.type
+                });
+              }
+            });
+          }
+        }
+      })
     }
   },
 }

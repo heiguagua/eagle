@@ -40,8 +40,6 @@ export default () => {
       participator: {
         // 原告
         accusers: [{
-          // 序数
-          ordinal: 1,
           // 诉讼主体
           subjects: [{
             ordinal: "", // 序数
@@ -49,6 +47,7 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            type:"原告",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -151,6 +150,7 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            type:"原告法定代表人",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -253,6 +253,7 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
+            type: "原告委托诉讼代理人",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -350,8 +351,6 @@ export default () => {
         }],
         // 被告
         accuseds: [{
-          // 序数
-          ordinal: 1,
           // 诉讼主体
           subjects: [{
             ordinal: "", // 序数
@@ -359,6 +358,7 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            type: "被告",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -460,6 +460,7 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            type: "被告法定代表人",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -561,6 +562,7 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
+            type: "被告委托诉讼代理人",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -658,8 +660,6 @@ export default () => {
         }],
         // 第三人
         thirdparties: [{
-          // 序数
-          ordinal: 1,
           // 诉讼主体
           subjects: [{
             ordinal: "", // 序数
@@ -667,6 +667,7 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            type: "第三人",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -768,6 +769,7 @@ export default () => {
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
+            type: "第三人法定代表人",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -869,6 +871,7 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             auth: "特别授权",
+            type: "第三人委托诉讼代理人",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -963,17 +966,17 @@ export default () => {
               },
             },
           }],
-        }],
-        other: {
-          attendanceFlag: true,
-          defendantPartFlag: true,
-          thirdPartFlag: true,
-          thirdManFlag: true,
-          absenseStatus:false,
-          absentee: [], //缺席人员数据
-          toCourtMan: [], //到庭人员数据
-          absence: 0
-        }
+        }] 
+      },
+      other: {
+        attendanceFlag: true,
+        defendantPartFlag: true,
+        thirdPartFlag: true,
+        thirdManFlag: true,
+        absenseStatus: false,
+        absentee: [], //缺席人员数据
+        toCourtMan: [], //到庭人员数据
+        absence: 0
       },
       // 异议及理由
       objection: "",

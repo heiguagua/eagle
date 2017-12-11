@@ -17,7 +17,7 @@
   </div>
   <div class="content">
     <!-- 全部到庭 -->
-    <div v-if="!(((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdPartFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdPartFlag)) || !trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag)">
+    <div v-if="!(((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag)">
       <p>审：法庭辩论终结，应当依法作出判决，判决前能够调解的可以进行调解，各方是否申请由法庭主持调解？</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex + 'accuser1'">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -198,7 +198,7 @@
       </div>
     </div>
     <!-- 如果存在部分缺席或全部缺席时：显示 -->
-    <div v-if="((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdPartFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdPartFlag)) || !trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag">
+    <div v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
       <p>审：法庭辩论终结，应当依法作出判决，判决前能够调解的可以进行调解。鉴于本案被告三查、被告法定代表人、被告代理、第三人、第三人法定代表人、第三人代理未到庭参加诉讼，本庭不组织各方调解，但不影响各方庭下进行调解。</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">

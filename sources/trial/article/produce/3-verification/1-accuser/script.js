@@ -32,7 +32,7 @@ export default {
     toCourtChange: function(obj) {
       obj.isAppear == "到庭" ? (obj.showFlag = true) : (obj.showFlag = false);
       Util.showSetting(this.trial);
-      // vm.event.verify.verify_participant.getAbsentee(); //存储未到庭人员 （诉讼地位名：姓名）
+      Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
       // vm.event.verify.verify_participant.lagalAgentChange(obj);
       // vm.event.verify.verify_participant.getToCourt();//存储到庭人员 （诉讼地位名：姓名）
     },

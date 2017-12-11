@@ -205,7 +205,7 @@
       </div>
     </div>
     <hr />
-    <div title="缺席" v-if="trial.verification.participator.other.absenseStatus">
+    <div title="缺席" v-if="trial.verification.other.absenseStatus">
       <p>审：鉴于被告三查、被告法定代表人、被告代理、第三人、第三人法定代表人、第三人代理经本院依法传唤，无正当理由拒不当庭，也未提交书面举证质证意见，被告三查、被告法定代表人、被告代理、第三人、第三人法定代表人、第三人代理举证质证意见予以省略。</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -269,7 +269,7 @@
       </div>
     </div>
     <!-- 交叉询问环节，全部缺席时隐藏（全部到庭和部分缺席时都需要显示） -->
-    <div title="交叉询问" v-if="((!trial.verification.participator.other.defendantPartFlag && trial.verification.participator.other.thirdManFlag) || (trial.verification.participator.other.defendantPartFlag && !trial.verification.participator.other.thirdManFlag)) || trial.verification.participator.other.attendanceFlag || trial.verification.participator.other.defendantFlag || trial.verification.participator.other.thirdFlag">
+    <div title="交叉询问" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
       <p>审：各方当事人是否需要交叉询问或法庭补充调查？</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser4'">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">

@@ -80,8 +80,20 @@
       </div>
     </div>
   </div>
-  <div title="缺席" class="content" v-if="trial.verification.participator.other.absenseStatus">
-    <p>审：鉴于被告三查、被告法定代表人、被告代理、第三人、第三人法定代表人、第三人代理经本院依法传唤，无正当理由拒不当庭，无法发表最后陈述意见，被告三查、被告法定代表人、被告代理、第三人、第三人法定代表人、第三人代理最后陈述意见予以省略。</p>
+  <div title="缺席" class="content" v-if="trial.verification.other.absenseStatus">
+    <p>审：鉴于
+    <span v-for="(person, personIndex) in trial.verification.other.absentee">
+      <i>{{ person.type }}</i>
+      <i>{{ person.name }}</i>
+      <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < person in trial.verification.other.absentee.length">、</i>
+    </span>
+    经本院依法传唤，无正当理由拒不当庭，无法发表最后陈述意见，
+    <span v-for="(person, personIndex) in trial.verification.other.absentee">
+      <i>{{ person.type }}</i>
+      <i>{{ person.name }}</i>
+      <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < person in trial.verification.other.absentee.length">、</i>
+    </span>
+    最后陈述意见予以省略。</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>
