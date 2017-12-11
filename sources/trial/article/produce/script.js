@@ -82,7 +82,9 @@ export default {
         });
     },
   },
-  mounted() {},
+  mounted() {
+    this.options.loading= false;
+  },
   created() {
     const vm = this;
     const operation = vm.$route.query.operation;
