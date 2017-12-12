@@ -127,6 +127,10 @@ export default () => {
             absenceConciliation: {
               detail:"清楚。"
             },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
+              detail:"清楚。"
+            },
             // 举证质证
             proof: {
               // 举证内容
@@ -231,6 +235,10 @@ export default () => {
             absenceConciliation: {
               detail:"清楚。"
             },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
+              detail:"清楚。"
+            },
             // 举证质证
             proof: {
               // 举证内容
@@ -332,6 +340,10 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
+              detail:"清楚。"
+            },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
               detail:"清楚。"
             },
             // 举证质证
@@ -440,6 +452,10 @@ export default () => {
             absenceConciliation: {
               detail:"清楚。"
             },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
+              detail:"清楚。"
+            },
             // 举证质证
             proof: {
               // 举证内容
@@ -543,6 +559,10 @@ export default () => {
             absenceConciliation: {
               detail:"清楚。"
             },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
+              detail:"清楚。"
+            },
             // 举证质证
             proof: {
               // 举证内容
@@ -644,6 +664,10 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
+              detail:"清楚。"
+            },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
               detail:"清楚。"
             },
             // 举证质证
@@ -752,6 +776,10 @@ export default () => {
             absenceConciliation: {
               detail:"清楚。"
             },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
+              detail:"清楚。"
+            },
             // 举证质证
             proof: {
               // 举证内容
@@ -855,6 +883,10 @@ export default () => {
             absenceConciliation: {
               detail:"清楚。"
             },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
+              detail:"清楚。"
+            },
             // 举证质证
             proof: {
               // 举证内容
@@ -956,6 +988,10 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
+              detail:"清楚。"
+            },
+            // 法庭调解-不同意调解
+            disagreeConciliation: {
               detail:"清楚。"
             },
             // 举证质证

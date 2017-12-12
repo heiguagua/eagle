@@ -135,71 +135,145 @@
           </p>
         </div>
       </div>
-      <p>审：鉴于各方当事人均同意调解，休庭后由法庭组织各方当事人进行调解，也可以自行调解。</p>
-      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex + 'accuser2'">
-        <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
-          <p>
-            原{{subject.ordinal}}：
-            <el-input v-model="subject.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
+      <!-- 各方均同意调解时显示 -->
+      <div>
+        <p>审：鉴于各方当事人均同意调解，休庭后由法庭组织各方当事人进行调解，也可以自行调解。</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex + 'accuser2'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p>
+              原{{subject.ordinal}}：
+              <el-input v-model="subject.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p>
+              原：
+              <el-input v-model="responsible.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p>
+              原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
+              <el-input v-model="agent.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
         </div>
-        <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
-          <p>
-            原：
-            <el-input v-model="responsible.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex + 'accused2'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p>
+              被{{subject.ordinal}}：
+              <el-input v-model="subject.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p>
+              被：
+              <el-input v-model="responsible.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p>
+              被代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：
+              <el-input v-model="agent.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
         </div>
-        <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
-          <p>
-            原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
-            <el-input v-model="agent.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex + 'thirdparty2'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p>
+              第{{subject.ordinal}}：
+              <el-input v-model="subject.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p>
+              第：
+              <el-input v-model="responsible.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p>
+              第代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
+              <el-input v-model="agent.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
+            </p>
+          </div>
         </div>
       </div>
-      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex + 'accused2'">
-        <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
-          <p>
-            被{{subject.ordinal}}：
-            <el-input v-model="subject.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
+      <!-- 有任意一人不同意调解时显示 -->
+      <div>
+        <p>审：鉴于第三人代理不同意调解，本庭不再当庭组织各方调解，但不影响各方庭下进行调解。</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p>
+              原<span>{{ subject.ordinal }}</span>：
+              <el-input v-model="subject.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p>
+              原：
+              <el-input v-model="responsible.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p>
+              原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
+              <el-input v-model="agent.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
         </div>
-        <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
-          <p>
-            被：
-            <el-input v-model="responsible.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p>
+              被<span>{{ subject.ordinal }}</span>：
+              <el-input v-model="subject.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p>
+              被：
+              <el-input v-model="responsible.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p>
+              被代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：
+              <el-input v-model="agent.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
         </div>
-        <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
-          <p>
-            被代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：
-            <el-input v-model="agent.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
-        </div>
-      </div>
-      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex + 'thirdparty2'">
-        <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
-          <p>
-            第{{subject.ordinal}}：
-            <el-input v-model="subject.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
-        </div>
-        <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
-          <p>
-            第：
-            <el-input v-model="responsible.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
-        </div>
-        <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
-          <p>
-            第代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
-            <el-input v-model="agent.conciliation.standpoint" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告调解内容" class="width-100"></el-input>
-          </p>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p>
+              第<span>{{ subject.ordinal }}</span>：
+              <el-input v-model="subject.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p>
+              第：
+              <el-input v-model="responsible.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p>
+              第代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
+              <el-input v-model="agent.disagreeConciliation.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
+            </p>
+          </div>
         </div>
       </div>
     </div>
     <!-- 如果存在部分缺席或全部缺席时：显示 -->
     <div v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
-      <p>审：法庭辩论终结，应当依法作出判决，判决前能够调解的可以进行调解。鉴于本案被告三查、被告法定代表人、被告代理、第三人、第三人法定代表人、第三人代理未到庭参加诉讼，本庭不组织各方调解，但不影响各方庭下进行调解。</p>
+      <p>审：法庭辩论终结，应当依法作出判决，判决前能够调解的可以进行调解。鉴于本案
+        <span v-for="(person, personIndex) in trial.verification.other.absentee">
+          <i>{{ person.type }}</i>
+          <i>{{ person.name }}</i>
+          <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</i>
+        </span>
+        未到庭参加诉讼，本庭不组织各方调解，但不影响各方庭下进行调解。
+      </p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
           <p>
