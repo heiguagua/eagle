@@ -141,6 +141,9 @@ html {
   }
   .el-card {
     margin-top: 10px;
+    &:hover {
+      background: $color-gray-light-extra;
+    }
     .el-card__header {
       padding: 5px 10px;
       span {
