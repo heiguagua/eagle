@@ -132,8 +132,27 @@ html {
     }
   }
 }
-#trial-sidebar .dialog {
-  .el-dialog__body {
-    display: flex !important;
+
+#trial-sidebar {
+  .dialog {
+    .el-dialog__body {
+      display: flex !important;
+    }
+  }
+  .el-card {
+    margin-top: 10px;
+    .el-card__header {
+      padding: 5px 10px;
+      span {
+        width: 120px;
+        display: inline-block;
+        overflow-x: hidden;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+      }
+    }
+    .el-card__body {
+      padding: 10px;
+    }
   }
 }
