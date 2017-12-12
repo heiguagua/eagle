@@ -46,21 +46,19 @@
           <span slot="tip" class="el-upload__tip">
             &nbsp;
             <i class="fa fa-info-circle"></i>
-            只能上传jpg、gif、jpeg、png 格式文件，且大小不超过4M。
+            请上传jpg、gif、jpeg、png格式的图片文件，大小不能超过4M。
           </span>
         </el-upload>
         <div class="thumbnail">
-          <div v-for="(image,imageIndex) in images" :key="imageIndex" class="panel panel-info panel-fix">
-            <div class="panel-heading">
-              <span class="text-muted imageName" :title="image.name">{{ image.name }}</span>
-              <div class="box-tools pull-right">
-                <button @click="removeImage(image.name)" type="button" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
-              </div>
+          <el-card v-for="(image,imageIndex) in images" :key="imageIndex" class="box-card">
+            <div slot="header">
+              <span :title="image.name">{{ image.name }}</span>
+              <el-button @click="removeImage(image.name)" type="text" icon="el-icon-close" size="mini" plain></el-button>
             </div>
-            <div class="panel-body padding-5">
+            <div>
               <img alt="请使用指定浏览器查看图片！" @click="openOcrModal('http://' + image.url)" :src="'http://' + image.url" class="img-thumbnail img-responsive" />
             </div>
-          </div>
+          </el-card>
         </div>
       </div>
     </el-collapse-item>
