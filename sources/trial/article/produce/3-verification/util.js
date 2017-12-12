@@ -5,7 +5,6 @@ export default {
   addNum(type, parentType,trial) {
     const vm = this;
     let i = 1;
-    // let accuser = vm.article.store.data.verify.personList[parentType];
     let accuser = trial.verification.participator[parentType];
     let _tempArray = [];
     if (accuser[0][type].length === 1) {
@@ -20,7 +19,6 @@ export default {
   updateNum(type, parentType,trial) {
     const vm = this;
     let i = 1;
-    // let accuser = vm.article.store.data.verify.personList[parentType];
     let accuser = trial.verification.participator[parentType];
     if (!type) {
       accuser.forEach(function(item) {
@@ -236,10 +234,10 @@ export default {
     }
   },
   //将到庭人员信息保存
-  getToCourt: function() {
+  getToCourt: function(trial) {
     const vm = this;
     trial.verification.other.toCourtMan = [];
-    for (var i in vm.article.store.data.verify.personList) {
+    for (var i in trial.verification.participator) {
       trial.verification.participator[i].forEach(function(item) {
         for (var j in item) {
           if (vm.isType(item[j]) === 'Array') {
