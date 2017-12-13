@@ -1093,7 +1093,10 @@ export default () => {
     // 最后陈述
     statement: "",
     // 法庭调解
-    conciliation: "",
+    conciliation: {
+      toMediateMan: [],
+      status: true
+    },
     // 休庭宣读
     announce: "",
     // 其他
