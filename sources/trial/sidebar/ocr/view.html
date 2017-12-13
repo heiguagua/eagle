@@ -6,10 +6,9 @@
         <i class="fa fa-folder-open">&nbsp;选取文件</i>
       </el-button>
       <span slot="tip" class="el-upload__tip">
-      &nbsp;
-      <i class="fa fa-info-circle"></i>
-      请上传jpg/jpeg、png格式的图片文件，大小不能超过4M。
-    </span>
+        &nbsp;
+        <i class="fa fa-info-circle">&nbsp;请上传jpg/jpeg、png格式的图片文件，大小不能超过4M。</i>
+      </span>
     </el-upload>
     <div class="thumbnails">
       <el-card v-for="(image,imageIndex) in images" :key="'image'+imageIndex" class="box-card">
