@@ -16,7 +16,16 @@
   </div> -->
   <!-- </div> -->
   <div class="content" v-for="(times,index) in trial.argument.other.debateArray">
-     <p>审：现在进行第<span>{{index+1}}</span>轮辩论。首先由原告发表第<span>{{index+1}}</span>轮辩论意见。</p>
+     <el-dropdown type="primary" size="mini" split-button>
+      <i class="fa fa-trash">&nbsp;移除</i>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item></el-dropdown-item>
+          <el-dropdown-item>
+            <i @click="delDebate({index})" class="fa fa-times color-danger">&nbsp;移除</i>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+     <p>审：现在进行第<span>{{index+2}}</span>轮辩论。首先由原告发表第<span>{{index+2}}</span>轮辩论意见。</p>
      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>

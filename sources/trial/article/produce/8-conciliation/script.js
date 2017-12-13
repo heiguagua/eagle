@@ -16,7 +16,7 @@ export default {
     toMediate: function() {
       const vm = this;
       let array = [];
-      for (let i in this.trial.verification.participator) {debugger
+      for (let i in this.trial.verification.participator) {
         this.trial.verification.participator[i].forEach(function(item) {
           for (let j in item) {
             if (Util.isType(item[j]) === 'Array') {

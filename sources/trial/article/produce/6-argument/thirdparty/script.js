@@ -71,17 +71,6 @@ export default {
       this.trial.verification.participator = database.participator
 
     },
-    //删除评论次数
-    delDebate: function(index) {
-      const vm = this;
-      if(index) {
-        this.trial.argument.other.debateArray.splice(index, 1);
-        this.trial.argument.other.debateTimes--;
-        let database = new DataBase(this.trial.verification.participator,this.trial.argument.other.debateTimes,false)
-        this.trial.verification.participator = database.participator
-      }else {
-        message(vm, "info", "当前没有可删除的法庭辩论！");
-      }
-    }
+    
   },
 };
