@@ -1,6 +1,11 @@
 // export const chart = (selector = "", option = {}) => {
 //   echarts.init(document.querySelector(selector)).setOption(option);
 // };
+import Shortid from "shortid";
+
+export const ID = () => {
+  return Shortid.generate();
+};
 
 export const message = (vm, type, message) => {
   vm.$message({

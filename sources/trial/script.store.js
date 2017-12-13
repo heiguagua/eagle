@@ -1,3 +1,4 @@
+import Shortid from "shortid";
 import Http from "../common/scripts/http";
 import { message, storage } from "../common/scripts/helper";
 
@@ -20,6 +21,9 @@ export default {
     }
   },
   actions: {
+    generateID() {
+      return shortid.generate();
+    },
     getTrial(context, payload) {
       Http.fetch({
           method: "GET",
