@@ -119,9 +119,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -227,9 +227,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -334,9 +334,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -444,9 +444,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -551,9 +551,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -658,9 +658,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -768,9 +768,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -875,9 +875,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
@@ -982,9 +982,9 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "",
+              status: "同意",
               detail: "",
-              standpoint: "清楚",
+              standpoint: "清楚。",
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
