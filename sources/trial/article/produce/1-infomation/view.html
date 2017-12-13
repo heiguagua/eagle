@@ -31,7 +31,7 @@
     </p>
     <p title="是否公开审理、旁听人数">
       是否公开审理：
-      <el-select v-model="trial.infomation.isPublic" class="width-25">
+      <el-select v-model="trial.infomation.isPublic" class="width-25" @change="isPublic()">
         <el-option v-for="option in options.public" :key="option" :label="option" :value="option">
         </el-option>
       </el-select>

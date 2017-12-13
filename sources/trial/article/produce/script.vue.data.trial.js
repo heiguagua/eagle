@@ -51,7 +51,7 @@ export default () => {
             type:"原告",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -159,7 +159,7 @@ export default () => {
             type:"原告法定代表人",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -267,7 +267,7 @@ export default () => {
             type: "原告委托诉讼代理人",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -377,7 +377,7 @@ export default () => {
             type: "被告",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -484,7 +484,7 @@ export default () => {
             type: "被告法定代表人",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -591,7 +591,7 @@ export default () => {
             type: "被告委托诉讼代理人",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -701,7 +701,7 @@ export default () => {
             type: "第三人",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -808,7 +808,7 @@ export default () => {
             type: "第三人法定代表人",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
@@ -915,7 +915,7 @@ export default () => {
             type: "第三人委托诉讼代理人",
             // 异议及理由
             objection: {
-              status: "无异议",
+              status: "无异议。",
               detail: "",
             },
             //异议及理由-缺席审理
