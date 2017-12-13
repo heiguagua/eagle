@@ -33,9 +33,7 @@ export default {
         });
       }
       this.trial.conciliation.toMediateMan = array;
-      this.trial.conciliation.toMediateMan.length ? (this.trial.conciliation.status = false) : (this.trial.conciliation.status = true)
-      console.log(1,this.trial.conciliation.toMediateMan);
-      console.log(2,this.trial.conciliation.status);
+      this.trial.conciliation.toMediateMan.length ? (this.trial.conciliation.status = false) : (this.trial.conciliation.status = true);
     },
 
   },

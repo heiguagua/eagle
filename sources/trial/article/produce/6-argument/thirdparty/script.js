@@ -1,4 +1,5 @@
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
+import { message, notify, storage } from "../../../../../common/scripts/helper";
 
 class DataBase { 
   constructor(participator, flag, index){
@@ -72,10 +73,15 @@ export default {
     },
     //删除评论次数
     delDebate: function(index) {
-      this.trial.argument.other.debateArray.splice(index, 1);
-      this.trial.argument.other.debateTimes--;
-      let database = new DataBase(this.trial.verification.participator,this.trial.argument.other.debateTimes,false)
-      this.trial.verification.participator = database.participator
+      const vm = this;
+      if(index) {
+        this.trial.argument.other.debateArray.splice(index, 1);
+        this.trial.argument.other.debateTimes--;
+        let database = new DataBase(this.trial.verification.participator,this.trial.argument.other.debateTimes,false)
+        this.trial.verification.participator = database.participator
+      }else {
+        message(vm, "info", "当前没有可删除的法庭辩论！");
+      }
     }
   },
 };
