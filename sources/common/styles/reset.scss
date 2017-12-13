@@ -143,12 +143,13 @@ html {
     margin-top: 5px;
     margin-right: 8px;
     &:hover {
-      background: $color-gray-light-extra;
+      background: $color-border-light-extra;
     }
     .el-card__header {
       padding: 5px 10px;
       span {
         width: 100px;
+        color: $color-black-light;
         display: inline-block;
         overflow-x: hidden;
         vertical-align: middle;
