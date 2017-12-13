@@ -1,0 +1,27 @@
+<div id="trial-sidebar-list">
+  <el-table :data="trials" height="400" stripe>
+    <el-table-column fixed="left" type="index" label="名称" width="140">
+      <template slot-scope="scope">
+        <i class="fa fa-file-text"></i>
+        <span>第{{scope.$index + 1}}次庭审笔录</span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="create_time" label="时间" width="180">
+    </el-table-column>
+    <el-table-column prop="case_no" label="案号" width="600">
+    </el-table-column>
+    <el-table-column fixed="right" label="操作" width="100">
+      <template slot-scope="scope">
+        <el-button type="text" size="small">
+          <i title="预览" class="fa fa-file-word-o"></i>
+        </el-button>
+        <el-button @click="updateTrial(scope.row)" type="text" size="small">
+          <i title="编辑" class="fa fa-pencil-square-o"></i>
+        </el-button>
+        <el-button @click="removeTrial(scope.row)" type="text" size="small">
+          <i title="删除" class="fa fa-trash"></i>
+        </el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+</div>
