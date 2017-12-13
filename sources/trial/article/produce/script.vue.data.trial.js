@@ -24,7 +24,7 @@ export default () => {
       code: "", // 案号
       reason: "", // 案由
       isPublic: "公开", // 是否公开审理
-      audience: "", // 旁听人数
+      audience: "0", // 旁听人数
       officer: [ // 审判人员
         { duty: "审判长", name: "" },
         { duty: "审判员", name: "" },
@@ -1011,7 +1011,7 @@ export default () => {
               },
             },
           }],
-        }] 
+        }]
       },
       other: {
         attendanceFlag: true,
