@@ -96,9 +96,6 @@ export default {
           // console.log(result.data)
           let data = result.data;
           if (data.body) {
-            for (let i in data.body) {
-              data.body[i].name = data.body[i].url.substr(data.body[i].url.lastIndexOf('/') + 1)
-            }
             this.images = data.body;
           } else {
             this.images = [];
@@ -176,6 +173,12 @@ export default {
           }
           this.ocrResult = data.result.res;
         })
+    },
+    //取消图片识别
+    handleClose: function(done) {
+      this.dialogImageVisible = false;
+      this.ocrResult = [];
+      done();
     }
   },
   directives: {
