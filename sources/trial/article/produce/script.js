@@ -1,6 +1,6 @@
-import Http from '../../../common/scripts/http';
-import { message, storage } from '../../../common/scripts/helper';
-import { elementquerysOrder } from './5-investigate/4-inquiry/script';
+import Http from "../../../common/scripts/http";
+import { message, confirm, storage } from "../../../common/scripts/helper";
+import { elementquerysOrder } from "./5-investigate/4-inquiry/script";
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 // Compoents
 import TrialHeader from "./0-header";
@@ -46,15 +46,22 @@ export default {
       "setTrial",
       "setOptions"
     ]),
+    back() {
+      const vm = this;
+      confirm(vm, "warning", "是否需要返回庭审笔录-新建页面？")
+        .then(() => {
+          vm.$router.push("/layout/trial/blank");
+        });
+    },
     logTrial() {
-      console.info('Trial', this.$store.state.Trial.trial);
+      console.info("Trial", this.$store.state.Trial.trial);
     },
     generate() {
       const vm = this;
       this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys); //审议归纳排序
       const editorTrial = this.trial;
-      storage.set('trial', editorTrial);
-      vm.$router.push('/layout/trial/preview');
+      storage.set("trial", editorTrial);
+      vm.$router.push("/layout/trial/preview");
     },
     getTemplate() {
       const vm = this;
@@ -62,13 +69,13 @@ export default {
       const param = vm.$route.params;
       console.log(param)
       Http.fetch({
-          method: 'GET',
-          url: Http.url.master + '/trialRecordTemplate',
+          method: "GET",
+          url: Http.url.master + "/trialRecordTemplate",
           params: {
-            case_brief: query.case_brief || '民间借贷纠纷',
-            category: query.category || '民事一审',
-            hearing_procedure: query.hearing_procedure || 'normal',
-            write_type: param.write_type || 'section',
+            case_brief: query.case_brief || "民间借贷纠纷",
+            category: query.category || "民事一审",
+            hearing_procedure: query.hearing_procedure || "normal",
+            write_type: param.write_type || "section",
           }
         })
         .then(result => {
@@ -77,13 +84,13 @@ export default {
             // vm.trial = data.body;
             return data
           } else {
-            message(vm, 'warning', data.head.message);
+            message(vm, "warning", data.head.message);
           }
         });
     },
   },
   mounted() {
-    this.options.loading= false;
+    this.options.loading = false;
   },
   created() {
     const vm = this;

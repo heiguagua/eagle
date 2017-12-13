@@ -17,6 +17,16 @@ export const notify = (vm, type, message, title) => {
   })
 };
 
+export const confirm = (vm, type, message) => {
+  return vm.$confirm(
+    message || "是否确认进行操作？",
+    "提示", {
+      confirmButtonText: "确定",
+      cancelButtonText: "取消",
+      type
+    })
+};
+
 export const storage = {
   get(key) {
     if (key) {
