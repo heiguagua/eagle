@@ -140,22 +140,25 @@ html {
     }
   }
   .el-card {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-right: 8px;
     &:hover {
       background: $color-gray-light-extra;
     }
     .el-card__header {
       padding: 5px 10px;
       span {
-        width: 120px;
+        width: 100px;
         display: inline-block;
         overflow-x: hidden;
         vertical-align: middle;
         text-overflow: ellipsis;
+        word-wrap: break-word;
+        white-space: nowrap;
       }
     }
     .el-card__body {
-      padding: 10px;
+      padding: 5px;
     }
   }
 }
