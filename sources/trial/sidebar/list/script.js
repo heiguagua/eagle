@@ -1,6 +1,8 @@
 import Http from "../../../common/scripts/http";
+import Encrypt from "../../../common/scripts/encrypt.js";
+import { mapMutations, mapActions, mapState } from "vuex";
 import { message, storage } from "../../../common/scripts/helper";
-import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
+import UtilSidebar from "../script.util";
 
 export default {
   data() {
@@ -9,7 +11,8 @@ export default {
   computed: {
     ...mapState("Trial", [
       "trial",
-      "options"
+      "trials",
+      "options",
     ]),
   },
   mounted() {},
