@@ -78,16 +78,12 @@ export default {
       else if (operation === "remove") {
         const accuserIndex = params.accuserIndex;
         const thirdparties = this.trial.verification.participator.thirdparties;
-        if (thirdparties.length > 1) {
-          thirdparties.splice(accuserIndex, 1);
-          Util.updateNum('subjects', 'thirdparties', this.trial);
-          message(vm, "warning", "温馨提示：第三人删除成功！");
-          // 更新到庭未到庭人员状态
-          Util.showSetting(this.trial); //获取到庭状态
-          Util.getAbsentee(this.trial); //获取未到庭人员列表
-        } else {
-          message(vm, "error", "温馨提示：不能删除唯一的第三人！");
-        }
+        thirdparties.splice(accuserIndex, 1);
+        Util.updateNum('subjects', 'thirdparties', this.trial);
+        message(vm, "warning", "温馨提示：第三人删除成功！");
+        // 更新到庭未到庭人员状态
+        Util.showSetting(this.trial); //获取到庭状态
+        Util.getAbsentee(this.trial); //获取未到庭人员列表
       }
     },
     subjectEvent(operation, params) {
