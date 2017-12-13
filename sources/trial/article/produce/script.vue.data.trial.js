@@ -72,7 +72,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -180,7 +180,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -287,7 +287,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -397,7 +397,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -504,7 +504,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -611,7 +611,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -721,7 +721,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -828,7 +828,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
@@ -935,7 +935,7 @@ export default () => {
             },
             // 是否申请回避
             evasion: {
-              status: "不申请",
+              status: "不申请。",
               detail: "",
             },
             // 举证期限异议
