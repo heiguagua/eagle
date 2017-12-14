@@ -75,6 +75,12 @@ export default {
             message(vm, "warning", "温馨提示：庭审笔录导出失败！");
           }
         });
-    }
+    },
+    print() {
+      const newWindow = window.open("", "_blank", "");
+      newWindow.document.body.innerHTML = "test";
+      newWindow.print();
+      newWindow.close();
+    },
   }
 };
