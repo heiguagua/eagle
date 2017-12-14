@@ -46,6 +46,18 @@ html {
   opacity: 0
 }
 
+.el-dropdown-menu {
+  .el-dropdown-menu__item {
+    padding: 0 !important;
+    font-size: 12px !important;
+    i {
+      display: inline-block;
+      width: 100%;
+      padding: 7px 10px !important;
+    }
+  }
+}
+
 
 /* -----Global Reset----- */
 
@@ -123,7 +135,7 @@ html {
   }
 }
 
-#trial-editor {
+#trial-article-produce {
   .el-dropdown-menu {
     .el-dropdown-menu__item {
       line-height: 24px !important;
