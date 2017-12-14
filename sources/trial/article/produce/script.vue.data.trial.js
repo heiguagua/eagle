@@ -2,6 +2,8 @@ export default () => {
   return {
     // 休庭位置
     adjourn: "",
+    // 是否最终版本
+    isFinal: false,
     // 笔录头部
     head: {
       // 法院名称
@@ -48,7 +50,7 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "原告",
-            type:"原告",
+            type: "原告",
             // 异议及理由
             objection: {
               status: "无异议。",
@@ -125,11 +127,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -156,7 +158,7 @@ export default () => {
             isAppear: "到庭", // 是否出庭
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "原告",
-            type:"原告法定代表人",
+            type: "原告法定代表人",
             // 异议及理由
             objection: {
               status: "无异议。",
@@ -233,11 +235,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -340,11 +342,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -450,11 +452,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -557,11 +559,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -664,11 +666,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -774,11 +776,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -881,11 +883,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {
@@ -988,11 +990,11 @@ export default () => {
             },
             // 法庭调解-缺席审理
             absenceConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 法庭调解-不同意调解
             disagreeConciliation: {
-              detail:"清楚。"
+              detail: "清楚。"
             },
             // 举证质证
             proof: {

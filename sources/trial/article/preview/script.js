@@ -49,6 +49,9 @@ export default {
           }
         })
     },
+    final() {
+      alert();
+    },
     back() {
       this.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
     },
