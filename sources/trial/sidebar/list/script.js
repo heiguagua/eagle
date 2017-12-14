@@ -6,7 +6,10 @@ import UtilSidebar from "../script.util";
 
 export default {
   data() {
-    return {};
+    return {
+      htmlTrial: "",
+      peekDialogVisible: false,
+    };
   },
   computed: {
     ...mapState("Trial", [
@@ -74,6 +77,31 @@ export default {
           vm.$router.replace({ path: "/layout/trial/produce", query: { operation: "update" } });
         })
     },
+    peekTrial(row) {
+      const vm = this;
+      vm.peekDialogVisible = true;
+      const recordID = row.record_id || "";
+      const case_no = row.case_no || "";
+      Http.fetch({
+          method: "GET",
+          url: Http.url.master + "/trial/" + recordID,
+          params: {
+            record_id: recordID,
+          }
+        })
+        .then(result => {
+          const data = result.data;
+          if (Http.protocol(data, 200) && data.body.length !== 0) {
+            vm.htmlTrial = data.body[0].html;
+            message(vm, "info", data.head.message);
+          } else {
+            message(vm, "warning", data.head.message);
+          }
+        })
+        .then(result => {
+
+        })
+    }
   },
   created() {
     const vm = this;
