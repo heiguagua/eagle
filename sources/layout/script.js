@@ -9,6 +9,11 @@ export default {
       socket: {},
     }
   },
+  computed: {
+    isProduction() {
+      return process.env.NODE_ENV !== "production";
+    }
+  },
   methods: {
     search() {
       console.log("search!");
@@ -71,9 +76,13 @@ export default {
     }
   },
   mounted() {
-    this.openSocket();
+    if (this.isProduction) {
+      this.openSocket();
+    }
   },
   destroyed() {
-    this.closeSocket();
+    if (this.isProduction) {
+      this.closeSocket();
+    }
   }
 };
