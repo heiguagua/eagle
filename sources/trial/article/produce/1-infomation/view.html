@@ -45,7 +45,7 @@
         </el-option>
       </el-select>
       ：
-      <el-input v-model="trial.infomation.officer[0].name" placeholder="请输入姓名" class="width-64"></el-input>
+      <el-input v-model="trial.infomation.officer[0].name" :maxlength="5" @blur="setOficerFormat(0)" placeholder="请输入姓名" class="width-64"></el-input>
     </p>
     <p title="审判人员2" v-if="isChiefOfficerTwo&&isChiefOfficer">
       <el-select v-model="trial.infomation.officer[1].duty" placeholder="请选择职务" class="width-30">
@@ -53,7 +53,7 @@
         </el-option>
       </el-select>
       ：
-      <el-input v-model="trial.infomation.officer[1].name" placeholder="请输入姓名" class="width-64"></el-input>
+      <el-input v-model="trial.infomation.officer[1].name" :maxlength="50" @blur="setOficerFormat(1)" placeholder="请输入姓名" class="width-64"></el-input>
     </p>
     <p title="审判人员3" v-if="isChiefOfficerTwo&&isChiefOfficer">
       <el-select v-model="trial.infomation.officer[2].duty" placeholder="请选择职务" class="width-30">
@@ -61,11 +61,11 @@
         </el-option>
       </el-select>
       ：
-      <el-input v-model="trial.infomation.officer[2].name" placeholder="请输入姓名" class="width-64"></el-input>
+      <el-input v-model="trial.infomation.officer[2].name" :maxlength="50" @blur="setOficerFormat(2)" placeholder="请输入姓名" class="width-64"></el-input>
     </p>
     <p title="书记员">
       书记员：
-      <el-input v-model="trial.infomation.clerk" placeholder="请输入姓名" class="width-61"></el-input>
+      <el-input v-model="trial.infomation.clerk" :maxlength="50" @blur="setClerkFormat" placeholder="请输入姓名" class="width-61"></el-input>
     </p>
   </div>
 </section>

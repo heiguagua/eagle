@@ -32,6 +32,24 @@ export default {
        if(this.trial.infomation.isPublic === "不公开") {
           this.trial.infomation.audience = 0;
        } 
+    },
+    setOficerFormat: function (index) {
+      if (this.trial.infomation.officer[index].name.length === 2) {
+        let value = this.trial.infomation.officer[index].name.replace(/\s+/g, '');
+        let nameArr = [];
+        nameArr[0] = value.substr(0, 1);
+        value.substr(1, 2) ? nameArr[1] = value.substr(1, 2) : 0;
+        this.trial.infomation.officer[index].name = nameArr.join('  ');
+      }
+    },
+    setClerkFormat: function () {
+      if (this.trial.infomation.clerk.length === 2) {
+        let value = this.trial.infomation.clerk.replace(/\s+/g, '');
+        let nameArr = [];
+        nameArr[0] = value.substr(0, 1);
+        value.substr(1, 2) ? nameArr[1] = value.substr(1, 2) : 0;
+        this.trial.infomation.clerk = nameArr.join('  ');
+      }
     }
   },
 };
