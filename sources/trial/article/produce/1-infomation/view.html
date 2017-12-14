@@ -4,31 +4,32 @@
     <em>庭审信息</em>
   </div>
   <div class="content">
+      <p title="案号">
+          案号：
+          <el-input v-model="trial.infomation.code" placeholder="请输入案号" class="width-91" :disabled="true"></el-input>
+        </p>
+        <p title="案由">
+          案由：
+          <el-input v-model="trial.infomation.reason" placeholder="请输入案由" class="width-91" :disabled="true"></el-input>
+        </p>
     <p title="时间">
-      时间：
-      <el-date-picker v-model="trial.infomation.date" type="date" placeholder="选择日期" value-format="yyyy年MM月dd日" format="yyyy年MM月dd日" class="width-37"></el-date-picker>
+      开庭时间：
+      <el-date-picker v-model="trial.infomation.date" type="date" placeholder="选择日期" value-format="yyyy年MM月dd日" format="yyyy年MM月dd日" class="width-33"></el-date-picker>
       &nbsp;
       <el-time-picker v-model="trial.infomation.time.start" placeholder="选择开始时间" value-format="HH时mm分" format="HH时mm分" :picker-options="{selectableRange:'08:30:00-18:00:00'}" class="width-25"></el-time-picker>
       至
       <el-time-picker v-model="trial.infomation.time.end" placeholder="选择结束时间" value-format="HH时mm分" format="HH时mm分" :picker-options="{selectableRange:'08:30:00-18:00:00'}" class="width-25"></el-time-picker>
     </p>
     <p title="地点">
-      地点：
-      <el-input v-model="trial.infomation.location.name" placeholder="请输入法院名称" class="width-37"></el-input>
+      开庭地点：
+      <el-input v-model="trial.infomation.location.name" placeholder="请输入法院名称" class="width-33"></el-input>
       第
       <el-input-number v-model="trial.infomation.location.number" :min="1" :max="999" controls-position="right" class="width-19"></el-input-number>
       号法庭第
       <el-input-number v-model="trial.infomation.location.times" :min="1" :max="999" controls-position="right" class="width-19"></el-input-number>
       次开庭
     </p>
-    <p title="案号">
-      案号：
-      <el-input v-model="trial.infomation.code" placeholder="请输入案号" class="width-91" :disabled="true"></el-input>
-    </p>
-    <p title="案由">
-      案由：
-      <el-input v-model="trial.infomation.reason" placeholder="请输入案由" class="width-91" :disabled="true"></el-input>
-    </p>
+   
     <p title="是否公开审理、旁听人数">
       是否公开审理：
       <el-select v-model="trial.infomation.isPublic" class="width-25" @change="isPublic()">
