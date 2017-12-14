@@ -85,7 +85,7 @@ export default () => {
             },
             // 诉辩意见
             opinion: {
-              detail: "详见民事诉讼状。",
+              detail: "",
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
@@ -193,7 +193,7 @@ export default () => {
             },
             // 诉辩意见
             opinion: {
-              detail: "详见民事诉讼状。",
+              detail: "",
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {
@@ -300,7 +300,7 @@ export default () => {
             },
             // 诉辩意见
             opinion: {
-              detail: "详见民事诉讼状。",
+              detail: "",
             },
             // 诉辩意见-缺席审理
             absenceOpinion: {

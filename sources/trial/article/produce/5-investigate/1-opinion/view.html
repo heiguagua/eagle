@@ -20,19 +20,19 @@
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">
-          原{{subject.ordinal}}：
+          原{{subject.ordinal}}：<button class="el-button el-button--info el-button--mini" @click="seeDetail(accuserIndex,subjectIndex,'subject')">详见民事诉讼状</button>
           <el-input v-model="subject.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
         </p>
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          原：
+          原：<button class="el-button el-button--info el-button--mini" @click="seeDetail(accuserIndex,responsibleIndex,'responsible')">详见民事诉讼状</button>
           <el-input v-model="responsible.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
         </p>
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
+          原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：<button class="el-button el-button--info el-button--mini" @click="seeDetail(accuserIndex,agentIndex,'agent')">详见民事诉讼状</button>
           <el-input v-model="agent.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
         </p>
       </div>
