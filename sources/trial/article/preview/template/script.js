@@ -38,8 +38,6 @@ export default {
     this.trial = storage.get("trial");
   },
   methods: {
-    save() {
-
-    }
+    save() {}
   }
 };
