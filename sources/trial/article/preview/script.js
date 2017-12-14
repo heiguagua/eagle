@@ -51,7 +51,7 @@ export default {
     },
     toWord() {
       const vm = this;
-      const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
+      const html = "<html><body>" + vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "") + "</body></html>";
       Http.fetch({
           method: "POST",
           url: Http.url.master + "/export/word",
@@ -67,7 +67,7 @@ export default {
           if (data) {
             let link = document.createElement("a");
             link.href = window.URL.createObjectURL(data);
-            link.download = "庭审笔录.docx";
+            link.download = "庭审笔录.doc";
             link.click();
             window.URL.revokeObjectURL(link.href);
             message(vm, "info", "温馨提示：庭审笔录导出成功！");
