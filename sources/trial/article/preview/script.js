@@ -1,6 +1,6 @@
 import Http from "../../../common/scripts/http";
 import JudgeTemplate from "./template";
-import { message, storage } from "../../../common/scripts/helper";
+import { message, storage, trim } from "../../../common/scripts/helper";
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
 export default {
@@ -20,11 +20,14 @@ export default {
     ...mapActions("Trial", [
       "getTrials"
     ]),
+    cleanHTML(text) {
+      return text.replace(/\sdata-v-\w*=""/g, "");
+    },
     save() {
       const vm = this;
       const code = storage.get("case").case_no; // 案号
       const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
-      const html = vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "");
+      const html = vm.cleanHTML(vm.$refs.template.$el.innerHTML);
       vm.options.loading = true;
       Http.fetch({
           method: "POST",
@@ -51,7 +54,8 @@ export default {
     },
     toWord() {
       const vm = this;
-      const html = "<html><body>" + vm.$el.innerHTML.replace(/\sdata-v-\w*=""/g, "") + "</body></html>";
+      const template = vm.cleanHTML(vm.$refs.template.$el.innerHTML);
+      const html = "<html><body>" + template + "</body></html>";
       Http.fetch({
           method: "POST",
           url: Http.url.master + "/export/word",
@@ -63,7 +67,6 @@ export default {
         })
         .then(result => {
           const data = result.data;
-          console.log("WORD", data);
           if (data) {
             let link = document.createElement("a");
             link.href = window.URL.createObjectURL(data);
@@ -77,8 +80,10 @@ export default {
         });
     },
     print() {
+      const vm = this;
+      const template = vm.cleanHTML(vm.$refs.template.$el.innerHTML);
       const newWindow = window.open("", "_blank", "");
-      newWindow.document.body.innerHTML = "test";
+      newWindow.document.body.innerHTML = template;
       newWindow.print();
       newWindow.close();
     },

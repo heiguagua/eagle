@@ -1,6 +1,3 @@
-// export const chart = (selector = "", option = {}) => {
-//   echarts.init(document.querySelector(selector)).setOption(option);
-// };
 import Shortid from "shortid";
 
 export const ID = () => {
@@ -52,4 +49,9 @@ export const storage = {
       sessionStorage.removeItem(key);
     }
   }
+};
+
+export const trim = (input) => {
+  if (typeof input === "string" && input)
+    return input.replace(/\s/g, "");
 };
