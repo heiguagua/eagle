@@ -53,7 +53,7 @@ export default {
           const data = result.data;
           if (Http.protocol(data, 200)) {
             context.commit("setTrials", data.body);
-            message(payload.vm, "info", data.head.message);
+            // message(payload.vm, "info", data.head.message);
           } else {
             message(payload.vm, "warning", data.head.message);
           }

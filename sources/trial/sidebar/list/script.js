@@ -1,7 +1,7 @@
 import Http from "../../../common/scripts/http";
 import Encrypt from "../../../common/scripts/encrypt.js";
 import { mapMutations, mapActions, mapState } from "vuex";
-import { message, storage } from "../../../common/scripts/helper";
+import { message, storage, confirm } from "../../../common/scripts/helper";
 import UtilSidebar from "../script.util";
 
 export default {
@@ -28,18 +28,21 @@ export default {
       const vm = this;
       const recordID = row.record_id || "";
       const case_no = row.case_no || "";
-      Http.fetch({
-          method: "DELETE",
-          url: Http.url.master + "/trial/" + recordID + "/" + case_no,
-        })
-        .then(result => {
-          const data = result.data;
-          if (Http.protocol(data, 200)) {
-            message(vm, "info", data.head.status);
-            vm.getTrials({ vm })
-          } else {
-            message(vm, "warning", data.head.message);
-          }
+      confirm(vm, "warning", "确认删除当前庭审笔录？")
+        .then(() => {
+          Http.fetch({
+              method: "DELETE",
+              url: Http.url.master + "/trial/" + recordID + "/" + case_no,
+            })
+            .then(result => {
+              const data = result.data;
+              if (Http.protocol(data, 200)) {
+                message(vm, "info", data.head.message);
+                vm.getTrials({ vm })
+              } else {
+                message(vm, "warning", data.head.message);
+              }
+            });
         });
     },
     updateTrial(row) {
