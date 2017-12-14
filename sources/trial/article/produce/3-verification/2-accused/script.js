@@ -192,8 +192,14 @@ export default {
     },
   },
   created() {
-    const params = storage.get("case");
-    this.trial.verification.participator.accuseds[0].subjects[0].name = params.accused;
-    this.trial.verification.participator.accuseds[0].subjects[0].info = params.accused_baseinfo;
+    const vm = this;
+    const operation = vm.$route.query.operation;
+    // 区分新建、修改的状态，从而挂载不同的store
+    if (operation === "create") {
+      const params = storage.get("case");
+      this.trial.verification.participator.accuseds[0].subjects[0].name = params.defendant;
+      this.trial.verification.participator.accuseds[0].subjects[0].info = params.defendant_baseinfo;
+    } 
+   
   }
 };

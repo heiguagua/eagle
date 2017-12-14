@@ -188,8 +188,6 @@ export default {
     },
   },
   created() {
-    const params = storage.get("case");
-    this.trial.verification.participator.thirdparties[0].subjects[0].name = params.thirdparty;
-    this.trial.verification.participator.thirdparties[0].subjects[0].info = params.accuser_baseinfo;
+    
   }
 };
