@@ -1,6 +1,6 @@
 import Http from "../../../common/scripts/http";
 import JudgeTemplate from "./template";
-import { message, storage, trim } from "../../../common/scripts/helper";
+import { message, storage, confirm } from "../../../common/scripts/helper";
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
 export default {
@@ -50,7 +50,22 @@ export default {
         })
     },
     final() {
-      alert();
+      const vm = this;
+      console.log(storage.get("case"));
+      confirm(vm, "warning", "是否确认当前庭审笔录为最终版本？")
+        .then(() => {
+          // Http.fetch({
+          //     method: "POST",
+          //     url: Http.url.master + "/trial/" + recordID + "/final",
+          //   })
+          //   .then(result => {
+          //     const data = result.data;
+          //     if (Http.protocol(data, 200)) {
+          //     } else {
+          //       message(vm, "warning", data.head.message);
+          //     }
+          //   });
+        });
     },
     back() {
       this.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
