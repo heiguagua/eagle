@@ -1,5 +1,5 @@
 <div title="第三人" class="thirdparty">
-  <section v-for="(thirdparty, accuserIndex) in trial.verification.participator.thirdparties" :key="accuserIndex" class="animated slideInDown">
+  <section v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex" class="animated slideInDown">
     <div class="access">
       <i class="el-icon-edit-outline"></i>
       <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;第三人</em>
@@ -8,7 +8,7 @@
           <i class="fa fa-user-plus">&nbsp;添加第三人</i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
-              <i @click="accuserEvent('remove', {accuserIndex})" class="fa fa-user-times color-danger">&nbsp;移除第三人</i>
+              <i @click="accuserEvent('remove', {thirdpartyIndex})" class="fa fa-user-times color-danger">&nbsp;移除第三人</i>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -31,11 +31,11 @@
             </el-option>
           </el-select>
           以下简称<b>第{{subject.ordinal}}</b>）
-          <el-dropdown @click="subjectEvent('add', {accuserIndex})" type="info" size="mini" split-button>
+          <el-dropdown @click="subjectEvent('add', {thirdpartyIndex})" type="info" size="mini" split-button>
             <i class="fa fa-plus-circle">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
-                <i @click="subjectEvent('remove', {accuserIndex, subjectIndex})" class="fa fa-trash color-danger">&nbsp;移除</i>
+                <i @click="subjectEvent('remove', {thirdpartyIndex, subjectIndex})" class="fa fa-trash color-danger">&nbsp;移除</i>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -60,7 +60,7 @@
             </el-option>
           </el-select>
           以下简称<b>第</b>）
-          <el-button @click="responsibleEvent('remove', {accuserIndex, responsibleIndex})" size="mini" type="info">
+          <el-button @click="responsibleEvent('remove', {thirdpartyIndex, responsibleIndex})" size="mini" type="info">
             <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
           </el-button>
         </p>
@@ -86,11 +86,11 @@
             </el-option>
           </el-select>
           以下简称第代<b v-if="thirdparty.agents.length > 1">{{agentIndex + 1}}</b>
-          <el-dropdown @click="agentEvent('add', {accuserIndex})" type="info" size="mini" split-button>
+          <el-dropdown @click="agentEvent('add', {thirdpartyIndex})" type="info" size="mini" split-button>
             <i class="fa fa-plus-circle">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
-                <i @click="agentEvent('remove', {accuserIndex, agentIndex})" class="fa fa-trash color-danger">&nbsp;移除</i>
+                <i @click="agentEvent('remove', {thirdpartyIndex, agentIndex})" class="fa fa-trash color-danger">&nbsp;移除</i>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>

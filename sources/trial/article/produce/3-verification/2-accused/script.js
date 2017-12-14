@@ -118,7 +118,7 @@ export default {
         const subjectIndex = params.subjectIndex;
         const accusedIndex = params.accusedIndex;
         const subjects = this.trial.verification.participator.accuseds[accusedIndex].subjects;
-        if (subjects != 0) {
+        if (subjects.length > 1) {
           subjects.splice(subjectIndex, 1);
           Util.updateNum('subjects', 'accuseds', this.trial);
           message(vm, "warning", "温馨提示：被告删除成功！");
@@ -199,7 +199,7 @@ export default {
       const params = storage.get("case");
       this.trial.verification.participator.accuseds[0].subjects[0].name = params.defendant;
       this.trial.verification.participator.accuseds[0].subjects[0].info = params.defendant_baseinfo;
-    } 
-   
+    }
+
   }
 };
