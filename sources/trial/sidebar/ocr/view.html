@@ -30,8 +30,8 @@
       </div>
     </section>
     <section class="right">
-      <div class="text-muted result" contenteditable="true" v-loading="ocrResultLoading" element-loading-text="案件材料正在识别中...">
-        <p v-for="result in ocrResult">
+      <div id="ocr_cpy" class="text-muted result" contenteditable="true" v-loading="ocrResultLoading" element-loading-text="案件材料正在识别中..." >
+        <p v-for="result in ocrResult" v-copyButton>
           {{result.text}}
         </p>
       </div>

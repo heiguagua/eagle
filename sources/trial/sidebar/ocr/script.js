@@ -3,6 +3,7 @@ import Encrypt from "../../../common/scripts/encrypt.js";
 import { mapMutations, mapActions, mapState } from "vuex";
 import { message, storage } from "../../../common/scripts/helper";
 import UtilSidebar from "../script.util";
+import Clipboard from 'clipboard';
 
 export default {
   data() {
@@ -30,7 +31,9 @@ export default {
       "options"
     ]),
   },
-  mounted() {},
+  mounted() {
+    
+  },
   methods: {
     ...mapActions("Trial", [
       "getTrials",
@@ -41,6 +44,7 @@ export default {
     ]),
     //过滤上传图片格式、大小
     beforeAvatarUpload(file) {
+      console.log(file)
       let isJPG = false, //图片格式是否正确
         isLt4M = false, //图片大小是否正确
         isNoExist = true; //图片是否已存在
@@ -58,7 +62,7 @@ export default {
         isLt4M = false;
       }
       if (this.images.length) {
-        // console.log(this.images)
+        console.log(this.images)
         for (let i in this.images) {
           if (this.images[i].name.indexOf(file.name) > -1) {
             isNoExist = false;
@@ -181,40 +185,51 @@ export default {
       done();
     }
   },
-  directives: {
-    copyButton: {
-      // 指令的定义
-      bind: function(el, envent) {
-        console.log(envent)
-        // el.querySelector("#app").remove(".copy");
-        // let txt = '';
-        // if (document.selection) {
-        //   txt = document.selection.createRange().text; //ie
-        // } else {
-        //   txt = document.getSelection();
-        // }
-        // let selection = window.getSelection();
-        // // console.log( selection );
-        // let range = selection.getRangeAt(0)
-        // let location = range.getBoundingClientRect(); // { width, height, top, right, bottom, right }
-        // let copyContent = txt.toString().replace(/ /g, '').replace(/\n/g, "");
-        // // console.log(copyContent);
-        // //首先创建div
-        // let temp = "<button id='ocr_location' titile='点击复制' type='button' class=' copy btn btn-default btn-sm btn-flat'" + "data-clipboard-text='" + copyContent + "' data-clipboard-action='copy' >" +
-        //   "<i class='fa fa-paste text-info '>&nbsp;复制&nbsp;</i>" +
-        //   "</button>";
-        // if (txt.toString() != '') {
-        //   el.querySelectorAll("#app").append(temp);
-        //   //给div设置样式，比如大小、位置
-        //   let cssStr = "display:inline-block;z-index:10000;width:60px;height:30px; position:absolute;left:" + location.left + 'px;top:' + location.top + 'px;';
-        //   //将样式添加到div上，显示div
-        //   el.querySelector('#ocr_location').attr('style', cssStr);
-        // }
-      }
-    }
-  },
   created() {
     const vm = this;
     vm.downloader();
   },
+  directives: {
+    copyButton: {
+      inserted: function(el, binding, vnode, oldVnode) {
+        el.addEventListener('mouseup', function(el) {
+          if (document.getElementById('ocr_location')){
+            document.getElementById('ocr_location').remove();
+          }
+          let txt = '';
+          if (document.selection) {
+            txt = document.selection.createRange().text; //ie
+          } else {
+            txt = document.getSelection();
+          }
+          // console.log(txt);
+          let selection = window.getSelection();
+          // console.log( selection );
+          let range = selection.getRangeAt(0);
+          let location = range.getBoundingClientRect(); // { width, height, top, right, bottom, right }
+          // console.log(location)
+          let copyContent = txt.toString().replace(/ /g, '').replace(/\n/g, "");
+          // console.log(copyContent);
+          if (txt.toString() != '') {
+            let div = document.getElementById("ocr_cpy");
+    　　　　 let bu = document.createElement("button");
+            bu.setAttribute("id", "ocr_location");
+            bu.setAttribute("title", "点击复制");
+            bu.setAttribute("class", "copy btn btn-default btn-sm btn-flat");
+            bu.setAttribute("data-clipboard-text", copyContent);
+            bu.setAttribute("data-clipboard-action", 'copy');
+            bu.innerHTML = "<i class='fa fa-paste text-info '>&nbsp;复制&nbsp;</i>";
+            div.appendChild(bu);
+            //给div设置样式，比如大小、位置
+            let cssStr = "display:inline-block;z-index:10000;width:70px;height:30px; position:absolute;left:" + (location.left-location.width) + "px;top:"+ (location.top+location.height)+ "px;";
+            //将样式添加到div上，显示div
+            document.getElementById('ocr_location').setAttribute('style', cssStr);
+            let clipboard = new Clipboard('#ocr_location');
+            // console.log(clipboard)
+          }
+        }, false);
+      }
+    }
+  }
+ 
 };
