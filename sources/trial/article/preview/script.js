@@ -27,11 +27,38 @@ export default {
       const vm = this;
       const code = storage.get("case").case_no; // 案号
       const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
-      const html = vm.cleanHTML(vm.$refs.template.$el.innerHTML);
+      const html = vm.cleanHTML(vm.$refs.template.$el.innerHTML); // 庭审笔录带样式HTML内容
       vm.options.loading = true;
       Http.fetch({
           method: "POST",
           url: Http.url.master + "/trial",
+          data: {
+            case_no: code,
+            json,
+            html,
+          }
+        })
+        .then(result => {
+          const data = result.data;
+          if (Http.protocol(data, 200)) {
+            vm.getTrials({ vm });
+            message(vm, "info", data.head.message);
+            vm.$router.push("/layout/trial/blank");
+          } else {
+            message(vm, "warning", data.head.message);
+          }
+        })
+    },
+    update() {
+      const vm = this;
+      vm.options.loading = true; // 加载loading动画
+      const code = storage.get("case").case_no; // 案号
+      const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
+      const html = vm.cleanHTML(vm.$refs.template.$el.innerHTML); // 庭审笔录带样式HTML内容
+      const trialID = storage.get("updatedTrialInfo").record_id;
+      Http.fetch({
+          method: "PUT",
+          url: Http.url.master + "/trial/" + trialID,
           data: {
             case_no: code,
             json,
