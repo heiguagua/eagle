@@ -8,7 +8,9 @@ export default {
     JudgeTemplate
   },
   data() {
-    return {};
+    return {
+      operation: "", // 笔录生成结果页面判断当前操作是新建还是修改
+    };
   },
   computed: {
     ...mapState("Trial", [
@@ -23,7 +25,8 @@ export default {
     cleanHTML(text) {
       return text.replace(/\sdata-v-\w*=""/g, "");
     },
-    save() {
+    /** ----- 保存操作 ----- */
+    saveCreate() {
       const vm = this;
       const code = storage.get("case").case_no; // 案号
       const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
@@ -49,7 +52,7 @@ export default {
           }
         })
     },
-    update() {
+    saveUpdate() {
       const vm = this;
       vm.options.loading = true; // 加载loading动画
       const code = storage.get("case").case_no; // 案号
@@ -76,6 +79,13 @@ export default {
           }
         })
     },
+    /** ----- 返回生成页面 ----- */
+    backCreate() {
+      this.$router.push({ path: "/layout/trial/produce", query: { operation: "create" } });
+    },
+    backUpdate() {
+      this.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
+    },
     final() {
       const vm = this;
       console.log(storage.get("case"));
@@ -93,9 +103,6 @@ export default {
           //     }
           //   });
         });
-    },
-    back() {
-      this.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
     },
     toWord() {
       const vm = this;
@@ -132,5 +139,9 @@ export default {
       newWindow.print();
       newWindow.close();
     },
-  }
+  },
+  created() {
+    const vm = this;
+    vm.operation = vm.$route.query.operation; // 根据路由参数确定当前操作是更新还是新建
+  },
 };

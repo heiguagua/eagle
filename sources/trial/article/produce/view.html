@@ -2,8 +2,11 @@
   <!-- 工具栏 -->
   <div class="toolbar">
     <div class="left">
-      <el-button @click="generate" size="mini" type="danger">
-        <i class="fa fa-copy">&nbsp;生成笔录</i>
+      <el-button @click="generateCreate" v-if="operation==='create'" size="mini" type="danger">
+        <i class="fa fa-file">&nbsp;生成笔录</i>
+      </el-button>
+      <el-button @click="generateUpdate" v-if="operation==='update'" size="mini" type="danger" plain>
+        <i class="fa fa-copy">&nbsp;重新生成笔录</i>
       </el-button>
       <!-- <el-button @click="logTrial" size="mini" type="info">
         <i class="fa fa-file">&nbsp;打印Trial</i>

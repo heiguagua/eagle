@@ -1,10 +1,10 @@
 <div id="trial-article-preview">
   <div class="toolbar">
     <div class="left">
-      <el-button @click="save" size="mini" type="danger">
+      <el-button @click="saveCreate" v-if="operation==='create'" size="mini" type="danger">
         <i class="fa fa-floppy-o">&nbsp;保存笔录</i>
       </el-button>
-      <el-button @click="update" size="mini" type="danger" plain>
+      <el-button @click="saveUpdate" v-if="operation==='update'" size="mini" type="danger" plain>
         <i class="fa fa-pencil">&nbsp;修改笔录</i>
       </el-button>
       <el-button @click="final" size="mini" type="warning">
@@ -19,8 +19,11 @@
         <el-button @click="print" size="mini" type="default">
           <i class="fa fa-print">&nbsp;打印</i>
         </el-button>
-        <el-button @click="back" size="mini" type="default">
+        <el-button @click="backCreate" v-if="operation==='create'" size="mini" type="default">
           <i class="fa fa-reply">&nbsp;返回</i>
+        </el-button>
+        <el-button @click="backUpdate" v-if="operation==='update'" size="mini" type="default">
+          <i class="fa fa-reply-all">&nbsp;返回</i>
         </el-button>
       </el-button-group>
     </div>

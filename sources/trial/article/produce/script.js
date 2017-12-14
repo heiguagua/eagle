@@ -20,7 +20,9 @@ import options from "./script.vue.data.options.js";
 
 export default {
   data() {
-    return {};
+    return {
+      operation: "", // 笔录生成页面判断当前操作是新建还是修改
+    };
   },
   computed: {
     ...mapState("Trial", [
@@ -61,7 +63,18 @@ export default {
       this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys); //审议归纳排序
       const editorTrial = this.trial;
       storage.set("trial", editorTrial);
-      vm.$router.push("/layout/trial/preview");
+    },
+    // 新建生成
+    generateCreate() {
+      const vm = this;
+      vm.generate();
+      vm.$router.replace({ path: "/layout/trial/preview", query: { operation: "create" } });
+    },
+    // 修改生成
+    generateUpdate() {
+      const vm = this;
+      vm.generate();
+      vm.$router.replace({ path: "/layout/trial/preview", query: { operation: "update" } });
     },
     getTemplate() {
       const vm = this;
@@ -94,12 +107,12 @@ export default {
   },
   created() {
     const vm = this;
-    const operation = vm.$route.query.operation;
+    vm.operation = vm.$route.query.operation;
     // 区分新建、修改的状态，从而挂载不同的store
-    if (operation === "create") {
+    if (vm.operation === "create") {
       this.setOptions(options);
       this.setTrial(trial());
-    } else if (operation === "update") {
+    } else if (vm.operation === "update") {
       this.setOptions(options);
       const trial = JSON.parse(storage.get("trial"));
       this.setTrial(trial);
