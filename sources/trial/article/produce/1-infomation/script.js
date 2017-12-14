@@ -19,6 +19,7 @@ export default {
   },
   created() {
     const params =storage.get("case");
+    this.trial.preface.organize.program = params.hearing_procedure;
     this.trial.infomation.code =params.case_no;
     this.trial.infomation.reason =params.case_brief;
     this.trial.infomation.location.name =params.court_name;

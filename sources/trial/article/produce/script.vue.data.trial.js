@@ -1033,6 +1033,7 @@ export default () => {
       // 庭审组织
       organize: {
         status: "hide",
+        program: "simple",
         detail: "因工作调动，审判员/审判长/代理审判员/人民陪审员/书记员由XXX更换为XXX。",
       },
       // 告知诉讼权利
