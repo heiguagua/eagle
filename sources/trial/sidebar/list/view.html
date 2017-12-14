@@ -13,7 +13,7 @@
     <el-table-column fixed="right" label="操作" width="100">
       <template slot-scope="scope">
         <el-button @click="peekTrial(scope.row)" type="text" size="small">
-          <i title="预览" class="fa fa-file-word-o"></i>
+          <i title="预览" class="fa fa-eye"></i>
         </el-button>
         <el-button @click="updateTrial(scope.row)" type="text" size="small">
           <i title="编辑" class="fa fa-pencil-square-o"></i>
@@ -25,7 +25,7 @@
     </el-table-column>
   </el-table>
   <!-- 预览弹窗 -->
-  <el-dialog :visible.sync="peekDialogVisible" width="50%" center>
+  <el-dialog :visible.sync="peekDialogVisible" width="50%" top="0" center>
     <span v-html="htmlTrial">需要注意的是内容是默认不居中的</span>
   </el-dialog>
 </div>

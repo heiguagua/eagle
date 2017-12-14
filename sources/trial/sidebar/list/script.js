@@ -98,9 +98,6 @@ export default {
             message(vm, "warning", data.head.message);
           }
         })
-        .then(result => {
-
-        })
     }
   },
   created() {
