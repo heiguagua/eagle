@@ -104,10 +104,11 @@ export default {
     };
   },
   show2hide: function(trial,str1, str2) {
+    const vm = this;
     trial.verification[str2] = false;
     if (trial.verification.participator[str1].length > 1) {
       trial.verification.participator[str1].forEach(function(item) {
-        if (this.isType(item) === 'Object') {
+        if (vm.isType(item) === 'Object') {
           let array = [];
           for (let i in item) {
             if (i !== '$$hashKey') {
@@ -137,7 +138,7 @@ export default {
       thirdArray = [];
 
     for (let i in trial.verification.participator) {
-      if (this.isType(trial.verification.participator[i]) === 'Array') {
+      if (vm.isType(trial.verification.participator[i]) === 'Array') {
         trial.verification.participator[i].forEach(function(v) {
           all = all.concat(vm.for2Array(v));
         });
@@ -165,10 +166,11 @@ export default {
    * @return {[type]}      [description]
    */
   for2Array: function(data) {
+    const vm = this;
     let tempArray = [];
-    if (this.isType(data) === 'Object') {
+    if (vm.isType(data) === 'Object') {
       for (let i in data) {
-        if (this.isType(data[i]) === 'Array') {
+        if (vm.isType(data[i]) === 'Array') {
           tempArray = tempArray.concat(data[i]);
         }
       }
