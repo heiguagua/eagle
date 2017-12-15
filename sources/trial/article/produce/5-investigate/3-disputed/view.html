@@ -1,7 +1,7 @@
 <section title="法庭调查-争议归纳" class="investigate-disputed">
   <div class="access">
     <i class="el-icon-edit-outline"></i>
-    <em>法庭调查-有争议归纳</em>
+    <em>法庭调查-争议归纳</em>
     <div class="tools">
       <el-dropdown>
         <el-button type="primary" size="small">
@@ -17,7 +17,7 @@
   </div>
   <div class="content">
     <p>审：争议事实：</p>
-    <el-input v-model="trial.investigate.conclude.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
+    <el-input v-model="trial.investigate.conclude.disputed.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
     <p>对于本院归纳内容是否有异议或补充？</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
