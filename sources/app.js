@@ -14,6 +14,12 @@ import "animate.css/animate.css";
 import ElementUI from "element-ui";
 import * as VueMenu from "@hscmap/vue-menu";
 import VueScrollTo from "vue-scrollto";
+// filter
+import * as custom from './common/scripts/filter';
+
+Object.keys(custom).forEach(key => {
+  Vue.filter(key, custom[key])
+})
 
 Vue.use(ElementUI);
 Vue.use(VueMenu);
