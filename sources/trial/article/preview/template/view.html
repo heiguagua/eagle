@@ -11,7 +11,7 @@
     <div title="庭审信息" id="infomation" :style="commonStyle">
       <p :style="pMargin">案号：{{trial.infomation.code}}</p>
       <p :style="pMargin">案由：{{trial.infomation.reason}}</p>
-      <p :style="pMargin"> 开庭时间：{{trial.infomation.date}}{{trial.infomation.time.start}}至{{trial.infomation.time.end}}
+      <p :style="pMargin"> 开庭时间：{{trial.infomation.date}}{{trial.infomation.time.start | dateServer}}至{{trial.infomation.time.end | dateServer}}
       </p>
       <p :style="pMargin">开庭地点：{{trial.infomation.location.name}}第{{trial.infomation.location.number}}号法庭第{{trial.infomation.location.times}}次开庭</p>
       <p :style="pMargin">是否公开审理：{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 旁听人数：{{trial.infomation.audience}}人</p>
@@ -168,7 +168,7 @@
     </div>
     <div title="庭审序言" id="preface" :style="commonStyle">
       <div title="庭审组织" id="organize">
-        <p :style="pMargin">审：本院受理案号<span>{{trial.infomation.code}}</span>原告<span v-for="data in trial.verification.participator.accusers">
+        <p :style="pMargin" v-if="!this.trial.preface.organize.program === 'simple'">审：本院受理案号<span>{{trial.infomation.code}}</span>原告<span v-for="data in trial.verification.participator.accusers">
             <span v-for="item in data.subjects">
             <span>{{item.name}}</span>
           </span>
@@ -176,8 +176,26 @@
             <span v-for="item in data.subjects">
             <span>{{item.name}}</span>
           </span>
-          </span> 一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用普通程序第<span>{{trial.infomation.location.times}}</span>次{{ trial.infomation.isPublic }}开庭进行审理。<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>本案由<span v-for="(officer2,officer2Index) in trial.infomation.officer">{{officer2.duty}}{{officer2.name}}<span v-if="officer2Index!==(trial.infomation.officer.length-1)">、</span></span>
+          </span> 一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用普通程序第<span>{{trial.infomation.location.times | numberFormat}}</span>次{{ trial.infomation.isPublic }}开庭进行审理。<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>本案由<span v-for="(officer2,officer2Index) in trial.infomation.officer">{{officer2.duty}}{{officer2.name}}<span v-if="officer2Index!==(trial.infomation.officer.length-1)">、</span></span>
           依法组成合议庭，由审判员<span>{{ trial.infomation.officer[0].name }}</span>担任审判长，由书记员<span>{{ trial.infomation.clerk }}</span>担任记录。
+        </p>
+        <p :style="pMargin" v-if="this.trial.preface.organize.program === 'simple'">
+          审：本院受理
+          <span>{{ trial.infomation.code }}</span>
+          <span v-for="data in trial.verification.participator.accusers">
+            <span v-for="item in data.subjects">
+              <span>{{ item.name }}</span>
+            </span>
+          </span>
+          与
+          <span v-for="data in trial.verification.participator.accuseds">
+            <span v-for="item in data.subjects">
+              <span>{{ item.name }}</span>
+            </span>
+          </span>
+          <span>{{trial.infomation.reason}}</span>
+          一案后，根据《中华人民共和国民事诉讼法》第三十九条、第四十一条之规定，依法适用简易程序第
+          <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。   本案由审判员<span>{{ trial.infomation.officer[0].name }}</span>独任审理，由书记员<span>{{ trial.infomation.clerk }}</span>担任记录。
         </p>
       </div>
       <div title="告知诉讼权利" id="rights">

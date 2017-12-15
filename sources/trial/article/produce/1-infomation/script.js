@@ -22,8 +22,8 @@ export default {
     // 区分新建、修改的状态
     if (operation === "create" ||this.trial.infomation.date =="") {
       this.trial.infomation.date =new Date();
-      this.trial.infomation.time.start ="09:30:00";
-      this.trial.infomation.time.end="11:30:00";
+      this.trial.infomation.time.start ="09:30";
+      this.trial.infomation.time.end="11:30";
     }
     const params = storage.get("case");
     this.trial.preface.organize.program = params.hearing_procedure;
