@@ -36,7 +36,7 @@ export default {
       // vm.event.verify.verify_participant.lagalAgentChange(obj);
       Util.getToCourt(this.trial); //存储到庭人员 （诉讼地位名：姓名）
     },
-    nameFormat() {//失去焦点时更新未到庭人员名称以及姓名格式验证
+    nameFormat() { //失去焦点时更新未到庭人员名称以及姓名格式验证
       Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
     },
     accuserEvent(operation, params) {
@@ -117,15 +117,13 @@ export default {
         const subjectIndex = params.subjectIndex;
         const thirdpartyIndex = params.thirdpartyIndex;
         const subjects = this.trial.verification.participator.thirdparties[thirdpartyIndex].subjects;
-        if (subjects.length > 1) {
+        if (subjects.length >= 1) {
           subjects.splice(subjectIndex, 1);
           Util.updateNum('subjects', 'thirdparties', this.trial);
           message(vm, "warning", "温馨提示：第三人删除成功！");
           // 更新到庭未到庭人员状态
           Util.showSetting(this.trial); //获取到庭状态
           Util.getAbsentee(this.trial); //获取未到庭人员列表
-        } else {
-          message(vm, "error", "温馨提示：不能删除唯一的第三人！");
         }
       }
     },
