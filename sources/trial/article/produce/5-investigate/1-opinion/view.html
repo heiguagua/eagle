@@ -92,12 +92,8 @@
       <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</i>
     </span>
     经本院依法传唤，无正当理由拒不到庭参加诉讼，且未提交书面
-    <span v-if="(!(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0 )) || trial.verification.other.thirdPartFlag || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag) && (trial.verification.other.thirdPartFlag && ((trial.verification.participator.thirdparties[0].subjects.length > 0 )||(trial.verification.participator.thirdparties[0].responsibles.length > 0)|| (trial.verification.participator.thirdparties[0].agents.length > 0)))">答辩意见</span>
-    <span v-if="(!(trial.verification.other.thirdPartFlag && ((trial.verification.participator.thirdparties[0].subjects.length > 0 )||(trial.verification.participator.thirdparties[0].responsibles.length > 0)|| (trial.verification.participator.thirdparties[0].agents.length > 0))) || trial.verification.other.thirdFlag) && (trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0 ))">陈述意见</span>
-    <span v-if="!trial.verification.other.attendanceFlag && (!trial.verification.other.defendantFlag || !trial.verification.other.thirdFlag)">答辩意见或陈述意见</span> ，
-    <span v-if="(!(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0 )) || trial.verification.other.thirdPartFlag || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag) && (trial.verification.other.thirdPartFlag && ((trial.verification.participator.thirdparties[0].subjects.length > 0 )||(trial.verification.participator.thirdparties[0].responsibles.length > 0)|| (trial.verification.participator.thirdparties[0].agents.length > 0)))">答辩意见</span>
-    <span v-if="(!(trial.verification.other.thirdPartFlag && ((trial.verification.participator.thirdparties[0].subjects.length > 0 )||(trial.verification.participator.thirdparties[0].responsibles.length > 0)|| (trial.verification.participator.thirdparties[0].agents.length > 0))) || trial.verification.other.thirdFlag) && (trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0 ))">陈述意见</span>
-    <span v-if="!trial.verification.other.attendanceFlag && (!trial.verification.other.defendantFlag || !trial.verification.other.thirdFlag)">答辩意见或陈述意见</span>
+    <span>答辩意见</span> ，
+    <span>答辩意见</span>
     予以省略。</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">

@@ -19,7 +19,7 @@
       <div title="诉讼主体" class="subject animated slideInLeft" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p>
           <b>原告</b>：
-          <el-input v-model="subject.name" placeholder="请输入原告名称" class="width-92"></el-input>，
+          <el-input v-model="subject.name" placeholder="请输入原告名称" class="width-92" @blur="nameFormat()"></el-input>，
         </p>
         <p>
           <el-input v-model="subject.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入原告信息" class="width-100"></el-input>
@@ -48,7 +48,7 @@
             <el-option v-for="option in options.responsible" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>，
-          <el-input v-model="responsible.name" placeholder="请输入法定代表人/负责人/法定代理人/指定代理人名称" class="width-65"></el-input>，
+          <el-input v-model="responsible.name" placeholder="请输入法定代表人/负责人/法定代理人/指定代理人名称" class="width-65" @blur="nameFormat()"></el-input>，
         </p>
         <p>
           <el-input v-model="responsible.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入法定代表人/负责人/法定代理人/指定代理人信息" class="width-100"></el-input>
@@ -69,7 +69,7 @@
       <div title="委托诉讼代理人" class="agent animated slideInDown" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
         <p>
           委托诉讼代理人：
-          <el-input v-model="agent.name" placeholder="请输入委托诉讼代理人名称" class="width-83"></el-input>，
+          <el-input v-model="agent.name" placeholder="请输入委托诉讼代理人名称" class="width-83" @blur="nameFormat()"></el-input>，
         </p>
         <p>
           <el-input v-model="agent.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入委托诉讼代理人信息" class="width-100"></el-input>
