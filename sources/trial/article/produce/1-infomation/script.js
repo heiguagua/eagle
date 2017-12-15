@@ -42,7 +42,7 @@ export default {
         let nameArr = [];
         nameArr[0] = value.substr(0, 1);
         value.substr(1, 2) ? nameArr[1] = value.substr(1, 2) : 0;
-        this.trial.infomation.officer[index].name = nameArr.join('  ');
+        this.trial.infomation.officer[index].name = nameArr.join('　　');
       }
       if (!this.trial.infomation.officer[index].name) {
         // layer.msg('姓名不能为空')

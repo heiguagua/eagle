@@ -5,8 +5,8 @@
   </div>
   <div id="content-wrap">
     <div :style="[commonStyle,right]">
-      <p :style="pMargin" v-for="officer in trial.infomation.officer">{{officer.duty}}：{{officer.name}}</p>
-      <p :style="pMargin">书&nbsp;记&nbsp;员：{{trial.infomation.clerk}}</p>
+      <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审&nbsp;&nbsp;判&nbsp;&nbsp;长：</span><span v-else-if="officer.duty=='审判员'">审&nbsp;&nbsp;判&nbsp;&nbsp;员：</span><span v-else>{{officer.duty}}</span>{{officer.name}}</p>
+      <p :style="pMargin">书&nbsp;&nbsp;记&nbsp;&nbsp;员：{{trial.infomation.clerk}}</p>
     </div>
     <div title="庭审信息" id="infomation" :style="commonStyle">
       <p :style="pMargin">案号：{{trial.infomation.code}}</p>
@@ -16,12 +16,8 @@
       <p :style="pMargin">开庭地点：{{trial.infomation.location.name}}第{{trial.infomation.location.number}}号法庭第{{trial.infomation.location.times}}次开庭</p>
       <p :style="pMargin">是否公开审理：{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 旁听人数：{{trial.infomation.audience}}人</p>
       <div>
-        <!-- <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;长：{{trial.infomation.officer[0].name}}</p>
-        <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;员：{{trial.infomation.officer[1].name}}</p>
-        <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;员：{{trial.infomation.officer[2].name}}</p>
-        <p :style="pMargin">书&nbsp;记&nbsp;员：{{trial.infomation.clerk}}</p> -->
-        <p :style="pMargin" v-for="officer in trial.infomation.officer">{{officer.duty}}：{{officer.name}}</p>
-        <p :style="pMargin">书&nbsp;记&nbsp;员：{{trial.infomation.clerk}}</p>
+        <p :style="pMargin" v-for="officer in trial.infomation.officer" ><span v-if="officer.duty=='审判长'">审&nbsp;&nbsp;判&nbsp;&nbsp;长：</span><span v-else-if="officer.duty=='审判员'">审&nbsp;&nbsp;判&nbsp;&nbsp;员：</span><span v-else>{{officer.duty}}</span>{{officer.name}}</p>
+        <p :style="pMargin">书&nbsp;&nbsp;记&nbsp;&nbsp;员：{{trial.infomation.clerk}}</p>
       </div>
     </div>
     <div title="法庭纪律" id="discipline" :style="commonStyle">
