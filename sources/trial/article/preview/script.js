@@ -104,8 +104,9 @@ export default {
           //   });
         });
     },
-    toWord() {
+    exportWord() {
       const vm = this;
+      const lawcase = storage.get("case");
       const template = vm.cleanHTML(vm.$refs.template.$el.innerHTML);
       const html = "<html><body>" + template + "</body></html>";
       Http.fetch({
@@ -113,7 +114,6 @@ export default {
           url: Http.url.master + "/export/word",
           responseType: "blob",
           data: {
-            fileName: "demo",
             html,
           }
         })
@@ -122,7 +122,34 @@ export default {
           if (data) {
             let link = document.createElement("a");
             link.href = window.URL.createObjectURL(data);
-            link.download = "庭审笔录.doc";
+            link.download = lawcase.title + ".doc";
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+            message(vm, "info", "温馨提示：庭审笔录导出成功！");
+          } else {
+            message(vm, "warning", "温馨提示：庭审笔录导出失败！");
+          }
+        });
+    },
+    exportPDF() {
+      const vm = this;
+      const lawcase = storage.get("case");
+      const template = vm.cleanHTML(vm.$refs.template.$el.innerHTML);
+      const html = "<html><body>" + template + "</body></html>";
+      Http.fetch({
+          method: "POST",
+          url: Http.url.master + "/export/pdf",
+          responseType: "blob",
+          data: {
+            html,
+          }
+        })
+        .then(result => {
+          const data = result.data;
+          if (data) {
+            let link = document.createElement("a");
+            link.href = window.URL.createObjectURL(data);
+            link.download = lawcase.title + ".pdf";
             link.click();
             window.URL.revokeObjectURL(link.href);
             message(vm, "info", "温馨提示：庭审笔录导出成功！");

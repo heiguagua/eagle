@@ -13,11 +13,14 @@
     </div>
     <div class="right">
       <el-button-group>
-        <el-button @click="toWord" size="mini" type="default">
-          <i class="fa fa-file-word-o">&nbsp;导出</i>
-        </el-button>
         <el-button @click="print" size="mini" type="default">
           <i class="fa fa-print">&nbsp;打印</i>
+        </el-button>
+        <el-button @click="exportWord" size="mini" type="default">
+          <i class="fa fa-file-word-o">&nbsp;导出Word</i>
+        </el-button>
+        <el-button @click="exportPDF" size="mini" type="default">
+          <i class="fa fa-file-pdf-o">&nbsp;导出PDF</i>
         </el-button>
         <el-button @click="backUpdate" v-if="operation==='create'" size="mini" type="default">
           <i class="fa fa-reply">&nbsp;返回</i>
@@ -28,7 +31,7 @@
       </el-button-group>
     </div>
   </div>
-  <div class="content">
+  <div class="document">
     <judge-template ref="template" class="animated fadeInLeft"></judge-template>
   </div>
 </div>
