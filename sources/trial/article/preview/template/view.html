@@ -5,9 +5,7 @@
   </div>
   <div id="content-wrap">
     <div :style="[commonStyle,right]">
-      <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;长：{{trial.infomation.officer[0].name}}</p>
-      <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;员：{{trial.infomation.officer[1].name}}</p>
-      <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;员：{{trial.infomation.officer[2].name}}</p>
+      <p :style="pMargin" v-for="officer in trial.infomation.officer">{{officer.duty}}：{{officer.name}}</p>
       <p :style="pMargin">书&nbsp;记&nbsp;员：{{trial.infomation.clerk}}</p>
     </div>
     <div title="庭审信息" id="infomation" :style="commonStyle">
@@ -18,9 +16,11 @@
       <p :style="pMargin">开庭地点：{{trial.infomation.location.name}}第{{trial.infomation.location.number}}号法庭第{{trial.infomation.location.times}}次开庭</p>
       <p :style="pMargin">是否公开审理：{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 旁听人数：{{trial.infomation.audience}}人</p>
       <div>
-        <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;长：{{trial.infomation.officer[0].name}}</p>
+        <!-- <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;长：{{trial.infomation.officer[0].name}}</p>
         <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;员：{{trial.infomation.officer[1].name}}</p>
         <p :style="pMargin">审&nbsp;&nbsp;判&nbsp;&nbsp;员：{{trial.infomation.officer[2].name}}</p>
+        <p :style="pMargin">书&nbsp;记&nbsp;员：{{trial.infomation.clerk}}</p> -->
+        <p :style="pMargin" v-for="officer in trial.infomation.officer">{{officer.duty}}：{{officer.name}}</p>
         <p :style="pMargin">书&nbsp;记&nbsp;员：{{trial.infomation.clerk}}</p>
       </div>
     </div>
@@ -32,11 +32,8 @@
       <p :style="pMargin"> 4.不准吸烟和随地吐痰，不得在法庭上使用移动电话；</p>
       <p :style="pMargin"> 5.旁听群众对法庭的审判活动如有意见，可以在闭庭后书面向本院提出，对于违反法庭纪律而又不听劝告和制止的人，<span>{{trial.infomation.officer[0].duty}}</span>有权根据不同情节作出没收胶卷、录音带、录像带、笔记本或责令退出法庭等处理，情节严重的并可追究刑事责任；</p>
       <p :style="pMargin"> 6.对哄闹、冲击法庭，侮辱、诽谤、威胁、殴打审判人员等严重扰乱法庭秩序的人，依法追究刑事责任；情节较轻的，予以罚款、拘留。</p>
-      <p :style="pMargin"> 全体起立，请
-        <b>{{trial.infomation.officer[0].duty}}</b>
-        <b v-if="isChiefOfficer">、{{trial.infomation.officer[1].duty}}</b>
-        <b v-if="isChiefOfficer">、{{trial.infomation.officer[2].duty}}</b>入庭。</p>
-      <p :style="pMargin"> 报告<b>{{trial.infomation.officer[0].duty}}</b>本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。</p>
+      <p :style="pMargin"> 全体起立，请<span v-for="(officer1,officer1Index) in trial.infomation.officer">{{officer1.duty}} <span v-if="officer1Index!==(trial.infomation.officer.length-1)">、</span></span>入庭。</p>
+      <p :style="pMargin"> 报告{{trial.infomation.officer[0].duty}}本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。</p>
       <p :style="pMargin">审：请坐下，准备法庭记录。</p>
     </div>
     <div title="信息核对" id="verification" :style="commonStyle">
@@ -175,27 +172,16 @@
     </div>
     <div title="庭审序言" id="preface" :style="commonStyle">
       <div title="庭审组织" id="organize">
-        <p :style="pMargin">审：本院受理案号
-          <span>{{ trial.infomation.code }}</span>原告
-          <span v-for="data in trial.verification.participator.accusers">
+        <p :style="pMargin">审：本院受理案号<span>{{trial.infomation.code}}</span>原告<span v-for="data in trial.verification.participator.accusers">
             <span v-for="item in data.subjects">
-            <span>{{ item.name }}</span>
+            <span>{{item.name}}</span>
           </span>
-          </span>
-          与被告
-          <span v-for="data in trial.verification.participator.accuseds">
+          </span>与被告<span v-for="data in trial.verification.participator.accuseds">
             <span v-for="item in data.subjects">
-            <span>{{ item.name }}</span>
+            <span>{{item.name}}</span>
           </span>
-          </span>
-          一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用 普通程序第
-          <span>{{ trial.infomation.location.times }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。
-          <span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span> 本案由
-          <span>{{ trial.infomation.officer[0].duty }}</span><span>{{ trial.infomation.officer[0].name }}</span>、
-          <span>{{ trial.infomation.officer[1].duty }}</span><span>{{ trial.infomation.officer[1].name }}</span>、
-          <span>{{ trial.infomation.officer[2].duty }}</span><span>{{ trial.infomation.officer[2].name }}</span>依法组成合议庭，由审判员
-          <span>{{ trial.infomation.officer[0].name }}</span>担任审判长，由书记员
-          <span>{{ trial.infomation.clerk }}</span>担任记录。
+          </span> 一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用普通程序第<span>{{trial.infomation.location.times}}</span>次{{ trial.infomation.isPublic }}开庭进行审理。<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>本案由<span v-for="(officer2,officer2Index) in trial.infomation.officer">{{officer2.duty}}{{officer2.name}}<span v-if="officer2Index!==(trial.infomation.officer.length-1)">、</span></span>
+          依法组成合议庭，由审判员<span>{{ trial.infomation.officer[0].name }}</span>担任审判长，由书记员<span>{{ trial.infomation.clerk }}</span>担任记录。
         </p>
       </div>
       <div title="告知诉讼权利" id="rights">

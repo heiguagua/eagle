@@ -9,9 +9,9 @@ export default {
       "trial",
       "options"
     ]),
-    isChiefOfficer() {
-      return (this.trial.infomation.officer[0].duty === "审判长") ? true : false;
-    },
+    // isChiefOfficer() {
+    //   return (this.trial.infomation.officer[0].duty === "审判长") ? true : false;
+    // },
     isChiefOfficerTwo() {
       const params = storage.get("case");
       return (params.hearing_procedure === "simple") ? false : true;
@@ -23,8 +23,9 @@ export default {
     this.trial.infomation.code = params.case_no;
     this.trial.infomation.reason = params.case_brief;
     this.trial.infomation.location.name = params.court_name;
-    if (params.hearing_procedure === "simple") {
+    if (params.hearing_procedure === "simple"||params.hearing_procedure === "small_claim") {
       this.trial.infomation.officer[0].duty = "审判员";
+      this.trial.infomation.officer.splice(1,2);
     }
   },
   methods: {
