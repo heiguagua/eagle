@@ -1,5 +1,6 @@
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 import { message, storage } from '../../../../common/scripts/helper';
+import moment from 'moment' ;
 export default {
   data() {
     return {}
@@ -21,7 +22,10 @@ export default {
     const operation = this.$route.query.operation;
     // 区分新建、修改的状态
     if (operation === "create" ||this.trial.infomation.date =="") {
-      this.trial.infomation.date =new Date();
+      let date = moment(new Date()).format('YYYY-MM-DD');
+      const arr =date.split('-');
+      date =arr[0]+"年"+arr[1]+"月"+arr[2]+"日";
+      this.trial.infomation.date = date;
       this.trial.infomation.time.start ="09:30";
       this.trial.infomation.time.end="11:30";
     }
