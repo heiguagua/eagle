@@ -16,9 +16,9 @@
       开庭时间：
       <el-date-picker v-model="trial.infomation.date" type="date" placeholder="选择日期" value-format="yyyy年MM月dd日" format="yyyy年MM月dd日" class="width-33"></el-date-picker>
       &nbsp;
-      <el-time-select v-model="trial.infomation.time.start" placeholder="选择开始时间" value-format="HH时mm分" format="HH时mm分" :picker-options="{selectableRange:'08:30:00-18:00:00',step: '00:05'}" class="width-25"></el-time-select>
+      <el-time-picker v-model="trial.infomation.time.start"  placeholder="选择开始时间" value-format="HH时mm分" format="HH时mm分" :picker-options="{selectableRange:'08:30:00-18:00:00',step: '00:05'}" class="width-25"></el-time-picker>
       至
-      <el-time-select v-model="trial.infomation.time.end" placeholder="选择结束时间" value-format="HH时mm分" format="HH时mm分" :picker-options="{selectableRange:'08:30:00-18:00:00',step: '00:05',minTime:trial.infomation.time.start}" class="width-25"></el-time-select>
+      <el-time-picker v-model="trial.infomation.time.end"  placeholder="选择结束时间" value-format="HH时mm分" format="HH时mm分" :picker-options="{selectableRange:'08:30:00-18:00:00',step: '00:05',minTime:trial.infomation.time.start}" class="width-25"></el-time-picker>
     </p>
     <p title="地点">
       开庭地点：

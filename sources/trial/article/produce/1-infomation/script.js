@@ -18,6 +18,13 @@ export default {
     },
   },
   created() {
+    const operation = this.$route.query.operation;
+    // 区分新建、修改的状态
+    if (operation === "create" ||this.trial.infomation.date =="") {
+      this.trial.infomation.date =new Date();
+      this.trial.infomation.time.start ="09:30:00";
+      this.trial.infomation.time.end="11:30:00";
+    }
     const params = storage.get("case");
     this.trial.preface.organize.program = params.hearing_procedure;
     this.trial.infomation.code = params.case_no;
@@ -42,7 +49,7 @@ export default {
         let nameArr = [];
         nameArr[0] = value.substr(0, 1);
         value.substr(1, 2) ? nameArr[1] = value.substr(1, 2) : 0;
-        this.trial.infomation.officer[index].name = nameArr.join('　　');
+        this.trial.infomation.officer[index].name = nameArr.join('　');
       }
       if (!this.trial.infomation.officer[index].name) {
         // layer.msg('姓名不能为空')
@@ -62,7 +69,7 @@ export default {
         let nameArr = [];
         nameArr[0] = value.substr(0, 1);
         value.substr(1, 2) ? nameArr[1] = value.substr(1, 2) : 0;
-        this.trial.infomation.clerk = nameArr.join('  ');
+        this.trial.infomation.clerk = nameArr.join('　');
       }
       if (!this.trial.infomation.clerk) {
         // layer.msg('姓名不能为空')
