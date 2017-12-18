@@ -7,15 +7,9 @@
     <p>审：现在法庭做如下询问</p>
     <div v-if="trial.investigate.inquiry.elementquerys.length">
       <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
-        <el-dropdown type="primary" size="mini" split-button>
-            <i class="fa fa-trash">&nbsp;移除</i>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item></el-dropdown-item>
-              <el-dropdown-item>
-                <i @click="remove({elementIndex})" class="fa fa-times color-danger">&nbsp;移除</i>
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+          <el-button @click="remove({elementIndex})" size="mini" type="danger">
+            <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
+          </el-button>
         <p >审：
             <el-input v-model="element.ask_info_start" type="textarea" :autosize="{minRows: 2}" placeholder="" class="width-100"></el-input>
         </p>
