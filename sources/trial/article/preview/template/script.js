@@ -16,6 +16,15 @@ export default {
         textAlign: "justify",
         textJustify: "inter-ideograph"
       },
+      indentStyle: {
+        lineHeight: "30pt",
+        margin: "0 0.917cm",
+        fontFamily: "仿宋",
+        fontSize: "16pt",
+        textIndent: "0",
+        textAlign: "justify",
+        textJustify: "inter-ideograph"
+      },
       center :{
         textAlign: "center",
       },
