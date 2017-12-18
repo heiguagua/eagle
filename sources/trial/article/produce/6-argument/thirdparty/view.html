@@ -1,4 +1,4 @@
-<section title="第三人辩论意见" class="argument-thirdparty">
+<section title="第三人辩论意见" class="argument-thirdparty" v-if="trial.verification.participator.thirdparties.length &&((trial.verification.participator.thirdparties[0].subjects.length && trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length && trial.verification.participator.thirdparties[0].agents[0].showFlag))">
   <div class="access">
     <i class="el-icon-edit-outline"></i>
     <em>法庭辩论-第三人发表意见。</em>
