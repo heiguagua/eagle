@@ -41,6 +41,7 @@ export default {
               const data = result.data;
               if (Http.protocol(data, 200)) {
                 message(vm, "info", data.head.message);
+                vm.$router.replace({ path: "/layout/trial/blank" });
                 vm.getTrials({ vm })
               } else {
                 message(vm, "warning", data.head.message);

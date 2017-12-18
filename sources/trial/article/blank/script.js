@@ -20,5 +20,13 @@ export default {
   mounted() {
     this.options.loading = false;
   },
-  methods: {}
+  methods: {
+    ...mapMutations("Trial", [
+      "setLoading"
+    ]),
+    create() {
+      this.setLoading(false);
+      // this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create' } });
+    }
+  }
 };

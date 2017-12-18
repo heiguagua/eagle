@@ -18,7 +18,10 @@ export default {
     },
     setOptions(state, payload) {
       state.options = payload;
-    }
+    },
+    setLoading(state, payload) {
+      state.options.loading = payload;
+    },
   },
   actions: {
     generateID() {
