@@ -108,3 +108,9 @@ export const numberFormat = value => {
     }
     return newchar;
 };
+
+export const trim = value => {
+  console.log(value)
+  let text = value.replace(/　/g, '')
+  return text
+};

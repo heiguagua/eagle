@@ -205,7 +205,7 @@
     </div>
     <div title="庭审序言" id="preface" :style="commonStyle">
       <div title="庭审组织" id="organize">
-        <p :style="pMargin" v-if="!this.trial.preface.organize.program === 'simple'">审：本院受理案号<span>{{trial.infomation.code}}</span>原告<span v-for="data in trial.verification.participator.accusers">
+        <p :style="pMargin" v-if="this.trial.preface.organize.program !== 'simple'">审：本院受理案号<span>{{trial.infomation.code}}</span>原告<span v-for="data in trial.verification.participator.accusers">
             <span v-for="item in data.subjects">
             <span>{{item.name}}</span>
           </span>
@@ -213,8 +213,8 @@
             <span v-for="item in data.subjects">
             <span>{{item.name}}</span>
           </span>
-          </span> 一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用普通程序第<span>{{trial.infomation.location.times | numberFormat}}</span>次{{ trial.infomation.isPublic }}开庭进行审理。<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>本案由<span v-for="(officer2,officer2Index) in trial.infomation.officer">{{officer2.duty}}{{officer2.name}}<span v-if="officer2Index!==(trial.infomation.officer.length-1)">、</span></span>
-          依法组成合议庭，由审判员<span>{{ trial.infomation.officer[0].name }}</span>担任审判长，由书记员<span>{{ trial.infomation.clerk }}</span>担任记录。
+          </span> 一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用普通程序第<span>{{trial.infomation.location.times | numberFormat}}</span>次{{ trial.infomation.isPublic }}开庭进行审理。<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>本案由<span v-for="(officer2,officer2Index) in trial.infomation.officer">{{officer2.duty}}{{officer2.name | trim}}<span v-if="officer2Index!==(trial.infomation.officer.length-1)">、</span></span>
+          依法组成合议庭，由审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>担任审判长，由书记员<span>{{ trial.infomation.clerk | trim}}</span>担任记录。
         </p>
         <p :style="pMargin" v-if="this.trial.preface.organize.program === 'simple'">
           审：本院受理
@@ -232,7 +232,7 @@
           </span>
           <span>{{trial.infomation.reason}}</span>
           一案后，根据《中华人民共和国民事诉讼法》第三十九条、第四十一条之规定，依法适用简易程序第
-          <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。本案由审判员<span>{{ trial.infomation.officer[0].name }}</span>独任审理，由书记员<span>{{ trial.infomation.clerk }}</span>担任记录。
+          <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。本案由审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>独任审理，由书记员<span>{{ trial.infomation.clerk | trim}}</span>担任记录。
         </p>
       </div>
       <div title="告知诉讼权利" id="rights">
