@@ -35,7 +35,7 @@
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          第代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
+          第<b v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</b>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
           <el-input v-model="agent.argument[0].detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人辩论意见" class="width-100"></el-input>
         </p>
       </div>

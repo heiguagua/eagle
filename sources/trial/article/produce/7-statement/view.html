@@ -32,7 +32,7 @@
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
+          原<b v-if="trial.verification.participator.accusers.length > 1">{{accuserIndex + 1}}</b>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
           <el-input v-model="agent.statement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告陈述" class="width-100"></el-input>
         </p>
       </div>
@@ -53,7 +53,7 @@
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          被代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：
+          被<b v-if="trial.verification.participator.accuseds.length > 1">{{accusedIndex + 1}}</b>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：
           <el-input v-model="agent.statement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告陈述" class="width-100"></el-input>
         </p>
       </div>
@@ -74,7 +74,7 @@
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          第代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
+          第<b v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</b>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
           <el-input v-model="agent.statement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人陈述" class="width-100"></el-input>
         </p>
       </div>
@@ -83,15 +83,15 @@
   <div title="缺席" class="content" v-if="trial.verification.other.absenseStatus">
     <p>审：鉴于
     <span v-for="(person, personIndex) in trial.verification.other.absentee">
-      <i>{{ person.type }}</i>
-      <i>{{ person.name }}</i>
-      <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</i>
+      <b>{{ person.type }}</b>
+      <b>{{ person.name }}</b>
+      <b v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</b>
     </span>
     经本院依法传唤，无正当理由拒不当庭，无法发表最后陈述意见，
     <span v-for="(person, personIndex) in trial.verification.other.absentee">
-      <i>{{ person.type }}</i>
-      <i>{{ person.name }}</i>
-      <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</i>
+      <b>{{ person.type }}</b>
+      <b>{{ person.name }}</b>
+      <b v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</b>
     </span>
     最后陈述意见予以省略。</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
@@ -109,7 +109,7 @@
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          原代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
+          原<b v-if="trial.verification.participator.accusers.length > 1">{{accuserIndex + 1}}</b>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：
           <el-input v-model="agent.absenceStatement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
         </p>
       </div>
@@ -129,7 +129,7 @@
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          被代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：
+          被<b v-if="trial.verification.participator.accuseds.length > 1">{{accusedIndex + 1}}</b>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：
           <el-input v-model="agent.absenceStatement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
         </p>
       </div>
@@ -149,7 +149,7 @@
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
         <p v-if="agent.showFlag">
-          第代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
+          第<b v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</b>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：
           <el-input v-model="agent.absenceStatement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
         </p>
       </div>
