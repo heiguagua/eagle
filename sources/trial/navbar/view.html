@@ -41,7 +41,7 @@
           <i class="el-icon-location"></i>
           <span slot="title">异议及理由</span>
         </el-menu-item>
-        <el-menu-item index="absence" v-scroll-to="'.absence'">
+        <el-menu-item index="absence" v-scroll-to="'.absence'" v-if='trial.verification.other.absenseStatus'>
           <i class="el-icon-location"></i>
           <span slot="title">缺席审理</span>
         </el-menu-item>
