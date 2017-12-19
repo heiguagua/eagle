@@ -708,7 +708,7 @@
                 </p>
               </div>
             </div>
-            <p :style="pMargin">
+            <p :style="pMargin" v-if="element.summary_info_end!=='审：'">
               {{element.summary_info_end}}
             </p>
           </div>
