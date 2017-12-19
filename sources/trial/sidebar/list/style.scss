@@ -1,1 +1,9 @@
-#trial-sidebar-list {}
+@import "../../../common/styles/color";
+#trial-sidebar-list {
+  .trial-name {
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+}

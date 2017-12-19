@@ -99,7 +99,27 @@ export default {
             message(vm, "warning", data.head.message);
           }
         })
-    }
+    },
+    finalTrial(row) {
+      const vm = this;
+      const recordID = row.record_id || "";
+      confirm(vm, "warning", "是否确认当前庭审笔录为最终版本？")
+        .then(() => {
+          Http.fetch({
+              method: "POST",
+              url: Http.url.master + "/trial/" + recordID + "/final",
+            })
+            .then(result => {
+              const data = result.data;
+              if (Http.protocol(data, 200)) {
+                vm.getTrials({ vm });
+                message(vm, "info", data.head.message);
+              } else {
+                message(vm, "warning", data.head.message);
+              }
+            });
+        });
+    },
   },
   created() {
     const vm = this;

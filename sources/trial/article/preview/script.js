@@ -46,6 +46,7 @@ export default {
           if (Http.protocol(data, 200)) {
             vm.getTrials({ vm });
             message(vm, "info", data.head.message);
+            vm.options.loading = false; // 关闭loading动画
             vm.$router.push("/layout/trial/blank");
           } else {
             message(vm, "warning", data.head.message);
@@ -73,6 +74,7 @@ export default {
           if (Http.protocol(data, 200)) {
             vm.getTrials({ vm });
             message(vm, "info", data.head.message);
+            vm.options.loading = false; // 关闭loading动画
             vm.$router.push("/layout/trial/blank");
           } else {
             message(vm, "warning", data.head.message);
@@ -85,24 +87,6 @@ export default {
     },
     backUpdate() {
       this.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
-    },
-    final() {
-      const vm = this;
-      console.log(storage.get("case"));
-      confirm(vm, "warning", "是否确认当前庭审笔录为最终版本？")
-        .then(() => {
-          // Http.fetch({
-          //     method: "POST",
-          //     url: Http.url.master + "/trial/" + recordID + "/final",
-          //   })
-          //   .then(result => {
-          //     const data = result.data;
-          //     if (Http.protocol(data, 200)) {
-          //     } else {
-          //       message(vm, "warning", data.head.message);
-          //     }
-          //   });
-        });
     },
     exportWord() {
       const vm = this;

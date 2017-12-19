@@ -3,23 +3,29 @@
     <el-table-column fixed="left" type="index" label="名称" width="140">
       <template slot-scope="scope">
         <i class="fa fa-file-text"></i>
-        <span>第{{scope.$index + 1}}次庭审笔录</span>
+        <span class="trial-name" @click="peekTrial(scope.row)" title="点击预览">
+          第{{scope.$index + 1}}次庭审笔录
+        </span>
       </template>
     </el-table-column>
     <el-table-column prop="create_time" label="时间" width="180">
     </el-table-column>
-    <el-table-column prop="case_no" label="案号" width="600">
+    <el-table-column prop="case_no" label="案号" width="500">
     </el-table-column>
-    <el-table-column fixed="right" label="操作" width="100">
+    <el-table-column fixed="right" label="操作" width="200">
       <template slot-scope="scope">
-        <el-button @click="peekTrial(scope.row)" type="text" size="small">
-          <i title="预览" class="fa fa-eye"></i>
+        <el-button v-if="scope.row.final_version === 0" @click="updateTrial(scope.row)" type="default" size="mini" plain round>
+          <i title="修改当前笔录" class="fa fa-pencil"></i>
         </el-button>
-        <el-button @click="updateTrial(scope.row)" type="text" size="small">
-          <i title="编辑" class="fa fa-pencil-square-o"></i>
+        <el-button v-if="scope.row.final_version === 0" @click="finalTrial(scope.row)" type="primary" size="mini" plain round>
+          <i title="设置为最终版本笔录" class="fa fa-gavel"></i>
         </el-button>
-        <el-button @click="removeTrial(scope.row)" type="text" size="small">
-          <i title="删除" class="fa fa-trash"></i>
+        <el-button v-if="scope.row.final_version === 0" @click="removeTrial(scope.row)" type="danger" size="mini" plain round>
+          <i title="删除当前笔录" class="fa fa-trash"></i>
+        </el-button>
+        <!--  -->
+        <el-button v-if="scope.row.final_version !== 0" type="text" size="mini">
+            <i class="fa fa-info-circle">&nbsp;已设置最终版本</i>
         </el-button>
       </template>
     </el-table-column>
