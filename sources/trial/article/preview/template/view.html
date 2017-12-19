@@ -542,7 +542,7 @@
         </div>
       </div>
       <div title="争点归纳" id="conclude">
-        <div title="无争议归纳" id="undisputed">
+        <div title="无争议归纳" id="undisputed" v-if="trial.investigate.conclude.undisputed.show">
           <p :style="pMargin">审：根据各方陈述意见，归纳无争议及争议事实如下：无争议事实：{{trial.investigate.conclude.detail}}</p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
             <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -596,7 +596,7 @@
             </div>
           </div>
         </div>
-        <div title="有争议归纳" id="disputed">
+        <div title="有争议归纳" id="disputed" v-if="trial.investigate.conclude.disputed.show">
           <p :style="pMargin">审：争议事实：{{trial.investigate.conclude.disputed.detail}}</p>
           <p :style="pMargin">对于本院归纳内容是否有异议或补充？</p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
