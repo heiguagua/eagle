@@ -72,7 +72,7 @@ export default {
           }
         })
         .then(result => {
-          vm.$router.replace({ path: "/layout/trial/blank", query: { operation: "update" } });
+          vm.$router.replace({ path: "/layout/trial/blank" });
         })
         .then(result => {
           vm.$router.replace({ path: "/layout/trial/produce", query: { operation: "update" } });
@@ -113,6 +113,7 @@ export default {
               const data = result.data;
               if (Http.protocol(data, 200)) {
                 vm.getTrials({ vm });
+                vm.$router.replace({ path: "/layout/trial/blank" });
                 message(vm, "info", data.head.message);
               } else {
                 message(vm, "warning", data.head.message);
