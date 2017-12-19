@@ -20,7 +20,7 @@ export default () => {
       },
       location: {
         name: "",
-        number: "",
+        number: "",//开庭次数
         times: ""
       },
       code: "", // 案号
