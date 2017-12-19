@@ -1,3 +1,4 @@
+import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -5,6 +6,12 @@ export default {
         isCollapse: false
       },
     }
+  },
+  computed: {
+    ...mapState("Trial", [
+      "trial",
+      "options"
+    ]),
   },
   methods: {
     collapse() {

@@ -101,6 +101,9 @@ export default {
     if (((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag) {
       trial.verification.other.absence = 1;
       trial.verification.other.absenseStatus = true;
+    } else {
+      trial.verification.other.absence = 0;
+      trial.verification.other.absenseStatus = false;
     };
   },
   show2hide: function(trial,str1, str2) {
