@@ -23,9 +23,9 @@
         <el-button v-if="scope.row.final_version === 0" @click="removeTrial(scope.row)" type="danger" size="mini" plain round>
           <i title="删除当前笔录" class="fa fa-trash"></i>
         </el-button>
-        <!--  -->
+        <!-- 是否已经设置为最终版本的提示信息 -->
         <el-button v-if="scope.row.final_version !== 0" type="text" size="mini">
-            <i class="fa fa-info-circle">&nbsp;已设置最终版本</i>
+          <i class="fa fa-info-circle">&nbsp;已设置最终版本</i>
         </el-button>
       </template>
     </el-table-column>
