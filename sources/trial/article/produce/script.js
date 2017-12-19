@@ -27,6 +27,7 @@ export default {
   computed: {
     ...mapState("Trial", [
       "trial",
+      "trials",
       "options"
     ]),
   },
@@ -117,6 +118,8 @@ export default {
       const trial = JSON.parse(storage.get("trial"));
       this.setTrial(trial);
     }
+    // 开庭次数随右侧列表数联动
+    this.trial.infomation.location.times = this.trials.length + 1;
   },
   directives: {
     hoverToggle: {
