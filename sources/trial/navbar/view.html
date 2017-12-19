@@ -37,7 +37,7 @@
             <span slot="title">第三人</span>
           </el-menu-item>
         </el-submenu>
-        <el-menu-item index="objection" v-scroll-to="'.objection'">
+        <el-menu-item index="objection" v-scroll-to="'.objection'" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag">
           <i class="el-icon-location"></i>
           <span slot="title">异议及理由</span>
         </el-menu-item>
