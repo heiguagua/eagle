@@ -10,5 +10,12 @@ export default {
       "options"
     ]),
   },
-  methods: {},
+  methods: {
+    remove() {
+      this.trial.investigate.conclude.disputed.show = false;
+    },
+    restitute() {
+      this.trial.investigate.conclude.disputed.show = true;
+    }
+  },
 };

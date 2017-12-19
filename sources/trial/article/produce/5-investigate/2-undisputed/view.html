@@ -12,13 +12,16 @@
             <i class="fa fa-gavel">&nbsp;休庭</i>
           </el-dropdown-item>
           <el-dropdown-item>
-            <i class="fa fa-trash">&nbsp;删除</i>
+            <i class="fa fa-trash" @click="remove()">&nbsp;删除</i>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <i class="fa fa-trash" @click="restitute()">&nbsp;还原</i>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
   </div>
-  <div class="content">
+  <div class="content" v-if="trial.investigate.conclude.undisputed.show">
     <p>审：根据各方陈述意见，归纳无争议及争议事实如下：无争议事实：</p>
     <el-input v-model="trial.investigate.conclude.undisputed.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入无争议事实内容" class="width-100"></el-input>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">

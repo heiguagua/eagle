@@ -1057,11 +1057,13 @@ export default () => {
         undisputed: {
           status: "",
           detail: "",
+          show:true
         },
         // 有争议归纳
         disputed: {
           status: "",
-          detail: ""
+          detail: "",
+          show:true
         }
       },
       // 法庭询问

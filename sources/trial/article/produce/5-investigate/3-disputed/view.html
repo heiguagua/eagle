@@ -12,13 +12,16 @@
             <i class="fa fa-gavel">&nbsp;休庭</i>
           </el-dropdown-item>
           <el-dropdown-item>
-            <i class="fa fa-trash">&nbsp;删除</i>
+            <i class="fa fa-trash" @click="remove()">&nbsp;删除</i>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <i class="fa fa-trash" @click="restitute()">&nbsp;还原</i>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
   </div>
-  <div class="content">
+  <div class="content" v-if="trial.investigate.conclude.disputed.show">
     <p>审：争议事实：</p>
     <el-input v-model="trial.investigate.conclude.disputed.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入争议事实内容" class="width-100"></el-input>
     <p>对于本院归纳内容是否有异议或补充？</p>
