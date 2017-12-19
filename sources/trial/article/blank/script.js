@@ -17,16 +17,14 @@ export default {
       return process.env.NODE_ENV !== "production";
     }
   },
-  mounted() {
-    this.options.loading = false;
-  },
+  mounted() {},
   methods: {
     ...mapMutations("Trial", [
       "setLoading"
     ]),
     create() {
-      this.setLoading(false);
-      // this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create' } });
+      // this.setLoading(true);
+      this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create' } });
     }
   }
 };
