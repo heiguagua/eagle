@@ -9,7 +9,7 @@ export default {
       trial: {},
       commonStyle: {
         lineHeight: "30pt",
-        margin: "0 0.917cm",
+        margin: "0 -0.1cm",
         fontFamily: "仿宋",
         fontSize: "16pt",
         textIndent: "30pt",
@@ -18,7 +18,7 @@ export default {
       },
       indentStyle: {
         lineHeight: "30pt",
-        margin: "0 0.917cm",
+        margin: "0 -0.1cm",
         fontFamily: "仿宋",
         fontSize: "16pt",
         textIndent: "0",
