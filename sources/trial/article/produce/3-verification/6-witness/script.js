@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     //控制是否有证人出庭
-    witness: function() {debugger
+    witness: function() {
       const vm = this;
       let array = [];
       for (let i in this.trial.verification.participator) {
@@ -34,7 +34,7 @@ export default {
         });
       }
       this.trial.verification.witness.detail = array;
-      this.trial.verification.witness.detail.length ? (this.trial.verification.witness.status = false) : (this.trial.verification.witness.status = true);
+      this.trial.verification.witness.detail.length ? (this.trial.verification.witness.status = true) : (this.trial.verification.witness.status = false);
     },
   }
 };
