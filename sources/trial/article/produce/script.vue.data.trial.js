@@ -1026,7 +1026,10 @@ export default () => {
       // 异议及理由
       objection: "",
       // 证人是否出庭
-      witness: "",
+      witness: {
+        status:false,
+        detail:[]
+      },
     },
     // 庭审序言
     preface: {
