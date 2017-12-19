@@ -2,8 +2,6 @@ export default () => {
   return {
     // 休庭位置
     adjourn: "",
-    // 是否最终版本
-    isFinal: false,
     // 笔录头部
     head: {
       // 法院名称
@@ -20,7 +18,7 @@ export default () => {
       },
       location: {
         name: "",
-        number: "",//开庭次数
+        number: "", //开庭次数
         times: ""
       },
       code: "", // 案号
@@ -1057,13 +1055,13 @@ export default () => {
         undisputed: {
           status: "",
           detail: "",
-          show:true
+          show: true
         },
         // 有争议归纳
         disputed: {
           status: "",
           detail: "",
-          show:true
+          show: true
         }
       },
       // 法庭询问

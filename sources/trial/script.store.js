@@ -10,23 +10,32 @@ export default {
     options: {},
   },
   mutations: {
+    // 设置单个笔录
     setTrial(state, payload) {
       state.trial = payload;
     },
+    // 设置笔录列表
     setTrials(state, payload) {
       state.trials = payload;
     },
+    // 设置配置项
     setOptions(state, payload) {
       state.options = payload;
     },
+    // 设置加载动画
     setLoading(state, payload) {
       state.options.loading = payload;
     },
+    // 设置休庭位置
+    setAdjourn(state, payload) {
+      state.trial.adjourn = payload;
+    }
   },
   actions: {
     generateID() {
       return shortid.generate();
     },
+    // 获取指定笔录
     getTrial(context, payload) {
       Http.fetch({
           method: "GET",
@@ -42,6 +51,7 @@ export default {
           }
         });
     },
+    // 获取笔录列表
     getTrials(context, payload) {
       let lawsuit = storage.get("case");
       // lawsuit
