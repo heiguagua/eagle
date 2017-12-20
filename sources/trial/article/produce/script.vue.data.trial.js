@@ -119,7 +119,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -227,7 +227,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -334,7 +334,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -444,7 +444,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -551,7 +551,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -658,7 +658,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -768,7 +768,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -875,7 +875,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },
@@ -982,7 +982,7 @@ export default () => {
             },
             // 法庭调解
             conciliation: {
-              status: "同意",
+              status: "愿意",
               detail: "",
               standpoint: "清楚。",
             },

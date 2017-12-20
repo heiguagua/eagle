@@ -47,8 +47,8 @@ export default {
     "有补充"
   ],
   conciliation: [
-    "同意",
-    "不同意"
+    "愿意",
+    "不愿意"
   ],
   requirement: [
     "有",
