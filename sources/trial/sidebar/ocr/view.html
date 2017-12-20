@@ -2,13 +2,13 @@
   <!-- test -->
   <div class="upload">
     <el-upload :action="uploadUrl" :before-upload="beforeAvatarUpload" :on-success="handleSuccess" :headers="headers" :data="uploadData" :limit="100" :auto-upload="true" multiple :file-list="fileList" list-type="picture">
-      <el-button slot="trigger" size="small" type="warning" plain>
-        <i class="fa fa-folder-open">&nbsp;选取文件</i>
+      <el-button slot="trigger" size="mini" type="warning" plain>
+        <i class="fa fa-folder-open">&nbsp;请选择大小不超过4M的<i>jpg</i>或<i>png</i>图片文件</i>
       </el-button>
-      <div slot="tip" class="el-upload__tip">
+      <!-- <div slot="tip" class="el-upload__tip">
         &nbsp;
         <i class="fa fa-info"></i>&nbsp;请上传jpg/jpeg、png格式的图片文件，大小不能超过4M。
-      </div>
+      </div> -->
     </el-upload>
     <div class="thumbnails">
       <el-card v-for="(image,imageIndex) in images" :key="'image'+imageIndex" class="box-card">

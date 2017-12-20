@@ -1,5 +1,15 @@
 @import "../../../common/styles/color";
 #trial-sidebar-list {
+  margin-right: 6px !important; // Scroll bar
+   ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+   ::-webkit-scrollbar-thumb {
+    background: $color-gray;
+    border-radius: 3px;
+  }
   .trial-name {
     &:hover {
       cursor: pointer;

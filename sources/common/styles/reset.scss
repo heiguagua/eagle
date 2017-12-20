@@ -27,13 +27,13 @@ html {
 
 // Scroll bar
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-gray-light;
+  background: $color-silver-light-extra;
   border-radius: 0px;
 }
 
