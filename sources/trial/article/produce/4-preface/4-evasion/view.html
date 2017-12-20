@@ -25,6 +25,8 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="subject.evasion.status === '申请'">，</span>
+          <span v-if="subject.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="subject.evasion.status === '申请' && subject.showFlag">
           <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
@@ -37,6 +39,8 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="responsible.evasion.status === '申请'">，</span>
+          <span v-if="responsible.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="responsible.evasion.status === '申请' && responsible.showFlag">
           <el-input v-model="responsible.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
@@ -49,6 +53,8 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="agent.evasion.status === '申请'">，</span>
+          <span v-if="agent.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="agent.evasion.status === '申请' && agent.showFlag">
           <el-input v-model="agent.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
@@ -63,9 +69,11 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="subject.evasion.status === '申请'">，</span>
+          <span v-if="subject.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="subject.evasion.status === '申请' && subject.showFlag">
-          <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
+          <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告回避理由" class="width-100"></el-input>
         </p>
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
@@ -75,9 +83,11 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="responsible.evasion.status === '申请'">，</span>
+          <span v-if="responsible.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="responsible.evasion.status === '申请' && responsible.showFlag">
-          <el-input v-model="responsible.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
+          <el-input v-model="responsible.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告回避理由" class="width-100"></el-input>
         </p>
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
@@ -87,9 +97,11 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="agent.evasion.status === '申请'">，</span>
+          <span v-if="agent.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="agent.evasion.status === '申请' && agent.showFlag">
-          <el-input v-model="agent.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
+          <el-input v-model="agent.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告回避理由" class="width-100"></el-input>
         </p>
       </div>
     </div>
@@ -101,9 +113,11 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="subject.evasion.status === '申请'">，</span>
+          <span v-if="subject.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="subject.evasion.status === '申请' && subject.showFlag">
-          <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
+          <el-input v-model="subject.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人回避理由" class="width-100"></el-input>
         </p>
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
@@ -113,9 +127,11 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="responsible.evasion.status === '申请'">，</span>
+          <span v-if="responsible.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="responsible.evasion.status === '申请' && responsible.showFlag">
-          <el-input v-model="responsible.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
+          <el-input v-model="responsible.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人回避理由" class="width-100"></el-input>
         </p>
       </div>
       <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
@@ -125,9 +141,11 @@
             <el-option v-for="option in options.evasion" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
+          <span v-if="agent.evasion.status === '申请'">，</span>
+          <span v-if="agent.evasion.status === '不申请'">。</span>
         </p>
         <p v-if="agent.evasion.status === '申请' && agent.showFlag">
-          <el-input v-model="agent.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告回避理由" class="width-100"></el-input>
+          <el-input v-model="agent.evasion.content" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人回避理由" class="width-100"></el-input>
         </p>
       </div>
     </div>
