@@ -8,7 +8,7 @@
       <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审　判　长：</span><span v-else-if="officer.duty=='审判员'">审　判　员：</span><span v-else>{{officer.duty}}：</span>{{officer.name}}</p>
       <p :style="pMargin">书　记　员：{{trial.infomation.clerk}}</p>
     </div>
-    <div title="庭审信息" id="infomation" :style="indentStyle">
+    <div title="庭审信息" class="infomation" :style="indentStyle">
       <p :style="pMargin">案号：{{trial.infomation.code}}</p>
       <p :style="pMargin">案由：{{trial.infomation.reason}}</p>
       <p :style="pMargin"> 开庭时间：{{trial.infomation.date}}{{trial.infomation.time.start | dateServer}}至{{trial.infomation.time.end | dateServer}}
@@ -20,7 +20,7 @@
         <p :style="pMargin">书　记　员：{{trial.infomation.clerk}}</p>
       </div>
     </div>
-    <div title="法庭纪律" id="discipline" :style="commonStyle">
+    <div title="法庭纪律" class="discipline" :style="commonStyle">
       <p :style="pMargin">书记员：当事人及其诉讼代理人入庭（核对当事人及代理人情况）。为了维护法庭秩序，保障审判活动正常进行，根据《中华人民共和国民事诉讼法》第一百三十七条第一款和《中华人民共和国人民法院法庭规则》之规定，现在宣布法庭纪律：</p>
       <p :style="pMargin">1.开庭审理期间，当事人及其他诉讼参与人和旁听群众均应服从<span>{{trial.infomation.officer[0].duty}}</span>指挥；</p>
       <p :style="pMargin"> 2.当事人及其他诉讼参与人在开庭审判期间的发言、陈述和辩论，须经<span>{{trial.infomation.officer[0].duty}}</span>许可；</p>
@@ -32,12 +32,12 @@
       <p :style="pMargin"> 报告{{trial.infomation.officer[0].duty}}本案诉讼当事人和其他诉讼参与人已经到齐，法庭准备就绪，请审判长核对并开庭。</p>
       <p :style="pMargin">审：请坐下，准备法庭记录。</p>
     </div>
-    <div title="信息核对" id="verification" :style="commonStyle">
+    <div title="信息核对" class="verification" :style="commonStyle">
       <p :style="pMargin">审：（敲击法槌）现在开庭。首先核对当事人和其他诉讼参与人的基本信息。</p>
-      <div title="诉讼参与人" id="participator">
+      <div title="诉讼参与人" class="participator">
         <!-- 原告 -->
-        <div v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
-          <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+        <div class="accuser" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <p :style="pMargin"  title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             原告：{{subject.name}}，{{subject.info}}（{{subject.isAppear}}， 以下简称原{{subject.ordinal}}）
           </p>
           <p :style="pMargin" title="责任人" class="responsible" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
@@ -48,7 +48,7 @@
           </p>
         </div>
         <!-- 被告 -->
-        <div v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div class="accused" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
           <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
             被告：{{subject.name}}，{{subject.info}}（{{subject.isAppear}}， 以下简称被<span v-if="accused.subjects.length > 1">{{subject.ordinal}}</span>）
           </p>
@@ -60,7 +60,7 @@
           </p>
         </div>
         <!-- 第三人 -->
-        <div v-for="(thirdparty, accuserIndex) in trial.verification.participator.thirdparties" :key="accuserIndex">
+        <div  class="thirdparty" v-for="(thirdparty, accuserIndex) in trial.verification.participator.thirdparties" :key="accuserIndex">
           <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
             第三人：{{subject.name}}，{{subject.info}}（{{subject.isAppear}}， 以下简称第<span v-if="thirdparty.subjects.length > 1">{{subject.ordinal}}</span>）
           </p>
@@ -72,7 +72,7 @@
           </p>
         </div>
       </div>
-      <div title="异议及理由" id="objection">
+      <div title="异议及理由" class="objection">
         <p :style="pMargin">审：各方对出庭人员有无异议？</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -148,7 +148,7 @@
           </div>
         </div>
       </div>
-      <div title="证人是否出庭" id="witness">
+      <div title="证人是否出庭" class="witness">
         <p :style="pMargin">审：经核对，各方当事人和其他诉讼参加人均符合法律规定，可以参加本次诉讼活动。各方当事人是否有证人出庭作证？</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -204,8 +204,8 @@
         <!-- <p v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p> -->
       </div>
     </div>
-    <div title="庭审序言" id="preface" :style="commonStyle">
-      <div title="庭审组织" id="organize">
+    <div title="庭审序言" class="preface" :style="commonStyle">
+      <div title="庭审组织" class="organize">
         <p :style="pMargin" v-if="this.trial.preface.organize.program !== 'simple'">审：本院受理案号<span>{{trial.infomation.code}}</span>原告<span v-for="data in trial.verification.participator.accusers">
             <span v-for="item in data.subjects">
             <span>{{item.name}}</span>
@@ -235,7 +235,7 @@
           <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。本案由审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>独任审理，由书记员<span>{{ trial.infomation.clerk | trim}}</span>担任记录。
         </p>
       </div>
-      <div title="告知诉讼权利" id="rights">
+      <div title="告知诉讼权利" class="rights">
         <p :style="pMargin">审：本院已在庭前向各方当事人送达了《当事人诉讼权利义务通知书》和《举证通知书》，是否收到？各方对自己的权利义务是否清楚？</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -291,7 +291,7 @@
         <p :style="pMargin">审：鉴于各方均已收到本院发出的当事人诉讼权利义务通知书，且对自己的权利义务均清楚，本庭不再另行通知当事人的诉讼权利和义务。</p>
         <p :style="pMargin">审：根据《中华人民共和国民事诉讼法》第十条、第四十四条、第四十五条、第四十六条之规定，当事人对审判人员有申请回避的权利，如果当事人认为上列人员中有与本案有利害关系或者其他关系，可能影响案件的公正审理，有权用口头或书面形式申请回避，但应当说明理由。审判人员的回避由本院院长决定，书记员的回避由审判长决定。</p>
       </div>
-      <div title="告知事项" id="matter">
+      <div title="告知事项" class="matter">
         <p :style="pMargin">审：为了严肃法庭纪律，规范庭审活动，本庭向各方当事人、诉讼参与人明确告知四项内容：</p>
         <p :style="pMargin">一、根据最高人民法院相关规定，本案的庭审活动将进行全程同步录音（或录像），所形成的视频、音频资料将存入案件卷宗，并可能在网上公开或作法制宣传等之用。</p>
         <p :style="pMargin">二、根据《中华人民共和国民事诉讼法》第十三条、第一百一十一条，最高人民法院《关于民事诉讼证据的若干规定》第八十条之规定，各方当事人和诉讼参与人在民事诉讼活动中应当遵循诚实信用原则，如实陈述案件事实和提供相关证据材料。如有作虚假陈述，提供虚假证据，妨碍证人、鉴定人、勘验人作证等行为的，除依法追究法律责任外，本庭还将对其违反诚信的行为作为综合评判案件事实和判决结果的考量因素。</p>
@@ -332,7 +332,7 @@
           </div>
         </div>
       </div>
-      <div title="是否申请回避" id="evasion">
+      <div title="是否申请回避" class="evasion">
         <p :style="pMargin">审：根据《中华人民共和国民事诉讼法》第四十四条、四十五条、四十六条之规定，当事人可以申请回避，各方是否申请回避？</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -407,7 +407,7 @@
           </div>
         </div>
       </div>
-      <div title="举证期限异议" id="evidence">
+      <div title="举证期限异议" class="evidence">
         <p :style="pMargin">审：庭前向各方送达权利义务通知书、举证通知书，各方是否已收到？对证据期限有无异议？是否同意今天开庭？</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -484,8 +484,8 @@
         </div>
       </div>
     </div>
-    <div title="法庭调查" id="investigate" :style="commonStyle">
-      <div title="诉辩意见" id="opinion">
+    <div title="法庭调查" class="investigate" :style="commonStyle">
+      <div title="诉辩意见" class="investigate-opinion">
         <p :style="pMargin">审：现在进行法庭调查。首先由原告简要陈述诉讼请求、事实和理由。</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -541,8 +541,8 @@
           </div>
         </div>
       </div>
-      <div title="争点归纳" id="conclude">
-        <div title="无争议归纳" id="undisputed" v-if="trial.investigate.conclude.undisputed.show">
+      <div title="争点归纳" class="conclude">
+        <div title="无争议归纳" class="investigate-undisputed" v-if="trial.investigate.conclude.undisputed.show">
           <p :style="pMargin">审：根据各方陈述意见，归纳无争议及争议事实如下：无争议事实：{{trial.investigate.conclude.detail}}</p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
             <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -596,7 +596,7 @@
             </div>
           </div>
         </div>
-        <div title="有争议归纳" id="disputed" v-if="trial.investigate.conclude.disputed.show">
+        <div title="有争议归纳" class="investigate-disputed" v-if="trial.investigate.conclude.disputed.show">
           <p :style="pMargin">审：争议事实：{{trial.investigate.conclude.disputed.detail}}</p>
           <p :style="pMargin">对于本院归纳内容是否有异议或补充？</p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
@@ -642,7 +642,7 @@
           </div>
         </div>
       </div>
-      <div title="法庭询问" id="inquiry">
+      <div title="法庭询问" class="investigate-inquiry">
         <p :style="pMargin">审：现在法庭做如下询问</p>
         <div v-if="trial.investigate.inquiry.elementquerys.length">
           <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
@@ -704,7 +704,7 @@
           </div>
         </div>
       </div>
-      <div title="举证质证" id="proof">
+      <div title="举证质证" class="investigate-proof">
         <p :style="pMargin">审：现在开始举证，先由原告方举证。</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser1'">
           <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex"><span v-if="subject.showFlag && subject.proof.detail">原{{subject.ordinal}}：{{subject.proof.detail}}</span>
@@ -950,8 +950,8 @@
         <!-- <p>{{trial.investigate.proof.detail}}</p> -->
       </div>
     </div>
-    <div title="法庭辩论" id="argument" :style="commonStyle">
-      <div title="原告方辩论意见" id="accuser">
+    <div title="法庭辩论" class="argument" :style="commonStyle">
+      <div title="原告方辩论意见" class="argument-accuser">
         <p :style="pMargin">审：法庭调查结束，现在进行法庭辩论。为保证法庭辩论正常有序的进行，本庭提醒各方当事人，辩论应当实事求是、以理服人，在辩论中，各方当事人要围绕本案争议的焦点，对本案的事实认定、责任、法律适用等发表辩论意见，不得引用与本案无关或者未经法庭核对的事实、证据，不得重复，严禁使用不文明语言。首先由原告发表辩论意见。</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -971,7 +971,7 @@
           </div>
         </div>
       </div>
-      <div title="被告方辩论意见" id="accused">
+      <div title="被告方辩论意见" class="argument-accused">
         <p :style="pMargin">审：现在由被告发表辩论意见。</p>
         <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
@@ -991,7 +991,7 @@
           </div>
         </div>
       </div>
-      <div title="第三人辩论意见" id="thirdparty">
+      <div title="第三人辩论意见" class="argument-thirdparty">
         <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">审：现在由第三人发表意见。</p>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex"><span v-if="subject.showFlag && subject.argument[0].detail">第{{subject.ordinal}}：{{subject.argument[0].detail}}</span></p>
@@ -1060,7 +1060,7 @@
         </div>
       </div>
     </div>
-    <div title="最后陈述" id="statement" :style="commonStyle">
+    <div title="最后陈述" class="statement" :style="commonStyle">
       <p :style="pMargin">审：法庭辩论终结。现在由各方当事人最后陈述。首先由原告陈述。</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -1116,7 +1116,7 @@
         </div>
       </div>
     </div>
-    <div title="法庭调解" id="conciliation" :style="commonStyle">
+    <div title="法庭调解" class="conciliation" :style="commonStyle">
       <p :style="pMargin">审：法庭辩论终结，应当依法作出判决，判决前能够调解的可以进行调解，各方是否申请由法庭主持调解？</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -1243,10 +1243,10 @@
         </div>
       </div>
     </div>
-    <div title="休庭宣读" id="announce" :style="commonStyle">
+    <div title="休庭宣读" class="announce" :style="commonStyle">
       <p :style="pMargin">审：本案经过法庭调查、法庭辩论，本庭将对各方当事人及其他诉讼参加人的陈述及辩论意见作充分考虑。各方当事人及其他诉讼参加人休庭后应当仔细阅读笔录，并按要求签名或盖章。对记录有误的地方，五日内可以申请书记员进行补正。今天的庭审活动到此结束，宣判时间另行通知，现在休庭。（敲击法槌）</p>
     </div>
-    <div title="其他" id="other" :style="commonStyle">
+    <div title="其他" class="other" :style="commonStyle">
       <p :style="pMargin">书记员：全体起立，请审判人员退庭。请旁听人员退庭。请当事人退庭并到书记员处阅读庭审笔录并签名。</p>
       <p :style="pMargin">（证据原件已退还当事人）</p>
       <p :style="pMargin">（以上笔录阅后无误，请签字确认）</p>
