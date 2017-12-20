@@ -1127,7 +1127,10 @@
         </div>
         <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
           <p :style="pMargin" v-if="responsible.showFlag">
-            原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：<span>{{responsible.conciliation.status }} </span><span v-if="responsible.conciliation.status === '不愿意' && responsible.showFlag">，{{responsible.conciliation.content}}</span><span v-if="responsible.conciliation.status === '愿意'">。</span>
+            原<span v-if="accuser.responsibles.length > 1">{{ responsibleIndex+1 }}</span>：<span>{{responsible.conciliation.status }} </span>
+            <span v-if="responsible.conciliation.status === '不愿意' && responsible.showFlag">
+              ， {{responsible.conciliation.content}}
+            </span><span v-if="responsible.conciliation.status === '愿意'">。</span>
           </p>
         </div>
         <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
