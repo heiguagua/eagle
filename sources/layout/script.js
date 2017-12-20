@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       keyword: "",
-      socket: {},
+      heartbeat: 0,
     }
   },
   computed: {
@@ -36,6 +36,7 @@ export default {
                 const data = result.data;
                 if (Http.protocol(data, 200)) {
                   Encrypt.token.remove();
+                  vm.closeHeartbeat();
                   vm.$router.replace("/login");
                   message(vm, "info", data.head.message);
                 } else {
@@ -48,41 +49,29 @@ export default {
             break;
         }
     },
-    openSocket() {
-      const token = Encrypt.token.get();
-      const URI = Http.url.socket + "?token=" + token;
-      const socket = this.socket = new WebSocket(URI);
-      socket.onopen = event => {
-        setInterval(() => {
-          socket.send(token);
-        }, 20000);
-        console.info("Socket is open!");
-      };
-      socket.onmessage = event => {
-        if (event && event.data && event.data.head && event.data.head.message) {
-          console.info(event.data.head.message);
-        }
-      };
-      socket.onerror = event => {
-        console.error(event);
-      };
+    openHeartbeat() {
+      if (this.isProduction) {
+        this.heartbeat = window.setInterval(() => {
+          Http.fetch({
+              method: "GET",
+              url: Http.url.master + "/heartbeat",
+            })
+            .catch(function(error) {
+              console.error(error);
+            })
+        }, 10000)
+      }
     },
-    closeSocket() {
-      const socket = this.socket;
-      socket.onclose = event => {
-        socket.close();
-      };
-      console.info("Socket is closed!");
-    }
+    closeHeartbeat() {
+      if (this.isProduction) {
+        window.clearInterval(this.heartbeat);
+      }
+    },
   },
   mounted() {
-    if (this.isProduction) {
-      this.openSocket();
-    }
+    this.openHeartbeat();
   },
   destroyed() {
-    if (this.isProduction) {
-      this.closeSocket();
-    }
+    this.closeHeartbeat();
   }
 };
