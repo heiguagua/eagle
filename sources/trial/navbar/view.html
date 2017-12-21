@@ -24,28 +24,28 @@
             <i class="el-icon-location"></i>
             <span slot="title" v-scroll-to="'.participator'">诉讼参与人</span>
           </template>
-          <el-menu-item index="accuser" v-scroll-to="'.accuser'">
+          <el-menu-item index="verification-accuser" v-scroll-to="'.verification-accuser'">
             <i class="el-icon-location"></i>
             <span slot="title">原告</span>
           </el-menu-item>
-          <el-menu-item index="accused" v-scroll-to="'.accused'">
+          <el-menu-item index="verification-accused" v-scroll-to="'.verification-accused'">
             <i class="el-icon-location"></i>
             <span slot="title">被告</span>
           </el-menu-item>
-          <el-menu-item index="thirdparty" v-scroll-to="'.thirdparty'">
+          <el-menu-item index="verification-thirdparty" v-scroll-to="'.verification-thirdparty'">
             <i class="el-icon-location"></i>
             <span slot="title">第三人</span>
           </el-menu-item>
         </el-submenu>
-        <el-menu-item index="objection" v-scroll-to="'.objection'" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag">
+        <el-menu-item index="verification-objection" v-scroll-to="'.verification-objection'" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag">
           <i class="el-icon-location"></i>
           <span slot="title">异议及理由</span>
         </el-menu-item>
-        <el-menu-item index="absence" v-scroll-to="'.absence'" v-if='trial.verification.other.absenseStatus'>
+        <el-menu-item index="objection-absence" v-scroll-to="'.objection-absence'" v-if='trial.verification.other.absenseStatus'>
           <i class="el-icon-location"></i>
           <span slot="title">缺席审理</span>
         </el-menu-item>
-        <el-menu-item index="witness" v-scroll-to="'.witness'">
+        <el-menu-item index="verification-witness" v-scroll-to="'.verification-witness'">
           <i class="el-icon-location"></i>
           <span slot="title">证人是否出庭</span>
         </el-menu-item>
@@ -55,23 +55,23 @@
           <i class="el-icon-location"></i>
           <span slot="title">庭审序言</span>
         </template>
-        <el-menu-item index="organize" v-scroll-to="'.organize'">
+        <el-menu-item index="preface-organize" v-scroll-to="'.preface-organize'">
           <i class="el-icon-location"></i>
           <span slot="title">庭审组织</span>
         </el-menu-item>
-        <el-menu-item index="rights" v-scroll-to="'.rights'">
+        <el-menu-item index="preface-rights" v-scroll-to="'.preface-rights'">
           <i class="el-icon-location"></i>
           <span slot="title">告知诉讼权利</span>
         </el-menu-item>
-        <el-menu-item index="matter" v-scroll-to="'.matter'">
+        <el-menu-item index="preface-matter" v-scroll-to="'.preface-matter'">
           <i class="el-icon-location"></i>
           <span slot="title">告知事项</span>
         </el-menu-item>
-        <el-menu-item index="evasion" v-scroll-to="'.evasion'">
+        <el-menu-item index="preface-evasion" v-scroll-to="'.preface-evasion'">
           <i class="el-icon-location"></i>
           <span slot="title">是否申请回避</span>
         </el-menu-item>
-        <el-menu-item index="evidence" v-scroll-to="'.evidence'">
+        <el-menu-item index="preface-evidence" v-scroll-to="'.preface-evidence'">
           <i class="el-icon-location"></i>
           <span slot="title">举证期限异议</span>
         </el-menu-item>
@@ -81,33 +81,33 @@
           <i class="el-icon-location"></i>
           <span slot="title">法庭调查</span>
         </template>
-        <el-menu-item index="opinion" v-scroll-to="'.investigate-opinion'">
+        <el-menu-item index="investigate-opinion" v-scroll-to="'.investigate-opinion'">
           <i class="el-icon-location"></i>
           <span slot="title">诉辩意见</span>
         </el-menu-item>
-        <el-submenu index="conclude">
+        <el-submenu index="investigate-conclude">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span slot="title">争点归纳</span>
           </template>
-          <el-menu-item index="undisputed" v-scroll-to="'.investigate-undisputed'">
+          <el-menu-item index="investigate-undisputed" v-scroll-to="'.investigate-undisputed'">
             <i class="el-icon-location"></i>
             <span slot="title">无争议归纳</span>
           </el-menu-item>
-          <el-menu-item index="disputed" v-scroll-to="'.investigate-disputed'">
+          <el-menu-item index="investigate-disputed" v-scroll-to="'.investigate-disputed'">
             <i class="el-icon-location"></i>
             <span slot="title">争议归纳</span>
           </el-menu-item>
         </el-submenu>
-        <el-menu-item index="inquiry" v-scroll-to="'.investigate-inquiry'">
+        <el-menu-item index="investigate-inquiry" v-scroll-to="'.investigate-inquiry'">
           <i class="el-icon-location"></i>
           <span slot="title">法庭询问</span>
         </el-menu-item>
-        <el-menu-item index="proof" v-scroll-to="'.investigate-proof'">
+        <el-menu-item index="investigate-proof" v-scroll-to="'.investigate-proof'">
           <i class="el-icon-location"></i>
           <span slot="title">举证质证</span>
         </el-menu-item>
-        <el-menu-item index="fact" v-scroll-to="'.investigate-fact'">
+        <el-menu-item index="investigate-fact" v-scroll-to="'.investigate-fact'">
           <i class="el-icon-location"></i>
           <span slot="title">争议事实认定</span>
         </el-menu-item>
@@ -117,15 +117,15 @@
           <i class="el-icon-location"></i>
           <span slot="title">法庭辩论</span>
         </template>
-        <el-menu-item index="accuser" v-scroll-to="'.argument-accuser'">
+        <el-menu-item index="argument-accuser" v-scroll-to="'.argument-accuser'">
           <i class="el-icon-location"></i>
           <span slot="title">原告方辩论意见</span>
         </el-menu-item>
-        <el-menu-item index="accused" v-scroll-to="'.argument-accused'">
+        <el-menu-item index="argument-accused" v-scroll-to="'.argument-accused'">
           <i class="el-icon-location"></i>
           <span slot="title">被告方辩论意见</span>
         </el-menu-item>
-        <el-menu-item index="thirdparty" v-scroll-to="'.argument-thirdparty'">
+        <el-menu-item index="argument-thirdparty" v-scroll-to="'.argument-thirdparty'">
           <i class="el-icon-location"></i>
           <span slot="title">第三人辩论意见</span>
         </el-menu-item>
