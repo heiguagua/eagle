@@ -2,6 +2,18 @@
   <div class="access">
     <i class="el-icon-edit-outline"></i>
     <em>信息核对&nbsp;-&nbsp;异议及理由</em>
+    <div class="tools">
+      <el-dropdown>
+        <el-button type="primary" size="small">
+          操作<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>
+            <i @click="setAdjourn('verification-objection')" class="fa fa-gavel">&nbsp;休庭</i>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </div>
   <div class="content">
     <p>审：各方对出庭人员有无异议？</p>

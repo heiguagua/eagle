@@ -11,6 +11,9 @@ export default {
     ]),
   },
   methods: {
+    ...mapMutations("Trial", [
+      "setAdjourn", // 休庭操作
+    ]),
     seeDetail(parentIndex,index,subject) {
       if(subject === "subject") {
         this.trial.verification.participator.accusers[parentIndex].subjects[index].opinion.detail = "详见民事诉讼状。";

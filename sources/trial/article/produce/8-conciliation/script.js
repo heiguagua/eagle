@@ -12,6 +12,9 @@ export default {
     ]),
   },
   methods: {
+    ...mapMutations("Trial", [
+      "setAdjourn", // 休庭操作
+    ]),
     //控制是否全部愿意调解显示框
     toMediate: function() {
       const vm = this;
@@ -35,6 +38,5 @@ export default {
       this.trial.conciliation.toMediateMan = array;
       this.trial.conciliation.toMediateMan.length ? (this.trial.conciliation.status = false) : (this.trial.conciliation.status = true);
     },
-
   },
 };

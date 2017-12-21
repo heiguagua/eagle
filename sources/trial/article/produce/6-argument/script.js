@@ -1,7 +1,7 @@
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
-import ArgumentAccuser from "./accuser";
-import ArgumentAccused from "./accused";
-import ArgumentThirdparty from "./thirdparty";
+import ArgumentAccuser from "./1-accuser";
+import ArgumentAccused from "./2-accused";
+import ArgumentThirdparty from "./3-thirdparty";
 import ArgumentAdd from "./add";
 
 

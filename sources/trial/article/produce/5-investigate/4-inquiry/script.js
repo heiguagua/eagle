@@ -56,6 +56,9 @@ export default {
     ]),
   },
   methods: {
+    ...mapMutations("Trial", [
+      "setAdjourn", // 休庭操作
+    ]),
     handleChange(factor) {
       const factorJSON = JSON.parse(factor[1]);
       const start = factorJSON.start;

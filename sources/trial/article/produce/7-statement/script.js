@@ -11,6 +11,8 @@ export default {
     ]),
   },
   methods: {
-
+    ...mapMutations("Trial", [
+      "setAdjourn", // 休庭操作
+    ]),
   },
 };

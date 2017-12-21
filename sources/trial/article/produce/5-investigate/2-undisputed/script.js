@@ -11,6 +11,9 @@ export default {
     ]),
   },
   methods: {
+    ...mapMutations("Trial", [
+      "setAdjourn", // 休庭操作
+    ]),
     remove() {
       this.trial.investigate.conclude.undisputed.show = false;
     },

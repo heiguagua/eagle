@@ -12,7 +12,7 @@
             <i @click="changeJudge()" class='fa fa-user'>&nbsp;更换审判人员</i>
           </el-dropdown-item>
           <el-dropdown-item>
-            <i class="fa fa-gavel">&nbsp;休庭</i>
+            <i @click="setAdjourn('preface-organize')" class="fa fa-gavel">&nbsp;休庭</i>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

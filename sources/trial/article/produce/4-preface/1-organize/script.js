@@ -2,8 +2,7 @@ import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   data() {
-    return {
-    }
+    return {}
   },
   computed: {
     ...mapState("Trial", [
@@ -12,6 +11,9 @@ export default {
     ]),
   },
   methods: {
+    ...mapMutations("Trial", [
+      "setAdjourn", // 休庭操作
+    ]),
     changeJudge() {
       const vm = this;
       if (vm.trial.preface.organize.status == "hide") {

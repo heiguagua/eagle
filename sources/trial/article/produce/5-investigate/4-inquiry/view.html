@@ -2,6 +2,18 @@
   <div class="access">
     <i class="el-icon-edit-outline"></i>
     <em>法庭调查-法庭询问</em>
+    <div class="tools">
+      <el-dropdown>
+        <el-button type="primary" size="small">
+          操作<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>
+            <i @click="setAdjourn('investigate-inquiry')" class="fa fa-gavel">&nbsp;休庭</i>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </div>
   <div class="content">
     <p>审：现在法庭做如下询问</p>
@@ -11,11 +23,11 @@
     <!-- 新需求 证人出庭 end -->
     <div v-if="trial.investigate.inquiry.elementquerys.length">
       <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
-          <el-button @click="remove({elementIndex})" size="mini" type="danger">
-            <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
-          </el-button>
-        <p >审：
-            <el-input v-model="element.ask_info_start" type="textarea" :autosize="{minRows: 2}" placeholder="" class="width-100"></el-input>
+        <el-button @click="remove({elementIndex})" size="mini" type="danger">
+          <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
+        </el-button>
+        <p>审：
+          <el-input v-model="element.ask_info_start" type="textarea" :autosize="{minRows: 2}" placeholder="" class="width-100"></el-input>
         </p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -83,8 +95,8 @@
       </div>
     </div>
     <p>
-        <el-cascader class="width-100" :options="factors" @change="handleChange">
-        </el-cascader>
-      </p>
+      <el-cascader class="width-100" :options="factors" @change="handleChange">
+      </el-cascader>
+    </p>
   </div>
 </section>

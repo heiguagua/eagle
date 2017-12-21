@@ -1,6 +1,7 @@
 import Shortid from "shortid";
 import Http from "../common/scripts/http";
-import { message, storage } from "../common/scripts/helper";
+import { MessageBox, Message } from "element-ui";
+import { message, storage, confirm } from "../common/scripts/helper";
 
 export default {
   namespaced: true,
@@ -28,7 +29,20 @@ export default {
     },
     // 设置休庭位置
     setAdjourn(state, payload) {
-      state.trial.adjourn = payload;
+      MessageBox.confirm("是否确定在此处进行休庭？", "休庭提示", { type: "warning" })
+        .then(() => {
+          state.trial.adjourn = payload;
+          Message({
+            type: "success",
+            message: "休庭操作成功！"
+          })
+        })
+        .catch(() => {
+          Message({
+            type: "error",
+            message: "休庭操作失败！"
+          })
+        })
     }
   },
   actions: {

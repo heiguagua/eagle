@@ -14,6 +14,9 @@ export default {
     ]),
   },
   methods: {
+    ...mapMutations("Trial", [
+      "setAdjourn", // 休庭操作
+    ]),
     //控制是否有证人出庭
     witness: function() {
       const vm = this;
