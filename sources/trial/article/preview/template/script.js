@@ -1,6 +1,7 @@
 import Http from "../../../../common/scripts/http";
 import { message, storage } from "../../../../common/scripts/helper";
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
+import $ from "jquery"
 
 export default {
   data() {
@@ -25,7 +26,7 @@ export default {
         textAlign: "justify",
         textJustify: "inter-ideograph"
       },
-      center :{
+      center: {
         textAlign: "center",
       },
       right: {
@@ -36,13 +37,40 @@ export default {
       }
     };
   },
-  computed: {
-  },
+  computed: {},
   created() {
     this.case = storage.get("case");
     this.trial = storage.get("trial");
   },
+  mounted() {
+    let className = this.trial.adjourn;
+    this.detailAdjournDom(className);
+  },
   methods: {
-    save() {}
+    save() {},
+    detailAdjournDom(className) {
+      if (className) {
+        let array = className.split("-");
+        // console.log(array)
+        const announce = $("."+array[0]).nextAll().filter(".announce");
+        const other = $("."+array[0]).nextAll().filter(".other");
+        //  console.log(announce)
+        if (array.length == 1) {
+         $("."+className).nextAll().remove();
+        }else if(array.length == 2){
+          if(className =='investigate-fact'){
+            $("."+array[0]).nextAll().remove();
+          }else{
+            $("."+className).nextAll().remove();
+            $("."+className).parent().nextAll().remove();
+          }
+        }else if(array.length == 3){
+          $("."+className).nextAll().remove();
+          $("."+className).parent().nextAll().remove();
+          $("."+className).parent().parent().nextAll().remove();
+        }
+        $("#content-wrap").append(announce).append(other);
+      }
+    }
   }
 };

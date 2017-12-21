@@ -27,7 +27,8 @@
     "vue-scrollto": "^2.8.0",
     "vuex": "^3.0.1",
     "vuex-router-sync": "^5.0.0",
-    "clipboard": "^1.7.1"
+    "clipboard": "^1.7.1",
+    "jquery": "^3.2.1"
   },
   "devDependencies": {
     "archiver": "^2.1.0",
