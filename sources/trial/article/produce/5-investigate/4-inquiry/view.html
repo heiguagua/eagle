@@ -5,6 +5,10 @@
   </div>
   <div class="content">
     <p>审：现在法庭做如下询问</p>
+    <!-- 新需求 证人出庭 start -->
+    <!-- <p>审：传证人出庭。</p> -->
+    <!-- <p>证人<证人姓名>，<证人信息>（男/女，XXXX年XX月XX日出生，汉族，住XXX）。</p> -->
+    <!-- 新需求 证人出庭 end -->
     <div v-if="trial.investigate.inquiry.elementquerys.length">
       <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
           <el-button @click="remove({elementIndex})" size="mini" type="danger">

@@ -1,5 +1,7 @@
 export default () => {
   return {
+    // 导航显示状态
+    navStatus:true,
     // 休庭位置
     adjourn: "",
     // 笔录头部

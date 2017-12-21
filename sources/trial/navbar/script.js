@@ -18,21 +18,25 @@ export default {
   },
   created() {
     const vm = this;
-    vm.operation = vm.$route.query.operation;
     // 区分新建、修改的状态，从而挂载不同的store
-    if (vm.operation === "create") {
-      this.setOptions(options);
-      this.setTrial(trial());
-    } 
+    vm.nav();
    
   },
   methods: {
-    ...mapMutations("Trial", [
-      "setTrial",
-      "setOptions"
-    ]),
     collapse() {
       this.menu.isCollapse = !this.menu.isCollapse;
+    },
+    nav() { //blank页面下，导航隐藏
+      const vm = this;
+      if (vm.$route.path === "/layout/trial/blank") {
+        this.trial.navStatus = false;
+      } else {
+        this.trial.navStatus = true;
+      }
     }
+  },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    "$route": "nav"
   }
 }
