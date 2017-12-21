@@ -19,20 +19,20 @@
           <i class="el-icon-location"></i>
           <span slot="title">信息核对</span>
         </template>
-        <el-submenu index="participator">
+        <el-submenu index="verification-participator">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span slot="title" v-scroll-to="'.participator'">诉讼参与人</span>
+            <span slot="title" v-scroll-to="'.verification-participator'">诉讼参与人</span>
           </template>
-          <el-menu-item index="verification-accuser" v-scroll-to="'.verification-accuser'">
+          <el-menu-item index="verification-participator-accuser" v-scroll-to="'.verification-accuser'">
             <i class="el-icon-location"></i>
             <span slot="title">原告</span>
           </el-menu-item>
-          <el-menu-item index="verification-accused" v-scroll-to="'.verification-accused'">
+          <el-menu-item index="verification-participator-accused" v-scroll-to="'.verification-accused'">
             <i class="el-icon-location"></i>
             <span slot="title">被告</span>
           </el-menu-item>
-          <el-menu-item index="verification-thirdparty" v-scroll-to="'.verification-thirdparty'">
+          <el-menu-item index="verification-participator-thirdparty" v-scroll-to="'.verification-thirdparty'">
             <i class="el-icon-location"></i>
             <span slot="title">第三人</span>
           </el-menu-item>
@@ -90,11 +90,11 @@
             <i class="el-icon-location"></i>
             <span slot="title">争点归纳</span>
           </template>
-          <el-menu-item index="investigate-undisputed" v-scroll-to="'.investigate-undisputed'">
+          <el-menu-item index="investigate-conclude-undisputed" v-scroll-to="'.investigate-conclude-undisputed'">
             <i class="el-icon-location"></i>
             <span slot="title">无争议归纳</span>
           </el-menu-item>
-          <el-menu-item index="investigate-disputed" v-scroll-to="'.investigate-disputed'">
+          <el-menu-item index="investigate-conclude-disputed" v-scroll-to="'.investigate-conclude-disputed'">
             <i class="el-icon-location"></i>
             <span slot="title">争议归纳</span>
           </el-menu-item>
