@@ -133,10 +133,37 @@ export default {
         }
       }
     },
-    responsibleEvent(operation, params) {
+    responsibleEvent(operation, params,role) {
       const vm = this;
       /* 添加操作 */
-      if (operation === "add") {}
+      if (operation === "add" && (role !== "法定代表人" && role !== "负责人")) {
+        let accuserIndex = params.accuserIndex;
+        let originResponsible = Trial().verification.participator.accusers[0].responsibles[0];
+        let targetResponsible = this.trial.verification.participator.accusers[accuserIndex].responsibles;
+        if(targetResponsible.length < 2) {
+          // 法庭询问,添加了几个问题
+          let len = this.trial.investigate.inquiry.elementquerys.length || 0;
+          if (len) {
+            originResponsible.inquiry = this.getArray(len);
+            // console.log(originAgent.inquiry)
+          }
+          // 法庭辩论
+          let debateArrayLen = this.trial.argument.other.debateArray.length || 0;
+          if (debateArrayLen) {
+            originResponsible.argument = this.getArgumentArray(debateArrayLen);
+            // console.log(originAgent.inquiry)
+          }
+          targetResponsible.push(originResponsible);
+          message(vm, "success", "温馨提示：添加成功！");
+          // 更新到庭未到庭人员状态
+          Util.showSetting(this.trial); //获取到庭状态
+          Util.getAbsentee(this.trial); //获取未到庭人员列表
+        } else {
+          message(vm, "warning", "温馨提示：不能添加更多的法定代理人/指定代理人！");
+        }
+      } else if (operation === "add" && (role == "法定代表人" || role == "负责人")) {
+          message(vm, "warning", "温馨提示：法定代表人/负责人不能添加！");
+      }
       /* 删除操作 */
       else if (operation === "remove") {
         let accuserIndex = params.accuserIndex;

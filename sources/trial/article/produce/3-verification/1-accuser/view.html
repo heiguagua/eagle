@@ -60,9 +60,14 @@
             </el-option>
           </el-select>
           以下简称<b>原</b>）
-          <el-button @click="responsibleEvent('remove', {accuserIndex, responsibleIndex})" size="mini" type="info">
-            <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
-          </el-button>
+          <el-dropdown @click="responsibleEvent('add', {accuserIndex, responsibleIndex},responsible.role)" type="info" size="mini" split-button>
+            <i class="fa fa-plus-circle">&nbsp;添加</i>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>
+                <i @click="responsibleEvent('remove', {accuserIndex, responsibleIndex})" class="fa fa-trash color-danger">&nbsp;移除</i>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </p>
         <hr />
       </div>
