@@ -3,6 +3,7 @@
     <i class="el-icon-edit-outline"></i>
     <em>法庭辩论-被告方辩论意见</em>
     <div class="tools">
+      <el-tag size="small" type="warning" v-if="trial.adjourn ==='argument-accused'">此处休庭</el-tag>
       <el-dropdown>
         <el-button type="primary" size="small">
           操作<i class="el-icon-arrow-down el-icon--right"></i>

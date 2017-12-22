@@ -3,6 +3,7 @@
     <i class="el-icon-edit-outline"></i>
     <em>庭审序言-庭审组织</em>
     <div class="tools">
+      <el-tag size="small" type="warning" v-if="trial.adjourn ==='preface-organize'">此处休庭</el-tag>
       <el-dropdown>
         <el-button type="primary" size="small">
           操作<i class="el-icon-arrow-down el-icon--right"></i>
