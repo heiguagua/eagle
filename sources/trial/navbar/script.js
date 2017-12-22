@@ -16,7 +16,7 @@ export default {
       "options"
     ]),
   },
-  created() {
+  mounted() {
     const vm = this;
     // 区分新建、修改的状态，从而挂载不同的store
     vm.nav();
