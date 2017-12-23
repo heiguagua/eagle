@@ -24,7 +24,7 @@
     <!-- 新需求 证人出庭 end -->
     <div v-if="trial.investigate.inquiry.elementquerys.length">
       <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
-        <el-button @click="remove({elementIndex})" size="mini" type="danger">
+        <el-button @click="remove(elementIndex)" size="mini" type="danger">
           <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
         </el-button>
         <p>审：
