@@ -22,9 +22,9 @@ export default {
     ...mapMutations("Trial", [
       "setLoading"
     ]),
-    create() {
-      this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create' } });
+    createTrial() {
       // this.setLoading(true);
+      this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create', random: Math.random() } });
     }
   }
 };

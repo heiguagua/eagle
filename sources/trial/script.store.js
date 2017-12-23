@@ -6,6 +6,7 @@ import $ from "jquery"
 export default {
   namespaced: true,
   state: {
+    loading: false, // 遮罩动画
     trial: {},
     trials: [],
     options: {},
@@ -25,7 +26,7 @@ export default {
     },
     // 设置加载动画
     setLoading(state, payload) {
-      state.options.loading = payload;
+      state.loading = payload;
     },
     // 设置休庭位置
     setAdjourn(state, payload) {

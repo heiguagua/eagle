@@ -9,7 +9,8 @@ export default {
   computed: {
     ...mapState("Trial", [
       "trial",
-      "options"
+      "options",
+      "loading",
     ]),
   },
   methods: {}

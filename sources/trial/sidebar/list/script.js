@@ -16,6 +16,7 @@ export default {
       "trial",
       "trials",
       "options",
+      "loading",
     ]),
   },
   mounted() {},
@@ -71,9 +72,6 @@ export default {
           } else {
             message(vm, "warning", data.head.message);
           }
-        })
-        .then(result => {
-          vm.$router.replace({ path: "/layout/trial/blank" });
         })
         .then(result => {
           vm.$router.replace({ path: "/layout/trial/produce", query: { operation: "update", random: Math.random() } });

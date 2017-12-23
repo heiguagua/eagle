@@ -50,27 +50,17 @@ export default {
       "setOptions",
       "setLoading",
     ]),
-    back() {
-      const vm = this;
-      confirm(vm, "warning", "是否需要返回庭审笔录-新建页面？")
-        .then(() => {
-          vm.$router.push("/layout/trial/blank");
-        });
-    },
-    logTrial() {
-      console.info("Trial", this.$store.state.Trial.trial);
-    },
+    // 生成公用方法
     generate() {
       const vm = this;
       this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys); //审议归纳排序
-      const editorTrial = this.trial;
-      storage.set("trial", editorTrial);
+      storage.set("trial", this.trial);
     },
     // 新建生成
     generateCreate() {
       const vm = this;
       console.log(this.trial)
-      if(!this.trial.infomation.officer[0].name||!this.trial.infomation.clerk){
+      if (!this.trial.infomation.officer[0].name || !this.trial.infomation.clerk) {
         message(vm, 'warning', "请必填审判长/审判员/书记员");
         return
       }
@@ -80,7 +70,7 @@ export default {
     // 修改生成
     generateUpdate() {
       const vm = this;
-      if(!this.trial.infomation.officer[0].name||!this.trial.infomation.clerk){
+      if (!this.trial.infomation.officer[0].name || !this.trial.infomation.clerk) {
         message(vm, 'warning', "请必填审判长/审判员/书记员");
         return
       }
@@ -126,11 +116,21 @@ export default {
       }
       // 开庭次数随右侧列表数联动
       this.trial.infomation.location.times = this.trials.length + 1;
-    }
+    },
+    // 返回新建页面
+    back() {
+      const vm = this;
+      confirm(vm, "warning", "是否需要返回庭审笔录-新建页面？")
+        .then(() => {
+          this.setLoading(false);
+          vm.$router.replace("/layout/trial/blank");
+        });
+    },
   },
   watch: {
     $route(to, from) {
       this.updateTrialTransaction();
+      this.setLoading(false);
     }
   },
   created() {
