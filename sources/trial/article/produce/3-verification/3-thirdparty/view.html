@@ -19,10 +19,10 @@
       <div title="诉讼主体" class="subject animated slideInLeft" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p>
           <b>第三人</b>：
-          <el-input v-model="subject.name" placeholder="请输入原告名称" class="width-90" @blur="nameFormat()"></el-input>，
+          <el-input v-model="subject.name" placeholder="请输入第三人名称" class="width-90" @blur="nameFormat()"></el-input>，
         </p>
         <p>
-          <el-input v-model="subject.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入原告信息" class="width-100"></el-input>
+          <el-input v-model="subject.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入第三人信息" class="width-100"></el-input>
         </p>
         <p>
           （
