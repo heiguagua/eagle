@@ -21,7 +21,7 @@
   </div>
   <div class="content">
     <!-- 普通程序 -->
-    <p v-if="!(this.trial.preface.organize.program === 'simple')">
+    <p v-if="this.trial.preface.organize.program === 'normal'">
       审：本院受理
       <span>{{ trial.infomation.code }}</span>
       <span v-for="data in trial.verification.participator.accusers">
@@ -46,8 +46,8 @@
       <span>{{ trial.infomation.officer[0].name | trim}}</span>担任审判长，由书记员
       <span>{{ trial.infomation.clerk | trim}}</span>担任记录。
     </p>
-    <!-- 简易程序 -->
-    <p v-if="this.trial.preface.organize.program === 'simple'">
+    <!-- 简易程序或者小额诉讼程序 -->
+    <p v-if="this.trial.preface.organize.program !== 'normal'">
       审：本院受理
       <span>{{ trial.infomation.code }}</span>
       <span v-for="data in trial.verification.participator.accusers">

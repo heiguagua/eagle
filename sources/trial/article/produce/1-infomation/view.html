@@ -49,7 +49,7 @@
       ：
       <el-input v-model="trial.infomation.officer[0].name" :maxlength="5" @blur="setOficerFormat(0)" placeholder="请输入姓名" class="width-64"></el-input>
     </p>
-    <p title="审判人员2" v-if="isChiefOfficerTwo">
+    <p title="审判人员2" v-if="trial.preface.organize.program == 'normal'">
       <el-select v-model="trial.infomation.officer[1].duty" placeholder="请选择职务" class="width-30">
         <el-option v-for="option in options.duty.normal" :key="option" :label="option" :value="option">
         </el-option>
@@ -57,7 +57,7 @@
       ：
       <el-input v-model="trial.infomation.officer[1].name" :maxlength="50" @blur="setOficerFormat(1)" placeholder="请输入姓名" class="width-64"></el-input>
     </p>
-    <p title="审判人员3" v-if="isChiefOfficerTwo">
+    <p title="审判人员3" v-if="trial.preface.organize.program == 'normal'">
       <el-select v-model="trial.infomation.officer[2].duty" placeholder="请选择职务" class="width-30">
         <el-option v-for="option in options.duty.normal" :key="option" :label="option" :value="option">
         </el-option>
