@@ -15,7 +15,7 @@ export default {
     // },
     isChiefOfficerTwo() {
       const params = storage.get("case");
-      return (params.hearing_procedure === "simple") ? false : true;
+      return (params.hearing_procedure !== "normal") ? false : true;
     },
   },
   created() {
