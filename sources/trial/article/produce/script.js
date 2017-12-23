@@ -134,9 +134,10 @@ export default {
     }
   },
   created() {
-    alert();
-    this.setLoading(false);
     this.updateTrialTransaction();
+  },
+  mounted() {
+    this.setLoading(false);
   },
   directives: {
     hoverToggle: {
