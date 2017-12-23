@@ -65,9 +65,10 @@ export default {
       const end = factorJSON.end;
       let index = factorJSON.index;
       let flag = 0;
+      console.log(start,end)
       //去重
       this.trial.investigate.inquiry.elementquerys.forEach(item => {
-        if (start && item.start == start) {
+        if (start && item.start == start && start!=='其他') {
           flag = 1;
           message(this, 'warning', "不能重复选择");
           return;
