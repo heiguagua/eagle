@@ -25,7 +25,8 @@ export default {
     ]),
     ...mapMutations("Trial", [
       "setTrial",
-      "setOptions"
+      "setOptions",
+      "setLoading",
     ]),
     removeTrial(row) {
       const vm = this;
@@ -51,7 +52,7 @@ export default {
     },
     updateTrial(row) {
       const vm = this;
-      vm.options.loading = true;
+      vm.setLoading(true);
       const recordID = row.record_id || "";
       const case_no = row.case_no || "";
       Http.fetch({
@@ -75,7 +76,7 @@ export default {
           vm.$router.replace({ path: "/layout/trial/blank" });
         })
         .then(result => {
-          vm.$router.replace({ path: "/layout/trial/produce", query: { operation: "update" } });
+          vm.$router.replace({ path: "/layout/trial/produce", query: { operation: "update", random: Math.random() } });
         })
     },
     peekTrial(row) {

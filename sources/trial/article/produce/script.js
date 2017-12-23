@@ -47,7 +47,8 @@ export default {
   methods: {
     ...mapMutations("Trial", [
       "setTrial",
-      "setOptions"
+      "setOptions",
+      "setLoading",
     ]),
     back() {
       const vm = this;
@@ -102,30 +103,38 @@ export default {
           }
         });
     },
+    // 公用的笔录修改操作
+    updateTrialTransaction() {
+      const vm = this;
+      vm.operation = vm.$route.query.operation;
+      // 区分新建、修改的状态，从而挂载不同的store
+      if (vm.operation === "create") {
+        this.setOptions(options);
+        this.setTrial(trial());
+      } else if (vm.operation === "update") {
+        this.setOptions(options);
+        this.setTrial(eval('(' + storage.get("trial") + ')'));
+      }
+      // 开庭次数随右侧列表数联动
+      this.trial.infomation.location.times = this.trials.length + 1;
+    }
   },
-  mounted() {
-    this.options.loading = false;
+  watch: {
+    $route(to, from) {
+      this.updateTrialTransaction();
+    }
   },
   created() {
-    const vm = this;
-    vm.operation = vm.$route.query.operation;
-    // 区分新建、修改的状态，从而挂载不同的store
-    if (vm.operation === "create") {
-      this.setOptions(options);
-      this.setTrial(trial());
-    } else if (vm.operation === "update") {
-      this.setOptions(options);
-      const trial = JSON.parse(storage.get("trial"));
-      this.setTrial(trial);
-    }
-    // 开庭次数随右侧列表数联动
-    this.trial.infomation.location.times = this.trials.length + 1;
+    this.updateTrialTransaction();
+  },
+  updated() {
+    this.setLoading(false);
   },
   directives: {
     hoverToggle: {
       // 指令的定义
       bind: function(el, binding, vnode, oldVnode) {
-        let target = el.querySelectorAll(".hover-toggle");
+        // let target = el.querySelectorAll(".hover-toggle");
         // target.addEventListener("mouseover", function(event) {
         //   alert();
         // })
