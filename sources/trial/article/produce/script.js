@@ -69,12 +69,21 @@ export default {
     // 新建生成
     generateCreate() {
       const vm = this;
+      console.log(this.trial)
+      if(!this.trial.infomation.officer[0].name||!this.trial.infomation.clerk){
+        message(vm, 'warning', "请必填审判长/审判员/书记员");
+        return
+      }
       vm.generate();
       vm.$router.replace({ path: "/layout/trial/preview", query: { operation: "create" } });
     },
     // 修改生成
     generateUpdate() {
       const vm = this;
+      if(!this.trial.infomation.officer[0].name||!this.trial.infomation.clerk){
+        message(vm, 'warning', "请必填审判长/审判员/书记员");
+        return
+      }
       vm.generate();
       vm.$router.replace({ path: "/layout/trial/preview", query: { operation: "update" } });
     },
