@@ -1108,7 +1108,10 @@ export default () => {
       status: true
     },
     // 休庭宣读
-    announce: "",
+    announce: {
+      reason:"",
+      nextOpenDate:"",
+    },
     // 其他
     other: ""
   };
