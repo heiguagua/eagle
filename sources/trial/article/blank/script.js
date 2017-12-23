@@ -24,7 +24,7 @@ export default {
     ]),
     create() {
       this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create' } });
-      this.setLoading(true);
+      // this.setLoading(true);
     }
   }
 };
