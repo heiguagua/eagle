@@ -23,8 +23,8 @@ export default {
       "setLoading"
     ]),
     create() {
-      // this.setLoading(true);
       this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create' } });
+      this.setLoading(true);
     }
   }
 };

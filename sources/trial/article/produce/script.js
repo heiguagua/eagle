@@ -125,10 +125,9 @@ export default {
     }
   },
   created() {
-    this.updateTrialTransaction();
-  },
-  updated() {
+    alert();
     this.setLoading(false);
+    this.updateTrialTransaction();
   },
   directives: {
     hoverToggle: {
