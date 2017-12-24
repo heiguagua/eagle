@@ -31,7 +31,20 @@
     </el-table-column>
   </el-table>
   <!-- 预览弹窗 -->
-  <el-dialog :visible.sync="peekDialogVisible" width="50%" top="0" center>
-    <span v-html="htmlTrial"></span>
+  <el-dialog class="dialog-preview" :visible.sync="peekDialogVisible" width="50%" top="0">
+    <header slot="title">
+      <el-button-group>
+        <el-button @click="print" size="mini" type="default">
+          <i class="fa fa-print">&nbsp;打印</i>
+        </el-button>
+        <el-button @click="exportWord" size="mini" type="default">
+          <i class="fa fa-file-word-o">&nbsp;导出Word</i>
+        </el-button>
+        <el-button @click="exportPDF" size="mini" type="default">
+          <i class="fa fa-file-pdf-o">&nbsp;导出PDF</i>
+        </el-button>
+      </el-button-group>
+    </header>
+    <article style="padding: 0 50px;" v-html="htmlTrial"></article>
   </el-dialog>
 </div>

@@ -120,6 +120,59 @@ export default {
             });
         });
     },
+    print() {
+      const article = "<html><body>" + this.htmlTrial + "</body></html>";
+      const newWindow = window.open("", "_blank", "");
+      newWindow.document.body.innerHTML = article;
+      newWindow.print();
+      newWindow.close();
+    },
+    exportWord() {
+      const title = storage.get("case").title;
+      const html = "<html><body>" + this.htmlTrial + "</body></html>";
+      Http.fetch({
+          method: "POST",
+          url: Http.url.master + "/export/word",
+          responseType: "blob",
+          data: { html }
+        })
+        .then(result => {
+          const data = result.data;
+          if (data) {
+            let link = document.createElement("a");
+            link.href = window.URL.createObjectURL(data);
+            link.download = title + ".doc";
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+            message(vm, "info", "温馨提示：庭审笔录导出成功！");
+          } else {
+            message(vm, "warning", "温馨提示：庭审笔录导出失败！");
+          }
+        });
+    },
+    exportPDF() {
+      const title = storage.get("case").title;
+      const html = "<html><body>" + this.htmlTrial + "</body></html>";
+      Http.fetch({
+          method: "POST",
+          url: Http.url.master + "/export/pdf",
+          responseType: "blob",
+          data: { html }
+        })
+        .then(result => {
+          const data = result.data;
+          if (data) {
+            let link = document.createElement("a");
+            link.href = window.URL.createObjectURL(data);
+            link.download = title + ".pdf";
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+            message(vm, "info", "温馨提示：庭审笔录导出成功！");
+          } else {
+            message(vm, "warning", "温馨提示：庭审笔录导出失败！");
+          }
+        });
+    }
   },
   created() {
     const vm = this;
