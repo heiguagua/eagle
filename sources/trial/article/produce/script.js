@@ -115,7 +115,7 @@ export default {
         this.setTrial(eval('(' + storage.get("trial") + ')'));
       }
       // 开庭次数随右侧列表数联动
-      this.trial.infomation.location.times = this.trials.length + 1;
+     // this.trial.infomation.location.times = this.trials.length + 1;
     },
     // 返回新建页面
     back() {
@@ -138,6 +138,16 @@ export default {
   },
   mounted() {
     this.setLoading(false);
+    console.log('aaaaa')
+    const vm = this;
+    // 区分新建、修改的状态，从而挂载不同的store
+    if (vm.operation === "create") {
+      // 开庭次数随右侧列表数联动
+      this.trial.infomation.location.times = this.trials.length + 1;
+    } else if (vm.operation === "update") {
+      // 开庭次数随右侧列表数联动
+      this.trial.infomation.location.times = this.trial.infomation.location.times;
+    }
   },
   directives: {
     hoverToggle: {
