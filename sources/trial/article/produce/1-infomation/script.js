@@ -65,6 +65,11 @@ export default {
         this.trial.infomation.officer[index].name = "";
       }
     },
+    clearContent: function(index) {
+      if(this.trial.infomation.officer[index].name.replace(/　/g,"").length==2){
+        this.trial.infomation.officer[index].name ="";
+      }
+    },
     setClerkFormat: function() {
       const vm = this;
       var regx = /^[\u4E00-\u9FA5A-Za-z\s\?:·\u4E00-\u9FA5\.]+$/;
@@ -78,12 +83,17 @@ export default {
       if (!this.trial.infomation.clerk) {
         // layer.msg('姓名不能为空')
       } else if (this.trial.infomation.clerk.length >= 50) {
-        message(vm, "error", '字符过长');
+        message(vm, "error", "字符过长");
         this.trial.infomation.clerk = "";
       } else if (!regx.test(this.trial.infomation.clerk)) {
-        message(vm, "error", '姓名只能为汉字或英文');
+        message(vm, "error", "姓名只能为汉字或英文");
         this.trial.infomation.clerk = "";
       }
-    }
+    },
+    clearClerkContent: function() {
+      if(this.trial.infomation.clerk.replace(/　/g,"").length==2){
+        this.trial.infomation.clerk ="";
+      }
+    },
   },
 };

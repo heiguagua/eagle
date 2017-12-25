@@ -59,8 +59,13 @@ export default {
     // 新建生成
     generateCreate() {
       const vm = this;
-      console.log(this.trial)
-      if (!this.trial.infomation.officer[0].name || !this.trial.infomation.clerk) {
+      let isLen_3 =(storage.get("case").hearing_procedure=="normal")?true: false;
+      let flag=false;
+      if(isLen_3){
+        flag =(!this.trial.infomation.officer[1].name)||(!this.trial.infomation.officer[2].name);
+      }
+      console.log(flag)
+      if (!this.trial.infomation.officer[0].name ||flag|| !this.trial.infomation.clerk) {
         message(vm, 'warning', "请必填审判长/审判员/书记员");
         return
       }
@@ -70,7 +75,12 @@ export default {
     // 修改生成
     generateUpdate() {
       const vm = this;
-      if (!this.trial.infomation.officer[0].name || !this.trial.infomation.clerk) {
+      let isLen_3 =(storage.get("case").hearing_procedure=="normal")?true: false;
+      let flag=false;
+      if(isLen_3){
+        flag =!this.trial.infomation.officer[1].name||!this.trial.infomation.officer[2].name
+      }
+      if (!this.trial.infomation.officer[0].name ||flag|| !this.trial.infomation.clerk) {
         message(vm, 'warning', "请必填审判长/审判员/书记员");
         return
       }
