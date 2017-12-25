@@ -52,7 +52,7 @@ export default {
       });
     }
   },
-  showSetting: function(trial) {debugger
+  showSetting: function(trial) {
     const vm = this;
     let allList = null,
       defendant = null,
@@ -112,13 +112,6 @@ export default {
     }else {
       trial.verification.other.absence = 0;
     }
-
-    // else if(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0 )) {
-    //   trial.verification.other.absence = 1;
-    // }else {
-    //   trial.verification.other.absence = 0;
-    // }
-    console.log("缺席标志", trial.verification.other.absence)
   },
   show2hide: function(trial,str1, str2) {
     const vm = this;
@@ -144,6 +137,10 @@ export default {
       })
     }
   },
+  // 法定代理人/指定代理人的简称
+  // lagalAgentChange: function(trial,) {
+
+  // }
   /**
    * [concatArray 构造全部数据]
    * @return {[type]} [全部数据]

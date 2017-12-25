@@ -138,9 +138,9 @@ export default {
       /* 添加操作 */
       /* 添加操作 */
       if (operation === "add" && (role !== "法定代表人" && role !== "负责人")) {
-        let accuserIndex = params.accuserIndex;
-        let originResponsible = Trial().verification.participator.accusers[0].responsibles[0];
-        let targetResponsible = this.trial.verification.participator.accusers[accuserIndex].responsibles;
+        let accuserIndex = params.accusedIndex;
+        let originResponsible = Trial().verification.participator.accuseds[0].responsibles[0];
+        let targetResponsible = this.trial.verification.participator.accuseds[accuserIndex].responsibles;
         if(targetResponsible.length < 2) {
           // 法庭询问,添加了几个问题
           let len = this.trial.investigate.inquiry.elementquerys.length || 0;

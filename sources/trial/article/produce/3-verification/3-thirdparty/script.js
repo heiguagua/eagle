@@ -127,13 +127,13 @@ export default {
         }
       }
     },
-    responsibleEvent(operation, params,role) {
+    responsibleEvent(operation, params,role) {debugger
       const vm = this;
       /* 添加操作 */
       if (operation === "add" && (role !== "法定代表人" && role !== "负责人")) {
-        let accuserIndex = params.accuserIndex;
-        let originResponsible = Trial().verification.participator.accusers[0].responsibles[0];
-        let targetResponsible = this.trial.verification.participator.accusers[accuserIndex].responsibles;
+        let accuserIndex = params.thirdpartyIndex;
+        let originResponsible = Trial().verification.participator.thirdparties[0].responsibles[0];
+        let targetResponsible = this.trial.verification.participator.thirdparties[accuserIndex].responsibles;
         if(targetResponsible.length < 2) {
           // 法庭询问,添加了几个问题
           let len = this.trial.investigate.inquiry.elementquerys.length || 0;
