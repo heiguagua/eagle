@@ -24,7 +24,7 @@ export default {
           for (let j in item) {
             if (Util.isType(item[j]) === 'Array') {
               item[j].forEach(function(v) {
-                if (v.conciliation.status == "不同意") {
+                if (v.conciliation.status == "不愿意") {
                   array.push({
                     type: v.type,
                     name: v.name
