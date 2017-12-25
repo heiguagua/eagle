@@ -65,7 +65,6 @@ export default {
       const end = factorJSON.end;
       let index = factorJSON.index;
       let flag = 0;
-      console.log(start,end)
       //去重
       this.trial.investigate.inquiry.elementquerys.forEach(item => {
         if (start && item.start == start && start!=='其他') {
@@ -80,22 +79,16 @@ export default {
         const numJSON = JSON.parse(factor[0]);
         let order = 1; //其1、start排序
         if (numJSON == 9) {
-          const len = this.trial.investigate.inquiry.elementquerys.length || 0;
-          if (len == 0) {
-            index = 1;
-          } else {
-            this.trial.investigate.inquiry.elementquerys.forEach(item => {
-              if (item.ask_info_start.indexOf("其") == 0) {
-                order = parseInt(item.ask_info_start.substring(1, 2)) + 1;
-                // console.log(order)
-              }
-              if (item.verdict_index != 0) {
-                index = item.verdict_index;
-              } else {
-                index = 1;
-              }
-            })
-          }
+          index =1;
+          this.trial.investigate.inquiry.elementquerys.forEach(item => {
+            if (item.ask_info_start.indexOf("其") == 0) {
+              order = parseInt(item.ask_info_start.substring(1, 2)) + 1;
+              // console.log(order)
+            }
+            if (item.verdict_index != 0) {
+              index = item.verdict_index;
+            } 
+          });
         }
         if (end == '') {
           this.trial.investigate.inquiry.elementquerys.push({
