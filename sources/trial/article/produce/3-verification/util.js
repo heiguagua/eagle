@@ -99,12 +99,26 @@ export default {
 
     // 加字段（absence）//部分缺席或者全部缺席的情况
     if (((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag) {
-      trial.verification.other.absence = 1;
+      // trial.verification.other.absence = 1;
       trial.verification.other.absenseStatus = true;
     } else {
-      trial.verification.other.absence = 0;
+      // trial.verification.other.absence = 0;
       trial.verification.other.absenseStatus = false;
     };
+
+    // 被告或全部缺席时 absence = 1 ，第三人缺席时absence = 2 , 没有缺席时为 absence = 0;
+    if (!(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0) )) {
+      trial.verification.other.absence = 1;
+    }else {
+      trial.verification.other.absence = 0;
+    }
+
+    // else if(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0 )) {
+    //   trial.verification.other.absence = 1;
+    // }else {
+    //   trial.verification.other.absence = 0;
+    // }
+    console.log("缺席标志", trial.verification.other.absence)
   },
   show2hide: function(trial,str1, str2) {
     const vm = this;

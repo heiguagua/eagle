@@ -138,7 +138,6 @@ export default {
   },
   mounted() {
     this.setLoading(false);
-    console.log('aaaaa')
     const vm = this;
     // 区分新建、修改的状态，从而挂载不同的store
     if (vm.operation === "create") {
