@@ -41,4 +41,10 @@
       }
     }
   }
+  .v-enter-active{
+    transition: 0.1s;
+  }
+  .v-leave-active{
+    transition: 0.1s;
+  }
 }

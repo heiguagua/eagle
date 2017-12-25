@@ -1,3 +1,5 @@
-<article id="trial-article" v-loading="loading" element-loading-text="庭审笔录正在努力加载中...">
-  <router-view></router-view>
+<article id="trial-article" v-loading="loading" element-loading-text="庭审笔录正在努力加载中..." element-loading-background="rgba(0, 0, 0, 0.2)">
+  <transition mode="out-in">
+    <router-view></router-view>
+  </transition>
 </article>

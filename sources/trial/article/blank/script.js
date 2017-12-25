@@ -23,7 +23,7 @@ export default {
       "setLoading"
     ]),
     createTrial() {
-      // this.setLoading(true);
+      this.setLoading(true);
       this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create', random: Math.random() } });
     }
   }
