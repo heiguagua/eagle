@@ -138,8 +138,8 @@ export default {
     }
   },
   // 法定代理人/指定代理人的简称
-  // lagalAgentChange: function(trial,) {
-
+  // lagalAgentChange: function(trial,selectModel) {
+    
   // }
   /**
    * [concatArray 构造全部数据]

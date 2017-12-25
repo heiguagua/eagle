@@ -127,7 +127,7 @@ export default {
         }
       }
     },
-    responsibleEvent(operation, params,role) {debugger
+    responsibleEvent(operation, params,role) {
       const vm = this;
       /* 添加操作 */
       if (operation === "add" && (role !== "法定代表人" && role !== "负责人")) {
