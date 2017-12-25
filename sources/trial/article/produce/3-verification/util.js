@@ -133,7 +133,7 @@ export default {
             }
           }
           if (array.length) {
-            let tempArray = array.filter(function(item) {debugger
+            let tempArray = array.filter(function(item) {
               return item.showFlag === true;
             });
             if (!tempArray.length) {
