@@ -267,7 +267,7 @@
             <span v-for="item in data.subjects">
               <span>{{ item.name }}</span>
           </span>
-          </span><span>{{trial.infomation.reason}}</span> 一案后，根据《中华人民共和国民事诉讼法》第三十九条、第四十一条之规定，依法适用简易程序第<span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。本案由审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>独任审理，由书记员<span>{{ trial.infomation.clerk | trim}}</span>担任记录。
+          </span><span>{{trial.infomation.reason}}</span> 一案后，根据《中华人民共和国民事诉讼法》第三十九条、第四十一条之规定，依法适用简易程序第<span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>本案由审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>独任审理，由书记员<span>{{ trial.infomation.clerk | trim}}</span>担任记录。
         </p>
       </div>
       <div title="告知诉讼权利" class="preface-rights">
