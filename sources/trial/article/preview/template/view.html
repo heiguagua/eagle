@@ -1356,7 +1356,7 @@
             </p>
           </div>
         </div>
-        <p :style="pMargin">审：第三人是否愿意参加调解？</p>
+        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length !== 0">审：第三人是否愿意参加调解？</p>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">
