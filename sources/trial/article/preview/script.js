@@ -59,7 +59,13 @@ export default {
       const code = storage.get("case").case_no; // 案号
       const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
       const html = vm.cleanHTML(vm.$refs.template.$el.innerHTML); // 庭审笔录带样式HTML内容
-      const trialID = storage.get("updatedTrialInfo").record_id;
+      const updatedTrialInfo = storage.get("updatedTrialInfo");
+      let trialID = "";
+      if (updatedTrialInfo) {
+        trialID = updatedTrialInfo.record_id;
+      } else {
+        trialID = "update";
+      }
       Http.fetch({
           method: "PUT",
           url: Http.url.master + "/trial/" + trialID,
