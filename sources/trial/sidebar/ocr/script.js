@@ -107,7 +107,8 @@ export default {
         })
     },
     //从服务器删除案件材料
-    removeImage: function(name) {
+    removeImage: function(url) {
+     let name =url.substr(url.lastIndexOf('/') + 1);
       this.$confirm('是否从数据库删除此图片？', '提示', {
         showCancelButton: true,
         confirmButtonText: '确定',
