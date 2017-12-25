@@ -27,7 +27,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          原：
+          原<span v-if="trial.verification.participator.accusers.length > 1">{{accuserIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.argument[0].detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告辩论意见" class="width-100"></el-input>
         </p>
       </div>

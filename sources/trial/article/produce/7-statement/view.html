@@ -27,7 +27,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          原：
+          原<span v-if="trial.verification.participator.accusers.length > 1">{{accuserIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.statement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告陈述" class="width-100"></el-input>
         </p>
       </div>
@@ -48,7 +48,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          被：
+          被<span v-if="trial.verification.participator.accuseds.length > 1">{{accusedIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.statement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告陈述" class="width-100"></el-input>
         </p>
       </div>
@@ -69,7 +69,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          第：
+          第<span v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.statement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人陈述" class="width-100"></el-input>
         </p>
       </div>
@@ -104,7 +104,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          原：
+          原<span v-if="trial.verification.participator.accusers.length > 1">{{accuserIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.absenceStatement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
         </p>
       </div>
@@ -124,7 +124,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          被：
+          被<span v-if="trial.verification.participator.accuseds.length > 1">{{accusedIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.absenceStatement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
         </p>
       </div>
@@ -144,7 +144,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          第：
+          第<span v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.absenceStatement.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
         </p>
       </div>

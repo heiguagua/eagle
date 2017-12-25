@@ -29,6 +29,26 @@ export default {
       }
       return array
     },
+    lagalAgentChange: function(selectModel) {
+      switch (selectModel.role) {
+        case "法定代表人":
+          selectModel.shortName = "";
+          selectModel.type = selectModel.parentType + selectModel.role;
+          break;
+        case "负责人":
+          selectModel.shortName = "";
+          selectModel.type = selectModel.parentType + selectModel.role;
+          break;
+        case "法定代理人":
+          selectModel.shortName = "法代";
+          selectModel.type = selectModel.parentType + selectModel.role;
+          break;
+        case "指定代理人":
+          selectModel.shortName = "指代";
+          selectModel.type = selectModel.parentType + selectModel.role;
+      }
+      Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
+    },
     toCourtChange(obj) {
       obj.isAppear == "到庭" ? (obj.showFlag = true) : (obj.showFlag = false);
       Util.showSetting(this.trial);

@@ -27,7 +27,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          原：<button class="el-button el-button--info el-button--mini" @click="seeDetail(accuserIndex,responsibleIndex,'responsible')">详见民事诉讼状</button>
+          原<span v-if="trial.verification.participator.accusers.length > 1">{{accuserIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：<button class="el-button el-button--info el-button--mini" @click="seeDetail(accuserIndex,responsibleIndex,'responsible')">详见民事诉讼状</button>
           <el-input v-model="responsible.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告诉辩意见" class="width-100"></el-input>
         </p>
       </div>
@@ -49,7 +49,7 @@
         </div>
         <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
           <p v-if="responsible.showFlag">
-            被：
+            被<span v-if="trial.verification.participator.accuseds.length > 1">{{accusedIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
             <el-input v-model="responsible.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告诉辩意见" class="width-100"></el-input>
           </p>
         </div>
@@ -72,7 +72,7 @@
         </div>
         <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
           <p v-if="responsible.showFlag">
-            第：
+            第<span v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
             <el-input v-model="responsible.opinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人诉辩意见" class="width-100"></el-input>
           </p>
         </div>
@@ -105,7 +105,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          原：
+          原<span v-if="trial.verification.participator.accusers.length > 1">{{accuserIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.absenceOpinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入原告异议内容" class="width-100"></el-input>
         </p>
       </div>
@@ -125,7 +125,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          被：
+          被<span v-if="trial.verification.participator.accuseds.length > 1">{{accusedIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.absenceOpinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告异议内容" class="width-100"></el-input>
         </p>
       </div>
@@ -145,7 +145,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          第：
+          第<span v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.absenceOpinion.detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人异议内容" class="width-100"></el-input>
         </p>
       </div>

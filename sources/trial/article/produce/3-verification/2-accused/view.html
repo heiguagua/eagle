@@ -44,7 +44,7 @@
       </div>
       <div title="法定代表人/负责人/法定代理人/指定代理人" class="responsible animated slideInDown" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
         <p>
-          <el-select v-model="responsible.role" class="width-30">
+          <el-select v-model="responsible.role" class="width-30"  @change="lagalAgentChange(responsible)">
             <el-option v-for="option in options.responsible" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>，
@@ -59,7 +59,7 @@
             <el-option v-for="option in options.appear" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
-          以下简称<b>被</b>）
+          以下简称被<b v-if="trial.verification.participator.accuseds.length > 1">{{accusedIndex + 1}}</b><b>{{responsible.shortName}}</b><b v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</b>）
           <el-dropdown @click="responsibleEvent('add', {accusedIndex, responsibleIndex},responsible.role)" type="info" size="mini" split-button>
             <i class="fa fa-plus-circle">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">

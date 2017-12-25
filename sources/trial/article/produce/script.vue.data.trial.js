@@ -51,6 +51,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "原告",
             type: "原告",
+            shortName:"",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -159,6 +160,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "原告",
             type: "原告法定代表人",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -267,6 +269,7 @@ export default () => {
             auth: "特别授权",
             parentType: "原告",
             type: "原告委托诉讼代理人",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -377,6 +380,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "被告",
             type: "被告",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -484,6 +488,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "被告",
             type: "被告法定代表人",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -591,6 +596,7 @@ export default () => {
             auth: "特别授权",
             parentType: "被告",
             type: "被告委托诉讼代理人",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -701,6 +707,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "第三人",
             type: "第三人",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -808,6 +815,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "第三人",
             type: "第三人法定代表人",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -915,6 +923,7 @@ export default () => {
             auth: "特别授权",
             parentType: "第三人",
             type: "第三人委托诉讼代理人",
+            shortName: "",
             // 异议及理由
             objection: {
               status: "无异议",

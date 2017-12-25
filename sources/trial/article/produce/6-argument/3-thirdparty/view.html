@@ -30,7 +30,7 @@
       </div>
       <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
         <p v-if="responsible.showFlag">
-          第：
+          第<span v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：
           <el-input v-model="responsible.argument[0].detail" type="textarea" :autosize="{minRows: 2}" placeholder="请输入第三人辩论意见" class="width-100"></el-input>
         </p>
       </div>
