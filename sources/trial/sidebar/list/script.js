@@ -66,7 +66,7 @@ export default {
         .then(result => {
           const data = result.data;
           if (Http.protocol(data, 200) && data.body.length !== 0) {
-            storage.set("trial", data.body[0].json);
+            storage.set("trial", JSON.parse(data.body[0].json));
             storage.set("updatedTrialInfo", row);
             message(vm, "info", data.head.message);
           } else {

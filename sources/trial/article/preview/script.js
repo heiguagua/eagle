@@ -86,7 +86,7 @@ export default {
       this.$router.push({ path: "/layout/trial/produce", query: { operation: "create" } });
     },
     backUpdate() {
-      this.$router.push({ path: "/layout/trial/produce", query: { operation: "update" } });
+      this.$router.push({ path: "/layout/trial/produce", query: { operation: "update", random: Math.random() } });
     },
     exportWord() {
       const vm = this;

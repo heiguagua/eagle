@@ -122,10 +122,10 @@ export default {
         this.setTrial(trial());
       } else if (vm.operation === "update") {
         this.setOptions(options);
-        this.setTrial(eval('(' + storage.get("trial") + ')'));
+        this.setTrial(storage.get("trial"));
       }
       // 开庭次数随右侧列表数联动
-     // this.trial.infomation.location.times = this.trials.length + 1;
+      // this.trial.infomation.location.times = this.trials.length + 1;
     },
     // 返回新建页面
     back() {
