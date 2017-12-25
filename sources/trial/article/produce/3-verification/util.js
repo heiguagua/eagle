@@ -52,7 +52,7 @@ export default {
       });
     }
   },
-  showSetting: function(trial) {
+  showSetting: function(trial) {debugger
     const vm = this;
     let allList = null,
       defendant = null,
@@ -106,7 +106,7 @@ export default {
       trial.verification.other.absenseStatus = false;
     };
 
-    // 被告或全部缺席时 absence = 1 ，第三人缺席时absence = 2 , 没有缺席时为 absence = 0;
+    // 被告缺席时 absence = 1 
     if (!(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0) )) {
       trial.verification.other.absence = 1;
     }else {
@@ -122,7 +122,7 @@ export default {
   },
   show2hide: function(trial,str1, str2) {
     const vm = this;
-    trial.verification[str2] = false;
+    trial.verification.other[str2] = false;
     if (trial.verification.participator[str1].length > 1) {
       trial.verification.participator[str1].forEach(function(item) {
         if (vm.isType(item) === 'Object') {
@@ -133,11 +133,11 @@ export default {
             }
           }
           if (array.length) {
-            let tempArray = array.filter(function(item) {
-              return item.show_flag === true;
+            let tempArray = array.filter(function(item) {debugger
+              return item.showFlag === true;
             });
             if (!tempArray.length) {
-              trial.verification[str2] = true;
+              trial.verification.other[str2] = true;
             }
           }
         }
