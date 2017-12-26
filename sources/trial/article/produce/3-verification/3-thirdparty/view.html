@@ -59,7 +59,11 @@
             <el-option v-for="option in options.appear" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>
-          以下简称第<b v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</b><b>{{responsible.shortName}}</b><b v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</b>）
+          以下简称第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers">
+            <span>{{number.num}}</span>
+            <i v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</i>
+          </span>
+          <b>{{responsible.shortName}}</b><b v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</b>）
           <el-dropdown @click="responsibleEvent('add', {thirdpartyIndex, responsibleIndex},responsible.role)" type="info" size="mini" split-button>
             <i class="fa fa-plus-circle">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">
@@ -90,7 +94,11 @@
             <el-option v-for="auth in options.auth" :key="auth" :label="auth" :value="auth">
             </el-option>
           </el-select>
-          以下简称第<b v-if="trial.verification.participator.thirdparties.length > 1">{{thirdpartyIndex + 1}}</b>代<b v-if="thirdparty.agents.length > 1">{{agentIndex + 1}}</b>
+          以下简称第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers">
+            <span>{{number.num}}</span>
+            <i v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</i>
+          </span>
+          代<b v-if="thirdparty.agents.length > 1">{{agentIndex + 1}}</b>
           <el-dropdown @click="agentEvent('add', {thirdpartyIndex})" type="info" size="mini" split-button>
             <i class="fa fa-plus-circle">&nbsp;添加</i>
             <el-dropdown-menu slot="dropdown">

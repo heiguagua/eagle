@@ -38,14 +38,22 @@ export default {
         }
       });
     } else {
+      let num = 0; //记录共几个区块
+      let count = 0;//记录共几个诉讼主体
       accuser.forEach(function(item) {
+        typeof(item.subjects.length)
+        count = count + item.subjects.length;
+        num ++ ;
         if (_.isArray(item[type])) {
           item[type].forEach(function(vv, i, array) {
-            if (array.length === 1) {
+            if (accuser.length === 1 && array.length === 1) {
               vv.ordinal = '';
+            } else if(array.length !== 1 && (vv.type == "原告" || vv.type == "被告" || vv.type == "第三人")) {
+              for(let i; i<=count; i++) {
+                vv.ordinal = i;
+              } 
             } else {
-              i++;
-              vv.ordinal = i;
+              vv.ordinal = num;
             }
           });
         }
@@ -107,7 +115,7 @@ export default {
     };
 
     // 被告缺席时 absence = 1 
-    if (!(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0) )) {
+    if (!(trial.verification.other.defendantPartFlag && (trial.verification.participator.accuseds.length > 0)) || trial.verification.other.defendantFlag) {
       trial.verification.other.absence = 1;
     }else {
       trial.verification.other.absence = 0;

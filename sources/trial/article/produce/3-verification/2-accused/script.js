@@ -92,6 +92,16 @@ export default {
           }
         }
         this.trial.verification.participator.accuseds.push(accused);
+        // 序号
+        let accusedsLength = this.trial.verification.participator.accuseds.length;
+        for(let i = 0; i < accusedsLength; i++) {
+          this.trial.verification.participator.accuseds[i].serialNumbers = [];
+          this.trial.verification.participator.accuseds[i].subjects.forEach((item, j, array) => {
+            this.trial.verification.participator.accuseds[i].serialNumbers.push({
+              num: item.ordinal
+            })
+          });
+        }
         message(vm, "success", "温馨提示：被告添加成功！");
         // 更新到庭未到庭人员状态
         Util.showSetting(this.trial); //获取到庭状态
@@ -103,7 +113,17 @@ export default {
         const accuseds = this.trial.verification.participator.accuseds;
         if (accuseds.length > 1) {
           accuseds.splice(accusedIndex, 1);
-          Util.updateNum('subjects', 'accuseds', this.trial);
+          Util.updateNum(null, 'accuseds', this.trial);
+          // 序号
+          let accusedsLength = this.trial.verification.participator.accuseds.length;
+          for(let i = 0; i < accusedsLength; i++) {
+            this.trial.verification.participator.accuseds[i].serialNumbers = [];
+            this.trial.verification.participator.accuseds[i].subjects.forEach((item, j, array) => {
+              this.trial.verification.participator.accuseds[i].serialNumbers.push({
+                num: item.ordinal
+              })
+            });
+          }
           message(vm, "warning", "温馨提示：被告删除成功！");
           // 更新到庭未到庭人员状态
           Util.showSetting(this.trial); //获取到庭状态
@@ -131,6 +151,14 @@ export default {
           originSubject.argument = this.getArgumentArray(debateArrayLen);
         }
         let targetSubject = this.trial.verification.participator.accuseds[accusedIndex].subjects.push(originSubject);
+        //序号
+        this.trial.verification.participator.accuseds[accusedIndex].serialNumbers = [];
+        this.trial.verification.participator.accuseds[accusedIndex].subjects.forEach((item,i,array) => {
+          this.trial.verification.participator.accuseds[accusedIndex].serialNumbers.push({
+            num: item.ordinal
+          })
+        });
+        console.log(this.trial.verification.participator.accuseds[accusedIndex].serialNumbers)
         message(vm, "success", "温馨提示：被告诉讼主体添加成功！");
         // 更新到庭未到庭人员状态
         Util.showSetting(this.trial); //获取到庭状态
@@ -144,6 +172,13 @@ export default {
         if (subjects.length > 1) {
           subjects.splice(subjectIndex, 1);
           Util.updateNum('subjects', 'accuseds', this.trial);
+          //序号
+          this.trial.verification.participator.accuseds[accusedIndex].serialNumbers = [];
+          this.trial.verification.participator.accuseds[accusedIndex].subjects.forEach((item,i,array) => {
+            this.trial.verification.participator.accuseds[accusedIndex].serialNumbers.push({
+              num: item.ordinal
+            })
+          });
           message(vm, "warning", "温馨提示：被告删除成功！");
           // 更新到庭未到庭人员状态
           Util.showSetting(this.trial); //获取到庭状态
