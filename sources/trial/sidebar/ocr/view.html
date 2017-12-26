@@ -2,7 +2,7 @@
   <!-- test -->
   <div class="upload">
     <el-upload :action="uploadUrl" :before-upload="beforeAvatarUpload" :show-file-list="false" :on-success="handleSuccess" :headers="headers" :data="uploadData" :limit="100" :auto-upload="true" multiple :file-list="fileList" list-type="picture">
-      <el-button slot="trigger" size="mini" type="warning" plain>
+      <el-button slot="trigger" size="mini" type="success" plain>
         <i class="fa fa-folder-open">&nbsp;请选择图片文件</i>
       </el-button>
       <!-- <div slot="tip" class="el-upload__tip">
