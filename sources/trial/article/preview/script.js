@@ -60,12 +60,7 @@ export default {
       const json = JSON.stringify(storage.get("trial")); // 庭审笔录状态树
       const html = vm.cleanHTML(vm.$refs.template.$el.innerHTML); // 庭审笔录带样式HTML内容
       const updatedTrialInfo = storage.get("updatedTrialInfo");
-      let trialID = "";
-      if (updatedTrialInfo) {
-        trialID = updatedTrialInfo.record_id;
-      } else {
-        trialID = "update";
-      }
+      let trialID = updatedTrialInfo.record_id;
       Http.fetch({
           method: "PUT",
           url: Http.url.master + "/trial/" + trialID,
