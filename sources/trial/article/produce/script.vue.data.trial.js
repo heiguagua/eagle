@@ -153,7 +153,7 @@ export default () => {
           }],
           // 责任人
           responsibles: [{
-            role: "法定代表人", // 角色
+            role: "法定代理人", // 角色
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
@@ -481,7 +481,7 @@ export default () => {
           }],
           // 责任人
           responsibles: [{
-            role: "法定代表人", // 角色
+            role: "法定代理人", // 角色
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
@@ -808,7 +808,7 @@ export default () => {
           }],
           // 责任人
           responsibles: [{
-            role: "法定代表人", // 角色
+            role: "法定代理人", // 角色
             name: "", // 名称
             info: "", // 信息
             isAppear: "到庭", // 是否出庭
