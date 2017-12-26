@@ -17,7 +17,6 @@ export default {
     getArray(len) {
       let array = [];
       for (let i = 0; i < len; i++) {
-        console.log(i)
         array.push({ "detail": "" })
       }
       return array
@@ -154,7 +153,6 @@ export default {
             num: item.ordinal
           })
         });
-        console.log()
         message(vm, "success", "温馨提示：第三人诉讼主体添加成功！");
         // 更新到庭未到庭人员状态
         Util.showSetting(this.trial); //获取到庭状态
