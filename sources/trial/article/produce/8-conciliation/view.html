@@ -121,7 +121,7 @@
           </p>
         </div>
       </div>
-      <p v-if="trial.verification.participator.thirdparties.length !== 0">
+      <p v-if="trial.verification.participator.thirdparties.length &&((trial.verification.participator.thirdparties[0].subjects.length && trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length && trial.verification.participator.thirdparties[0].agents[0].showFlag))">
         审：第三人是否愿意参加调解？
       </p>
       <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex + 'thirdparty1'">
