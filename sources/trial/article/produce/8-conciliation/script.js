@@ -22,7 +22,7 @@ export default {
       for (let i in this.trial.verification.participator) {
         this.trial.verification.participator[i].forEach(function(item) {
           for (let j in item) {
-            if (Util.isType(item[j]) === 'Array') {
+            if (Util.isType(item[j]) === 'Array'  && j !== "serialNumbers") {
               item[j].forEach(function(v) {
                 if (v.conciliation.status == "不愿意") {
                   array.push({

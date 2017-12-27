@@ -49,10 +49,11 @@ export default {
       Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
     },
     toCourtChange(obj) {
+      const vm = this;
       obj.isAppear == "到庭" ? (obj.showFlag = true) : (obj.showFlag = false);
       Util.showSetting(this.trial);
       Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
-      // vm.event.verify.verify_participant.lagalAgentChange(obj);
+      vm.lagalAgentChange(obj); //法定代理人，指定代理人简称
       Util.getToCourt(this.trial); //存储到庭人员 （诉讼地位名：姓名）
     },
     nameFormat() {//失去焦点时更新未到庭人员名称以及姓名格式验证
