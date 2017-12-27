@@ -42,6 +42,8 @@ export default () => {
       participator: {
         // 原告
         accusers: [{
+          //序号
+          serialNumbers:[],
           // 诉讼主体
           subjects: [{
             ordinal: "", // 序数
@@ -371,6 +373,8 @@ export default () => {
         }],
         // 被告
         accuseds: [{
+          //序号
+          serialNumbers:[],
           // 诉讼主体
           subjects: [{
             ordinal: "", // 序数
@@ -698,6 +702,8 @@ export default () => {
         }],
         // 第三人
         thirdparties: [{
+          //序号
+          serialNumbers:[],
           // 诉讼主体
           subjects: [{
             ordinal: "", // 序数

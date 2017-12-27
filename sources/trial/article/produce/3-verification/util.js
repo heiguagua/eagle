@@ -225,7 +225,7 @@ export default {
           flag = false,
           count = 0;
         for (let j in item) {
-          if (vm.isType(item[j]) === 'Array' && item[j].length) {
+          if (vm.isType(item[j]) === 'Array' && item[j].length && j !== "serialNumbers") {
             a = item[j].filter(function(i) {
               return i.isAppear == "未到庭";
             });
@@ -260,7 +260,7 @@ export default {
     for (var i in trial.verification.participator) {
       trial.verification.participator[i].forEach(function(item) {
         for (var j in item) {
-          if (vm.isType(item[j]) === 'Array') {
+          if (vm.isType(item[j]) === 'Array' && j !== "serialNumbers") {
             item[j].forEach(function(v) {
               if (v.isAppear == "到庭") {
                 trial.verification.other.toCourtMan.push({
