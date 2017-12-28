@@ -1086,6 +1086,7 @@ export default () => {
       },
       // 法庭询问
       inquiry: {
+        status:true,
         elementquerys: [],
         proof_affirm: "" //审议归纳已排序
       },
