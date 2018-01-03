@@ -5,8 +5,8 @@
   </div>
   <div id="content-wrap">
     <div :style="[commonStyle,right]">
-      <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审　判　长：</span><span v-else-if="officer.duty=='审判员'">审　判　员：</span><span v-else>{{officer.duty}}：</span>{{officer.name}}</p>
-      <p :style="pMargin">书　记　员：{{trial.infomation.clerk}}</p>
+      <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审　判　长：</span><span v-else-if="officer.duty=='审判员'">审　判　员：</span><span v-else>{{officer.duty}}：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      <p :style="pMargin">书　记　员：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
     </div>
     <div title="庭审信息" class="infomation" :style="indentStyle">
       <p :style="pMargin">案号：{{trial.infomation.code}}</p>
