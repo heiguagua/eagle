@@ -728,7 +728,7 @@
           </div>
         </div>
       </div>
-      <div title="法庭询问" class="investigate-inquiry">
+      <div title="法庭询问" class="investigate-inquiry" v-if="trial.investigate.inquiry.status">
         <p :style="pMargin">审：现在法庭做如下询问</p>
         <div v-if="trial.investigate.inquiry.elementquerys.length">
           <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
