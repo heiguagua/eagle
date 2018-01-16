@@ -8,7 +8,8 @@ export default {
   computed: {
     ...mapState("Trial", [
       "trial",
-      "options"
+      "options",
+      "template"
     ]),
     // isChiefOfficer() {
     //   return (this.trial.infomation.officer[0].duty === "审判长") ? true : false;

@@ -17,6 +17,7 @@ import TrialOther from "./10-other";
 // Store
 import trial from "./script.vue.data.trial.js";
 import options from "./script.vue.data.options.js";
+import template from "./script.vue.data.template.js";
 
 export default {
   data() {
@@ -28,7 +29,8 @@ export default {
     ...mapState("Trial", [
       "trial",
       "trials",
-      "options"
+      "options",
+      "template"
     ]),
   },
   components: {
@@ -49,6 +51,10 @@ export default {
       "setTrial",
       "setOptions",
       "setLoading",
+      "setTemplate"
+    ]),
+    ...mapActions("Trial", [
+      "getTemplate",
     ]),
     // 生成公用方法
     generate() {
@@ -87,7 +93,7 @@ export default {
       vm.generate();
       vm.$router.replace({ path: "/layout/trial/preview", query: { operation: "update" } });
     },
-    getTemplate() {
+    getTemplatess() {
       const vm = this;
       const query = vm.$route.query;
       const param = vm.$route.params;
@@ -145,6 +151,7 @@ export default {
   },
   created() {
     this.updateTrialTransaction();
+    this.setTemplate(template())
   },
   mounted() {
     this.setLoading(false);
@@ -157,6 +164,10 @@ export default {
       // 开庭次数随右侧列表数联动
       this.trial.infomation.location.times = this.trial.infomation.location.times;
     }
+    // console.log(this.template)
+    let query = this.$route.query;
+    let param = this.$route.params;
+    this.getTemplate(query,param);
   },
   directives: {
     hoverToggle: {

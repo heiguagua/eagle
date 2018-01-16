@@ -17,13 +17,21 @@ export default {
       return process.env.NODE_ENV !== "production";
     }
   },
-  mounted() {},
+  mounted() {
+
+  },
   methods: {
     ...mapMutations("Trial", [
       "setLoading"
     ]),
+    ...mapActions("Trial", [
+      "getTemplate",
+    ]),
     createTrial() {
+      let query = this.$route.query;
+      let param = this.$route.params;
       this.setLoading(true);
+      // this.getTemplate(query,param)
       this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create', random: Math.random() } });
     }
   }

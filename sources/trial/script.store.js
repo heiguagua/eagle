@@ -10,6 +10,7 @@ export default {
     trial: {},
     trials: [],
     options: {},
+    template:{}
   },
   mutations: {
     // 设置单个笔录
@@ -45,6 +46,14 @@ export default {
             message: "休庭操作失败！"
           })
         })
+    },
+    // 设置笔录模板内容
+    setTemplate(state, data){
+      if(typeof data == "string") {
+        state.template = JSON.parse(data);
+      } else {
+        state.template = data;
+      }
     }
   },
   actions: {
@@ -87,6 +96,29 @@ export default {
             message(payload.vm, "warning", data.head.message);
           }
         })
+    },
+    // 获取笔录模板
+    getTemplate(context,query = {},param = {}){
+       Http.fetch({
+          method: "GET",
+          url: Http.url.master + "/trialRecordTemplate",
+          params: {
+            case_brief: query.case_brief || "民间借贷纠纷",
+            category: query.category || "民事一审",
+            hearing_procedure: query.hearing_procedure || "normal",
+            write_type: param.write_type || "section",
+          }
+        })
+        .then(result => {
+          const data = result.data;
+          if (Http.protocol(data, 200)) {
+            // vm.trial = data.body;
+            //return data
+            context.commit("setTemplate", data.body[0].template_article);
+          } else {
+            message("warning", data.head.message);
+          }
+        });
     }
   },
   getters: {}
