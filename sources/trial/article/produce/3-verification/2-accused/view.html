@@ -16,7 +16,7 @@
       <!-- 被告 -->
       <div title="诉讼主体" class="subject animated slideInLeft" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
         <p>
-          <b>被告</b>：
+          <b>{{template.informationCheck.content.defendant}}</b>：
           <el-input v-model="subject.name" placeholder="请输入被告名称" class="width-92" @blur="nameFormat()"></el-input>，
         </p>
         <p>
@@ -75,7 +75,7 @@
       </div>
       <div title="委托诉讼代理人" class="agent animated slideInDown" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
         <p>
-          委托诉讼代理人：
+          {{template.informationCheck.content.client}}：
           <el-input v-model="agent.name" placeholder="请输入委托诉讼代理人名称" class="width-83" @blur="nameFormat()"></el-input>，
         </p>
         <p>

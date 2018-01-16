@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="content">
-    <p>审：经核对，各方当事人和其他诉讼参加人均符合法律规定，可以参加本次诉讼活动。各方当事人是否有证人出庭作证？</p>
+    <p>{{template.informationCheck.content.witness}}</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

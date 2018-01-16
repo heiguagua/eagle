@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="content">
-    <p>审：各方对出庭人员有无异议？</p>
+    <p>{{template.informationCheck.content.ObjectionAndReason}}</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

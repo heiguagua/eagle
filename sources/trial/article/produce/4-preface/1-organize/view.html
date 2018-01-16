@@ -15,50 +15,50 @@
   <div class="content">
     <!-- 普通程序 -->
     <p v-if="this.trial.preface.organize.program === 'normal'">
-      审：本院受理
+      {{template.common.content.acceptance}}
       <span>{{ trial.infomation.code }}</span>
       <span v-for="data in trial.verification.participator.accusers">
         <span v-for="item in data.subjects">
           <span>{{ item.name }}</span>
         </span>
       </span>
-      与
+      {{template.common.content.and}}
       <span v-for="data in trial.verification.participator.accuseds">
         <span v-for="item in data.subjects">
           <span>{{ item.name }}</span>
         </span>
       </span>
       <span>{{trial.infomation.reason}}</span>
-      一案后，根据《中华人民共和国民事诉讼法》第一百三十四条之规定，依法适用 普通程序第
-      <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。
+      {{template.common.content.acceptance_1}}普通程序{{template.common.content.first}}
+      <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}{{template.common.content.openCount}}
       <el-input style="margin: 5px 0" v-model="trial.preface.organize.detail" v-if="trial.preface.organize.status == 'show'" type="textarea" :autosize="{minRows: 4}" placeholder="请输入审判人员信息" class="width-100"></el-input>
-      本案由
+      {{template.common.content.by}}
       <span>{{ trial.infomation.officer[0].duty }}</span><span>{{ trial.infomation.officer[0].name | trim}}</span>、
       <span>{{ trial.infomation.officer[1].duty }}</span><span>{{ trial.infomation.officer[1].name | trim}}</span>、
-      <span>{{ trial.infomation.officer[2].duty }}</span><span>{{ trial.infomation.officer[2].name | trim}}</span>依法组成合议庭，由审判员
-      <span>{{ trial.infomation.officer[0].name | trim}}</span>担任审判长，由书记员
-      <span>{{ trial.infomation.clerk | trim}}</span>担任记录。
+      <span>{{ trial.infomation.officer[2].duty }}</span><span>{{ trial.infomation.officer[2].name | trim}}</span>{{template.common.content.acceptance_1_3}}
+      <span>{{ trial.infomation.officer[0].name | trim}}</span>{{template.common.content.acceptance_1_2}}
+      <span>{{ trial.infomation.clerk | trim}}</span>{{template.common.content.note}}
     </p>
     <!-- 简易程序或者小额诉讼程序 -->
     <p v-if="this.trial.preface.organize.program !== 'normal'">
-      审：本院受理
+      {{template.common.content.acceptance}}
       <span>{{ trial.infomation.code }}</span>
       <span v-for="data in trial.verification.participator.accusers">
         <span v-for="item in data.subjects">
           <span>{{ item.name }}</span>
         </span>
       </span>
-      与
+      {{template.common.content.and}}
       <span v-for="data in trial.verification.participator.accuseds">
         <span v-for="item in data.subjects">
           <span>{{ item.name }}</span>
         </span>
       </span>
       <span>{{trial.infomation.reason}}</span>
-      一案后，根据《中华人民共和国民事诉讼法》第三十九条、第四十一条之规定，依法适用简易程序第
-      <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}开庭进行审理。
+      {{template.common.content.acceptance_2}}简易程序{{template.common.content.first}}
+      <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}{{template.common.content.openCount}}
       <el-input style="margin: 5px 0" v-model="trial.preface.organize.detail" v-if="trial.preface.organize.status == 'show'" type="textarea" :autosize="{minRows: 4}" placeholder="请输入审判人员信息" class="width-100"></el-input>
-      本案由审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>独任审理，由书记员<span>{{ trial.infomation.clerk | trim}}</span>担任记录。
+      {{template.common.content.by}}审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>{{template.common.content.acceptance_2_1}}<span>{{ trial.infomation.clerk | trim}}</span>{{template.common.content.note}}
     </p>
   </div>
 </section>
