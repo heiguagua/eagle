@@ -4,14 +4,12 @@
       <i class="el-icon-edit-outline"></i>
       <em>信息核对&nbsp;-&nbsp;诉讼参与人&nbsp;-&nbsp;原告</em>
       <div class="tools">
-        <el-dropdown @click="accuserEvent('add')" type="primary" size="small" split-button>
+        <el-button @click="accuserEvent('add')" type="primary" size="mini">
           <i class="fa fa-user-plus">&nbsp;添加原告</i>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>
-              <i @click="accuserEvent('remove', {accuserIndex})" class="fa fa-user-times color-danger">&nbsp;移除当前原告</i>
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+        </el-button>
+        <el-button @click="accuserEvent('remove', {accuserIndex})" type="danger" size="mini">
+          <i class="fa fa-user-times">&nbsp;移除原告</i>
+        </el-button>
       </div>
     </div>
     <div class="content">

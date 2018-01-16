@@ -4,22 +4,17 @@
     <em>法庭调查-无争议归纳</em>
     <div class="tools">
       <el-tag size="small" type="warning" v-if="trial.adjourn ==='investigate-conclude-undisputed'">此处休庭</el-tag>
-      <el-dropdown>
-        <el-button type="primary" size="small">
-          操作<i class="el-icon-arrow-down el-icon--right"></i>
+      <el-button-group>
+        <el-button @click="remove()" type="primary" size="mini" plain>
+          <i class="fa fa-trash" >&nbsp;删除</i>
         </el-button>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>
-            <i @click="setAdjourn('investigate-conclude-undisputed')" class="fa fa-gavel">&nbsp;休庭</i>
-          </el-dropdown-item>
-          <el-dropdown-item>
-            <i class="fa fa-trash" @click="remove()">&nbsp;删除</i>
-          </el-dropdown-item>
-          <el-dropdown-item>
-            <i class="fa fa-reply" @click="restitute()">&nbsp;还原</i>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+        <el-button @click="restitute()" type="primary" size="mini" plain>
+          <i class="fa fa-reply" >&nbsp;还原</i>
+        </el-button>
+      </el-button-group>
+      <el-button @click="setAdjourn('investigate-conclude-undisputed')" type="primary" size="mini">
+        <i class="fa fa-gavel">&nbsp;休庭</i>
+      </el-button>
     </div>
   </div>
   <div class="content" v-if="trial.investigate.conclude.undisputed.show">

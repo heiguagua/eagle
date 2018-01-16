@@ -4,16 +4,9 @@
     <em>庭审序言-缺席审理</em>
     <div class="tools">
       <el-tag size="small" type="warning" v-if="trial.adjourn ==='verification-absence'">此处休庭</el-tag>
-      <el-dropdown>
-        <el-button type="primary" size="small">
-          操作<i class="el-icon-arrow-down el-icon--right"></i>
-        </el-button>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>
-            <i @click="setAdjourn('verification-absence')" class="fa fa-gavel">&nbsp;休庭</i>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+      <el-button @click="setAdjourn('verification-absence')" type="primary" size="mini">
+        <i class="fa fa-gavel">&nbsp;休庭</i>
+      </el-button>
     </div>
   </div>
   <div class="content">
