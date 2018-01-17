@@ -29,7 +29,24 @@ export default {
       }
       return array
     },
-    lagalAgentChange: function(selectModel) {
+    lagalAgentChange: function(params, selectModel) {
+      const vm = this;
+      if(selectModel.role =="法定代表人"||selectModel.role =="负责人"){
+        let accusers = this.trial.verification.participator.accusers;
+            for (let i in accusers) {
+              let count = 0;
+              if(accusers[i].responsibles.length>1){
+                let accuserIndex = params.accuserIndex;
+                let responsibleIndex = params.responsibleIndex;
+                message(vm, "warning", "温馨提示：只有一个法定代表人/负责人！");
+                for(let j in accusers[i].responsibles){
+                   if(j!=responsibleIndex){
+                    this.trial.verification.participator.accusers[accuserIndex].responsibles.splice(j,1);
+                   }
+                }
+              }
+            }
+      }
       switch (selectModel.role) {
         case "法定代表人":
           selectModel.shortName = "";
@@ -57,7 +74,7 @@ export default {
       vm.lagalAgentChange(obj); //法定代理人，指定代理人简称
       Util.getToCourt(this.trial); //存储到庭人员 （诉讼地位名：姓名）
     },
-    nameFormat() {//失去焦点时更新未到庭人员名称以及姓名格式验证
+    nameFormat() { //失去焦点时更新未到庭人员名称以及姓名格式验证
       Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
     },
     accuserEvent(operation, params) {
@@ -96,7 +113,7 @@ export default {
 
         // 序号
         let accusersLength = this.trial.verification.participator.accusers.length;
-        for(let i = 0; i < accusersLength; i++) {
+        for (let i = 0; i < accusersLength; i++) {
           this.trial.verification.participator.accusers[i].serialNumbers = [];
           this.trial.verification.participator.accusers[i].subjects.forEach((item, j, array) => {
             this.trial.verification.participator.accusers[i].serialNumbers.push({
@@ -157,7 +174,7 @@ export default {
         let targetSubject = this.trial.verification.participator.accusers[accuserIndex].subjects.push(originSubject);
         //序号
         this.trial.verification.participator.accusers[accuserIndex].serialNumbers = [];
-        this.trial.verification.participator.accusers[accuserIndex].subjects.forEach((item,i,array) => {
+        this.trial.verification.participator.accusers[accuserIndex].subjects.forEach((item, i, array) => {
           this.trial.verification.participator.accusers[accuserIndex].serialNumbers.push({
             num: item.ordinal
           })
@@ -177,7 +194,7 @@ export default {
           Util.updateNum('subjects', 'accusers', this.trial);
           //序号
           this.trial.verification.participator.accusers[accuserIndex].serialNumbers = [];
-          this.trial.verification.participator.accusers[accuserIndex].subjects.forEach((item,i,array) => {
+          this.trial.verification.participator.accusers[accuserIndex].subjects.forEach((item, i, array) => {
             this.trial.verification.participator.accusers[accuserIndex].serialNumbers.push({
               num: item.ordinal
             })
@@ -191,14 +208,14 @@ export default {
         }
       }
     },
-    responsibleEvent(operation, params,role) {
+    responsibleEvent(operation, params, role) {
       const vm = this;
       /* 添加操作 */
       if (operation === "add" && (role !== "法定代表人" && role !== "负责人")) {
         let accuserIndex = params.accuserIndex;
         let originResponsible = Trial().verification.participator.accusers[0].responsibles[0];
         let targetResponsible = this.trial.verification.participator.accusers[accuserIndex].responsibles;
-        if(targetResponsible.length < 2) {
+        if (targetResponsible.length < 2) {
           // 法庭询问,添加了几个问题
           let len = this.trial.investigate.inquiry.elementquerys.length || 0;
           if (len) {
@@ -220,7 +237,7 @@ export default {
           message(vm, "warning", "温馨提示：不能添加更多的法定代理人/指定代理人！");
         }
       } else if (operation === "add" && (role == "法定代表人" || role == "负责人")) {
-          message(vm, "warning", "温馨提示：法定代表人/负责人不能添加！");
+        message(vm, "warning", "温馨提示：法定代表人/负责人不能添加！");
       }
       /* 删除操作 */
       else if (operation === "remove") {

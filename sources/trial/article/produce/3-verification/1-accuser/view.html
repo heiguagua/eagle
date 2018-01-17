@@ -42,7 +42,7 @@
       </div>
       <div title="法定代表人/负责人/法定代理人/指定代理人" class="responsible animated slideInDown" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
         <p>
-          <el-select v-model="responsible.role" class="width-30" @change="lagalAgentChange(responsible)">
+          <el-select v-model="responsible.role" class="width-30" @change="lagalAgentChange( {accuserIndex, responsibleIndex},responsible)">
             <el-option v-for="option in options.responsible" :key="option" :label="option" :value="option">
             </el-option>
           </el-select>，

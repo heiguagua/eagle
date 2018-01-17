@@ -29,7 +29,24 @@ export default {
       }
       return array
     },
-    lagalAgentChange: function(selectModel) {
+    lagalAgentChange: function(params,selectModel) {
+      const vm = this;
+      if(selectModel.role =="法定代表人"||selectModel.role =="负责人"){
+        let thirdparties = this.trial.verification.participator.thirdparties;
+            for (let i in thirdparties) {
+              let count = 0;
+              if(thirdparties[i].responsibles.length>1){
+                let thirdpartyIndex = params.thirdpartyIndex;
+                let responsibleIndex = params.responsibleIndex;
+                message(vm, "warning", "温馨提示：只有一个法定代表人/负责人！");
+                for(let j in thirdparties[i].responsibles){
+                   if(j!=responsibleIndex){
+                    this.trial.verification.participator.thirdparties[thirdpartyIndex].responsibles.splice(j,1);
+                   }
+                }
+              }
+            }
+      }
       switch (selectModel.role) {
         case "法定代表人":
           selectModel.shortName = "";
