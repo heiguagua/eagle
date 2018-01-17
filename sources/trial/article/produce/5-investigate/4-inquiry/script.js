@@ -52,7 +52,8 @@ export default {
   computed: {
     ...mapState("Trial", [
       "trial",
-      "options"
+      "options",
+      "template"
     ]),
   },
   methods: {

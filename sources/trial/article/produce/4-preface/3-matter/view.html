@@ -10,12 +10,12 @@
     </div>
   </div>
   <div class="content">
-    <p>审：为了严肃法庭纪律，规范庭审活动，本庭向各方当事人、诉讼参与人明确告知四项内容：</p>
-    <p>一、根据最高人民法院相关规定，本案的庭审活动将进行全程同步录音（或录像），所形成的视频、音频资料将存入案件卷宗，并可能在网上公开或作法制宣传等之用。</p>
-    <p>二、根据《中华人民共和国民事诉讼法》第十三条、第一百一十一条，最高人民法院《关于民事诉讼证据的若干规定》第八十条之规定，各方当事人和诉讼参与人在民事诉讼活动中应当遵循诚实信用原则，如实陈述案件事实和提供相关证据材料。如有作虚假陈述，提供虚假证据，妨碍证人、鉴定人、勘验人作证等行为的，除依法追究法律责任外，本庭还将对其违反诚信的行为作为综合评判案件事实和判决结果的考量因素。</p>
-    <p>三、根据宪法和法律规定，人民法院依法独立行使审判权，法官依法审判案件，不受行政机关、社会团体和个人的干涉。各方当事人及诉讼参与人应以法律规定的方式表达诉求和提供证据，在诉讼过程中不得通过他人转交材料或转达诉求，不得庭外请托合议庭或其他法官，不得以任何形式干扰法院独立和公正行使审判权。如有上述不符合法律规定之行为的，本庭将记录在案，同时责令行为方向本庭及对方当事人作出说明。律师有上述行为的，本院还将函告司法行政部门。</p>
-    <p>四、在案件审理过程中，本庭将严格遵守上级法院及本院有关审判工作纪律之规定，不接受当事人及相关人员的请客送礼，不与律师进行不正当交往，公开、公平、公正地审理案件。</p>
-    <p>审：双方对以上内容是否清楚?</p>
+    <p>{{template.preface.inform.content.prefaceInform}}</p>
+    <p>{{template.preface.inform.content.prefaceInform_1}}</p>
+    <p>{{template.preface.inform.content.prefaceInform_2}}</p>
+    <p>{{template.preface.inform.content.prefaceInform_3}}</p>
+    <p>{{template.preface.inform.content.prefaceInform_4}}</p>
+    <p>{{template.preface.inform.content.prefaceInform_5}}</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

@@ -5,12 +5,12 @@
   </div>
   <div class="content">
     <div v-if="trial.adjourn">
-      <P>审：鉴于本案
+      <P>{{template.announce.content.houseTime}}
         <el-select v-model="trial.announce.reason" class="width-40">
           <el-option v-for="option in options.announce" :key="option" :label="option" :value="option">
           </el-option>
-        </el-select>，本院定于
-        <el-date-picker v-model="trial.announce.nextOpenDate" type="datetime" format="yyyy 年 MM 月 dd 日 HH 时 mm 分" value-format="yyyy年MM月dd日HH 时mm分" placeholder="选择日期" class="width-33"></el-date-picker>复庭。各方是否清楚？</P>
+        </el-select>，{{template.announce.content.houseTime_1}}
+        <el-date-picker v-model="trial.announce.nextOpenDate" type="datetime" format="yyyy 年 MM 月 dd 日 HH 时 mm 分" value-format="yyyy年MM月dd日HH 时mm分" placeholder="选择日期" class="width-33"></el-date-picker>{{template.announce.content.houseTime_2}}</P>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
           <p v-if="subject.showFlag">原{{subject.ordinal}}：清楚。
@@ -76,6 +76,6 @@
         </div>
       </div>
     </div>
-    <p>审：本案经过法庭调查、法庭辩论，本庭将对各方当事人及其他诉讼参加人的陈述及辩论意见作充分考虑。各方当事人及其他诉讼参加人休庭后应当仔细阅读笔录，并按要求签名或盖章。对记录有误的地方，五日内可以申请书记员进行补正。今天的庭审活动到此结束，宣判时间另行通知，现在休庭。（敲击法槌）</p>
+    <p>{{template.announce.content.adjourned}}</p>
   </div>
 </section>

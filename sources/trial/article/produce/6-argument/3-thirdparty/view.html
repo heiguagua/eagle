@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="content">
-    <p>审：现在由第三人发表意见。</p>
+    <p>{{template.debate.content.third}}</p>
     <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="content">
-    <p>审：法庭调查结束，现在进行法庭辩论。为保证法庭辩论正常有序的进行，本庭提醒各方当事人，辩论应当实事求是、以理服人，在辩论中，各方当事人要围绕本案争议的焦点，对本案的事实认定、责任、法律适用等发表辩论意见，不得引用与本案无关或者未经法庭核对的事实、证据，不得重复，严禁使用不文明语言。首先由原告发表辩论意见。</p>
+    <p>{{template.debate.content.debateTitle}}</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

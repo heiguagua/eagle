@@ -2,7 +2,7 @@
   <div class="content" v-for="(times,index) in trial.argument.other.debateArray">
     <hr />
     <button class="el-button el-button--info el-button--mini" @click="delDebate({index})">移除</button>
-     <p>审：现在进行第<span>{{index+2}}</span>轮辩论。首先由原告发表第<span>{{index+2}}</span>轮辩论意见。</p>
+     <p>{{template.debate.content.addDebate.plaintiff}}<span>{{index+2}}</span>{{template.debate.content.addDebate.plaintiff_1}}<span>{{index+2}}</span>{{template.debate.content.addDebate.plaintiff_2}}</p>
      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">
@@ -29,7 +29,7 @@
         </p>
       </div>
     </div>
-    <p>审：现在由被告发表辩论意见。</p>
+    <p>{{template.debate.content.defendant}}</p>
     <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">
@@ -56,7 +56,7 @@
         </p>
       </div>
     </div>
-    <p>审：现在由第三人发表意见。</p>
+    <p>{{template.debate.content.third}}</p>
     <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">
@@ -86,19 +86,19 @@
   </div>
   <!-- 缺席时显示 -->
   <div title="缺席审理" class="content" v-if="trial.verification.other.absenseStatus">
-    <p>审：鉴于
+    <p>{{template.common.content.absenceStart}}
     <span v-for="(person, personIndex) in trial.verification.other.absentee">
       <b>{{ person.type }}</b>
       <b>{{ person.name }}</b>
       <b v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</b>
     </span>
-    经本院依法传唤，无正当理由拒不当庭，无法发表辩论意见，
+    {{template.debate.content.addDebate.absence}}
     <span v-for="(person, personIndex) in trial.verification.other.absentee">
       <b>{{ person.type }}</b>
       <b>{{ person.name }}</b>
       <b v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</b>
     </span>
-    辩论意见予以省略。</p>
+    {{template.debate.content.addDebate.absence_1}}</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

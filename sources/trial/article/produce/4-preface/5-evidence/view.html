@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="content">
-    <p>审：庭前向各方送达权利义务通知书、举证通知书，各方是否已收到？对证据期限有无异议？是否同意今天开庭？</p>
+    <p>{{template.preface.prefaceTimeLimit}}</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

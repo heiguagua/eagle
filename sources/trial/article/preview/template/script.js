@@ -37,7 +37,11 @@ export default {
       }
     };
   },
-  computed: {},
+  computed: {
+    ...mapState("Trial", [
+      "template"
+    ]),
+  },
   created() {
     this.case = storage.get("case");
     this.trial = storage.get("trial");

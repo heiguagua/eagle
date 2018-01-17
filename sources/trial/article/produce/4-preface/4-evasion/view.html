@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="content">
-    <p>审：根据《中华人民共和国民事诉讼法》第四十四条、四十五条、四十六条之规定，当事人可以申请回避，各方是否申请回避？</p>
+    <p>{{template.preface.prefaceWithdrawal}}</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">

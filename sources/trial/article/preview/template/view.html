@@ -1039,7 +1039,7 @@
     </div>
     <div title="法庭辩论" class="argument" :style="commonStyle">
       <div title="原告方辩论意见" class="argument-accuser">
-        <p :style="pMargin">审：法庭调查结束，现在进行法庭辩论。为保证法庭辩论正常有序的进行，本庭提醒各方当事人，辩论应当实事求是、以理服人，在辩论中，各方当事人要围绕本案争议的焦点，对本案的事实认定、责任、法律适用等发表辩论意见，不得引用与本案无关或者未经法庭核对的事实、证据，不得重复，严禁使用不文明语言。首先由原告发表辩论意见。</p>
+        <p :style="pMargin">{{template.debate.content.debateTitle}}</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag && subject.argument[0].detail">
@@ -1059,7 +1059,7 @@
         </div>
       </div>
       <div title="被告方辩论意见" class="argument-accused">
-        <p :style="pMargin">审：现在由被告发表辩论意见。</p>
+        <p :style="pMargin">{{template.debate.content.defendant}}</p>
         <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag && subject.argument[0].detail">
@@ -1079,7 +1079,7 @@
         </div>
       </div>
       <div title="第三人辩论意见" class="argument-thirdparty">
-        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">审：现在由第三人发表意见。</p>
+        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.debate.content.third}}</p>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex"><span v-if="subject.showFlag && subject.argument[0].detail">第{{subject.ordinal}}：{{subject.argument[0].detail}}</span></p>
           <p :style="pMargin" title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex"><span v-if="thirdparty.showFlag && responsible.argument[0].detail">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.argument[0].detail}}</span>
@@ -1090,7 +1090,7 @@
       </div>
       <div title="添加辩论次数">
         <div class="content" v-if="trial.argument.other.debateArray.length" v-for="(times,index) in trial.argument.other.debateArray">
-          <p :style="pMargin">审：现在进行第<span>{{index+1}}</span>轮辩论。首先由原告发表第<span>{{index+1}}</span>轮辩论意见。</p>
+          <p :style="pMargin">{{template.debate.content.addDebate.plaintiff}}<span>{{index+1}}</span>{{template.debate.content.addDebate.plaintiff_1}}<span>{{index+1}}</span>{{template.debate.content.addDebate.plaintiff_2}}</p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
             <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
               <p :style="pMargin" v-if="subject.showFlag && subject.argument[index + 1].detail">
@@ -1108,7 +1108,7 @@
               </p>
             </div>
           </div>
-          <p :style="pMargin">审：现在由被告发表辩论意见。</p>
+          <p :style="pMargin">{{template.debate.content.defendant}}</p>
           <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
             <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
               <p :style="pMargin" v-if="subject.showFlag && subject.argument[index + 1].detail">
@@ -1126,7 +1126,7 @@
               </p>
             </div>
           </div>
-          <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">审：现在由第三人发表意见。</p>
+          <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.debate.content.third}}</p>
           <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
             <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
               <p :style="pMargin" v-if="subject.showFlag && subject.argument[index + 1].detail">
@@ -1147,8 +1147,8 @@
         </div>
       </div>
       <div title="缺席审理" v-if="trial.verification.other.absenseStatus" :style="commonStyle">
-        <p :style="pMargin">审：鉴于<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>经本院依法传唤，无正当理由拒不当庭，无法发表辩论意见，
-          <span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>辩论意见予以省略。</p>
+        <p :style="pMargin">{{template.common.content.absenceStart}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>{{template.debate.content.addDebate.absence}}
+          <span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>{{template.debate.content.addDebate.absence}}</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">
@@ -1203,7 +1203,7 @@
       </div>
     </div>
     <div title="最后陈述" class="statement" :style="commonStyle">
-      <p :style="pMargin">审：法庭辩论终结。现在由各方当事人最后陈述。首先由原告陈述。</p>
+      <p :style="pMargin">{{template.statement.content.plaintiff}}</p>
       <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
           <p :style="pMargin" v-if="subject.showFlag && subject.statement.detail">
@@ -1221,7 +1221,7 @@
           </p>
         </div>
       </div>
-      <p :style="pMargin" v-if="trial.verification.participator.accuseds.length&&((trial.verification.participator.accuseds[0].subjects.length&&trial.verification.participator.accuseds[0].subjects[0].showFlag)||(trial.verification.participator.accuseds[0].responsibles.length&&trial.verification.participator.accuseds[0].responsibles[0].showFlag)||(trial.verification.participator.accuseds[0].agents.length&&trial.verification.participator.accuseds[0].agents[0].showFlag))">审：现在由被告陈述。</p>
+      <p :style="pMargin" v-if="trial.verification.participator.accuseds.length&&((trial.verification.participator.accuseds[0].subjects.length&&trial.verification.participator.accuseds[0].subjects[0].showFlag)||(trial.verification.participator.accuseds[0].responsibles.length&&trial.verification.participator.accuseds[0].responsibles[0].showFlag)||(trial.verification.participator.accuseds[0].agents.length&&trial.verification.participator.accuseds[0].agents[0].showFlag))">{{template.statement.content.defendant}}</p>
       <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
           <p :style="pMargin" v-if="subject.showFlag && subject.statement.detail">
@@ -1239,7 +1239,7 @@
           </p>
         </div>
       </div>
-      <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length && ((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">审：现在由第三人陈述。</p>
+      <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length && ((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.statement.content.third}}</p>
       <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
         <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
           <p :style="pMargin" v-if="subject.showFlag && subject.statement.detail">
@@ -1259,8 +1259,8 @@
       </div>
       <!-- test -->
       <div title="缺席" v-if="trial.verification.other.absenseStatus" :style="commonStyle">
-        <p :style="pMargin">审：鉴于<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>经本院依法传唤，无正当理由拒不当庭，无法发表最后陈述意见，
-          <span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>最后陈述意见予以省略。</p>
+        <p :style="pMargin">{{template.common.content.absenceStart}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>{{template.statement.content.absence}}
+          <span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>{{template.statement.content.absence_1}}</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">
@@ -1317,7 +1317,7 @@
     <div title="法庭调解" class="conciliation" :style="commonStyle">
       <!-- 法庭调解 全部到庭时 -->
       <div v-if="!(((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag)">
-        <p :style="pMargin">审：法庭辩论终结，应当依法作出判决，判决前能够调解的可以进行调解，各方是否申请由法庭主持调解？</p>
+        <p :style="pMargin">{{template.courtMediation.content.mediationInquiry}}</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">
@@ -1338,7 +1338,7 @@
             </p>
           </div>
         </div>
-        <p :style="pMargin">审：被告是否愿意调解？</p>
+        <p :style="pMargin">{{template.courtMediation.content.defendant}}</p>
         <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">
@@ -1358,7 +1358,7 @@
             </p>
           </div>
         </div>
-        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length &&((trial.verification.participator.thirdparties[0].subjects.length && trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length && trial.verification.participator.thirdparties[0].agents[0].showFlag))">审：第三人是否愿意参加调解？</p>
+        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length &&((trial.verification.participator.thirdparties[0].subjects.length && trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length && trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.courtMediation.content.third}}</p>
         <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">
@@ -1380,7 +1380,7 @@
         </div>
         <!-- 都同意调解时 -->
         <div v-if="trial.conciliation.status">
-          <p :style="pMargin">审：鉴于各方当事人均同意调解，休庭后由法庭组织各方当事人进行调解，也可以自行调解。</p>
+          <p :style="pMargin">{{template.courtMediation.content.selfMediation}}</p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
             <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
               <p :style="pMargin" v-if="subject.showFlag">
@@ -1435,13 +1435,13 @@
         </div>
         <!-- 任意一方不同意调解时 -->
         <div v-if="!trial.conciliation.status">
-          <p :style="pMargin">审：鉴于
+          <p :style="pMargin">{{template.courtMediation.content.noMediation}}
             <span v-for="(person, personIndex) in trial.conciliation.toMediateMan">
               <span>{{ person.type }}</span>
             <span>{{ person.name }}</span>
             <span v-if="trial.conciliation.toMediateMan.length > 1 && personIndex + 1 <  trial.conciliation.toMediateMan.length">、</span>
             </span>
-            不同意调解，本庭不再当庭组织各方调解，但不影响各方庭下进行调解。
+            {{template.courtMediation.content.noMediation_1}}
           </p>
           <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
             <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -1498,7 +1498,7 @@
       </div>
       <!-- 法庭调解 存在缺席时 -->
       <div v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
-        <p :style="pMargin">审：法庭辩论终结，应当依法作出判决，判决前能够调解的可以进行调解。鉴于本案<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>未到庭参加诉讼，本庭不组织各方调解，但不影响各方庭下进行调解。
+        <p :style="pMargin">{{template.courtMediation.content.absence}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>{{template.courtMediation.content.absence_1}}
         </p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
@@ -1555,7 +1555,7 @@
     </div>
     <div title="休庭宣读" class="announce" :style="commonStyle">
       <div v-if="trial.adjourn">
-        <P :style="pMargin">审：鉴于本案{{trial.announce.reason}}，本院定于{{trial.announce.nextOpenDate}}复庭。各方是否清楚？</P>
+        <P :style="pMargin">{{template.announce.content.houseTime}}{{trial.announce.reason}}，{{template.announce.content.houseTime_1}}{{trial.announce.nextOpenDate}}{{template.announce.content.houseTime_2}}</P>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">原{{subject.ordinal}}：清楚。
@@ -1603,10 +1603,10 @@
           </div>
         </div>
       </div>
-      <p :style="pMargin">审：本案经过法庭调查、法庭辩论，本庭将对各方当事人及其他诉讼参加人的陈述及辩论意见作充分考虑。各方当事人及其他诉讼参加人休庭后应当仔细阅读笔录，并按要求签名或盖章。对记录有误的地方，五日内可以申请书记员进行补正。今天的庭审活动到此结束，宣判时间另行通知，现在休庭。（敲击法槌）</p>
+      <p :style="pMargin">{{template.announce.content.adjourned}}</p>
     </div>
     <div title="其他" class="other" :style="commonStyle">
-      <p :style="pMargin">书记员：全体起立，请审判人员退庭。请旁听人员退庭。请当事人退庭并到书记员处阅读庭审笔录并签名。</p>
+      <p :style="pMargin">{{template.orther.content}}</p>
       <p :style="pMargin">（证据原件已退还当事人）</p>
       <p :style="pMargin">（以上笔录阅后无误，请签字确认）</p>
       <p :style="pMargin" style="display:flex">
