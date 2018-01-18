@@ -31,7 +31,8 @@ export default {
     },
     lagalAgentChange: function(params, selectModel) {
       const vm = this;
-      if(selectModel.role =="法定代表人"||selectModel.role =="负责人"){
+      if(selectModel) {
+        if(selectModel.role =="法定代表人"||selectModel.role =="负责人"){
         let accuseds = this.trial.verification.participator.accuseds;
             for (let i in accuseds) {
               let count = 0;
@@ -64,6 +65,7 @@ export default {
           selectModel.shortName = "指代";
           selectModel.type = selectModel.parentType + selectModel.role;
       }
+      } 
       Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
     },
     toCourtChange(obj) {

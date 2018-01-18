@@ -2,6 +2,7 @@ import Http from "../../../common/scripts/http";
 import JudgeTemplate from "./template";
 import { message, storage, confirm } from "../../../common/scripts/helper";
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
+import template from "../produce/script.vue.data.template.js";
 
 export default {
   components: {
@@ -21,6 +22,9 @@ export default {
   methods: {
     ...mapActions("Trial", [
       "getTrials"
+    ]),
+    ...mapMutations("Trial", [
+      "setTemplate"
     ]),
     cleanHTML(text) {
       return text.replace(/\sdata-v-\w*=""/g, "");
@@ -155,5 +159,6 @@ export default {
   created() {
     const vm = this;
     vm.operation = vm.$route.query.operation; // 根据路由参数确定当前操作是更新还是新建
+    this.setTemplate(template())
   },
 };
