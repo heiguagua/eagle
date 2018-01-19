@@ -17,19 +17,24 @@
   </main>
   <script>
     (function(window) {
-      window.url = {
-        /* Test */
-        // master: "http://192.168.13.119:9080/CourtDecisionSystem",
-        // ai: "http://192.68.13.118:8937/ai",
-        // ocr: "http://192.168.13.118:9999",
-        /* Production */
-        master: "http://192.168.13.77:8082/dev",
-        /* Development */
-        // master: "http://171.221.254.8:38082/dev",
-        /* Demo */
-        // master: "http://172.16.7.105:8080",
-        ai: "http://171.221.254.8:8937/ai",
-        ocr: "http://192.168.13.176:9999",
+      var penguin = sessionStorage.getItem("URL");
+      if (penguin) {
+        window.url = JSON.parse(penguin);
+      } else {
+        window.url = {
+          /* Test */
+          // master: "http://192.168.13.119:9080/CourtDecisionSystem",
+          // ai: "http://192.68.13.118:8937/ai",
+          // ocr: "http://192.168.13.118:9999",
+          /* Production */
+          master: "http://192.168.13.77:8082/dev",
+          /* Development */
+          // master: "http://171.221.254.8:38082/dev",
+          /* Demo */
+          // master: "http://172.16.7.105:8080",
+          ai: "http://171.221.254.8:8937/ai",
+          ocr: "http://192.168.13.176:9999",
+        }
       }
     })(window);
   </script>
