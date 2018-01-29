@@ -59,7 +59,7 @@ export default {
             .catch(function(error) {
               console.error(error);
             })
-        }, 10000)
+        }, 3000)
       }
     },
     closeHeartbeat() {
