@@ -41,10 +41,10 @@ export default {
           })
         })
         .catch(() => {
-          Message({
-            type: "error",
-            message: "休庭操作失败！"
-          })
+          // Message({
+          //   type: "error",
+          //   message: "休庭操作失败！"
+          // })
         })
     },
     // 设置笔录模板内容
