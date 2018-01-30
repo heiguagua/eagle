@@ -56,6 +56,9 @@ export default {
         value.substr(1, 2) ? nameArr[1] = value.substr(1, 2) : 0;
         this.trial.infomation.officer[index].name = nameArr.join('　');
       }
+      if(this.trial.infomation.officer[index].name.length>3 && this.trial.infomation.officer[index].name.indexOf('　')>0){
+        this.trial.infomation.officer[index].name =this.trial.infomation.officer[index].name.replace(/　/g,"");
+      }
       if (!this.trial.infomation.officer[index].name) {
         // layer.msg('姓名不能为空')
       } else if (this.trial.infomation.officer[index].name.length >= 50) {
@@ -67,9 +70,9 @@ export default {
       }
     },
     clearContent: function(index) {
-      if(this.trial.infomation.officer[index].name.replace(/　/g,"").length==2){
-        this.trial.infomation.officer[index].name ="";
-      }
+      // if(this.trial.infomation.officer[index].name.replace(/　/g,"").length==2){
+      //   this.trial.infomation.officer[index].name ="";
+      // }
     },
     setClerkFormat: function() {
       const vm = this;
@@ -80,6 +83,9 @@ export default {
         nameArr[0] = value.substr(0, 1);
         value.substr(1, 2) ? nameArr[1] = value.substr(1, 2) : 0;
         this.trial.infomation.clerk = nameArr.join('　');
+      }
+      if(this.trial.infomation.clerk.length>3 && this.trial.infomation.clerk.indexOf('　')>0){
+        this.trial.infomation.clerk =this.trial.infomation.clerk.replace(/　/g,"");
       }
       if (!this.trial.infomation.clerk) {
         // layer.msg('姓名不能为空')
@@ -92,9 +98,9 @@ export default {
       }
     },
     clearClerkContent: function() {
-      if(this.trial.infomation.clerk.replace(/　/g,"").length==2){
-        this.trial.infomation.clerk ="";
-      }
+      // if(this.trial.infomation.clerk.replace(/　/g,"").length==2){
+      //   this.trial.infomation.clerk ="";
+      // }
     },
   },
 };
