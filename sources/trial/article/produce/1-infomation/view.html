@@ -14,7 +14,7 @@
         </p>
     <p title="时间">
       {{template.info.openTime.name}}
-      <el-date-picker v-model="trial.infomation.date" type="date" 
+      <el-date-picker v-model="trial.infomation.date" type="date"
       format="yyyy 年 MM 月 dd 日"
       value-format="yyyy年MM月dd日" placeholder="选择日期" class="width-33"></el-date-picker>
       &nbsp;
@@ -30,14 +30,14 @@
       {{template.info.place.content.court}}
       <el-input-number v-model="trial.infomation.location.times" :min="1" :max="999" controls-position="right" class="width-19"></el-input-number>
       {{template.info.place.content.times}}
-    </p> 
+    </p>
     <p title="是否公开审理、旁听人数">
       {{template.info.openToTrial}}
       <el-select v-model="trial.infomation.isPublic" class="width-25" @change="isPublic()">
         <el-option v-for="option in options.public" :key="option" :label="option" :value="option">
         </el-option>
       </el-select>
-      &nbsp;&nbsp;&nbsp; {{template.info.listen}}
+      &nbsp;&nbsp;&nbsp; {{template.info.listen}}：
       <el-input-number :disabled="trial.infomation.isPublic == '不公开'" v-model="trial.infomation.audience" :min="0" controls-position="right" class="width-20"></el-input-number>
     </p>
     <p title="审判人员1">
