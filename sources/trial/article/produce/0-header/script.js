@@ -8,7 +8,8 @@ export default {
   computed: {
     ...mapState("Trial", [
       "trial",
-      "options"
+      "options",
+      "template"
     ]),
   },
   methods: {
@@ -16,7 +17,7 @@ export default {
   },
   created() {
     const params = storage.get("case");
-    if(params.case_brief == "工商行政管理（工商）") {
+    if(params.case_brief == "工商行政管理（工商）") {debugger
       this.trial.head.title = "行政案件审判笔录";
       this.trial.investigate.inquiry.status = false; //法庭询问模块隐藏
       this.trial.investigate.conclude.undisputed.show = false; //争点归纳-无争议
