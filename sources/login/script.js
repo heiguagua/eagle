@@ -19,6 +19,7 @@ export default {
           method: "post",
           url: Http.url.master + "/login",
           data: {
+            courtCode: 3004,
             loginName: vm.username,
             password: Encrypt.md5(vm.password)
           }
