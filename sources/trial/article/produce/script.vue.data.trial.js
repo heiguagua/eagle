@@ -162,7 +162,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "原告",
             type: "原告法定代表人",
-            shortName: "",
+            shortName: "法代",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -492,7 +492,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "被告",
             type: "被告法定代表人",
-            shortName: "",
+            shortName: "法代",
             // 异议及理由
             objection: {
               status: "无异议",
@@ -821,7 +821,7 @@ export default () => {
             showFlag: true, //到庭显示，未到庭隐藏（针对所有诉讼参与人对应的列表）
             parentType: "第三人",
             type: "第三人法定代表人",
-            shortName: "",
+            shortName: "法代",
             // 异议及理由
             objection: {
               status: "无异议",
