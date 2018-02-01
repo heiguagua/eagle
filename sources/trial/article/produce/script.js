@@ -61,6 +61,7 @@ export default {
       const vm = this;
       this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys); //审议归纳排序
       storage.set("trial", this.trial);
+      storage.set("template", this.template);
     },
     // 新建生成
     generateCreate() {
@@ -151,7 +152,7 @@ export default {
   },
   created() {
     this.updateTrialTransaction();
-    this.setTemplate(template())
+    this.setTemplate(template());
   },
   mounted() {
     this.setLoading(false);

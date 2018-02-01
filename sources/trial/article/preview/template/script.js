@@ -8,6 +8,7 @@ export default {
     return {
       case: {},
       trial: {},
+      template: {},
       commonStyle: {
         lineHeight: "30pt",
         margin: "0 -0.1cm",
@@ -37,14 +38,15 @@ export default {
       }
     };
   },
-  computed: {
-    ...mapState("Trial", [
-      "template"
-    ]),
-  },
+  // computed: {
+  //   ...mapState("Trial", [
+  //     "template"
+  //   ]),
+  // },
   created() {
     this.case = storage.get("case");
     this.trial = storage.get("trial");
+    this.template = storage.get("template");
   },
   mounted() {
     let className = this.trial.adjourn;
