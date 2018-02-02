@@ -191,7 +191,7 @@ export default {
         const subjects = this.trial.verification.participator.accusers[accuserIndex].subjects;
         if (subjects.length > 1) {
           subjects.splice(subjectIndex, 1);
-          Util.updateNum('subjects', 'accusers', this.trial);
+          Util.updateNum(null, 'accusers', this.trial);
           //序号
           this.trial.verification.participator.accusers[accuserIndex].serialNumbers = [];
           this.trial.verification.participator.accusers[accuserIndex].subjects.forEach((item, i, array) => {

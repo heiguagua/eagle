@@ -184,7 +184,7 @@ export default {
         const subjects = this.trial.verification.participator.thirdparties[thirdpartyIndex].subjects;
         if (subjects.length >= 1) {
           subjects.splice(subjectIndex, 1);
-          Util.updateNum('subjects', 'thirdparties', this.trial);
+          Util.updateNum(null, 'thirdparties', this.trial);
           //序号
           this.trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers = [];
           this.trial.verification.participator.thirdparties[thirdpartyIndex].subjects.forEach((item,i,array) => {
