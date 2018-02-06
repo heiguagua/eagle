@@ -293,8 +293,6 @@ export default {
     // 区分新建、修改的状态，从而挂载不同的store
     if (operation === "create") {
       const lawcase = storage.get("case");
-      console.log(lawcase);
-      // 原告
       // 第三人
       if(typeof lawcase.third_man === "string") {
         this.trial.verification.participator.thirdparties[0].subjects[0].name = lawcase.third_man;
