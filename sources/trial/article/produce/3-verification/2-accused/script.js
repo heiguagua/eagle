@@ -65,7 +65,7 @@ export default {
           selectModel.shortName = "指代";
           selectModel.type = selectModel.parentType + selectModel.role;
       }
-      } 
+      }
       Util.getAbsentee(this.trial); //存储未到庭人员 （诉讼地位名：姓名）
     },
     toCourtChange(obj) {
@@ -301,10 +301,21 @@ export default {
     const operation = vm.$route.query.operation;
     // 区分新建、修改的状态，从而挂载不同的store
     if (operation === "create") {
-      const params = storage.get("case");
-      this.trial.verification.participator.accuseds[0].subjects[0].name = params.defendant;
-      this.trial.verification.participator.accuseds[0].subjects[0].info = params.defendant_baseinfo;
+      const lawcase = storage.get("case");
+      // 被告
+      if(typeof lawcase.defendant === "string") {
+        this.trial.verification.participator.accuseds[0].subjects[0].name = lawcase.defendant;
+        this.trial.verification.participator.accuseds[0].subjects[0].info = lawcase.defendant_baseinfo;
+      }
+      else if(typeof lawcase.defendant==="object" && lawcase.length!==0) {
+        const subjects = [];
+        for(let index=0; index<lawcase.defendant.length; index++) {
+          subjects.push(Trial().verification.participator.accuseds[0].subjects[0]);
+          subjects[index].name = lawcase.defendant[index].name;
+          subjects[index].info = lawcase.defendant[index].info;
+        }
+        this.trial.verification.participator.accuseds[0].subjects = subjects;
+      }
     }
-
   }
 };

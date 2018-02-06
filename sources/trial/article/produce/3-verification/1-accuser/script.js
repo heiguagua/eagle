@@ -301,10 +301,21 @@ export default {
     const operation = vm.$route.query.operation;
     // 区分新建、修改的状态，从而挂载不同的store
     if (operation === "create") {
-      const params = storage.get("case");
-      this.trial.verification.participator.accusers[0].subjects[0].name = params.accuser;
-      this.trial.verification.participator.accusers[0].subjects[0].info = params.accuser_baseinfo;
+      const lawcase = storage.get("case");
+      // 原告
+      if(typeof lawcase.accuser === "string") {
+        this.trial.verification.participator.accusers[0].subjects[0].name = lawcase.accuser;
+        this.trial.verification.participator.accusers[0].subjects[0].info = lawcase.accuser_baseinfo;
+      }
+      else if(typeof lawcase.accuser==="object" && lawcase.length!==0) {
+        const subjects = [];
+        for(let index=0; index<lawcase.accuser.length; index++) {
+          subjects.push(Trial().verification.participator.accusers[0].subjects[0]);
+          subjects[index].name = lawcase.accuser[index].name;
+          subjects[index].info = lawcase.accuser[index].info;
+        }
+        this.trial.verification.participator.accusers[0].subjects = subjects;
+      }
     }
-
   }
 };
