@@ -1,0 +1,64 @@
+<section title="庭审序言-庭审组织" class="preface-organize">
+  <div class="access">
+    <i class="el-icon-edit-outline"></i>
+    <em>庭审序言-庭审组织</em>
+    <div class="tools">
+      <el-tag size="small" type="warning" v-if="trial.adjourn ==='preface-organize'">此处休庭</el-tag>
+      <el-button @click="changeJudge()" type="primary" size="mini">
+        <i class='fa fa-user'>&nbsp;更换审判人员</i>
+      </el-button>
+      <el-button @click="setAdjourn('preface-organize')" type="primary" size="mini">
+        <i class="fa fa-gavel">&nbsp;休庭</i>
+      </el-button>
+    </div>
+  </div>
+  <div class="content">
+    <!-- 普通程序 -->
+    <p v-if="this.trial.preface.organize.program === 'normal'">
+      {{template.common.content.acceptance}}
+      <span>{{ trial.infomation.code }}</span>
+      <span v-for="data in trial.verification.participator.accusers">
+        <span v-for="item in data.subjects">
+          <span>{{ item.name }}</span>
+        </span>
+      </span>
+      {{template.common.content.and}}
+      <span v-for="data in trial.verification.participator.accuseds">
+        <span v-for="item in data.subjects">
+          <span>{{ item.name }}</span>
+        </span>
+      </span>
+      <span>{{trial.infomation.reason}}</span>
+      {{template.common.content.acceptance_1}}普通程序{{template.common.content.first}}
+      <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}{{template.common.content.openCount}}
+      <el-input style="margin: 5px 0" v-model="trial.preface.organize.detail" v-if="trial.preface.organize.status == 'show'" type="textarea" :autosize="{minRows: 4}" placeholder="请输入审判人员信息" class="width-100"></el-input>
+      {{template.common.content.by}}
+      <span>{{ trial.infomation.officer[0].duty }}</span><span>{{ trial.infomation.officer[0].name | trim}}</span>、
+      <span>{{ trial.infomation.officer[1].duty }}</span><span>{{ trial.infomation.officer[1].name | trim}}</span>、
+      <span>{{ trial.infomation.officer[2].duty }}</span><span>{{ trial.infomation.officer[2].name | trim}}</span>{{template.common.content.acceptance_1_3}}
+      <span>{{ trial.infomation.officer[0].name | trim}}</span>{{template.common.content.acceptance_1_2}}
+      <span>{{ trial.infomation.clerk | trim}}</span>{{template.common.content.note}}
+    </p>
+    <!-- 简易程序或者小额诉讼程序 -->
+    <p v-if="this.trial.preface.organize.program !== 'normal'">
+      {{template.common.content.acceptance}}
+      <span>{{ trial.infomation.code }}</span>
+      <span v-for="data in trial.verification.participator.accusers">
+        <span v-for="item in data.subjects">
+          <span>{{ item.name }}</span>
+        </span>
+      </span>
+      {{template.common.content.and}}
+      <span v-for="data in trial.verification.participator.accuseds">
+        <span v-for="item in data.subjects">
+          <span>{{ item.name }}</span>
+        </span>
+      </span>
+      <span>{{trial.infomation.reason}}</span>
+      {{template.common.content.acceptance_2}}简易程序{{template.common.content.first}}
+      <span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}{{template.common.content.openCount}}
+      <el-input style="margin: 5px 0" v-model="trial.preface.organize.detail" v-if="trial.preface.organize.status == 'show'" type="textarea" :autosize="{minRows: 4}" placeholder="请输入审判人员信息" class="width-100"></el-input>
+      {{template.common.content.by}}审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>{{template.common.content.acceptance_2_1}}<span>{{ trial.infomation.clerk | trim}}</span>{{template.common.content.note}}
+    </p>
+  </div>
+</section>

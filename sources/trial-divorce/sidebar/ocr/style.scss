@@ -1,0 +1,50 @@
+@import "../../../common/styles/color";
+#trial-sidebar-ocr {
+   ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+   ::-webkit-scrollbar-thumb {
+    background: $color-gray;
+    border-radius: 3px;
+  }
+  .upload {
+    margin: 0 6px 15px 15px;
+    .thumbnails {
+      overflow-x: scroll;
+      width: 100%;
+      height: 400px;
+      margin-top: 8px;
+      .box-card {
+        display: inline-block;
+        width: 130px;
+        height: 200px;
+        img {
+          display: inline-block;
+          height: 150px;
+          width: 100%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .dialog {
+    .left {
+      width: 50%;
+      height: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .right {
+      width: 50%;
+      height: 100%;
+      .result {
+        font-Size: 14px;
+        overflow: scroll;
+        height: 300px;
+      }
+    }
+  }
+}

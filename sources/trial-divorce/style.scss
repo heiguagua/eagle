@@ -1,0 +1,21 @@
+@import "../common/styles/color";
+#trial {
+  display: flex !important;
+  flex-direction: row;
+  #trial-navbar {
+    flex: auto;
+    height: 100%;
+  }
+  #trial-article {
+    height: 100%;
+    flex: 0 0 900px;
+    overflow-y: auto;
+    border-right: 1px solid $color-border-light;
+    border-left: 1px solid $color-border-light;
+  }
+  #trial-sidebar {
+    flex: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,50 @@
+<div id="trial-article-produce">
+  <!-- 工具栏 -->
+  <div class="toolbar">
+    <div class="left">
+      <el-button @click="generateCreate" v-if="operation==='create'" size="mini" type="danger">
+        <i class="fa fa-file">&nbsp;生成笔录</i>
+      </el-button>
+      <el-button @click="generateUpdate" v-if="operation==='update'" size="mini" type="danger" plain>
+        <i class="fa fa-copy">&nbsp;生成笔录</i>
+      </el-button>
+      <!-- <el-button @click="logTrial" size="mini" type="info">
+        <i class="fa fa-file">&nbsp;打印Trial</i>
+      </el-button> -->
+    </div>
+    <div class="right">
+      <el-button-group>
+        <el-button @click="back" size="mini" type="default">
+          <i class="fa fa-reply">&nbsp;返回</i>
+        </el-button>
+      </el-button-group>
+    </div>
+  </div>
+  <!-- 编辑区 -->
+  <div class="document">
+    <article id="trial-editor" class="animated fadeIn">
+      <!-- 笔录头部 -->
+      <trial-header></trial-header>
+      <!-- 庭审信息 -->
+      <trial-infomation></trial-infomation>
+      <!-- 法庭纪律 -->
+      <trial-discipline></trial-discipline>
+      <!-- 信息核对 -->
+      <trial-verification></trial-verification>
+      <!-- 庭审序言 -->
+      <trial-preface></trial-preface>
+      <!-- 法庭调查 -->
+      <trial-investigate></trial-investigate>
+      <!-- 法庭辩论 -->
+      <trial-argument></trial-argument>
+      <!-- 最后陈述 -->
+      <trial-statement></trial-statement>
+      <!-- 法庭调解 -->
+      <trial-conciliation></trial-conciliation>
+      <!-- 休庭宣读 -->
+      <trial-announce></trial-announce>
+      <!-- 其他 -->
+      <trial-other></trial-other>
+    </article>
+  </div>
+</div>

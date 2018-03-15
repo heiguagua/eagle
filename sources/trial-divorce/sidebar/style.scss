@@ -1,0 +1,9 @@
+#trial-sidebar {
+  display: flex;
+  flex-direction: column;
+  .collapse {
+    flex: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

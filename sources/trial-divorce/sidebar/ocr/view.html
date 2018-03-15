@@ -1,0 +1,44 @@
+<div id="trial-sidebar-ocr">
+  <!-- test -->
+  <div class="upload">
+    <el-upload :action="uploadUrl" :before-upload="beforeAvatarUpload" :show-file-list="false" :on-success="handleSuccess" :headers="headers" :data="uploadData" :limit="100" :auto-upload="true" multiple :file-list="fileList" list-type="picture">
+      <el-button slot="trigger" size="mini" type="success" plain>
+        <i class="fa fa-folder-open">&nbsp;请选择图片文件</i>
+      </el-button>
+      <!-- <div slot="tip" class="el-upload__tip">
+        &nbsp;
+        <i class="fa fa-info"></i>&nbsp;请上传jpg/jpeg、png格式的图片文件，大小不能超过4M。
+      </div> -->
+    </el-upload>
+    <div class="thumbnails">
+      <el-card v-for="(image,imageIndex) in images" :key="'image'+imageIndex" class="box-card">
+        <div slot="header">
+          <span :title="image.name">{{ image.name }}</span>
+          <el-button @click="removeImage(image.url)" type="text" icon="el-icon-close" size="mini" plain></el-button>
+        </div>
+        <div>
+          <img alt="请使用指定浏览器查看图片！" @click="openOcrModal('http://' + image.url)" :src="'http://' + image.url" class="img-thumbnail img-responsive" />
+        </div>
+      </el-card>
+    </div>
+  </div>
+  <!-- Dialog -->
+  <el-dialog title="案件材料OCR识别" :visible.sync="dialogImageVisible" class="dialog" :before-close="handleClose">
+    <section class="left">
+      <div class="box-body">
+        <img :src="ocrImageUrl" class="img-responsive" />
+      </div>
+    </section>
+    <section class="right">
+      <div id="ocr_cpy" class="text-muted result" contenteditable="true" v-loading="ocrResultLoading" element-loading-text="案件材料正在识别中..." >
+        <p v-for="result in ocrResult" v-copyButton>
+          {{result.text}}
+        </p>
+      </div>
+    </section>
+    <div slot="footer" class="dialog-footer">
+      <el-button type="danger" plain size="small" @click="dialogImageVisible = false;ocrResult =[];">取 消</el-button>
+      <el-button type="primary" plain size="small" @click="ocrMaterial()">识 别</el-button>
+    </div>
+  </el-dialog>
+</div>

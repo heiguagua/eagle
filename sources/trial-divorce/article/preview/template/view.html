@@ -1,0 +1,1618 @@
+<div id="trial-template">
+  <div class="title" style="margin: 0 0 20pt 0;text-align: center;">
+    <h1 title="法院名称" id="name" style="font-size: 22pt; font-family: 黑体; text-align: center;">{{trial.head.name}}</h1>
+    <h2 title="笔录标题" id="title" style="font-size: 26pt; font-family: 黑体; text-align: center;">{{trial.head.title}}</h2>
+  </div>
+  <div id="content-wrap">
+    <div :style="[commonStyle,right]">
+      <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审　判　长：</span><span v-else-if="officer.duty=='审判员'">审　判　员：</span><span v-else>{{officer.duty}}：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      <p :style="pMargin">书　记　员：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </div>
+    <div title="庭审信息" class="infomation" :style="indentStyle">
+      <p :style="pMargin">{{template.info.caseNumber}}{{trial.infomation.code}}</p>
+      <p :style="pMargin">{{template.info.summary}}{{trial.infomation.reason}}</p>
+      <p :style="pMargin">{{template.info.openTime.name}}{{trial.infomation.date}}{{trial.infomation.time.start | dateServer}}{{template.info.openTime.content.until}}{{trial.infomation.time.end | dateServer}}
+      </p>
+      <p :style="pMargin">{{template.info.place.name}}{{trial.infomation.location.name}}{{template.info.place.content.first}}{{trial.infomation.location.number}}{{template.info.place.content.court}}{{trial.infomation.location.times}}{{template.info.place.content.times}}</p>
+      <p :style="pMargin">{{template.info.openToTrial}}{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{template.info.listen}}{{trial.infomation.audience}}人</p>
+      <div>
+        <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审　判　长：</span><span v-else-if="officer.duty=='审判员'">审　判　员：</span><span v-else>{{officer.duty}}：</span>{{officer.name}}</p>
+        <p :style="pMargin">书　记　员：{{trial.infomation.clerk}}</p>
+      </div>
+    </div>
+    <div title="法庭纪律" class="discipline" :style="commonStyle">
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_1}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_3}}<span>{{trial.infomation.officer[0].duty}}</span>{{template.courtDiscipline.content.discipline_3_1}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_4}}<span>{{trial.infomation.officer[0].duty}}</span>{{template.courtDiscipline.content.discipline_4_1}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_5}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_6}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_7}}<span>{{trial.infomation.officer[0].duty}}</span>{{template.courtDiscipline.content.discipline_7_1}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_8}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_9}}<span v-for="(officer1,officer1Index) in trial.infomation.officer">{{officer1.duty}} <span v-if="officer1Index!==(trial.infomation.officer.length-1)">、</span></span>{{template.courtDiscipline.content.discipline_9_1}}</p>
+      <p :style="pMargin">{{template.courtDiscipline.content.discipline_10}}{{trial.infomation.officer[0].duty}}{{template.courtDiscipline.content.discipline_10_1}}</p>
+      <p :style="pMargin">审：请坐下，准备法庭记录。</p>
+    </div>
+    <div title="信息核对" class="verification" :style="commonStyle">
+      <p :style="pMargin">{{template.informationCheck.content.courtAnnounced}}</p>
+      <div title="诉讼参与人" class="verification-participator">
+        <!-- 原告 -->
+        <div class="verification-participator-accuser" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            {{template.informationCheck.content.plaintiff}}：{{subject.name}}，{{subject.info}}（{{subject.isAppear}}， 以下简称原{{subject.ordinal}}）
+          </p>
+          <p :style="pMargin" title="责任人" class="responsible" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            {{responsible.role}} ：{{responsible.name}}，{{responsible.info}}（{{responsible.isAppear}}，以下简称原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span>
+          </span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>）
+          </p>
+          <p :style="pMargin" title="委托诉讼代理人" class="agent" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            {{template.informationCheck.content.client}}：{{agent.name}}，{{agent.info}}（{{agent.isAppear}}，{{agent.auth}}，以下简称原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span>
+          </span>代<span v-if="accuser.agents.length > 1">{{agentIndex + 1}}</span>）
+          </p>
+        </div>
+        <!-- 被告 -->
+        <div class="verification-participator-accused" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            {{template.informationCheck.content.defendant}}：{{subject.name}}，{{subject.info}}（{{subject.isAppear}}， 以下简称被<span v-if="accused.subjects.length > 1">{{subject.ordinal}}</span>）
+          </p>
+          <p :style="pMargin" title="责任人" class="responsible" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            {{responsible.role}} ：{{responsible.name}}，{{responsible.info}}（{{responsible.isAppear}}，以下简称被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>）
+          </p>
+          <p :style="pMargin" title="委托诉讼代理人" class="agent" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            {{template.informationCheck.content.client}}：{{agent.name}}，{{agent.info}}（{{agent.isAppear}}，{{agent.auth}}，以下简称被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex + 1}}</span>）
+          </p>
+        </div>
+        <!-- 第三人 -->
+        <div class="verification-participator-thirdparty" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            {{template.informationCheck.content.third}}：{{subject.name}}，{{subject.info}}（{{subject.isAppear}}， 以下简称第<span v-if="thirdparty.subjects.length > 1">{{subject.ordinal}}</span>）
+          </p>
+          <p :style="pMargin" title="责任人" class="responsible" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            {{responsible.role}} ：{{responsible.name}}，{{responsible.info}}（{{responsible.isAppear}}，以下简称第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>）
+          </p>
+          <p :style="pMargin" title="委托诉讼代理人" class="agent" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            {{template.informationCheck.content.client}}：{{agent.name}}，{{agent.info}}（{{agent.isAppear}}，{{agent.auth}}，以下简称第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex + 1}}</span>）
+          </p>
+        </div>
+      </div>
+      <div title="异议及理由" class="verification-objection" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag">
+        <p :style="pMargin">{{template.informationCheck.content.ObjectionAndReason}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.objection.status}}<span v-if="subject.objection.status === '有异议' && subject.showFlag"><span v-if="subject.objection.status === '有异议'">，</span>{{subject.objection.content}}</span><span v-if="subject.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：<span>{{responsible.objection.status }}</span><span v-if="responsible.objection.status === '有异议' && responsible.showFlag"><span v-if="responsible.objection.status === '有异议'">，</span>{{responsible.objection.content}}</span>
+              <span v-if="responsible.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.objection.status}}<span v-if="agent.objection.status === '有异议' && agent.showFlag"><span v-if="agent.objection.status === '有异议'">，</span>{{agent.objection.content}}</span>
+              <span v-if="agent.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.objection.status}}<span v-if="subject.objection.status === '有异议' && subject.showFlag"><span v-if="subject.objection.status === '有异议'">，</span>{{subject.objection.content}}</span><span v-if="subject.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.objection.status}}<span v-if="responsible.objection.status === '有异议' && responsible.showFlag"><span v-if="responsible.objection.status === '有异议'">，</span>{{responsible.objection.content}}</span>
+              <span v-if="responsible.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.objection.status}}<span v-if="agent.objection.status === '有异议' && agent.showFlag"><span v-if="agent.objection.status === '有异议'">，</span>{{agent.objection.content}}</span>
+              <span v-if="agent.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.objection.status}}<span v-if="subject.objection.status === '有异议' && subject.showFlag"><span v-if="subject.objection.status === '有异议'">，</span>{{subject.objection.content}}</span><span v-if="subject.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.objection.status}}<span v-if="responsible.objection.status === '有异议' && responsible.showFlag"><span v-if="responsible.objection.status === '有异议'">，</span>{{responsible.objection.content}}</span>
+              <span v-if="responsible.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.objection.status}}<span v-if="agent.objection.status === '有异议' && agent.showFlag"><span v-if="agent.objection.status === '有异议'">，</span>{{agent.objection.content}}</span>
+              <span v-if="agent.objection.status === '无异议'">。</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="缺席" class="verification-absence">
+        <p :style="pMargin">审：<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>{{template.informationCheck.content.absence}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.absenceObjection.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceObjection.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceObjection.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.absenceObjection.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceObjection.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceObjection.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.absenceObjection.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceObjection.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceObjection.detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="证人是否出庭" class="verification-witness">
+        <p :style="pMargin">{{template.informationCheck.content.witness}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.witness.detail}}。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.witness.detail}}。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.witness.detail}}。
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.witness.detail}}。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.witness.detail}}。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.witness.detail}}。
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.witness.detail}}。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.witness.detail}}。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.witness.detail}}。
+            </p>
+          </div>
+        </div>
+        <!-- <p v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p> -->
+      </div>
+    </div>
+    <div title="庭审序言" class="preface" :style="commonStyle">
+      <div title="庭审组织" class="preface-organize">
+        <p :style="pMargin" v-if="this.trial.preface.organize.program == 'normal'">{{template.common.content.acceptance}}<span>{{trial.infomation.code}}</span>原告<span v-for="data in trial.verification.participator.accusers">
+            <span v-for="item in data.subjects">
+            <span>{{item.name}}</span>
+          </span>
+          </span>{{template.common.content.and}}被告<span v-for="data in trial.verification.participator.accuseds">
+            <span v-for="item in data.subjects">
+            <span>{{item.name}}</span>
+          </span>
+          </span>{{template.common.content.acceptance_1}}普通程序{{template.common.content.first}}<span>{{trial.infomation.location.times | numberFormat}}</span>次{{ trial.infomation.isPublic }}{{template.common.content.openCount}}<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>{{template.common.content.by}}
+          <span v-for="(officer2,officer2Index) in trial.infomation.officer">{{officer2.duty}}{{officer2.name | trim}}<span v-if="officer2Index!==(trial.infomation.officer.length-1)">、</span></span>{{template.common.content.acceptance_1_3}}<span>{{ trial.infomation.officer[0].name | trim}}</span>{{template.common.content.acceptance_1_2}}<span>{{ trial.infomation.clerk | trim}}</span>{{template.common.content.note}}
+        </p>
+        <p :style="pMargin" v-if="this.trial.preface.organize.program !== 'normal'">
+          {{template.common.content.acceptance}}
+          <span>{{ trial.infomation.code }}</span>
+          <span v-for="data in trial.verification.participator.accusers">
+            <span v-for="item in data.subjects">
+              <span>{{ item.name }}</span>
+          </span>
+          </span>
+          {{template.common.content.and}}<span v-for="data in trial.verification.participator.accuseds">
+            <span v-for="item in data.subjects">
+              <span>{{ item.name }}</span>
+          </span>
+          </span><span>{{trial.infomation.reason}}</span>{{template.common.content.acceptance_2}}简易程序{{template.common.content.first}}<span>{{ trial.infomation.location.times | numberFormat }}</span>次{{ trial.infomation.isPublic }}{{template.common.content.openCount}}<span v-if="trial.preface.organize.status == 'show'">{{trial.preface.organize.detail}}</span>{{template.common.content.by}}审判员<span>{{ trial.infomation.officer[0].name | trim}}</span>{{template.common.content.acceptance_2_1}}<span>{{ trial.infomation.clerk | trim}}</span>{{template.common.content.note}}
+        </p>
+      </div>
+      <div title="告知诉讼权利" class="preface-rights">
+        <p :style="pMargin">{{template.preface.right.content.prefaceRight}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原{{subject.ordinal}}：{{subject.rights.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.rights.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.rights.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被{{subject.ordinal}}：{{subject.rights.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.rights.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.rights.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第{{subject.ordinal}}：{{subject.rights.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.rights.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.rights.detail}}
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin"></p>
+        <p :style="pMargin">审：根据《中华人民共和国民事诉讼法》第十条、第四十四条、第四十五条、第四十六条之规定，当事人对审判人员有申请回避的权利，如果当事人认为上列人员中有与本案有利害关系或者其他关系，可能影响案件的公正审理，有权用口头或书面形式申请回避，但应当说明理由。审判人员的回避由本院院长决定，书记员的回避由审判长决定。</p>
+      </div>
+      <div title="告知事项" class="preface-matter">
+        <p :style="pMargin">{{template.preface.inform.content.prefaceInform}}</p>
+        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_1}}</p>
+        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_2}}</p>
+        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_3}}</p>
+        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_4}}</p>
+        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_5}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">原{{subject.ordinal}}：{{subject.matter.detail}}</p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.matter.detail}}</p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.matter.detail}}</p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">被{{subject.ordinal}}：{{subject.matter.detail}}</p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.matter.detail}}</p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.matter.detail}}</p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">第{{subject.ordinal}}：{{subject.matter.detail}}</p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.matter.detail}}</p>
+          </div>
+          <div :style="pMargin" title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.matter.detail}}</p>
+          </div>
+        </div>
+      </div>
+      <div title="是否申请回避" class="preface-evasion">
+        <p :style="pMargin">{{template.preface.prefaceWithdrawal}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.evasion.status}}<span v-if="subject.evasion.status === '申请' && subject.showFlag"><span v-if="subject.evasion.status === '申请'">，</span>{{subject.evasion.content}}</span><span v-if="subject.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：<span>{{responsible.evasion.status }}</span><span v-if="responsible.evasion.status === '申请' && responsible.showFlag"><span v-if="responsible.evasion.status === '申请'">，</span>{{responsible.evasion.content}}</span>
+              <span v-if="responsible.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.evasion.status}}<span v-if="agent.evasion.status === '申请' && agent.showFlag"><span v-if="agent.evasion.status === '申请'">，</span>{{agent.evasion.content}}
+              </span><span v-if="agent.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.evasion.status}}<span v-if="subject.evasion.status === '申请' && subject.showFlag"><span v-if="subject.evasion.status === '申请'">，</span>{{subject.evasion.content}}</span><span v-if="subject.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.evasion.status}}<span v-if="responsible.evasion.status === '申请' && responsible.showFlag"><span v-if="responsible.evasion.status === '申请'">，</span>{{responsible.evasion.content}}</span>
+              <span v-if="responsible.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.evasion.status}}<span v-if="agent.evasion.status === '申请' && agent.showFlag"><span v-if="agent.evasion.status === '申请'">，</span>{{agent.evasion.content}}
+              </span><span v-if="agent.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.evasion.status}}<span v-if="subject.evasion.status === '申请' && subject.showFlag"><span v-if="subject.evasion.status === '申请'">，</span>{{subject.evasion.content}}
+              </span><span v-if="subject.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.evasion.status}}<span v-if="responsible.evasion.status === '申请' && responsible.showFlag"><span v-if="responsible.evasion.status === '申请'">，</span>{{responsible.evasion.content}}</span>
+              <span v-if="responsible.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.evasion.status}}<span v-if="agent.evasion.status === '申请' && agent.showFlag"><span v-if="agent.evasion.status === '申请'">，</span>{{agent.evasion.content}}
+              </span><span v-if="agent.evasion.status === '不申请'">。</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="举证期限异议" class="preface-evidence">
+        <p :style="pMargin">{{template.preface.prefaceTimeLimit}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：已收到，{{subject.evidence.status}}，{{subject.evidence.isAgree }}<span v-if="subject.evidence.status === '有异议' && subject.showFlag">
+              ，{{subject.evidence.content}}</span>。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：已收到，<span>{{responsible.evidence.status }} ，{{responsible.evidence.isAgree }}</span>
+              <span v-if="responsible.evidence.status === '有异议' && responsible.showFlag">
+              ， {{responsible.evidence.content}}
+              </span>。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：已收到，{{agent.evidence.status}}，{{agent.evidence.isAgree}}
+              <span v-if="agent.evidence.status === '有异议' && agent.showFlag">
+              ， {{agent.evidence.content}}
+              </span>。
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：已收到，{{subject.evidence.status}}，{{subject.evidence.isAgree}}
+              <span v-if="subject.evidence.status === '有异议' && subject.showFlag">
+              ， {{subject.evidence.content}}
+              </span>。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：已收到，{{responsible.evidence.status}}，{{responsible.evidence.isAgree}}
+              <span v-if="responsible.evidence.status === '有异议' && responsible.showFlag">
+                ，{{responsible.evidence.content}}
+              </span>。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：已收到，{{agent.evidence.status}}，{{agent.evidence.isAgree}}
+              <span v-if="agent.evidence.status === '有异议' && agent.showFlag">
+                ， {{agent.evidence.content}}
+              </span> 。
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：已收到，{{subject.evidence.status}}，{{subject.evidence.isAgree}} <span v-if="subject.evidence.status === '有异议' && subject.showFlag">
+                ， {{subject.evidence.content}}
+              </span>。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：已收到，{{responsible.evidence.status}}，{{responsible.evidence.isAgree}} <span v-if="responsible.evidence.status === '有异议' && responsible.showFlag">
+                ， {{responsible.evidence.content}}
+              </span>。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：已收到，{{agent.evidence.status}} ，{{agent.evidence.isAgree}} <span v-if="agent.evidence.status === '有异议' && agent.showFlag">
+                ，{{agent.evidence.content}}
+              </span>。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div title="法庭调查" class="investigate" :style="commonStyle">
+      <div title="诉辩意见" class="investigate-opinion">
+        <p :style="pMargin">{{template.courtInvestigation.argueOpinion.content.plaintiff}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.opinion.detail">
+              原{{subject.ordinal}}：{{subject.opinion.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.opinion.detail">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.opinion.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.opinion.detail">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.opinion.detail}}
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin">{{template.courtInvestigation.argueOpinion.content.defendant}}</p>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.opinion.detail">
+              被{{subject.ordinal}}：{{subject.opinion.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.opinion.detail">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.opinion.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.opinion.detail">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.opinion.detail}}
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.courtInvestigation.argueOpinion.content.third}}</p>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.opinion.detail">
+              第{{subject.ordinal}}：{{subject.opinion.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.opinion.detail">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.opinion.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.opinion.detail">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.opinion.detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="缺席" v-if="trial.verification.other.absenseStatus" :style="commonStyle">
+        <p :style="pMargin">{{template.common.content.absenceStart}}
+          <span v-for="(person, personIndex) in trial.verification.other.absentee">
+          <span>{{ person.type }}</span>
+          <span>{{ person.name }}</span>
+          <span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span>
+          </span>
+          {{template.courtInvestigation.argueOpinion.content.absence}}
+          <span>答辩意见</span>，
+          <span>答辩意见</span>{{template.courtInvestigation.argueOpinion.content.absence_1}}
+        </p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.absenceOpinion.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceOpinion.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceOpinion.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.absenceOpinion.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceOpinion.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceOpinion.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.absenceOpinion.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceOpinion.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceOpinion.detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="争点归纳" class="investigate-conclude">
+        <div title="无争议归纳" class="investigate-conclude-undisputed" v-if="trial.investigate.conclude.undisputed.show">
+          <p :style="pMargin">{{template.courtInvestigation.contention.content.noControversialInduction}}{{trial.investigate.conclude.detail}}</p>
+          <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                原{{subject.ordinal}}：{{subject.undisputed.isObjection}}，{{subject.undisputed.isSupply}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.undisputed.isObjection}}，{{responsible.undisputed.isSupply}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.undisputed.isObjection}}，{{agent.undisputed.isSupply}}
+              </p>
+            </div>
+          </div>
+          <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                被{{subject.ordinal}}：{{subject.undisputed.isObjection}}，{{subject.undisputed.isSupply}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.undisputed.isObjection}}，{{responsible.undisputed.isSupply}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.undisputed.isObjection}}，{{agent.undisputed.isSupply}}
+              </p>
+            </div>
+          </div>
+          <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                第{{subject.ordinal}}：{{subject.undisputed.isObjection}}，{{subject.undisputed.isSupply}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.undisputed.isObjection}}，{{responsible.undisputed.isSupply}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.undisputed.isObjection}}，{{agent.undisputed.isSupply}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div title="有争议归纳" class="investigate-conclude-disputed" v-if="trial.investigate.conclude.disputed.show">
+          <p :style="pMargin">{{template.courtInvestigation.contention.content.controversialInduction_1}}{{trial.investigate.conclude.disputed.detail}}</p>
+          <p :style="pMargin">{{template.courtInvestigation.contention.content.controversialInduction_2}}</p>
+          <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                原{{subject.ordinal}}：{{subject.disputed.isObjection}}，{{subject.disputed.isSupply}}。
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.disputed.isObjection}}，{{responsible.disputed.isSupply}}。
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.disputed.isObjection}}，{{agent.disputed.isSupply}}。</p>
+            </div>
+          </div>
+          <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">被{{subject.ordinal}}：{{subject.disputed.isObjection}}，{{subject.disputed.isSupply}}。</p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.disputed.isObjection}}，{{responsible.disputed.isSupply}}。
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.disputed.isObjection}}，{{agent.disputed.isSupply}}。
+              </p>
+            </div>
+          </div>
+          <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">第{{subject.ordinal}}：{{subject.disputed.isObjection}}，{{subject.disputed.isSupply}}。
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.disputed.isObjection}}，{{responsible.disputed.isSupply}}。
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.disputed.isObjection}}，{{agent.disputed.isSupply}}。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div title="法庭询问" class="investigate-inquiry" v-if="trial.investigate.inquiry.status">
+        <p :style="pMargin">{{template.courtInvestigation.investigateInquiry}}</p>
+        <div v-if="trial.investigate.inquiry.elementquerys.length">
+          <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
+            <p :style="pMargin">审：{{element.ask_info_start}}</p>
+            <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+              <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+                <p :style="pMargin" v-if="subject.showFlag && subject.inquiry[elementIndex].detail">
+                  原{{subject.ordinal}}：{{subject.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+              <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+                <p :style="pMargin" v-if="responsible.showFlag && responsible.inquiry[elementIndex].detail">
+                  原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+              <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+                <p :style="pMargin" v-if="agent.showFlag && agent.inquiry[elementIndex].detail">
+                  原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+            </div>
+            <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+              <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+                <p :style="pMargin" v-if="subject.showFlag && subject.inquiry[elementIndex].detail">
+                  被{{subject.ordinal}}：{{subject.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+              <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+                <p :style="pMargin" v-if="responsible.showFlag && responsible.inquiry[elementIndex].detail">
+                  被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+              <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+                <p :style="pMargin" v-if="agent.showFlag && agent.inquiry[elementIndex].detail">
+                  被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+            </div>
+            <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+              <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+                <p :style="pMargin" v-if="subject.showFlag && subject.inquiry[elementIndex].detail">
+                  第{{subject.ordinal}}：{{subject.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+              <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+                <p :style="pMargin" v-if="responsible.showFlag &&responsible.inquiry[elementIndex].detail">
+                  第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+              <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+                <p :style="pMargin" v-if="agent.showFlag && agent.inquiry[elementIndex].detail">
+                  第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.inquiry[elementIndex].detail}}
+                </p>
+              </div>
+            </div>
+            <p :style="pMargin" v-if="element.summary_info_end!=='审：'">
+              {{element.summary_info_end}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="举证质证" class="investigate-proof" :style="commonStyle">
+        <p :style="pMargin">{{template.courtInvestigation.investigateEvidence.content.plaintiff}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser1'">
+          <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex"><span v-if="subject.showFlag && subject.proof.detail">原{{subject.ordinal}}：{{subject.proof.detail}}</span>
+          </p>
+          <p :style="pMargin" title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex"><span v-if="responsible.showFlag && responsible.proof.detail ">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.detail}}</span>
+          </p>
+          <p :style="pMargin" title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex"><span v-if="agent.showFlag && agent.proof.detail">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.detail}}</span>
+          </p>
+        </div>
+        <p :style="pMargin" v-if="(trial.verification.participator.accuseds.length&&((trial.verification.participator.accuseds[0].subjects.length&&trial.verification.participator.accuseds[0].subjects[0].showFlag)||(trial.verification.participator.accuseds[0].responsibles.length&&trial.verification.participator.accuseds[0].responsibles[0].showFlag)||(trial.verification.participator.accuseds[0].agents.length&&trial.verification.participator.accuseds[0].agents[0].showFlag)))||(trial.verification.participator.thirdparties.length && ((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag)))">{{template.courtInvestigation.investigateEvidence.content.parties}}</p>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused1'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.sugestion.toAccuser">
+              被{{subject.ordinal}}：{{subject.proof.sugestion.toAccuser}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.sugestion.toAccuser">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.sugestion.toAccuser}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.sugestion.toAccuser">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.sugestion.toAccuser}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex1'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.sugestion.toAccuser">
+              第{{subject.ordinal}}：{{subject.proof.sugestion.toAccuser}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.sugestion.toAccuser">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.sugestion.toAccuser}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.sugestion.toAccuser">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代：{{agent.proof.sugestion.toAccuser}}
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin" v-if="(trial.verification.participator.accuseds.length&&(trial.verification.participator.accuseds[0].subjects.length&&trial.verification.participator.accuseds[0].subjects[0].showFlag)||(trial.verification.participator.accuseds[0].responsibles.length&&trial.verification.participator.accuseds[0].responsibles[0].showFlag)||(trial.verification.participator.accuseds[0].agents.length&&trial.verification.participator.accuseds[0].agents[0].showFlag))">{{template.courtInvestigation.investigateEvidence.content.defendant}}</p>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused2'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.detail">
+              被{{subject.ordinal}}：{{subject.proof.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.detail">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.detail">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.detail}}
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin">{{template.courtInvestigation.investigateEvidence.content.parties}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser2'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.sugestion.toAccused">
+              原{{subject.ordinal}}：{{subject.proof.sugestion.toAccused}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.sugestion.toAccused">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.sugestion.toAccused}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.sugestion.toAccused">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.sugestion.toAccused}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex2'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.sugestion.toAccused">
+              第{{subject.ordinal}}：{{subject.proof.sugestion.toAccused}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.sugestion.toAccused">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.sugestion.toAccused}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.sugestion.toAccused">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代：{{agent.proof.sugestion.toAccused}}
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.courtInvestigation.investigateEvidence.content.third}}</p>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex3'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.detail">
+              第{{subject.ordinal}}：{{subject.proof.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.detail">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.detail">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.detail}}
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin">{{template.courtInvestigation.investigateEvidence.content.parties}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser3'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.sugestion.toThirdparty">
+              原{{subject.ordinal}}：{{subject.proof.sugestion.toThirdparty}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.sugestion.toThirdparty">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.sugestion.toThirdparty}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.sugestion.toThirdparty">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.sugestion.toThirdparty}}
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused3'">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.proof.sugestion.toThirdparty">
+              被{{subject.ordinal}}：{{subject.proof.sugestion.toThirdparty}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.proof.sugestion.toThirdparty">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.sugestion.toThirdparty}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.proof.sugestion.toThirdparty">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.sugestion.toThirdparty}}
+            </p>
+          </div>
+        </div>
+        <div title="缺席" v-if="trial.verification.other.absenseStatus">
+          <p :style="pMargin">{{template.common.content.absenceStart}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span>            </span>{{template.courtInvestigation.investigateEvidence.content.absence}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>
+            {{template.courtInvestigation.investigateEvidence.content.absence_1}}
+          </p>
+          <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                原<span>{{ subject.ordinal }}</span>：{{subject.absenceOpinion.detail}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceOpinion.detail}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceOpinion.detail}}
+              </p>
+            </div>
+          </div>
+          <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                被<span>{{ subject.ordinal }}</span>：{{subject.absenceOpinion.detail}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceOpinion.detail}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceOpinion.detail}}
+              </p>
+            </div>
+          </div>
+          <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                第<span>{{ subject.ordinal }}</span>：{{subject.absenceOpinion.detail}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceOpinion.detail}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceOpinion.detail}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 交叉询问环节，全部缺席时隐藏（全部到庭和部分缺席时都需要显示） -->
+        <div title="交叉询问" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
+          <p :style="pMargin">{{template.courtInvestigation.investigateEvidence.content.supplement}}</p>
+          <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex+'accuser4'">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">原{{subject.ordinal}}：{{subject.proof.requirement.status}}。<span v-if="subject.proof.requirement.status === '有' && subject.showFlag">{{subject.proof.requirement.detail}}</span></p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.requirement.status}}。<span v-if="responsible.proof.requirement.status === '有' && responsible.showFlag">{{responsible.proof.requirement.detail}}</span> </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.requirement.status}}。<span v-if="agent.proof.requirement.status === '有' && agent.showFlag">{{agent.proof.requirement.detail}}</span></p>
+            </div>
+          </div>
+          <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex+'accused4'">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">被{{subject.ordinal}}：{{subject.proof.requirement.status}}。<span v-if="subject.proof.requirement.status === '有' && subject.showFlag">{{subject.proof.requirement.detail}}</span></p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.requirement.status}}。<span v-if="responsible.proof.requirement.status === '有' && responsible.showFlag">{{responsible.proof.requirement.detail}}</span></p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.requirement.status}}。<span v-if="agent.proof.requirement.status === '有' && agent.showFlag">{{agent.proof.requirement.detail}}</span></p>
+            </div>
+          </div>
+          <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex+'thirdpartyIndex4'">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">第{{subject.ordinal}}：{{subject.proof.requirement.status}}。<span v-if="subject.proof.requirement.status === '有' && subject.showFlag">{{subject.proof.requirement.detail}}</span></p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.proof.requirement.status}}。<span v-if="responsible.proof.requirement.status === '有' && responsible.showFlag">{{responsible.proof.requirement.detail}}</span></p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.proof.requirement.status}}。<span v-if="agent.proof.requirement.status === '有' && agent.showFlag">{{agent.proof.requirement.detail}}</span></p>
+            </div>
+          </div>
+        </div>
+        <!-- <p>{{trial.investigate.proof.detail}}</p> -->
+      </div>
+    </div>
+    <div title="法庭辩论" class="argument" :style="commonStyle">
+      <div title="原告方辩论意见" class="argument-accuser">
+        <p :style="pMargin">{{template.debate.content.debateTitle}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.argument[0].detail">
+              原{{subject.ordinal}}：{{subject.argument[0].detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.argument[0].detail">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.argument[0].detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.argument[0].detail">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[0].detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="被告方辩论意见" class="argument-accused">
+        <p :style="pMargin">{{template.debate.content.defendant}}</p>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag && subject.argument[0].detail">
+              被{{subject.ordinal}}：{{subject.argument[0].detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag && responsible.argument[0].detail">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.argument[0].detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag && agent.argument[0].detail">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[0].detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div title="第三人辩论意见" class="argument-thirdparty">
+        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.debate.content.third}}</p>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <p :style="pMargin" title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex"><span v-if="subject.showFlag && subject.argument[0].detail">第{{subject.ordinal}}：{{subject.argument[0].detail}}</span></p>
+          <p :style="pMargin" title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex"><span v-if="thirdparty.showFlag && responsible.argument[0].detail">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.argument[0].detail}}</span>
+          </p>
+          <p :style="pMargin" title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex"><span v-if="agent.showFlag && agent.argument[0].detail">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[0].detail}}</span>
+          </p>
+        </div>
+      </div>
+      <div title="添加辩论次数">
+        <div class="content" v-if="trial.argument.other.debateArray.length" v-for="(times,index) in trial.argument.other.debateArray">
+          <p :style="pMargin">{{template.debate.content.addDebate.plaintiff}}<span>{{index+1}}</span>{{template.debate.content.addDebate.plaintiff_1}}<span>{{index+1}}</span>{{template.debate.content.addDebate.plaintiff_2}}</p>
+          <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag && subject.argument[index + 1].detail">
+                原{{subject.ordinal}}：{{subject.argument[index + 1].detail}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag && responsible.argument[index + 1].detail">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.argument[index + 1].detail}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag && agent.argument[index + 1].detail">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[index + 1].detail}}
+              </p>
+            </div>
+          </div>
+          <p :style="pMargin">{{template.debate.content.defendant}}</p>
+          <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag && subject.argument[index + 1].detail">
+                被{{subject.ordinal}}：{{subject.argument[index + 1].detail}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag && responsible.argument[index + 1].detail">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.argument[index + 1].detail}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag && agent.argument[index + 1].detail">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[index + 1].detail}}
+              </p>
+            </div>
+          </div>
+          <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length&&((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.debate.content.third}}</p>
+          <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag && subject.argument[index + 1].detail">
+                第{{subject.ordinal}}：{{subject.argument[index + 1].detail}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag && responsible.argument[index + 1].detail">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.argument[index + 1].detail}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag && agent.argument[index + 1].detail">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.argument[index + 1].detail}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div title="缺席审理" v-if="trial.verification.other.absenseStatus" :style="commonStyle">
+        <p :style="pMargin">{{template.common.content.absenceStart}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>{{template.debate.content.addDebate.absence}}
+          <span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>{{template.debate.content.addDebate.absence}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.absenceArgument.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceArgument.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceArgument.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.absenceArgument.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceArgument.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceArgument.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.absenceArgument.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceArgument.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceArgument.detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div title="最后陈述" class="statement" :style="commonStyle">
+      <p :style="pMargin">{{template.statement.content.plaintiff}}</p>
+      <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+          <p :style="pMargin" v-if="subject.showFlag && subject.statement.detail">
+            原{{subject.ordinal}}：{{subject.statement.detail}}
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+          <p :style="pMargin" v-if="responsible.showFlag && responsible.statement.detail">
+            原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.statement.detail}}
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+          <p :style="pMargin" v-if="agent.showFlag && agent.statement.detail">
+            原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.statement.detail}}
+          </p>
+        </div>
+      </div>
+      <p :style="pMargin" v-if="trial.verification.participator.accuseds.length&&((trial.verification.participator.accuseds[0].subjects.length&&trial.verification.participator.accuseds[0].subjects[0].showFlag)||(trial.verification.participator.accuseds[0].responsibles.length&&trial.verification.participator.accuseds[0].responsibles[0].showFlag)||(trial.verification.participator.accuseds[0].agents.length&&trial.verification.participator.accuseds[0].agents[0].showFlag))">{{template.statement.content.defendant}}</p>
+      <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+          <p :style="pMargin" v-if="subject.showFlag && subject.statement.detail">
+            被{{subject.ordinal}}：{{subject.statement.detail}}
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+          <p :style="pMargin" v-if="responsible.showFlag && responsible.statement.detail">
+            被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.statement.detail}}
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+          <p :style="pMargin" v-if="agent.showFlag && agent.statement.detail">
+            被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.statement.detail}}
+          </p>
+        </div>
+      </div>
+      <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length && ((trial.verification.participator.thirdparties[0].subjects.length&&trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length&&trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.statement.content.third}}</p>
+      <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+        <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+          <p :style="pMargin" v-if="subject.showFlag && subject.statement.detail">
+            第{{subject.ordinal}}：{{subject.statement.detail}}
+          </p>
+        </div>
+        <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+          <p :style="pMargin" v-if="responsible.showFlag && responsible.statement.detail">
+            第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.statement.detail}}
+          </p>
+        </div>
+        <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+          <p :style="pMargin" v-if="agent.showFlag && agent.statement.detail">
+            第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.statement.detail}}
+          </p>
+        </div>
+      </div>
+      <!-- test -->
+      <div title="缺席" v-if="trial.verification.other.absenseStatus" :style="commonStyle">
+        <p :style="pMargin">{{template.common.content.absenceStart}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 < trial.verification.other.absentee.length">、</span></span>{{template.statement.content.absence}}
+          <span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>{{template.statement.content.absence_1}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.absenceStatement.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceStatement.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceStatement.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.absenceStatement.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceStatement.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceStatement.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.absenceStatement.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceStatement.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceStatement.detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div title="法庭调解" class="conciliation" :style="commonStyle">
+      <!-- 法庭调解 全部到庭时 -->
+      <div v-if="!(((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag)">
+        <p :style="pMargin">{{template.courtMediation.content.mediationInquiry}}</p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.conciliation.status}}<span v-if="subject.conciliation.status === '不愿意' && subject.showFlag">
+              ，{{subject.conciliation.content}}</span><span v-if="subject.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：<span>{{responsible.conciliation.status }}</span><span v-if="responsible.conciliation.status === '不愿意' && responsible.showFlag">，{{responsible.conciliation.content}}</span>
+              <span v-if="responsible.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.conciliation.status}}<span v-if="agent.conciliation.status === '不愿意' && agent.showFlag">，{{agent.conciliation.content}}</span>
+              <span v-if="agent.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin">{{template.courtMediation.content.defendant}}</p>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.conciliation.status}}<span v-if="subject.conciliation.status === '不愿意' && subject.showFlag">，{{subject.conciliation.content}}</span><span v-if="subject.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.conciliation.status}}<span v-if="responsible.conciliation.status === '不愿意' && responsible.showFlag">，{{responsible.conciliation.content}}</span>
+              <span v-if="responsible.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.conciliation.status}}<span v-if="agent.conciliation.status === '不愿意' && agent.showFlag">，{{agent.conciliation.content}}</span>
+              <span v-if="agent.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+        </div>
+        <p :style="pMargin" v-if="trial.verification.participator.thirdparties.length &&((trial.verification.participator.thirdparties[0].subjects.length && trial.verification.participator.thirdparties[0].subjects[0].showFlag)||(trial.verification.participator.thirdparties[0].responsibles.length&&trial.verification.participator.thirdparties[0].responsibles[0].showFlag)||(trial.verification.participator.thirdparties[0].agents.length && trial.verification.participator.thirdparties[0].agents[0].showFlag))">{{template.courtMediation.content.third}}</p>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.conciliation.status}}<span v-if="subject.conciliation.status === '不愿意' && subject.showFlag">，{{subject.conciliation.content}}</span><span v-if="subject.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.conciliation.status}}<span v-if="responsible.conciliation.status === '不愿意' && esponsible.showFlag">，{{responsible.conciliation.content}}
+              </span><span v-if="responsible.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.conciliation.status}}<span v-if="agent.conciliation.status === '不愿意' && agent.showFlag">，{{agent.conciliation.content}}</span>
+              <span v-if="agent.conciliation.status === '愿意'">。</span>
+            </p>
+          </div>
+        </div>
+        <!-- 都同意调解时 -->
+        <div v-if="trial.conciliation.status">
+          <p :style="pMargin">{{template.courtMediation.content.selfMediation}}</p>
+          <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                原{{subject.ordinal}}：{{subject.conciliation.standpoint}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.conciliation.standpoint}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.conciliation.standpoint}}
+              </p>
+            </div>
+          </div>
+          <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                被{{subject.ordinal}}：{{subject.conciliation.standpoint}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.conciliation.standpoint}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.conciliation.standpoint}}
+              </p>
+            </div>
+          </div>
+          <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                第{{subject.ordinal}}：{{subject.conciliation.standpoint}}
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.conciliation.standpoint}}
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.conciliation.standpoint}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 任意一方不同意调解时 -->
+        <div v-if="!trial.conciliation.status">
+          <p :style="pMargin">{{template.courtMediation.content.noMediation}}
+            <span v-for="(person, personIndex) in trial.conciliation.toMediateMan">
+              <span>{{ person.type }}</span>
+            <span>{{ person.name }}</span>
+            <span v-if="trial.conciliation.toMediateMan.length > 1 && personIndex + 1 <  trial.conciliation.toMediateMan.length">、</span>
+            </span>
+            {{template.courtMediation.content.noMediation_1}}
+          </p>
+          <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                原<span>{{ subject.ordinal }}</span>：{{subject.disagreeConciliation.detail}}。
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.disagreeConciliation.detail}}。
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.disagreeConciliation.detail}}。
+              </p>
+            </div>
+          </div>
+          <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                被<span>{{ subject.ordinal }}</span>：{{subject.disagreeConciliation.detail}}。
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.disagreeConciliation.detail}}。
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.disagreeConciliation.detail}}。
+              </p>
+            </div>
+          </div>
+          <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+            <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+              <p :style="pMargin" v-if="subject.showFlag">
+                第<span>{{ subject.ordinal }}</span>：{{subject.disagreeConciliation.detail}}。
+              </p>
+            </div>
+            <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+              <p :style="pMargin" v-if="responsible.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.disagreeConciliation.detail}}。
+              </p>
+            </div>
+            <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+              <p :style="pMargin" v-if="agent.showFlag">
+                第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.disagreeConciliation.detail}}。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 法庭调解 存在缺席时 -->
+      <div v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdPartFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdPartFlag)) || !trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
+        <p :style="pMargin">{{template.courtMediation.content.absence}}<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>{{template.courtMediation.content.absence_1}}
+        </p>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              原<span>{{ subject.ordinal }}</span>：{{subject.absenceConciliation.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceConciliation.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceConciliation.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被<span>{{ subject.ordinal }}</span>：{{subject.absenceConciliation.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceConciliation.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceConciliation.detail}}
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第<span>{{ subject.ordinal }}</span>：{{subject.absenceConciliation.detail}}
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.absenceConciliation.detail}}
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.absenceConciliation.detail}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div title="休庭宣读" class="announce" :style="commonStyle">
+      <div v-if="trial.adjourn">
+        <P :style="pMargin">{{template.announce.content.houseTime}}{{trial.announce.reason}}，{{template.announce.content.houseTime_1}}{{trial.announce.nextOpenDate}}{{template.announce.content.houseTime_2}}</P>
+        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">原{{subject.ordinal}}：清楚。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：清楚。</p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：清楚。</p>
+          </div>
+        </div>
+        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              被{{subject.ordinal}}：清楚。</p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：清楚。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：清楚。
+            </p>
+          </div>
+        </div>
+        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
+          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
+            <p :style="pMargin" v-if="subject.showFlag">
+              第{{subject.ordinal}}：清楚。
+            </p>
+          </div>
+          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
+            <p :style="pMargin" v-if="responsible.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：清楚。
+            </p>
+          </div>
+          <div title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
+            <p :style="pMargin" v-if="agent.showFlag">
+              第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：清楚。
+            </p>
+          </div>
+        </div>
+      </div>
+      <p :style="pMargin">{{template.announce.content.adjourned}}</p>
+    </div>
+    <div title="其他" class="other" :style="commonStyle">
+      <p :style="pMargin">{{template.orther.content}}</p>
+      <p :style="pMargin">（证据原件已退还当事人）</p>
+      <p :style="pMargin">（以上笔录阅后无误，请签字确认）</p>
+      <p :style="pMargin" style="display:flex">
+        <span style="text-align:left;width:50%">原告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="text-align:right;width:50%">被告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </p>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,34 @@
+<div id="trial-article-produce">
+  <div class="toolbar">
+    <div class="left">
+      <el-button @click="saveCreate" v-if="operation==='create'" size="mini" type="danger">
+        <i class="fa fa-floppy-o">&nbsp;保存笔录</i>
+      </el-button>
+      <el-button @click="saveUpdate" v-if="operation==='update'" size="mini" type="danger" plain>
+        <i class="fa fa-floppy-o">&nbsp;保存笔录</i>
+      </el-button>
+    </div>
+    <div class="right">
+      <el-button-group>
+        <el-button @click="print" size="mini" type="default">
+          <i class="fa fa-print">&nbsp;打印</i>
+        </el-button>
+        <el-button @click="exportWord" size="mini" type="default">
+          <i class="fa fa-file-word-o">&nbsp;导出Word</i>
+        </el-button>
+        <el-button @click="exportPDF" size="mini" type="default">
+          <i class="fa fa-file-pdf-o">&nbsp;导出PDF</i>
+        </el-button>
+        <!-- <el-button @click="backUpdate" v-if="operation==='create'" size="mini" type="default">
+          <i class="fa fa-reply">&nbsp;返回</i>
+        </el-button>
+        <el-button @click="backUpdate" v-if="operation==='update'" size="mini" type="default">
+          <i class="fa fa-reply-all">&nbsp;返回</i>
+        </el-button> -->
+      </el-button-group>
+    </div>
+  </div>
+  <div class="document">
+    <judge-template ref="template" class="animated fadeInLeft"></judge-template>
+  </div>
+</div>

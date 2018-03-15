@@ -1,0 +1,16 @@
+<aside id="trial-sidebar">
+  <el-collapse class="collapse" v-model="activedCollapse">
+    <el-collapse-item name="trials">
+      <template slot="title">
+        <i class="fa fa-list">&nbsp;&nbsp;庭审笔录</i>
+      </template>
+      <trial-sidebar-list></trial-sidebar-list>
+    </el-collapse-item>
+    <el-collapse-item name="ocr" class="ocr">
+      <template slot="title">
+        <i class="fa fa-cloud-upload">&nbsp;&nbsp;案件材料</i>
+      </template>
+      <trial-sidebar-ocr></trial-sidebar-ocr>
+    </el-collapse-item>
+  </el-collapse>
+</aside>

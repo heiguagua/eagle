@@ -1,0 +1,25 @@
+@import "../../../common/styles/color";
+#trial-editor-blank {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: url(../../../assets/editor/paper-grid.jpg);
+  .content {
+    >article {
+      height: 97%;
+      margin-top: 10%; // border: 1px solid $color-gray-light;
+      padding: 20px 50px;
+      box-sizing: border-box;
+      font-size: 15px;
+      color: $color-font-regular;
+      p {
+        line-height: 40px;
+      }
+      em {
+        color: $color-blue;
+        font-style: normal;
+        cursor: pointer;
+      }
+    }
+  }
+}
