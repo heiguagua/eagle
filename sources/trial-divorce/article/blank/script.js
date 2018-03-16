@@ -32,7 +32,7 @@ export default {
       let param = this.$route.params;
       this.setLoading(true);
       // this.getTemplate(query,param)
-      this.$router.push({ path: '/layout/trial/produce', query: { operation: 'create', random: Math.random() } });
+      this.$router.push({ path: '/layout/trial-divorce/produce', query: { operation: 'create', random: Math.random() } });
     }
   }
 };

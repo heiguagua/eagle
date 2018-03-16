@@ -51,7 +51,7 @@ export default {
             vm.getTrials({ vm });
             message(vm, "info", data.head.message);
             vm.options.loading = false; // 关闭loading动画
-            vm.$router.push("/layout/trial/blank");
+            vm.$router.push("/layout/trial-divorce/blank");
           } else {
             message(vm, "warning", data.head.message);
           }

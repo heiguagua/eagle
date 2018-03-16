@@ -77,7 +77,7 @@ export default {
         return
       }
       vm.generate();
-      vm.$router.replace({ path: "/layout/trial/preview", query: { operation: "create" } });
+      vm.$router.replace({ path: "/layout/trial-divorce/preview", query: { operation: "create" } });
     },
     // 修改生成
     generateUpdate() {
@@ -92,7 +92,7 @@ export default {
         return
       }
       vm.generate();
-      vm.$router.replace({ path: "/layout/trial/preview", query: { operation: "update" } });
+      vm.$router.replace({ path: "/layout/trial-divorce/preview", query: { operation: "update" } });
     },
     getTemplatess() {
       const vm = this;
@@ -140,7 +140,7 @@ export default {
       confirm(vm, "warning", "是否需要返回庭审笔录-新建页面？")
         .then(() => {
           this.setLoading(false);
-          vm.$router.replace("/layout/trial/blank");
+          vm.$router.replace("/layout/trial-divorce/blank");
         });
     },
   },
