@@ -6,69 +6,119 @@ import Layout from "./layout/index.vue";
 
 Vue.use(VueRouter);
 
-const Login = resolve => require(["./login/index.vue"], resolve)
+const Login = resolve => require(["./login/index.vue"], resolve);
 
 const Router = new VueRouter({
-  routes: [{
-    path: "/",
-    component: Login
-  }, {
-    path: "/login",
-    component: Login
-  }, {
-    path: "/layout",
-    component: Layout,
-    children: [{
-      path: "template",
-      meta: {
-        auth: true
-      },
-      component: resolve => require(["./template/index.vue"], resolve)
-    }, {
-      path: "trial",
-      meta: {
-        auth: true
-      },
-      component: resolve => require(["./trial/index.vue"], resolve),
-      children: [{
-        path: "blank",
-        meta: {
-          auth: true
+  routes: [
+    {
+      path: "/",
+      component: Login
+    },
+    {
+      path: "/login",
+      component: Login
+    },
+    {
+      path: "/layout",
+      component: Layout,
+      children: [
+        {
+          path: "template",
+          meta: {
+            auth: true
+          },
+          component: resolve => require(["./template/index.vue"], resolve)
         },
-        component: resolve => require(["./trial/article/blank/index.vue"], resolve)
-      }, {
-        path: "produce",
-        meta: {
-          auth: true
+        {
+          path: "trial",
+          meta: {
+            auth: true
+          },
+          component: resolve => require(["./trial/index.vue"], resolve),
+          children: [
+            {
+              path: "blank",
+              meta: {
+                auth: true
+              },
+              component: resolve =>
+                require(["./trial/article/blank/index.vue"], resolve)
+            },
+            {
+              path: "produce",
+              meta: {
+                auth: true
+              },
+              component: resolve =>
+                require(["./trial/article/produce/index.vue"], resolve)
+            },
+            {
+              path: "preview",
+              meta: {
+                auth: true
+              },
+              component: resolve =>
+                require(["./trial/article/preview/index.vue"], resolve)
+            }
+          ]
         },
-        component: resolve => require(["./trial/article/produce/index.vue"], resolve)
-      }, {
-        path: "preview",
-        meta: {
-          auth: true
+        {
+          path: "trial-divorce",
+          meta: {
+            auth: true
+          },
+          component: resolve => require(["./trial-divorce/index.vue"], resolve),
+          children: [
+            {
+              path: "blank",
+              meta: {
+                auth: true
+              },
+              component: resolve =>
+                require(["./trial-divorce/article/blank/index.vue"], resolve)
+            },
+            {
+              path: "produce",
+              meta: {
+                auth: true
+              },
+              component: resolve =>
+                require(["./trial-divorce/article/produce/index.vue"], resolve)
+            },
+            {
+              path: "preview",
+              meta: {
+                auth: true
+              },
+              component: resolve =>
+                require(["./trial-divorce/article/preview/index.vue"], resolve)
+            }
+          ]
         },
-        component: resolve => require(["./trial/article/preview/index.vue"], resolve)
-      }]
-    }, {
-      path: "judge",
-      meta: {
-        auth: true
-      },
-      component: resolve => require(["./judge/index.vue"], resolve)
-    }, {
-      path: "cases",
-      meta: {
-        auth: true
-      },
-      component: resolve => require(["./cases/index.vue"], resolve)
-    }, {
-      path: "repository",
-      meta: {
-        auth: true
-      },
-      component: resolve => require(["./repository/index.vue"], resolve)
-    }]
-  }]
+        {
+          path: "judge",
+          meta: {
+            auth: true
+          },
+          component: resolve => require(["./judge/index.vue"], resolve)
+        },
+        {
+          path: "cases",
+          meta: {
+            auth: true
+          },
+          component: resolve => require(["./cases/index.vue"], resolve)
+        },
+        {
+          path: "repository",
+          meta: {
+            auth: true
+          },
+          component: resolve => require(["./repository/index.vue"], resolve)
+        }
+      ]
+    }
+  ]
 });
 
 Router.beforeEach((to, from, next) => {

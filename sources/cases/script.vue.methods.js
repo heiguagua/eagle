@@ -8,6 +8,10 @@ export default {
     storage.set("case", _.assign({}, lawCase, params));
     this.$router.push({ path: "/layout/trial/blank", query: { operation: "create" } });
   },
+  newTrialDivorce(lawCase, params) {
+    storage.set("case", _.assign({}, lawCase, params));
+    this.$router.push({ path: "/layout/trial-divorce/blank", query: { operation: "create" } });
+  },
   // pagination
   changePageSize(size) {
     const vm = this;

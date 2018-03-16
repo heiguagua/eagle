@@ -69,8 +69,8 @@
                   <hsc-menu-item label="删除"></hsc-menu-item>
                 </hsc-menu-item>
                 <hsc-menu-item label="庭审笔录">
-                  <hsc-menu-item @click="newTrial(lawCase, {writ_type:'section'})" label="分段式"></hsc-menu-item>
-                  <hsc-menu-item label="要素式"></hsc-menu-item>
+                  <hsc-menu-item @click="newTrial(lawCase, {writ_type:'section'})" label="民间借贷纠纷"></hsc-menu-item>
+                  <hsc-menu-item @click="newTrialDivorce(lawCase, {writ_type:'section'})" label="婚姻家庭纠纷"></hsc-menu-item>
                 </hsc-menu-item>
                 <hsc-menu-item label="裁判文书">
                   <router-link to="judge">
