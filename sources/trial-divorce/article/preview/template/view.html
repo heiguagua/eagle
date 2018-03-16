@@ -241,7 +241,7 @@
             </p>
           </div>
         </div>
-        <p v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p>
+        <p :style="pMargin" v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p>
       </div>
     </div>
     <div title="庭审序言" class="preface" :style="commonStyle">
