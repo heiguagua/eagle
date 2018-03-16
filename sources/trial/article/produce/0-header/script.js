@@ -25,6 +25,5 @@ export default {
     }else if(params.case_brief == "劳动争议" || params.case_brief == "婚姻家庭纠纷") {
       this.trial.investigate.inquiry.status = false; //法庭询问模块隐藏
     }
-    console.log("00",this.trial.investigate.conclude.undisputed.show)
   }
 };

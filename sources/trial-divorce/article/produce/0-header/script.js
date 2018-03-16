@@ -17,14 +17,12 @@ export default {
   },
   created() {
     const params = storage.get("case");
-    if(params.case_brief == "工商行政管理（工商）") {
-      this.trial.head.title = "行政案件审判笔录";
-      this.trial.investigate.inquiry.status = false; //法庭询问模块隐藏
-      this.trial.investigate.conclude.undisputed.show = false; //争点归纳-无争议
-      this.trial.investigate.conclude.disputed.show = false; //争点归纳-争议
-    }else if(params.case_brief == "劳动争议" || params.case_brief == "婚姻家庭纠纷") {
-      this.trial.investigate.inquiry.status = false; //法庭询问模块隐藏
+    this.template.title.courtName = params.court_name
+    console.log("11ce",params)
+    if(params.case_brief == "离婚纠纷") {
+      this.trial.verification.participator.thirdparties.splice(0, 1);//删除第三人
+      this.trial.verification.participator.accusers[0].responsibles.splice(0, 1);//删除原告法定代表人
+      this.trial.verification.participator.accuseds[0].responsibles.splice(0, 1);//删除被告法定代表人
     }
-    console.log("00",this.trial.investigate.conclude.undisputed.show)
   }
 };

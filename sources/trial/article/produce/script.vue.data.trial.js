@@ -1088,7 +1088,13 @@ export default () => {
       inquiry: {
         status:true,
         elementquerys: [],
-        proof_affirm: "" //审议归纳已排序
+        proof_affirm: "", //审议归纳已排序
+        witness:{
+          name:"",
+          info:""
+        },
+        interrogate:"",
+        answer:""
       },
       // 举证质证
       proof: {

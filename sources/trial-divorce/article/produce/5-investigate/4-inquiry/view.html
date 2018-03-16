@@ -12,13 +12,14 @@
   <div class="content">
     <p v-if="trial.investigate.inquiry.status">{{template.investigateInquiry}}</p>
     <!-- 新需求 证人出庭 start -->
-    <!-- <p>审：传证人出庭。</p> -->
-    <!-- <p>证人<证人姓名>，<证人信息>（男/女，XXXX年XX月XX日出生，汉族，住XXX）。</p> -->
-    <!-- <p>审：证人<证人姓名>，原告申请你出庭作证，你作为证人应当向法庭如实陈述案件相关事实，如有虚假，将依法承担相应做伪证的法律后果，证人是否清楚。</p> -->
-    <!-- <p>证人：清楚。</p> -->
-    <!-- <p>审：</p> -->
-    <!-- <p>证人：</p> -->
-    <!-- <p>审：请证人到庭外等候。</p> -->
+    <div v-if="trial.verification.witness.status">
+        <p>审：传证人出庭。</p>
+        <p>证人
+          <el-input v-model="trial.investigate.inquiry.witness.name" type="text" placeholder="请输入证人姓名" class="width-17"></el-input>，
+          <el-input v-model="trial.investigate.inquiry.witness.info" type="textarea" :autosize="{minRows: 3}" placeholder="请输入证人信息（男/女，XXXX年XX月XX日出生，汉族，住XXX。）" class="width-100"></el-input></p>
+        <p>审：证人<span>{{ trial.investigate.inquiry.witness.name }}</span>，原告申请你出庭作证，你作为证人应当向法庭如实陈述案件相关事实，如有虚假，将依法承担相应做伪证的法律后果，证人是否清楚。</p>
+        <p>证人：清楚。</p>
+      </div>
     <!-- 新需求 证人出庭 end -->
     <div v-if="trial.investigate.inquiry.status">
       <div v-if="trial.investigate.inquiry.elementquerys.length">
@@ -117,5 +118,12 @@
         </el-cascader>
       </p>
     </div>
+    <!-- 新需求 证人出庭 start -->
+    <div v-if="trial.verification.witness.status">
+      <p>审：<el-input v-model="trial.investigate.inquiry.interrogate" type="textarea" :autosize="{minRows: 3}" placeholder="请输入）" class="width-100"></el-input></p>
+      <p>证人：<el-input v-model="trial.investigate.inquiry.answer" type="textarea" :autosize="{minRows: 3}" placeholder="请输入证人回答内容" class="width-100"></el-input></p>
+      <p>审：请证人到庭外等候。</p>
+    </div>
+    <!-- 新需求 证人出庭 end -->
   </div>
 </section>

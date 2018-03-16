@@ -241,7 +241,7 @@
             </p>
           </div>
         </div>
-        <!-- <p v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p> -->
+        <p v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p>
       </div>
     </div>
     <div title="庭审序言" class="preface" :style="commonStyle">
@@ -327,48 +327,7 @@
         </div>
         <p :style="pMargin"></p>
         <p :style="pMargin">审：根据《中华人民共和国民事诉讼法》第十条、第四十四条、第四十五条、第四十六条之规定，当事人对审判人员有申请回避的权利，如果当事人认为上列人员中有与本案有利害关系或者其他关系，可能影响案件的公正审理，有权用口头或书面形式申请回避，但应当说明理由。审判人员的回避由本院院长决定，书记员的回避由审判长决定。</p>
-      </div>
-      <div title="告知事项" class="preface-matter">
-        <p :style="pMargin">{{template.preface.inform.content.prefaceInform}}</p>
-        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_1}}</p>
-        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_2}}</p>
-        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_3}}</p>
-        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_4}}</p>
-        <p :style="pMargin">{{template.preface.inform.content.prefaceInform_5}}</p>
-        <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
-          <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
-            <p :style="pMargin" v-if="subject.showFlag">原{{subject.ordinal}}：{{subject.matter.detail}}</p>
-          </div>
-          <div title="责任人" v-for="(responsible, responsibleIndex) in accuser.responsibles" :key="responsibleIndex">
-            <p :style="pMargin" v-if="responsible.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accuser.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.matter.detail}}</p>
-          </div>
-          <div title="代理人" v-for="(agent, agentIndex) in accuser.agents" :key="agentIndex">
-            <p :style="pMargin" v-if="agent.showFlag">原<span v-for="(number,index) in trial.verification.participator.accusers[accuserIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accusers[accuserIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accusers[accuserIndex].serialNumbers.length">、</span></span>代<span v-if="accuser.agents.length > 1">{{agentIndex+1}}</span>：{{agent.matter.detail}}</p>
-          </div>
-        </div>
-        <div title="被告" v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
-          <div title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
-            <p :style="pMargin" v-if="subject.showFlag">被{{subject.ordinal}}：{{subject.matter.detail}}</p>
-          </div>
-          <div title="责任人" v-for="(responsible, responsibleIndex) in accused.responsibles" :key="responsibleIndex">
-            <p :style="pMargin" v-if="responsible.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="accused.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.matter.detail}}</p>
-          </div>
-          <div title="代理人" v-for="(agent, agentIndex) in accused.agents" :key="agentIndex">
-            <p :style="pMargin" v-if="agent.showFlag">被<span v-for="(number,index) in trial.verification.participator.accuseds[accusedIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.accuseds[accusedIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.accuseds[accusedIndex].serialNumbers.length">、</span></span>代<span v-if="accused.agents.length > 1">{{agentIndex+1}}</span>：{{agent.matter.detail}}</p>
-          </div>
-        </div>
-        <div title="第三人" v-for="(thirdparty, thirdpartyIndex) in trial.verification.participator.thirdparties" :key="thirdpartyIndex">
-          <div title="诉讼主体" v-for="(subject, subjectIndex) in thirdparty.subjects" :key="subjectIndex">
-            <p :style="pMargin" v-if="subject.showFlag">第{{subject.ordinal}}：{{subject.matter.detail}}</p>
-          </div>
-          <div title="责任人" v-for="(responsible, responsibleIndex) in thirdparty.responsibles" :key="responsibleIndex">
-            <p :style="pMargin" v-if="responsible.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span><span>{{responsible.shortName}}</span><span v-if="thirdparty.responsibles.length > 1 && responsible.shortName">{{responsibleIndex + 1}}</span>：{{responsible.matter.detail}}</p>
-          </div>
-          <div :style="pMargin" title="代理人" v-for="(agent, agentIndex) in thirdparty.agents" :key="agentIndex">
-            <p :style="pMargin" v-if="agent.showFlag">第<span v-for="(number,index) in trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers"><span>{{number.num}}</span><span v-if="trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length > 1 && index + 1 < trial.verification.participator.thirdparties[thirdpartyIndex].serialNumbers.length">、</span></span>代<span v-if="thirdparty.agents.length > 1">{{agentIndex+1}}</span>：{{agent.matter.detail}}</p>
-          </div>
-        </div>
-      </div>
+      </div> 
       <div title="是否申请回避" class="preface-evasion">
         <p :style="pMargin">{{template.preface.prefaceWithdrawal}}</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
@@ -730,6 +689,16 @@
       </div>
       <div title="法庭询问" class="investigate-inquiry" v-if="trial.investigate.inquiry.status">
         <p :style="pMargin">{{template.courtInvestigation.investigateInquiry}}</p>
+        <!-- 新需求 证人出庭 start -->
+        <div v-if="trial.verification.witness.status">
+          <p :style="pMargin">审：传证人出庭。</p>
+          <p :style="pMargin">证人
+            <span>{{ trial.investigate.inquiry.witness.name }}</span>，
+            <span>{{ trial.investigate.inquiry.witness.info }}</span></p>
+          <p :style="pMargin">审：证人<span>{{ trial.investigate.inquiry.witness.name }}</span>，原告申请你出庭作证，你作为证人应当向法庭如实陈述案件相关事实，如有虚假，将依法承担相应做伪证的法律后果，证人是否清楚。</p>
+          <p :style="pMargin">证人：清楚。</p>
+        </div>
+        <!-- 新需求 证人出庭 end -->
         <div v-if="trial.investigate.inquiry.elementquerys.length">
           <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
             <p :style="pMargin">审：{{element.ask_info_start}}</p>
@@ -789,6 +758,13 @@
             </p>
           </div>
         </div>
+        <!-- 新需求 证人出庭 start -->
+        <div v-if="trial.verification.witness.status">
+          <p :style="pMargin">审：<span>{{ trial.investigate.inquiry.interrogate }}</span></p>
+          <p :style="pMargin">证人：<span>{{ trial.investigate.inquiry.answer }}</span></p>
+          <p :style="pMargin">审：请证人到庭外等候。</p>
+        </div>
+        <!-- 新需求 证人出庭 end -->
       </div>
       <div title="举证质证" class="investigate-proof" :style="commonStyle">
         <p :style="pMargin">{{template.courtInvestigation.investigateEvidence.content.plaintiff}}</p>
@@ -1603,16 +1579,55 @@
           </div>
         </div>
       </div>
-      <p :style="pMargin">{{template.announce.content.adjourned}}</p>
-    </div>
-    <div title="其他" class="other" :style="commonStyle">
-      <p :style="pMargin">{{template.orther.content}}</p>
-      <p :style="pMargin">（证据原件已退还当事人）</p>
-      <p :style="pMargin">（以上笔录阅后无误，请签字确认）</p>
-      <p :style="pMargin" style="display:flex">
-        <span style="text-align:left;width:50%">原告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="text-align:right;width:50%">被告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      </p>
+       <!-- 当庭宣判 -->
+      <div v-if="trial.announce.extemporeStatus">
+          <p :style="pMargin">审：双方当事人经调解无法达成一致意见，本院不再组织调解，现在进行宣判。</p>
+          <p :style="pMargin">依照《中华人民共和国婚姻法》第三十二条、《中华人民共和国民事诉讼法》第六十四条、第一百四十八条之规定，判决如下：</p>
+          <p :style="pMargin">不准原告
+            <span v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+              <span v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+                <span>{{subject.name}}</span>
+              </span>
+            </span>
+            与被告
+            <span v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+                <span title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+                  <span>{{subject.name}}</span>
+                </span>
+              </span>
+            离婚。</p>
+          <p :style="pMargin">案件受理费260元，减半收取130元，由原告
+            <span v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+              <span v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+                <span>{{subject.name}}</span>
+              </span>
+            </span>
+            负担。</p>
+          <p :style="pMargin">如不服本判决，可在判决书送达之日起十五日内，向本院递交上诉状，并按对方当事人的人数提出副本，上诉于四川省成都市中级人民法院。</p>
+          <p :style="pMargin">休庭。</p>
+        </div>
+        <!-- 定期宣判 -->
+        <div v-if="trial.announce.periodicalStatus">
+          <p :style="pMargin">审：双方当事人目前不能达成调解意见，本院定于
+            <span>{{trial.announce.date}}</span>
+            在成都市武侯区人民法院<span>{{trial.announce.floor}}</span>楼<span>{{trial.announce.number}}</span>号法庭宣判，如无正当理由未到庭领取判决书，本院将视为判决书已经送达。</p>
+          <p :style="pMargin">如不服本判决，可在判决书送达之日起十五日内向本院提交上诉状，并按对方当事人人数提出副本，上诉于四川省成都市中级人民法院。</p>
+          <p :style="pMargin">休庭。</p>
+        </div>
+        <!-- 择期宣判 -->
+        <div v-if="trial.announce.electiveStatus">
+          <p :style="pMargin">审：双方当事人目前不能达成调解意见，本院将择日宣判，根据《中华人民共和国民事诉讼法》第一百四十二条规定，在判决前双方能达成调解协议的，本院将依法作调解处理。</p>
+          <p :style="pMargin">休庭。</p>
+        </div>
+      </div>
+      <div title="其他" class="other" :style="commonStyle">
+        <p :style="pMargin">{{template.orther.content}}</p>
+        <p :style="pMargin">（证据原件已退还当事人）</p>
+        <p :style="pMargin">（以上笔录阅后无误，请签字确认）</p>
+        <p :style="pMargin" style="display:flex">
+          <span style="text-align:left;width:50%">原告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="text-align:right;width:50%">被告代理人签字：&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </div>

@@ -25,7 +25,7 @@ export default () => {
       },
       code: "", // 案号
       reason: "", // 案由
-      isPublic: "公开", // 是否公开审理
+      isPublic: "不公开", // 是否公开审理
       audience: "0", // 旁听人数
       officer: [ // 审判人员
         { duty: "审判长", name: "" },
@@ -1088,7 +1088,13 @@ export default () => {
       inquiry: {
         status:true,
         elementquerys: [],
-        proof_affirm: "" //审议归纳已排序
+        proof_affirm: "",//审议归纳已排序
+        witness:{
+          name:"",
+          info:""
+        },
+        interrogate:"",
+        answer:""
       },
       // 举证质证
       proof: {
@@ -1127,6 +1133,12 @@ export default () => {
     announce: {
       reason:"",
       nextOpenDate:"",
+      extemporeStatus:true,
+      periodicalStatus:false,
+      electiveStatus:false,
+      data:"",
+      floor:"",
+      number:""
     },
     // 其他
     other: ""

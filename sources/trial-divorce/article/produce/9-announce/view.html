@@ -2,6 +2,16 @@
   <div class="access">
     <i class="el-icon-edit-outline"></i>
     <em>休庭宣读</em>
+    <div class="tools">
+      <el-dropdown size="mini" split-button type="primary" @command="handleCommand">
+        选择休庭类型
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="a">当庭宣判</el-dropdown-item>
+          <el-dropdown-item command="b">定期宣判</el-dropdown-item>
+          <el-dropdown-item command="c">择期宣判</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </div>
   <div class="content">
     <div v-if="trial.adjourn">
@@ -76,6 +86,47 @@
         </div>
       </div>
     </div>
-    <p>{{template.announce.content.adjourned}}</p>
+    <!-- 当庭宣判 -->
+    <div v-if="trial.announce.extemporeStatus">
+      <p>审：双方当事人经调解无法达成一致意见，本院不再组织调解，现在进行宣判。</p>
+      <p>依照《中华人民共和国婚姻法》第三十二条、《中华人民共和国民事诉讼法》第六十四条、第一百四十八条之规定，判决如下：</p>
+      <p>不准原告
+        <span v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <span v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <span>{{subject.name}}</span>
+          </span>
+        </span>
+        与被告
+        <span v-for="(accused, accusedIndex) in trial.verification.participator.accuseds" :key="accusedIndex">
+            <span title="诉讼主体" v-for="(subject, subjectIndex) in accused.subjects" :key="subjectIndex">
+              <span>{{subject.name}}</span>
+            </span>
+          </span>
+        离婚。</p>
+      <p>案件受理费260元，减半收取130元，由原告
+        <span v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
+          <span v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
+            <span>{{subject.name}}</span>
+          </span>
+        </span>
+        负担。</p>
+      <p>如不服本判决，可在判决书送达之日起十五日内，向本院递交上诉状，并按对方当事人的人数提出副本，上诉于四川省成都市中级人民法院。</p>
+      <p>休庭。</p>
+    </div>
+    <!-- 定期宣判 -->
+    <div v-if="trial.announce.periodicalStatus">
+      <p>审：双方当事人目前不能达成调解意见，本院定于
+        <el-date-picker v-model="trial.announce.date" type="date"
+        format="yyyy 年 MM 月 dd 日"
+        value-format="yyyy年MM月dd日" placeholder="选择日期" class="width-33"></el-date-picker>
+        在成都市武侯区人民法院<el-input v-model="trial.announce.floor" placeholder="请输入内容" class="width-15"></el-input>楼<el-input v-model="trial.announce.number" placeholder="请输入内容" class="width-15"></el-input>号法庭宣判，如无正当理由未到庭领取判决书，本院将视为判决书已经送达。</p>
+      <p>如不服本判决，可在判决书送达之日起十五日内向本院提交上诉状，并按对方当事人人数提出副本，上诉于四川省成都市中级人民法院。</p>
+      <p>休庭。</p>
+    </div>
+    <!-- 择期宣判 -->
+    <div v-if="trial.announce.electiveStatus">
+      <p>审：双方当事人目前不能达成调解意见，本院将择日宣判，根据《中华人民共和国民事诉讼法》第一百四十二条规定，在判决前双方能达成调解协议的，本院将依法作调解处理。</p>
+      <p>休庭。</p>
+    </div>
   </div>
 </section>

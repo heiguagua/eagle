@@ -241,7 +241,7 @@
             </p>
           </div>
         </div>
-        <!-- <p v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p> -->
+        <p v-if="trial.verification.witness.status">审：请证人到庭外休息室等候。</p>
       </div>
     </div>
     <div title="庭审序言" class="preface" :style="commonStyle">
@@ -730,6 +730,16 @@
       </div>
       <div title="法庭询问" class="investigate-inquiry" v-if="trial.investigate.inquiry.status">
         <p :style="pMargin">{{template.courtInvestigation.investigateInquiry}}</p>
+        <!-- 新需求 证人出庭 start -->
+        <div v-if="trial.verification.witness.status">
+          <p :style="pMargin">审：传证人出庭。</p>
+          <p :style="pMargin">证人
+            <span>{{ trial.investigate.inquiry.witness.name }}</span>，
+            <span>{{ trial.investigate.inquiry.witness.info }}</span></p>
+          <p :style="pMargin">审：证人<span>{{ trial.investigate.inquiry.witness.name }}</span>，原告申请你出庭作证，你作为证人应当向法庭如实陈述案件相关事实，如有虚假，将依法承担相应做伪证的法律后果，证人是否清楚。</p>
+          <p :style="pMargin">证人：清楚。</p>
+        </div>
+        <!-- 新需求 证人出庭 end -->
         <div v-if="trial.investigate.inquiry.elementquerys.length">
           <div v-for="(element,elementIndex) in trial.investigate.inquiry.elementquerys" :key="elementIndex">
             <p :style="pMargin">审：{{element.ask_info_start}}</p>
@@ -789,6 +799,13 @@
             </p>
           </div>
         </div>
+        <!-- 新需求 证人出庭 start -->
+        <div v-if="trial.verification.witness.status">
+          <p :style="pMargin">审：<span>{{ trial.investigate.inquiry.interrogate }}</span></p>
+          <p :style="pMargin">证人：<span>{{ trial.investigate.inquiry.answer }}</span></p>
+          <p :style="pMargin">审：请证人到庭外等候。</p>
+        </div>
+        <!-- 新需求 证人出庭 end -->
       </div>
       <div title="举证质证" class="investigate-proof" :style="commonStyle">
         <p :style="pMargin">{{template.courtInvestigation.investigateEvidence.content.plaintiff}}</p>
