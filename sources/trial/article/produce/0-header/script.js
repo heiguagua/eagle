@@ -17,6 +17,7 @@ export default {
   },
   created() {
     const params = storage.get("case");
+    this.template.title.courtName = params.court_name
     if(params.case_brief == "工商行政管理（工商）") {
       this.trial.head.title = "行政案件审判笔录";
       this.trial.investigate.inquiry.status = false; //法庭询问模块隐藏

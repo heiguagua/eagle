@@ -74,7 +74,7 @@ export default {
           }
         })
         .then(result => {
-          vm.$router.replace({ path: "/layout/trial/produce", query: { operation: "update", random: Math.random() } });
+          vm.$router.replace({ path: "/layout/trial-divorce/produce", query: { operation: "update", random: Math.random() } });
         })
     },
     peekTrial(row) {

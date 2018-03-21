@@ -1074,13 +1074,13 @@ export default () => {
         // 无争议归纳
         undisputed: {
           status: "",
-          detail: "",
+          detail: "原、被告于_年_月_日登记结婚，婚后未生育子女/_年_月_日生育有一子（女）",
           show: true
         },
         // 有争议归纳
         disputed: {
           status: "",
-          detail: "",
+          detail: "本案是否符合离婚条件？",
           show: true
         }
       },
