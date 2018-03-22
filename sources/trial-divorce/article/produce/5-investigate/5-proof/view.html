@@ -351,6 +351,10 @@
         </div>
       </div>
     </div>
+    <p>
+      审：
+      <el-input v-model="trial.investigate.proof.detail"  type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告方质证意见" class="width-100"></el-input>
+    </p>
     <!-- 交叉询问环节，全部缺席时隐藏（全部到庭和部分缺席时都需要显示） -->
     <div title="交叉询问" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
       <p>{{template.courtInvestigation.investigateEvidence.content.supplement}}</p>
@@ -487,9 +491,5 @@
         </div>
       </div>
     </div>
-    <p>
-      审：
-      <el-input v-model="trial.investigate.proof.detail"  type="textarea" :autosize="{minRows: 2}" placeholder="请输入被告方质证意见" class="width-100"></el-input>
-    </p>
   </div>
 </section>

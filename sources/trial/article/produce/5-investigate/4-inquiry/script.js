@@ -144,7 +144,9 @@ export default {
       .then(result => {
         const data = result.data;
         if (Http.protocol(data, 200)) {
-          vm.factors = data.body;
+          if(data.body) {
+            vm.factors = data.body;
+          }
           return data
         } else {
           message(vm, 'warning', data.head.message);

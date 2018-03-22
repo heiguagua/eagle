@@ -973,6 +973,7 @@
             </div>
           </div>
         </div>
+        <p :style="pMargin">{{trial.investigate.proof.detail}}</p>
         <!-- 交叉询问环节，全部缺席时隐藏（全部到庭和部分缺席时都需要显示） -->
         <div title="交叉询问" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag || trial.verification.other.defendantFlag || trial.verification.other.thirdFlag">
           <p :style="pMargin">{{template.courtInvestigation.investigateEvidence.content.supplement}}</p>
@@ -1010,7 +1011,6 @@
             </div>
           </div>
         </div>
-        <!-- <p>{{trial.investigate.proof.detail}}</p> -->
       </div>
     </div>
     <div title="法庭辩论" class="argument" :style="commonStyle">

@@ -1,6 +1,5 @@
 import Http from "../../../common/scripts/http";
 import { message, confirm, storage } from "../../../common/scripts/helper";
-import { elementquerysOrder } from "./5-investigate/4-inquiry/script";
 import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 // Compoents
 import TrialHeader from "./0-header";
@@ -59,7 +58,6 @@ export default {
     // 生成公用方法
     generate() {
       const vm = this;
-      this.trial.investigate.inquiry.proof_affirm = elementquerysOrder(this.trial.investigate.inquiry.elementquerys); //审议归纳排序
       storage.set("trial", this.trial);
       storage.set("template", this.template);
     },
