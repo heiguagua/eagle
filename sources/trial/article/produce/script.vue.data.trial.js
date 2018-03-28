@@ -1063,12 +1063,18 @@ export default () => {
       // 是否申请回避
       evasion: "",
       // 举证期限异议
-      evidence: ""
+      evidence: {
+        //工商案由下在导航里隐藏举证期限异议
+        navShow: true 
+      }
     },
     // 法庭调查
     investigate: {
       // 诉辩意见
-      opinion: "",
+      opinion: {
+        // 工商案由下显示被诉行政行为导航
+        navshow:false 
+      },
       // 争点归纳
       conclude: {
         // 无争议归纳
@@ -1087,6 +1093,7 @@ export default () => {
       // 法庭询问
       inquiry: {
         status:true,
+        navshow:false, //工商案由下法庭询问导航与举证质证交换位置
         select:true,
         elementquerys: [],
         proof_affirm: "", //审议归纳已排序

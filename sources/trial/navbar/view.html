@@ -71,7 +71,7 @@
           <i class="el-icon-location"></i>
           <span slot="title">是否申请回避</span>
         </el-menu-item>
-        <el-menu-item index="preface-evidence" v-scroll-to="'.preface-evidence'">
+        <el-menu-item index="preface-evidence" v-scroll-to="'.preface-evidence'" v-if="trial.preface.evidence.navShow">
           <i class="el-icon-location"></i>
           <span slot="title">举证期限异议</span>
         </el-menu-item>
@@ -81,6 +81,10 @@
           <i class="el-icon-location"></i>
           <span slot="title">法庭调查</span>
         </template>
+        <el-menu-item index="investigate-opinion" v-scroll-to="'.investigate-opinion'" v-if="trial.investigate.opinion.navshow">
+            <i class="el-icon-location"></i>
+            <span slot="title">被诉行政行为</span>
+          </el-menu-item>
         <el-menu-item index="investigate-opinion" v-scroll-to="'.investigate-opinion'">
           <i class="el-icon-location"></i>
           <span slot="title">诉辩意见</span>
@@ -99,7 +103,7 @@
             <span slot="title">争议归纳</span>
           </el-menu-item>
         </el-submenu>
-        <el-menu-item index="investigate-inquiry" v-scroll-to="'.investigate-inquiry'">
+        <el-menu-item index="investigate-inquiry" v-scroll-to="'.investigate-inquiry'" v-if="!trial.investigate.inquiry.navshow">
           <i class="el-icon-location"></i>
           <span slot="title">法庭询问</span>
         </el-menu-item>
@@ -107,6 +111,10 @@
           <i class="el-icon-location"></i>
           <span slot="title">举证质证</span>
         </el-menu-item>
+        <el-menu-item index="investigate-inquiry" v-scroll-to="'.investigate-inquiry'" v-if="trial.investigate.inquiry.navshow">
+            <i class="el-icon-location"></i>
+            <span slot="title">法庭询问</span>
+          </el-menu-item>
         <el-menu-item index="investigate-fact" v-scroll-to="'.investigate-fact'">
           <i class="el-icon-location"></i>
           <span slot="title">争议事实认定</span>
