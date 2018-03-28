@@ -122,6 +122,17 @@ export default {
       }
 
     },
+    addquestion() {
+      let flag = 0;
+      if (!flag) {
+        this.trial.investigate.inquiry.elementquerys.push({
+          "ask_info_start": "", //审问题
+          "summary_info_end": "审：", //审结论
+        })
+        let database = new DataBase(this.trial.verification.participator, true);
+        this.trial.verification.participator = database.participator;
+      }
+    },
     //删除当前要素问题
     remove: function(index) {
       let database = new DataBase(this.trial.verification.participator, false, index);

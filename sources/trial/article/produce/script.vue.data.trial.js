@@ -1087,6 +1087,7 @@ export default () => {
       // 法庭询问
       inquiry: {
         status:true,
+        select:true,
         elementquerys: [],
         proof_affirm: "", //审议归纳已排序
         witness:{

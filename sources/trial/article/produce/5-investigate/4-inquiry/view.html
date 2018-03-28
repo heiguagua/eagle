@@ -114,8 +114,11 @@
         </div>
       </div>
       <p>
-        <el-cascader class="width-100" :options="factors" @change="handleChange">
+        <el-cascader class="width-100" :options="factors" @change="handleChange" v-if="this.trial.investigate.inquiry.select">
         </el-cascader>
+      </p>
+      <p>
+          <el-button type="primary" @click="addquestion()">添加法庭询问</el-button>
       </p>
     </div>
     <!-- 新需求 证人出庭 start -->
