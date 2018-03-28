@@ -71,6 +71,17 @@ export default {
       }
       let database = new DataBase(this.trial.verification.participator, this.trial.argument.other.debateTimes, true)
       this.trial.verification.participator = database.participator
+    },
+    addTrial: function() {
+      this.trial.argument.other.debateArray = [];
+      this.trial.argument.other.debateTimes++;
+      for (var i = 1, len = this.trial.argument.other.debateTimes; i < len; i++) {
+        this.trial.argument.other.debateArray.push({
+          count: i
+        });
+      }
+      let database = new DataBase(this.trial.verification.participator, this.trial.argument.other.debateTimes, true)
+      this.trial.verification.participator = database.participator
 
     },
   },

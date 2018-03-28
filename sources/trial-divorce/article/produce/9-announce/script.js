@@ -12,7 +12,7 @@ export default {
     ]),
   },
   methods: {
-    handleCommand(command) {
+    chooseType(command) {
       this.trial.announce.extemporeStatus = false;
       this.trial.announce.periodicalStatus = false;
       this.trial.announce.electiveStatus = false;

@@ -4,6 +4,9 @@
     <em>法庭辩论-被告方辩论意见</em>
     <div class="tools">
       <el-tag size="small" type="warning" v-if="trial.adjourn ==='argument-accused'">此处休庭</el-tag>
+      <el-button @click="addTrial()" type="primary" size="mini">
+        <i class="fa fa-user-plus">&nbsp;添加辩论</i>
+      </el-button>
       <el-button @click="setAdjourn('argument-accused')" type="primary" size="mini">
         <i class="fa fa-gavel">&nbsp;休庭</i>
       </el-button>

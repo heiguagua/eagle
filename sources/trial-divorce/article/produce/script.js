@@ -35,8 +35,8 @@ export default {
   components: {
     TrialHeader,
     TrialInfomation,
-    TrialDiscipline,
     TrialVerification,
+    TrialDiscipline,
     TrialPreface,
     TrialInvestigate,
     TrialArgument,

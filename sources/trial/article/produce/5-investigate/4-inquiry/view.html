@@ -120,7 +120,7 @@
     </div>
     <!-- 新需求 证人出庭 start -->
     <div v-if="trial.verification.witness.status">
-      <p>审：<el-input v-model="trial.investigate.inquiry.interrogate" type="textarea" :autosize="{minRows: 3}" placeholder="请输入）" class="width-100"></el-input></p>
+      <p>审：<el-input v-model="trial.investigate.inquiry.interrogate" type="textarea" :autosize="{minRows: 3}" placeholder="请输入内容" class="width-100"></el-input></p>
       <p>证人：<el-input v-model="trial.investigate.inquiry.answer" type="textarea" :autosize="{minRows: 3}" placeholder="请输入证人回答内容" class="width-100"></el-input></p>
       <p>审：请证人到庭外等候。</p>
     </div>

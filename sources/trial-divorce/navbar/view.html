@@ -32,10 +32,6 @@
             <i class="el-icon-location"></i>
             <span slot="title">被告</span>
           </el-menu-item>
-          <el-menu-item index="verification-participator-thirdparty" v-scroll-to="'.verification-participator-thirdparty'">
-            <i class="el-icon-location"></i>
-            <span slot="title">第三人</span>
-          </el-menu-item>
         </el-submenu>
         <el-menu-item index="verification-objection" v-scroll-to="'.verification-objection'" v-if="((!trial.verification.other.defendantPartFlag && trial.verification.other.thirdManFlag) || (trial.verification.other.defendantPartFlag && !trial.verification.other.thirdManFlag)) || trial.verification.other.attendanceFlag">
           <i class="el-icon-location"></i>
@@ -124,10 +120,6 @@
         <el-menu-item index="argument-accused" v-scroll-to="'.argument-accused'">
           <i class="el-icon-location"></i>
           <span slot="title">被告方辩论意见</span>
-        </el-menu-item>
-        <el-menu-item index="argument-thirdparty" v-scroll-to="'.argument-thirdparty'">
-          <i class="el-icon-location"></i>
-          <span slot="title">第三人辩论意见</span>
         </el-menu-item>
       </el-submenu>
       <el-menu-item index="statement" v-scroll-to="'.statement'">
