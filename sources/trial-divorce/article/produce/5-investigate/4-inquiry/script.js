@@ -60,23 +60,26 @@ export default {
     ...mapMutations("Trial", [
       "setAdjourn", // 休庭操作
     ]),
-    handleChange(factor) {
-      let flag = 0;
-      if (!flag) {
-        this.trial.investigate.inquiry.elementquerys.push({
-          "ask_info_start": "", //审问题
-          "summary_info_end": "审：", //审结论
-        })
-        let database = new DataBase(this.trial.verification.participator, true);
-        this.trial.verification.participator = database.participator;
-      }
+    handleChange() {
+      // let flag = 0;
+      // if (!flag) {
+      //   this.trial.investigate.inquiry.elementquerys.push({
+      //     "ask_info_start": "", //审问题
+      //     "summary_info_end": "审：", //审结论
+      //   })
+      //   let database = new DataBase(this.trial.verification.participator, true);
+      //   this.trial.verification.participator = database.participator;
+      // }
+      this.trial.investigate.inquiry.all.push({
+        question:"审：",
+        answer:"证人"
+      })
 
     },
     //删除当前要素问题
     remove: function(index) {
-      let database = new DataBase(this.trial.verification.participator, false, index);
-      this.trial.verification.participator = database.participator;
-      this.trial.investigate.inquiry.elementquerys.splice(index, 1);
+      let vm = this;
+      this.trial.investigate.inquiry.all.splice(index, 1);
     }
   },
   created() {

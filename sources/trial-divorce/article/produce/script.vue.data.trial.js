@@ -1093,8 +1093,11 @@ export default () => {
           name:"",
           info:""
         },
-        interrogate:"",
-        answer:""
+        // 证人阶段的一问一答
+        all:[{
+          question:"审：",
+          answer:"证人："
+        }]
       },
       // 举证质证
       proof: {
