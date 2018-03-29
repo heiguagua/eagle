@@ -1117,6 +1117,8 @@ export default () => {
       summary: {
         detail: ""
       },
+      // 事实认定归纳内容
+      fact:"",
       other: {
         debateArray: [],
         debateTimes: 1
