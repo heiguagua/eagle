@@ -72,7 +72,7 @@ export default {
       // }
       this.trial.investigate.inquiry.all.push({
         question:"审：",
-        answer:"证人"
+        answer:"证人："
       })
 
     },
