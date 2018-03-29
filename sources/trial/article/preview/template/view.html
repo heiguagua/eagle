@@ -801,8 +801,10 @@
         </div>
         <!-- 新需求 证人出庭 start -->
         <div v-if="trial.verification.witness.status">
-          <p :style="pMargin">审：<span>{{ trial.investigate.inquiry.interrogate }}</span></p>
-          <p :style="pMargin">证人：<span>{{ trial.investigate.inquiry.answer }}</span></p>
+          <div v-for="(element,elementIndex) in trial.investigate.inquiry.all">
+            <p :style="pMargin">{{element.question}}</p>
+            <p :style="pMargin">{{element.answer}}</p>
+          </div>
           <p :style="pMargin">审：请证人到庭外等候。</p>
         </div>
         <!-- 新需求 证人出庭 end -->

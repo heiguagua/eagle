@@ -60,6 +60,7 @@ export default {
     ...mapMutations("Trial", [
       "setAdjourn", // 休庭操作
     ]),
+    // 添加全案要素表问题
     handleChange(factor) {
       const factorJSON = JSON.parse(factor[1]);
       const start = factorJSON.start;
@@ -122,22 +123,21 @@ export default {
       }
 
     },
-    addquestion() {
-      let flag = 0;
-      if (!flag) {
-        this.trial.investigate.inquiry.elementquerys.push({
-          "ask_info_start": "", //审问题
-          "summary_info_end": "审：", //审结论
-        })
-        let database = new DataBase(this.trial.verification.participator, true);
-        this.trial.verification.participator = database.participator;
-      }
-    },
     //删除当前要素问题
     remove: function(index) {
       let database = new DataBase(this.trial.verification.participator, false, index);
       this.trial.verification.participator = database.participator;
       this.trial.investigate.inquiry.elementquerys.splice(index, 1);
+    },
+    addquestion: function() {
+      this.trial.investigate.inquiry.all.push({
+        question:"审：",
+        answer:"证人："
+      })
+    },
+    // 删除证人一问一答
+    removeQ: function(index) {
+      this.trial.investigate.inquiry.all.splice(index, 1);
     }
   },
   created() {

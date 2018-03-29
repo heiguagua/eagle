@@ -117,16 +117,19 @@
         <el-cascader class="width-100" :options="factors" @change="handleChange" v-if="this.trial.investigate.inquiry.select">
         </el-cascader>
       </p>
-      <p>
-          <el-button type="primary" @click="addquestion()" v-if="!this.trial.investigate.inquiry.select">添加法庭询问</el-button>
-      </p>
     </div>
     <!-- 新需求 证人出庭 start -->
     <div v-if="trial.verification.witness.status">
-      <p>审：<el-input v-model="trial.investigate.inquiry.interrogate" type="textarea" :autosize="{minRows: 3}" placeholder="请输入内容" class="width-100"></el-input></p>
-      <p>证人：<el-input v-model="trial.investigate.inquiry.answer" type="textarea" :autosize="{minRows: 3}" placeholder="请输入证人回答内容" class="width-100"></el-input></p>
-      <p>审：请证人到庭外等候。</p>
-    </div>
+        <div v-for="(element,elementIndex) in trial.investigate.inquiry.all">
+          <el-button @click="removeQ(elementIndex)" size="mini" type="danger">
+            <i class="fa fa-trash">&nbsp;&nbsp;移除</i>
+          </el-button>
+          <p><el-input v-model="element.question" type="textarea" :autosize="{minRows: 3}" placeholder="请输入内容" class="width-100"></el-input></p>
+          <p><el-input v-model="element.answer" type="textarea" :autosize="{minRows: 3}" placeholder="请输入证人回答内容" class="width-100"></el-input></p>
+        </div>
+        <el-button type="primary" @click="addquestion()">添加法庭询问</el-button>
+        <p>审：请证人到庭外等候。</p>
+      </div>
     <!-- 新需求 证人出庭 end -->
   </div>
 </section>
