@@ -79,7 +79,7 @@ export default {
         //且审的回答内容需要对应到文书中，需要对其排序，index 为上一个不为的数
         const numJSON = JSON.parse(factor[0]);
         let order = 1; //其1、start排序
-        if (numJSON == 9) {
+        if (start == "其他") {
           index =1;
           this.trial.investigate.inquiry.elementquerys.forEach(item => {
             if (item.ask_info_start.indexOf("其") == 0) {
@@ -88,7 +88,7 @@ export default {
             }
             if (item.verdict_index != 0) {
               index = item.verdict_index;
-            } 
+            }
           });
         }
         if (end == '') {
@@ -99,7 +99,7 @@ export default {
             "start": start, //原始的问题
             "end": end //原始的审部分
           })
-        } else if (numJSON == 9 && end == "审：") {
+        } else if (start == "其他" && end == "审：") {
           // console.log("排序：" + index)
           this.trial.investigate.inquiry.elementquerys.push({
             "ask_info_start": "其" + order + "、", //审问题
