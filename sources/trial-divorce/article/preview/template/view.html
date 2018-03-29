@@ -14,7 +14,7 @@
       <p :style="pMargin">{{template.info.openTime.name}}{{trial.infomation.date}}{{trial.infomation.time.start | dateServer}}{{template.info.openTime.content.until}}{{trial.infomation.time.end | dateServer}}
       </p>
       <p :style="pMargin">{{template.info.place.name}}{{trial.infomation.location.name}}{{template.info.place.content.first}}{{trial.infomation.location.number}}{{template.info.place.content.court}}{{trial.infomation.location.times}}{{template.info.place.content.times}}</p>
-      <p :style="pMargin">{{template.info.openToTrial}}{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{template.info.listen}}{{trial.infomation.audience}}人</p>
+      <p :style="pMargin">{{template.info.openToTrial}}{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{template.info.listen}}：{{trial.infomation.audience}}人</p>
       <div>
         <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审　判　长：</span><span v-else-if="officer.duty=='审判员'">审　判　员：</span><span v-else>{{officer.duty}}：</span>{{officer.name}}</p>
         <p :style="pMargin">书　记　员：{{trial.infomation.clerk}}</p>
@@ -245,7 +245,7 @@
         </div>
         <p :style="pMargin"></p>
         <p :style="pMargin">审：审：鉴于各方均已收到本院发出的当事人诉讼权利义务通知书，且对自己的权利义务均清楚，本庭不再另行通知当事人的诉讼权利义务。根据《中华人民共和国民事诉讼法》第十条、第四十四条、第四十五条、第四十六条之规定，当事人对审判人员有申请回避的权利，如果当事人认为上列人员中有与本案有利害关系或者其他关系，可能影响案件的公正审理，有权用口头或书面形式申请回避，但应当说明理由。审判人员的回避由本院院长决定，书记员的回避由审判长决定。</p>
-      </div> 
+      </div>
       <div title="是否申请回避" class="preface-evasion">
         <p :style="pMargin">{{template.preface.prefaceWithdrawal}}</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">

@@ -14,7 +14,7 @@
       <p :style="pMargin">{{template.info.openTime.name}}{{trial.infomation.date}}{{trial.infomation.time.start | dateServer}}{{template.info.openTime.content.until}}{{trial.infomation.time.end | dateServer}}
       </p>
       <p :style="pMargin">{{template.info.place.name}}{{trial.infomation.location.name}}{{template.info.place.content.first}}{{trial.infomation.location.number}}{{template.info.place.content.court}}{{trial.infomation.location.times}}{{template.info.place.content.times}}</p>
-      <p :style="pMargin">{{template.info.openToTrial}}{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{template.info.listen}}{{trial.infomation.audience}}人</p>
+      <p :style="pMargin">{{template.info.openToTrial}}{{trial.infomation.isPublic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{template.info.listen}}：{{trial.infomation.audience}}人</p>
       <div>
         <p :style="pMargin" v-for="officer in trial.infomation.officer"><span v-if="officer.duty=='审判长'">审　判　长：</span><span v-else-if="officer.duty=='审判员'">审　判　员：</span><span v-else>{{officer.duty}}：</span>{{officer.name}}</p>
         <p :style="pMargin">书　记　员：{{trial.infomation.clerk}}</p>
