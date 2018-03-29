@@ -43,7 +43,7 @@ export default {
               const data = result.data;
               if (Http.protocol(data, 200)) {
                 message(vm, "info", data.head.message);
-                vm.$router.replace({ path: "/layout/trial/blank" });
+                vm.$router.replace({ path: "/layout/trial-divorce/blank" });
                 vm.getTrials({ vm })
               } else {
                 message(vm, "warning", data.head.message);
@@ -112,7 +112,7 @@ export default {
               const data = result.data;
               if (Http.protocol(data, 200)) {
                 vm.getTrials({ vm });
-                vm.$router.replace({ path: "/layout/trial/blank" });
+                vm.$router.replace({ path: "/layout/trial-divorce/blank" });
                 message(vm, "info", data.head.message);
               } else {
                 message(vm, "warning", data.head.message);

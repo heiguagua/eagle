@@ -80,7 +80,7 @@ export default {
             vm.getTrials({ vm });
             message(vm, "info", data.head.message);
             vm.options.loading = false; // 关闭loading动画
-            vm.$router.push("/layout/trial/blank");
+            vm.$router.push("/layout/trial-divorce/blank");
           } else {
             message(vm, "warning", data.head.message);
           }
@@ -88,10 +88,10 @@ export default {
     },
     /** ----- 返回生成页面 ----- */
     backCreate() {
-      this.$router.push({ path: "/layout/trial/produce", query: { operation: "create" } });
+      this.$router.push({ path: "/layout/trial-divorce/produce", query: { operation: "create" } });
     },
     backUpdate() {
-      this.$router.push({ path: "/layout/trial/produce", query: { operation: "update", random: Math.random() } });
+      this.$router.push({ path: "/layout/trial-divorce/produce", query: { operation: "update", random: Math.random() } });
     },
     exportWord() {
       const vm = this;

@@ -28,7 +28,7 @@ export default {
     },
     nav() { //blank页面下，导航隐藏
       const vm = this;
-      if (vm.$route.path === "/layout/trial/blank") {
+      if (vm.$route.path === "/layout/trial-divorce/blank") {
         this.trial.navStatus = false;
       } else {
         this.trial.navStatus = true;

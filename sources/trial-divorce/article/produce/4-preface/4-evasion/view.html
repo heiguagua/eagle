@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="content">
-    <p>{{template.preface.prefaceWithdrawal}}</p>
+    <p>审：鉴于双方均已收到本院发出的当事人诉讼权利义务通知书，且对自己的权利义务均清楚，本庭不再另行通知当事人的诉讼权利和义务。根据《中华人民共和国民事诉讼法》第四十四条、四十五条、四十六条之规定，当事人可以申请回避，双方是否申请回避？</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">
