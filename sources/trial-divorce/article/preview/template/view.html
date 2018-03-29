@@ -104,7 +104,7 @@
         </div>
       </div>
       <div title="缺席" class="verification-absence">
-        <p :style="pMargin">审：<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>{{template.informationCheck.content.absence}}</p>
+        <p :style="pMargin">审：经本院依法传唤，<span v-for="(person, personIndex) in trial.verification.other.absentee"><span>{{ person.type }}</span><span>{{ person.name }}</span><span v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</span></span>无正当理由拒不当庭，本院根据《中华人民共和国民事诉讼法》第一百四十四条之规定缺席审理，是否清楚？</p>
         <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
           <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
             <p :style="pMargin" v-if="subject.showFlag">

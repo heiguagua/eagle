@@ -1,7 +1,7 @@
 <section title="缺席审理" class="verification-absence" v-if="trial.verification.other.absenseStatus">
   <div class="access">
     <i class="el-icon-edit-outline"></i>
-    <em>庭审序言-缺席审理</em>
+    <em>信息核对-缺席审理</em>
     <div class="tools">
       <el-tag size="small" type="warning" v-if="trial.adjourn ==='verification-absence'">此处休庭</el-tag>
       <el-button @click="setAdjourn('verification-absence')" type="primary" size="mini">
@@ -10,14 +10,14 @@
     </div>
   </div>
   <div class="content">
-    <p>审：
+    <p>审：经本院依法传唤，
     <!-- 被告a、被告法定代表人、被告代理 -->
     <span v-for="(person, personIndex) in trial.verification.other.absentee">
       <i>{{ person.type }}</i>
       <i>{{ person.name }}</i>
       <i v-if="trial.verification.other.absentee.length > 1 && personIndex + 1 <  trial.verification.other.absentee.length">、</i>
     </span>
-    {{template.informationCheck.content.absence}}</p>
+    无正当理由拒不当庭，本院根据《中华人民共和国民事诉讼法》第一百四十四条之规定缺席审理，是否清楚？</p>
     <div title="原告" v-for="(accuser, accuserIndex) in trial.verification.participator.accusers" :key="accuserIndex">
       <div title="诉讼主体" v-for="(subject, subjectIndex) in accuser.subjects" :key="subjectIndex">
         <p v-if="subject.showFlag">
